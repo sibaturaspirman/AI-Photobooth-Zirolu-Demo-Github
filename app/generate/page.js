@@ -41,7 +41,7 @@ fal.config({
 // !SETUP SOCKET
 
 // const DEFAULT_PROMPT = 'anime style illustration of techwear, cyborg ninja, holding a sword, wearing a mask, striking pose, all limbs appear in frame, japanese vibe, detailed design for streetwear and urban style t-shirt design, solid color background, etc pro vector';
-const DEFAULT_NEG_PROMPT = 'extra head, extra face, double head, double face, ((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), boobs, sexy, blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
+const DEFAULT_NEG_PROMPT = 'extra head, extra face, double head, double face, (((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), boobs, sexy, blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 export default function Register() {
@@ -302,7 +302,7 @@ export default function Register() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogo></TopLogo>
-            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
+            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 text-white ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -337,7 +337,7 @@ export default function Register() {
                 </div> */}
                 <div className='relative mt-2 lg:mt-10 w-full'>
                     <div className='relative w-full'>
-                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold">Your are</label>
+                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bol text-white">Your are</label>
                         <div>
                             {/* GENDER SEMENTARA */}
                             <ul className='choose2'>
@@ -408,7 +408,7 @@ export default function Register() {
                         </div>
                     </div>
                     <div className='relative w-full mt-8 lg:mt-10'>
-                        <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold">Pick Your Style</label>
+                        <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold text-white">Pick Your Style</label>
                         <div className='overflow-auto'>
                             {/* STYLE SEMENTARA */}
                             <ul className='choose'>
@@ -715,7 +715,7 @@ export default function Register() {
                         </button>
                     </div>
                 } */}
-                <a href='https://www.instagram.com/zirolu.id' target='_blank' className='block text-center text-sm lg:text-2xl mt-2 lg:mt-4'>Have your own style in mind? contact us through instagram @zirolu.id</a>
+                <a href='https://www.instagram.com/zirolu.id' target='_blank' className='block text-center text-sm lg:text-2xl mt-2 lg:mt-4 text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a>
             </div>
             {/* !PILIH STYLE */}
 
