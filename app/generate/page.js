@@ -41,7 +41,7 @@ fal.config({
 // !SETUP SOCKET
 
 // const DEFAULT_PROMPT = 'anime style illustration of techwear, cyborg ninja, holding a sword, wearing a mask, striking pose, all limbs appear in frame, japanese vibe, detailed design for streetwear and urban style t-shirt design, solid color background, etc pro vector';
-const DEFAULT_NEG_PROMPT = 'ugly hands, ugly hand, bad hand, two faces, two heads, two bodies, boobs, sexy, bad anatomy, bad hands, blurry, low resolution, bad, ugly, low quality, pixelated, interpolated, compression artifacts, noisey, grainy, double hands';
+const DEFAULT_NEG_PROMPT = 'head in body, double head, ugly hands, ugly hand, bad hand, two faces, two heads, two bodies, boobs, sexy, bad anatomy, bad hands, blurry, low resolution, bad, ugly, low quality, pixelated, interpolated, compression artifacts, noisey, grainy, double hands';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 export default function Register() {
@@ -455,7 +455,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="alone, Imagine an astronaut striking a pose amidst the vastness of outer space. Visualize the astronaut floating gracefully, tethered to a spacecraft or space station, with the Earth suspended in the background, a breathtaking sphere of blue and white against the black canvas of space. The astronaut's spacesuit, adorned with reflective surfaces, catches the glimmering sunlight, creating a stunning interplay of light and shadows. Their visor reflects the cosmic panorama, capturing the awe-inspiring beauty of the cosmos. The astronaut's body language should convey a sense of exploration and triumph, symbolizing humanity's venture into the final frontier, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
+                                value="alone, an astronaut is taking a photo in a spaceship with a view of the earth, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
                                 onChange={(e) => setPrompt2(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
