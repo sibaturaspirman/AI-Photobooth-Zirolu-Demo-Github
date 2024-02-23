@@ -169,9 +169,9 @@ body{
 }
 
 @media only screen and (max-width: 1023px) {
-  .choose2 li label{
+  /* .choose2 li label{
     height: 50px;
-  }
+  } */
 }
 .choose2 [type="radio"]:checked,
 .choose2 [type="radio"]:not(:checked) {

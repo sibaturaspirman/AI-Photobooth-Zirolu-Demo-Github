@@ -54,8 +54,8 @@ export default function Register() {
 
     const negative_prompt = DEFAULT_NEG_PROMPT;
     const [imageFile, setImageFile] = useState(null);
-    const [CGF, setCGF] = useState(10);
-    const [numSteps, setNumSteps] = useState(50);
+    const [CGF, setCGF] = useState(13);
+    const [numSteps, setNumSteps] = useState(80);
     const [styleGender, setStyleGender] = useState(null);
     const [stylePrompt, setStylePrompt] = useState(null);
     const [numProses, setNumProses] = useState(0);
