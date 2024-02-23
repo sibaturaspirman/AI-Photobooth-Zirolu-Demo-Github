@@ -308,7 +308,7 @@ export default function Register() {
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     <div className='relative w-[250px] h-[78px] lg:w-[655px] lg:h-[206px] overflow-hidden'>
                         <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
-                            <Image src='/Loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
+                            <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div>
                     <div className='relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
