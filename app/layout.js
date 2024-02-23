@@ -4,7 +4,7 @@ import "./globals.css";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AI Photo Booth - Zirolu",
+  title: "AI Photo Booth - Zirolu.id",
   description: "AI Photo Booth developed by zirolu.id",
 };
 
