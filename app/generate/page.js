@@ -337,7 +337,7 @@ export default function Register() {
                 </div> */}
                 <div className='relative mt-2 lg:mt-10 w-full'>
                     <div className='relative w-full'>
-                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bol text-white">Your are</label>
+                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label>
                         <div>
                             {/* GENDER SEMENTARA */}
                             <ul className='choose2'>
