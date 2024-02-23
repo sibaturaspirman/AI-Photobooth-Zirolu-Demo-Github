@@ -349,7 +349,7 @@ export default function Register() {
                                     value="Man, "
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender1">Man</label>
+                                    <label htmlFor="choose_gender1" className='lg:text-2xl'>Man</label>
                                 </li>
                                 <li>
                                     <input
@@ -359,7 +359,7 @@ export default function Register() {
                                     value="Woman, "
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender2">Woman</label>
+                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Woman</label>
                                 </li>
                                 <li>
                                     <input
@@ -369,7 +369,7 @@ export default function Register() {
                                     value="Woman with Hijab, "
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender3">Woman with Hihab</label>
+                                    <label htmlFor="choose_gender3" className='lg:text-2xl'>Woman with Hihab</label>
                                 </li>
                             </ul>
                             {/* GENDER FIX */}
