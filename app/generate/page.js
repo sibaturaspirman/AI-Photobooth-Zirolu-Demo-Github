@@ -417,7 +417,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
+                                value="alone, cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
                                 onChange={(e) => setPrompt2(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -436,7 +436,7 @@ export default function Register() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="Craft a captivating photo capturing the essence of Korean style. Integrate modern and traditional elements seamlessly. Emphasize elegant fashion choices, vibrant colors, and perhaps include iconic Korean motifs. Pay attention to lighting to enhance the mood and ensure a visually stunning representation of Korean-inspired aesthetics, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
+                                value="alone, Craft a captivating photo capturing the essence of Korean style. Integrate modern and traditional elements seamlessly. Emphasize elegant fashion choices, vibrant colors, and perhaps include iconic Korean motifs. Pay attention to lighting to enhance the mood and ensure a visually stunning representation of Korean-inspired aesthetics, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
                                 onChange={(e) => setPrompt2(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
@@ -455,7 +455,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="Imagine an astronaut striking a pose amidst the vastness of outer space. Visualize the astronaut floating gracefully, tethered to a spacecraft or space station, with the Earth suspended in the background, a breathtaking sphere of blue and white against the black canvas of space. The astronaut's spacesuit, adorned with reflective surfaces, catches the glimmering sunlight, creating a stunning interplay of light and shadows. Their visor reflects the cosmic panorama, capturing the awe-inspiring beauty of the cosmos. The astronaut's body language should convey a sense of exploration and triumph, symbolizing humanity's venture into the final frontier, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
+                                value="alone, Imagine an astronaut striking a pose amidst the vastness of outer space. Visualize the astronaut floating gracefully, tethered to a spacecraft or space station, with the Earth suspended in the background, a breathtaking sphere of blue and white against the black canvas of space. The astronaut's spacesuit, adorned with reflective surfaces, catches the glimmering sunlight, creating a stunning interplay of light and shadows. Their visor reflects the cosmic panorama, capturing the awe-inspiring beauty of the cosmos. The astronaut's body language should convey a sense of exploration and triumph, symbolizing humanity's venture into the final frontier, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
                                 onChange={(e) => setPrompt2(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
