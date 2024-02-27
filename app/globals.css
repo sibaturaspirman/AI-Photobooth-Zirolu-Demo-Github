@@ -39,6 +39,11 @@ body{
   background-size: cover;
 }
 
+.bg{
+  background-image: url(../public/bg.jpeg);
+  background-size: cover;
+}
+
 /* .font-paytone{
   font-family: var(--font-roboto_mono);
 } */
