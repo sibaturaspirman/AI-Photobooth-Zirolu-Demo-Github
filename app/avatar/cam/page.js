@@ -142,7 +142,7 @@ export default function Cam() {
     // }
     // waktuBatasTake = clearInterval(waktuBatasTake);
     return (
-        <main className="flex min-h-screen flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogo></TopLogo>
             <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>SAY &#34;CHEESEE&#34;</h1>
             {/* {countDown} */}

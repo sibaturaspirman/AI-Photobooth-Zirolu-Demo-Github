@@ -191,7 +191,7 @@ export default function Register() {
             input: {
                 // base_image_url: URL_RESULT,
                 // swap_image_url: '/avatar/base/'+character
-                base_image_url: '/avatar/base/'+character,
+                base_image_url: character,
                 swap_image_url: imageFile
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
@@ -235,7 +235,7 @@ export default function Register() {
     };
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogo></TopLogo>
             <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 text-white ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
             {/* LOADING */}
@@ -344,10 +344,6 @@ export default function Register() {
                     </div>
                     <div className='relative w-full mt-8 lg:mt-10'>
                         <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold text-white">Pick Your Character</label>
-
-                        {character && 
-                            <Image src={`/avatar/base/${character}`}  width={200} height={200} alt='Zirolu' className='w-full' priority></Image>
-                        }
                         <div className='overflow-auto'>
                             {/* STYLE SEMENTARA */}
                             <ul className='choose'>
@@ -356,7 +352,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="car1.JPG"
+                                value="https://ai.zirolu.id/avatar/base/car1.JPG"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -372,16 +368,16 @@ export default function Register() {
                             </li>
                             <li>
                                 <input
-                                id='choose_style2'
+                                id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="alone, standing, Craft a captivating photo capturing the essence of Korean style. Integrate modern and traditional elements seamlessly. Emphasize elegant fashion choices, vibrant colors, and perhaps include iconic Korean motifs. Pay attention to lighting to enhance the mood and ensure a visually stunning representation of Korean-inspired aesthetics, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
-                                onChange={(e) => setPrompt2(e.target.value)}
+                                value="https://ai.zirolu.id/avatar/base/car3.JPG"
+                                onChange={(e) => setCharacter(e.target.value)}
                                 />
-                                <label htmlFor="choose_style2">
+                                <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/style2.png"
+                                    src="/avatar/style3.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -391,16 +387,73 @@ export default function Register() {
                             </li>
                             <li>
                                 <input
-                                id='choose_style3'
+                                id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="alone, an astronaut is taking a photo in a spaceship with a view of the earth, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
-                                onChange={(e) => setPrompt2(e.target.value)}
+                                value="https://ai.zirolu.id/avatar/base/car2.JPG"
+                                onChange={(e) => setCharacter(e.target.value)}
                                 />
-                                <label htmlFor="choose_style3">
+                                <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/style3.png"
+                                    src="/avatar/style2.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style4'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/avatar/base/car4.JPG"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style4">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/avatar/style4.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style5'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/avatar/base/car5.JPG"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style5">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/avatar/style5.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style6'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/avatar/base/car6.JPG"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style6">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/avatar/style6.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -409,229 +462,6 @@ export default function Register() {
                                 </label>
                             </li>
                             </ul>
-                            {/* STYLE BANYAK */}
-                            {/* <ul className='choose'>
-                                <li>
-                                    <input
-                                    id='choose_style1'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style1"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style1">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style1.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style2'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style2"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style2">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style2.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style3'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style3"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style3">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style3.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style4'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style4"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style4">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style4.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style5'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style5"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style5">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style5.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style6'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style6"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style6">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style6.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style7'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style7"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style7">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style7.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style8'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style8"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style8">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style8.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style9'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style9"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style9">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style9.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style10'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style10"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style10">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style10.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style11'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="style11"
-                                    onChange={handleStyle}
-                                    />
-                                    <label htmlFor="choose_style11">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/style11.png"
-                                        alt="icon"
-                                        width={98}
-                                        height={98}
-                                        priority
-                                    />
-                                    <p className='text-center my-2 font-semibold lg:text-lg'>Style</p>
-                                    </label>
-                                </li>
-                            </ul> */}
                         </div>
                     </div>
                 </div>

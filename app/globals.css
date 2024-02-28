@@ -70,7 +70,7 @@ body{
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
-    margin-right: .5rem;
+    margin-right: .15rem;
   }
 }
 .choose li:last-child{

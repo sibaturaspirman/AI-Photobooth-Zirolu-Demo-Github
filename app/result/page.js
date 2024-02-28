@@ -121,7 +121,7 @@ export default function Result() {
             await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
                 .then(response => response.json())
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     setLinkQR(response.file)
                     setIdFormEmail(response.id)
                     // emitString("sendImage", response.file);
