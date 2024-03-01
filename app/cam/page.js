@@ -148,11 +148,11 @@ export default function Cam() {
             {/* {countDown} */}
             <div className="relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10">
                 <div className='relative'>
-                    {!enabled && 
+                    {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
                         <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
                     </div>
-                    }
+                    } */}
 
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
