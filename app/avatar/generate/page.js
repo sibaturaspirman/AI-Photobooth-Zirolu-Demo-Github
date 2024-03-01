@@ -352,7 +352,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/avatar/base/car1.JPG"
+                                value="https://ai.zirolu.id/avatar/base/car1-mod.JPG"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
