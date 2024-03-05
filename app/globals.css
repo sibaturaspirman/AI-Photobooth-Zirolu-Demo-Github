@@ -208,3 +208,109 @@ body{
     height: auto !important;
   }
 }
+
+/* AMERO */
+.bg-amero{
+  background-image: url(../public/amero/bg.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.choose-amero{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  position: relative;
+  width: 100%;
+  /* width: fit-content;   */
+  margin: 1rem 0;
+}
+.choose-amero li{
+  display: block;
+  position: relative;
+  margin-right: 1rem;
+  width: 33.333%;
+  /* width: 250px; */
+}
+@media only screen and (max-width: 1023px) {
+  .choose-amero li{
+    /* width: 110px; */
+    margin-right: .15rem;
+  }
+}
+.choose-amero li:last-child{
+  margin-right: 0;
+}
+.choose-amero li label{
+  border: 5px solid transparent;
+  box-shadow: 3px 3px 0px 0px transparent;
+  transition: all ease 300ms;
+  width: 100%;
+}
+.choose-amero li label p{display: none;}
+.choose-amero [type="radio"]:checked,
+.choose-amero [type="radio"]:not(:checked) {
+    position: absolute;
+    left: 0;top: 0;
+    opacity: 0;
+}
+
+.choose-amero [type="radio"]:checked + label{
+  border-color: #fff;
+  /* box-shadow: 3px 3px 0px 0px #fff; */
+  transform: scale(1.02);
+}
+
+.choose-amero [type="radio"]:checked + label,
+.choose-amero [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+}
+.choose-amero [type="radio"]:checked + label:before,
+.choose-amero [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+    opacity: 0;
+}
+.choose-amero [type="radio"]:checked + label:after,
+.choose-amero [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+@media only screen and (max-width: 1023px) {
+  .choose-amero [type="radio"]:checked + label:after,
+  .choose-amero [type="radio"]:not(:checked) + label:after {
+    width: 20px;
+    height: 20px;
+  }
+}
+.choose-amero [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.choose-amero [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+/* !AMERO */

@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
-import TopLogo from "../../components/TopLogo";
-import { Paytone_One} from "next/font/google";
-const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
+import TopLogoAmero from "./../../components/TopLogoAmero";
+import { Merriweather} from "next/font/google";
+const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -104,50 +104,12 @@ export default function Cam() {
     const retake = () => {
         setEnabled(false)
     }
-
-    // useEffect(() => {
-    //     const timer =
-    //     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    //     return () => clearInterval(timer);
-    // }, [counter]);
-
-    // const countDownTrigger = () => {
-    //     // const timer =
-    //     // counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    //     // return () => clearInterval(timer);
-    //     setInterval(() => setCoundown(countDown - 1), 1000)
-
-
-    //     // setCoundown
-    //     // waktuBatasTake = setInterval(function() {
-    //     //     setCoundown(countDown - 1)
-    //     //     // countdownNumberEl.textContent = countdown;
-    //     //     console.log(countDown)
-    //     // }, 1000);
-
-    //     // setTimeout(() => {
-    //     //     console.log("WAKWAW")
-    //     // }, 5000);
-    // }
-    // 
-    // function countDownTimer(){
-    //     var countdownNumberEl = document.querySelector('#countdownTake');
-    //     var countdown = 3;
-    //     countdownNumberEl.textContent = countdown;
-    
-    //     waktuBatasTake = setInterval(function() {
-    //       countdown = --countdown <= 0 ? 5 : countdown;
-    //       countdownNumberEl.textContent = countdown;
-    //     }, 1000);
-    // }
-    // waktuBatasTake = clearInterval(waktuBatasTake);
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <TopLogo></TopLogo>
-            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>SAY &#34;CHEESEE&#34;</h1>
-            {/* {countDown} */}
+        <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <TopLogoAmero></TopLogoAmero>
+            <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-8 ${merriweather.className}`}>SAY &#34;CHEESEE&#34;</h1>
             <div className="relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10">
-                <div className='relative'>
+                <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
                         <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
@@ -163,7 +125,7 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[70%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[48%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
@@ -175,7 +137,7 @@ export default function Cam() {
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-2xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti frame pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             
             {/* <div className="py-5 flex items-center justify-center">
@@ -197,19 +159,19 @@ export default function Cam() {
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[70%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/btn-capture.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        <Image src='/amero/btn-capture.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-0 lg:mt-5">
                     <Link href='/amero/generate' className="block w-full relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        <Image src='/amero/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <button className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </button> */}
-                    <button className="relative mx-auto flex justify-center items-center mt-2" onClick={retake}>
+                    <button className="relative w-full mx-auto flex justify-center items-center mt-2" onClick={retake}>
                         <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">

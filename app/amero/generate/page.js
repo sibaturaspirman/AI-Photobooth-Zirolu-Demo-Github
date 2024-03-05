@@ -3,9 +3,9 @@
 import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
-import TopLogo from "../../components/TopLogo";
-import { Paytone_One} from "next/font/google";
-const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
+import TopLogoAmero from "../../components/TopLogoAmero";
+import { Merriweather} from "next/font/google";
+const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 import { useRouter } from 'next/navigation';
 // import io from 'socket.io-client';
 
@@ -235,9 +235,9 @@ export default function Register() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <TopLogo></TopLogo>
-            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 text-white ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
+        <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <TopLogoAmero></TopLogoAmero>
+            <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-8 ${merriweather.className}`}>CHOOSE YOUR STYLE</h1>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -343,10 +343,10 @@ export default function Register() {
                         </div>
                     </div>
                     <div className='relative w-full mt-8 lg:mt-10'>
-                        <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold text-white">Pick Your Character</label>
-                        <div className='overflow-auto'>
+                        <label htmlFor="choose_style1" className={`block mb-0 lg:mb-5 lg:text-5xl text-center font-bold text-white ${merriweather.className}`}>Pick Your Style</label>
+                        <div className='overflow-auto lg:px-2'>
                             {/* STYLE SEMENTARA */}
-                            <ul className='choose'>
+                            <ul className='choose-amero'>
                             <li>
                                 <input
                                 id='choose_style1'
@@ -358,26 +358,7 @@ export default function Register() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/Amero10.png"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_style3'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/amero/Lavani19.jpeg"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style3">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/amero/Lavani19.jpeg"
+                                    src="/amero/style1.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -396,26 +377,7 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/Morraine14.jpeg"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            {/* <li>
-                                <input
-                                id='choose_style4'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/amero/base/car4.JPG"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style4">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/amero/style4.png"
+                                    src="/amero/style2.jpeg"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -425,16 +387,16 @@ export default function Register() {
                             </li>
                             <li>
                                 <input
-                                id='choose_style5'
+                                id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/base/car5.JPG"
+                                value="https://ai.zirolu.id/amero/Lavani19.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
-                                <label htmlFor="choose_style5">
+                                <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/style5.png"
+                                    src="/amero/style3.jpeg"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -442,25 +404,6 @@ export default function Register() {
                                 />
                                 </label>
                             </li>
-                            <li>
-                                <input
-                                id='choose_style6'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/amero/base/car6.JPG"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style6">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/amero/style6.png"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li> */}
                             </ul>
                         </div>
                     </div>
@@ -473,7 +416,7 @@ export default function Register() {
                 {character &&
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
                         <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
-                            <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            <Image src='/amero/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
                 }
@@ -484,7 +427,7 @@ export default function Register() {
                         </button>
                     </div>
                 } */}
-                <a href='https://www.instagram.com/zirolu.id' target='_blank' className='block text-center text-sm lg:text-2xl mt-2 lg:mt-4 text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a>
+                {/* <a href='https://www.instagram.com/zirolu.id' target='_blank' className='block text-center text-sm lg:text-2xl mt-2 lg:mt-4 text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a> */}
             </div>
             {/* !PILIH STYLE */}
 
