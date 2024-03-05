@@ -347,7 +347,7 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/style2.jpeg"
+                                    src="/amero/style2.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
@@ -366,7 +366,7 @@ export default function Register() {
                                 <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/style3.jpeg"
+                                    src="/amero/style3.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
