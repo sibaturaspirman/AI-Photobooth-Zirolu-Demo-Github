@@ -86,6 +86,9 @@ export default function Register() {
         }, 500);
     }
 
+    const handleGender = () => {
+    }
+
     const image = useMemo(() => {
       if (!result) {
         return null;
@@ -271,44 +274,11 @@ export default function Register() {
                     }
                 </div> */}
                 <div className='relative mt-2 lg:mt-10 w-full'>
-                    <div className='relative w-full hidden'>
-                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label>
+                    <div className='relative w-full hiddenx'>
+                        <label htmlFor="choose_gender" className={`block mb-0 lg:mb-5 lg:text-5xl text-center font-bold text-white ${merriweather.className}`}>Your are</label>
                         <div>
-                            {/* GENDER SEMENTARA */}
-                            <ul className='choose2'>
-                                <li>
-                                    <input
-                                    id='choose_gender1'
-                                    type="radio"
-                                    name='choose_gender'
-                                    value="Man, "
-                                    onChange={(e) => setPrompt1(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_gender1" className='lg:text-2xl'>Man</label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_gender2'
-                                    type="radio"
-                                    name='choose_gender'
-                                    value="Woman, "
-                                    onChange={(e) => setPrompt1(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Woman</label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_gender3'
-                                    type="radio"
-                                    name='choose_gender'
-                                    value="Woman with Hijab, "
-                                    onChange={(e) => setPrompt1(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_gender3" className='lg:text-2xl'>Woman with Hihab</label>
-                                </li>
-                            </ul>
                             {/* GENDER FIX */}
-                            {/* <ul className='choose2'>
+                            <ul className='choose2-amero'>
                                 <li>
                                     <input
                                     id='choose_gender1'
@@ -339,10 +309,10 @@ export default function Register() {
                                     />
                                     <label htmlFor="choose_gender3" className='lg:text-2xl'>Woman with Hijab</label>
                                 </li>
-                            </ul> */}
+                            </ul>
                         </div>
                     </div>
-                    <div className='relative w-full mt-8 lg:mt-10'>
+                    <div className='relative w-full mt-8 lg:mt-20'>
                         <label htmlFor="choose_style1" className={`block mb-0 lg:mb-5 lg:text-5xl text-center font-bold text-white ${merriweather.className}`}>Pick Your Style</label>
                         <div className='overflow-auto lg:px-2'>
                             {/* STYLE SEMENTARA */}
