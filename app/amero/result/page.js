@@ -98,7 +98,7 @@ export default function Result() {
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2.5}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
             //   document.getElementById('canvasResult2').appendChild(canvas)
                 uploadImage(canvas)
             )
