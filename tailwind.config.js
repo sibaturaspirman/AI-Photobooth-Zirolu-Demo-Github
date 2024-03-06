@@ -20,8 +20,23 @@ module.exports = {
       loading1: "loading1 9000ms ease infinite",
       loading2: "loading2 5000ms ease infinite",
       countdown: "countdown 3500ms ease 1 alternate",
+      ameroloading: "ameroLoading 17500ms linear infinite alternate",
+      lavaniloading: "lavaniLoading 17500ms linear infinite alternate",
+      morraineloading: "morraineLoading 13500ms linear infinite alternate",
     },
     keyframes: {
+      ameroLoading: {
+        "0%": { transform: "translateX(0%)"},
+        "100%": { transform: "translateX(-93%)"},
+      },
+      lavaniLoading: {
+        "0%": { transform: "translateX(0%)"},
+        "100%": { transform: "translateX(-93%)"},
+      },
+      morraineLoading: {
+        "0%": { transform: "translateX(0%)"},
+        "100%": { transform: "translateX(-89%)"},
+      },
       upDown: {
         "0%": { transform: "translateY(5%)" },
         "100%": { transform: "translateY(-5%)" },
