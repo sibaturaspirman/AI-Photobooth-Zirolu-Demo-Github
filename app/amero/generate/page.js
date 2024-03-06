@@ -322,7 +322,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/Amero10.png"
+                                value="https://ai.zirolu.id/amero/style/amero/woman-frame.png"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -341,7 +341,7 @@ export default function Register() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/Morraine14.jpeg"
+                                value="https://ai.zirolu.id/amero/style/lavani/woman-frame.png"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
@@ -360,7 +360,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/Lavani19.jpeg"
+                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
