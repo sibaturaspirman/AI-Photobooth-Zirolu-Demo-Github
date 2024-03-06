@@ -360,7 +360,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame.jpeg"
+                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame.png"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
