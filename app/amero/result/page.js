@@ -85,16 +85,64 @@ export default function Result() {
         //   }));
     }, [imageResultAI, linkQR])
 
-    const downloadImageAI = () => {
+    const downloadImageAI = async () => {
         // import('html2canvas').then(html2canvas => {
         //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
         //     //   document.getElementById('canvasResult2').appendChild(canvas)
         //         uploadImage(canvas)
         //     )
         // }).catch(e => {console("load failed")})
-        setLoadingDownload('≈')
-        setGenerateQR('true')
-        setLoadingDownload(null)
+        // setLoadingDownload('≈')
+        // setGenerateQR('true')
+        // setLoadingDownload(null)
+
+
+        // let bodyFormData = new FormData();
+        // bodyFormData.append("name", payload.name);
+        // bodyFormData.append("phone", payload.phone);
+        // bodyFormData.append("image", linkQR);
+        let bodyFormData = {"name":payload.name, "phone":payload.phone,"image":linkQR}
+        console.log(bodyFormData)
+      
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "name":payload.name,
+                "phone":payload.phone,
+                "image":linkQR
+            }),
+            headers: {
+                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                'Accept': 'application/json',
+            }
+        };
+        
+        await fetch('https://photo-ai-iims.zirolu.id/v1/amero', options)
+            // .then(response => response.json())
+            .then(response => {
+                // console.log(response)
+                // setLinkQR(response.file)
+                // setIdFormEmail(response.id)
+                // emitString("sendImage", response.file);
+                response.json()
+                setGenerateQR('true')
+                setLoadingDownload(null)
+                // setImageResultAI()
+                // if (typeof localStorage !== 'undefined') {
+                //     localStorage.setItem("idSendEmail", )
+                // }
+            })
+            .catch(err => {
+                if (typeof localStorage !== 'undefined') {
+                    const item = localStorage.getItem('faceURLResult')
+                    // emitString("sendImage", item);
+                    setShowEmail('true')
+                    setLinkQR(item)
+                    // setIdFormEmail(response.id)
+                    setGenerateQR('true')
+                    setLoadingDownload(null)
+                }
+            });
     }
 
     const printImageAI = () => {
@@ -118,47 +166,47 @@ export default function Result() {
         //     emitString("sendImage", item);
         // }
 
-        canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
+        // canvas.toBlob(async function(blob) {
+        //     let bodyFormData = new FormData();
+        //     bodyFormData.append("name", payload.name);
+        //     bodyFormData.append("phone", payload.phone);
+        //     bodyFormData.append("image", linkQR);
           
-            const options = {
-                method: 'POST',
-                body: bodyFormData,
-                headers: {
-                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                    'Accept': 'application/json',
-                }
-            };
+        //     const options = {
+        //         method: 'POST',
+        //         body: bodyFormData,
+        //         headers: {
+        //             'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+        //             'Accept': 'application/json',
+        //         }
+        //     };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
-                .then(response => response.json())
-                .then(response => {
-                    // console.log(response)
-                    setLinkQR(response.file)
-                    setIdFormEmail(response.id)
-                    // emitString("sendImage", response.file);
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                    // setImageResultAI()
-                    // if (typeof localStorage !== 'undefined') {
-                    //     localStorage.setItem("idSendEmail", )
-                    // }
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        // emitString("sendImage", item);
-                        setShowEmail('true')
-                        setLinkQR(item)
-                        // setIdFormEmail(response.id)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
-        });
+        //     await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+        //         .then(response => response.json())
+        //         .then(response => {
+        //             // console.log(response)
+        //             setLinkQR(response.file)
+        //             setIdFormEmail(response.id)
+        //             // emitString("sendImage", response.file);
+        //             setGenerateQR('true')
+        //             setLoadingDownload(null)
+        //             // setImageResultAI()
+        //             // if (typeof localStorage !== 'undefined') {
+        //             //     localStorage.setItem("idSendEmail", )
+        //             // }
+        //         })
+        //         .catch(err => {
+        //             if (typeof localStorage !== 'undefined') {
+        //                 const item = localStorage.getItem('faceURLResult')
+        //                 // emitString("sendImage", item);
+        //                 setShowEmail('true')
+        //                 setLinkQR(item)
+        //                 // setIdFormEmail(response.id)
+        //                 setGenerateQR('true')
+        //                 setLoadingDownload(null)
+        //             }
+        //         });
+        // });
     }
 
 
