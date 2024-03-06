@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import TopLogo from "../../components/TopLogo";
+import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
 import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
-import { Paytone_One} from "next/font/google";
-const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
+import { Merriweather} from "next/font/google";
+const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 import BtnHexagon2 from "../../components/BtnHexagon2";
 import ReactToPrint from "react-to-print";
 
@@ -148,13 +148,12 @@ export default function Result() {
             });
     }
 
-    const printImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2.5}).then(canvas => 
-              document.getElementById('canvasResult2').appendChild(canvas)
-            )
-        }).catch(e => {console("load failed")})
-    }
+    // const downloadPrint = () => {
+    //     downloadImageAI()
+    //     useReactToPrint({
+    //         content: () => componentRef.current,
+    //       }
+    // }
     const uploadImage = async () => {
         // downloadImage(canvas.toDataURL("image/jpeg", 1.0), 'my-canvas.jpeg')
         // console.log(payload)
@@ -291,9 +290,8 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:pb-16 lg:px-13">
-            <TopLogo></TopLogo>
-
+        <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <TopLogoAmeroSmall></TopLogoAmeroSmall>
             {/* QR */}
             {sendEmailGak &&
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center mt-0 flex-col z-50 bg-black bg-opacity-90'>
@@ -343,9 +341,9 @@ export default function Result() {
                 </div>
             }
             {generateQR && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-36 flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${paytone_one.className}`}>SCAN QR CODE</h1>
-                    <div className='relative mt-3 w-[80%] lg:w-full mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-64 flex-col z-40 bg-black bg-opacity-0'>
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${merriweather.className}`}>SCAN QR CODE</h1>
+                    <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
                         options={{
@@ -360,9 +358,9 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
+                    <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 ${merriweather.className}`}>Scan this QR Code to Download your image.</p>
 
-                    <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
+                    {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
                         <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
                             <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
@@ -371,17 +369,17 @@ export default function Result() {
                             <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </a>
                     </div>
-                    </div>
+                    </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
+                    <a href='/amero' className='text-center font-semibold text-4xl mt-10 p-40'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
-                <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${paytone_one.className}`}>YOU LOOKS AWESOME!</h1>
+                <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-8 ${merriweather.className}`}>YOU LOOKS AMAZING!</h1>
                 {imageResultAI && 
-                <div className='relative w-[100%] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[90%] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
                     <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
                         {/* <img src={imageResultAI} className='block'></img> */}
                         <Image src={imageResultAI}  width={420} height={689} alt='Zirolu' className='relative block w-full'></Image> 
@@ -395,34 +393,53 @@ export default function Result() {
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hiddenx' : ''}`}>
-                    <div className={`relative w-[80%] mx-auto flex justify-center items-center flex-col mt-5 ${loadingDownload ? 'hidden' : ''}`}   >
+                    {/* <div className={`relative w-[80%] mx-auto flex justify-center items-center flex-col mt-5 ${loadingDownload ? 'hidden' : ''}`}   >
                         <button className={`relative mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
                             <Image src='/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button>
-                        {/* <button className="relative mx-auto flex justify-center items-center" onClick={sendEmail}>
+                        <button className="relative mx-auto flex justify-center items-center" onClick={sendEmail}>
                             <Image src='/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button> */}
-                    </div>
-                    <div className='w-full'>
+                        </button>
+                    </div> */}
+                    {/* <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/avatar/generate' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/amero/generate' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
 
+                    <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
-                        <div className={`w-full mt-2`}>
-                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                        <div className={`w-full mt-5`}>
+                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                                 <div className="block w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/btn-redownload.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
+                    </div>
+
+
+                    {/* <div className={`w-full mt-5`} onClick={downloadPrint}>
+                        <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                            <div className="block w-full relative mx-auto flex justify-center items-center">
+                                <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            </div>
+                        </div>
+                    </div> */}
+
+                    <div className='w-full'>
+                        <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                            <Link href='/amero/generate' className="relative w-full mx-auto flex justify-center items-center">
+                                <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

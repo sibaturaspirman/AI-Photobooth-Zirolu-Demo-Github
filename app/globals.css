@@ -202,11 +202,9 @@ body{
 }
 
 
-@media only screen and (max-width: 1023px) {
-  .canvas-qr canvas{
-    width: 100% !important;
-    height: auto !important;
-  }
+.canvas-qr canvas{
+  width: 100% !important;
+  height: auto !important;
 }
 
 /* AMERO */
@@ -332,16 +330,16 @@ body{
   margin-right: 0;
 }
 .choose2-amero li label{
-  border: 2px solid #888;
+  border: 2px solid #E1CD96;
   box-shadow: 3px 3px 0px 0px transparent;
   transition: all ease 300ms;
   padding: 10px 15px;
-  background-color: #d2d0d0;
-  color: #888;
+  background-color: #050606;
+  color: #fff;
   width: 100%;
   text-align: center;
-  line-height: 1.1;
-  height: 60px;
+  /* line-height: 1.1; */
+  /* height: 60px; */
   display: flex;
   align-items: center;
   justify-content: center;
