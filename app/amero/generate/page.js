@@ -322,7 +322,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame-fix.png"
+                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame-fix.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -338,10 +338,29 @@ export default function Register() {
                             </li>
                             <li>
                                 <input
+                                id='choose_style11'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/amero/style/morraine/woman-frame-fix-2.jpeg"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style11">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/amero/style1.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/style/amero/woman-frame-fix.png"
+                                value="https://ai.zirolu.id/amero/style/amero/woman-frame-fix.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
@@ -357,13 +376,51 @@ export default function Register() {
                             </li>
                             <li>
                                 <input
+                                id='choose_style21'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/amero/style/amero/woman-frame-fix-2.jpeg"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style21">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/amero/style2.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/amero/style/lavani/woman-frame-fix.png"
+                                value="https://ai.zirolu.id/amero/style/lavani/woman-frame-fix.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/amero/style3.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style31'
+                                type="radio"
+                                name='choose_style'
+                                value="https://ai.zirolu.id/amero/style/lavani/woman-frame-fix-2.jpeg"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style31">
                                 <Image
                                     className="relative h-auto w-full"
                                     src="/amero/style3.png"
