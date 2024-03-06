@@ -43,17 +43,6 @@ import ReactToPrint from "react-to-print";
 // }
 // !SETUP SOCKET
 
-class ComponentToPrint extends React.Component {
-    render() {
-      return (
-        <div>
-          <h2 style={{color: "green"}}>Attendance</h2>
-          <div id='canvasResult2' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div>
-        </div>
-      );
-    }
-  }
-
 
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
@@ -84,9 +73,9 @@ export default function Result() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
-            // const item2 = localStorage.getItem('faceURLResult')
+            const item2 = localStorage.getItem('faceURLResult')
             setImageResultAI(item)
-            // setLinkQR(item2)
+            setLinkQR(item2)
         }
         // const item2 = getCookie('phone')
         // const item3 = getCookie('name')
@@ -97,12 +86,15 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-            //   document.getElementById('canvasResult2').appendChild(canvas)
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
+        //     //   document.getElementById('canvasResult2').appendChild(canvas)
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
+        setLoadingDownload('≈')
+        setGenerateQR('true')
+        setLoadingDownload(null)
     }
 
     const printImageAI = () => {
@@ -301,7 +293,7 @@ export default function Result() {
                         {/* <img src={imageResultAI} className='block'></img> */}
                         <Image src={imageResultAI}  width={420} height={689} alt='Zirolu' className='relative block w-full'></Image> 
                     </div>
-                    <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div>
+                    {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
                 </div>
                 }
                 {loadingDownload && 
