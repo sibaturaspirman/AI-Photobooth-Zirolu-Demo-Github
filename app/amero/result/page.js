@@ -57,14 +57,14 @@ export default function Result() {
 
     let componentRef = useRef();
 
-    // const [payload, setPayload] = useState({
-    //   name: getCookie('name'),
-    //   phone: getCookie('phone'),
-    // });
     const [payload, setPayload] = useState({
-        name: 'AI ZIROLU DEMO',
-        phone: '00000',
-      });
+      name: getCookie('name'),
+      phone: getCookie('phone'),
+    });
+    // const [payload, setPayload] = useState({
+    //     name: 'AI ZIROLU DEMO',
+    //     phone: '00000',
+    //   });
     const { Canvas } = useQRCode();
 
     // emitNetworkConnection()
@@ -96,11 +96,70 @@ export default function Result() {
         // setGenerateQR('true')
         // setLoadingDownload(null)
 
+        // uploadImage()
+
 
         // let bodyFormData = new FormData();
         // bodyFormData.append("name", payload.name);
         // bodyFormData.append("phone", payload.phone);
         // bodyFormData.append("image", linkQR);
+        // let bodyFormData = {"name":payload.name, "phone":payload.phone,"image":linkQR}
+        // console.log(bodyFormData)
+      
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                name:payload.name,
+                phone:payload.phone,
+                image:linkQR
+            }),
+            headers: {
+                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        };
+        
+        await fetch('https://photo-ai-iims.zirolu.id/v1/amero', options)
+            // .then(response => response.json())
+            .then(response => {
+                // console.log(response)
+                // setLinkQR(response.file)
+                // setIdFormEmail(response.id)
+                // emitString("sendImage", response.file);
+                // response.json()
+                setGenerateQR('true')
+                setLoadingDownload(null)
+                // setImageResultAI()
+                // if (typeof localStorage !== 'undefined') {
+                //     localStorage.setItem("idSendEmail", )
+                // }
+            })
+            .catch(err => {
+                if (typeof localStorage !== 'undefined') {
+                    const item = localStorage.getItem('faceURLResult')
+                    // emitString("sendImage", item);
+                    setShowEmail('true')
+                    setLinkQR(item)
+                    // setIdFormEmail(response.id)
+                    setGenerateQR('true')
+                    setLoadingDownload(null)
+                }
+            });
+    }
+
+    const printImageAI = () => {
+        import('html2canvas').then(html2canvas => {
+            html2canvas.default(document.querySelector("#capture"), {scale:2.5}).then(canvas => 
+              document.getElementById('canvasResult2').appendChild(canvas)
+            )
+        }).catch(e => {console("load failed")})
+    }
+    const uploadImage = async () => {
+        // downloadImage(canvas.toDataURL("image/jpeg", 1.0), 'my-canvas.jpeg')
+        // console.log(payload)
+        // bodyFormData.append("file", '');
+        setLoadingDownload('≈')
         let bodyFormData = {"name":payload.name, "phone":payload.phone,"image":linkQR}
         console.log(bodyFormData)
       
@@ -143,20 +202,6 @@ export default function Result() {
                     setLoadingDownload(null)
                 }
             });
-    }
-
-    const printImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2.5}).then(canvas => 
-              document.getElementById('canvasResult2').appendChild(canvas)
-            )
-        }).catch(e => {console("load failed")})
-    }
-    const uploadImage = async (canvas) => {
-        // downloadImage(canvas.toDataURL("image/jpeg", 1.0), 'my-canvas.jpeg')
-        // console.log(payload)
-        // bodyFormData.append("file", '');
-        setLoadingDownload('≈')
 
         // if (typeof localStorage !== 'undefined') {
         //     const item = localStorage.getItem('faceURLResult')
