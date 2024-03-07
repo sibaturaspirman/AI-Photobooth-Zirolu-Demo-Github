@@ -4,6 +4,7 @@ import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
 import TopLogoAmero from "../../components/TopLogoAmero";
+import TopLogoLavani from "../../components/TopLogoLavani";
 import { Merriweather} from "next/font/google";
 const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 import { useRouter } from 'next/navigation';
@@ -259,6 +260,9 @@ export default function GenerateAmero() {
     return (
         <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogoAmero></TopLogoAmero>
+            <div className='w-full'>
+                <TopLogoLavani></TopLogoLavani>
+            </div>
             <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-8 ${merriweather.className} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
             {/* LOADING */}
             {numProses1 && 
