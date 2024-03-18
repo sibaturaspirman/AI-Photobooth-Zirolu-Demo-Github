@@ -202,7 +202,7 @@ export default function GenerateAmero() {
         // console.log(gender)
         // console.log(number)
         // const urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/'+gender+'-'+number+'.jpeg'
-        const urlGambar = 'https://ai.zirolu.id/amero/style/contoh2.jpeg'
+        const urlGambar = 'https://ai.zirolu.id/amero/style/contoh3.jpeg'
         // console.log(urlGambar)
         setNumProses(2)
         reset2();
