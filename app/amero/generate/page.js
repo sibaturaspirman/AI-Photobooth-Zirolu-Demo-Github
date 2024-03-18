@@ -201,8 +201,9 @@ export default function GenerateAmero() {
     const generateImageSwap = async (brand, gender, number) => {
         // console.log(gender)
         // console.log(number)
-        const urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/'+gender+'-'+number+'.jpeg'
-        console.log(urlGambar)
+        // const urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/'+gender+'-'+number+'.jpeg'
+        const urlGambar = 'https://ai.zirolu.id/amero/style/contoh.jpeg'
+        // console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
