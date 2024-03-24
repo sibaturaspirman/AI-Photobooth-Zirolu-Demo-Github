@@ -204,7 +204,7 @@ export default function GenerateAmero() {
         const urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpeg'
         // const urlGambar = 'https://ai.zirolu.id/amero/style/contoh3.jpeg'
         // const urlGambar = 'https://ai.zirolu.id/amero/style/amero/v2/woman-2.jpeg'
-        console.log(urlGambar)
+        // console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
