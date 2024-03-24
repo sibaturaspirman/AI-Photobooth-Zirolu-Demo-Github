@@ -359,6 +359,21 @@ export default function Result() {
                         />
                     </div>
                     <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 ${merriweather.className}`}>Scan this QR Code to Download your image.</p>
+                    
+                    <div className={`w-full`}>
+                    <ReactToPrint
+                    trigger={() => 
+                        <div className={`w-full mt-5`}>
+                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                                <div className="w-full relative mx-auto flex justify-center items-center">
+                                    <Image src='/amero/btn-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    content={() => componentRef}
+                    />
+                    </div>
 
                     {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
@@ -409,12 +424,12 @@ export default function Result() {
                         </div>
                     </div> */}
 
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    {/* <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                                <div className="block w-full relative mx-auto flex justify-center items-center">
+                                <div className="w-full relative mx-auto flex justify-center items-center">
                                     <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
@@ -422,6 +437,15 @@ export default function Result() {
                     }
                     content={() => componentRef}
                     />
+                    </div> */}
+                    <div className={`w-full`} onClick={downloadImageAI}>
+                        <div className={`w-full mt-5`}>
+                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                                <div className="w-full relative mx-auto flex justify-center items-center">
+                                    <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
