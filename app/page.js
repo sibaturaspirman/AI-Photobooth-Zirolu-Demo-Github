@@ -17,7 +17,7 @@ export default function Home() {
         <Link href='/avatar' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-avatar.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
-        <Link href='/amero' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+        <Link href='/amero-demo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-amero.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
         {/* <Link href='/xxi' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">

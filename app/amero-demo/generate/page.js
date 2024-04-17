@@ -248,7 +248,7 @@ export default function GenerateAmero() {
             }
         
             setTimeout(() => {
-                router.push('/amero/result');
+                router.push('/amero-demo/result');
             }, 500);
         })
         } catch (error) {
