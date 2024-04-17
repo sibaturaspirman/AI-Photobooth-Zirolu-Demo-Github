@@ -203,7 +203,7 @@ export default function Cam() {
             }
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-0 lg:mt-5">
-                    <Link href='/disney/generate' className="block w-full relative mx-auto flex justify-center items-center">
+                    <Link href='/xxi/generate' className="block w-full relative mx-auto flex justify-center items-center">
                         <Image src='/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <button className="relative mx-auto flex justify-center items-center">

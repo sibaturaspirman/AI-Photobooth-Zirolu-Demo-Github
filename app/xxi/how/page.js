@@ -17,7 +17,7 @@ export default function How() {
             </div>
 
             <div className="relative w-full flex justify-center items-center">
-                <Link href='/disney/cam' className="relative mx-auto flex w-[70%] justify-center items-center">
+                <Link href='/xxi/cam' className="relative mx-auto flex w-[70%] justify-center items-center">
                     <Image src='/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                 </Link>
             </div>
