@@ -6,27 +6,47 @@ const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+    <main className="flex min-h-screen flex-col items-center justify-center pt-2 pb-5 lg:pt-12">
       <TopLogo></TopLogo>
-      <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>AI PHOTOBOOTH</h1>
-      <div className="relative w-full flex justify-center items-center mt-5 mb-6 lg:mt-12 lg:mb-14">
-        <div className='animate-upDown relative w-1/3 mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/preview-1.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
-        </div>
-        <div className='animate-upDown2 relative w-1/3 mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/preview-2.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
-        </div>
-        <div className='animate-upDown3 relative w-1/3 mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/preview-3.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
-        </div>
-      </div>
-      <div className="relative w-full flex justify-center items-center">
-        {/* <Link href='/register' className="relative mx-auto flex w-[70%] justify-center items-center">
-          <Image src='/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+      <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>The AI Photo Booth For Events  </h1>
+      <div className="relative w-full mt-7">
+        <p className="text-center text-sm mb-3">Choose an AI style from the options below</p>
+        {/* <Link href='/disney' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-disney.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link> */}
-        <Link href='/how' className="relative mx-auto flex w-[70%] justify-center items-center">
-          <Image src='/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+        <Link href='/avatar' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-avatar.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
+        <Link href='/amero' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-amero.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        {/* <Link href='/xxi' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-xxi.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        <Link href='/vespa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-vespa.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link> */}
+        <Link  href="https://ai.mudikbersamakai.com/" passHref={true} rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-kai.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        {/* <Link href='/taro' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-taro.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        <Link href='/mobilelegend' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-mobilelegend.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        <Link href='/uniqlo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-uniqlo.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        <Link href='/moslem' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-moslem.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link> */}
+        <Link href='/others' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center mt-5 ">
+          <Image src='/page-others.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
+        {/* <Link href='/disney' className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-disney.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link> */}
       </div>
     </main>
   );
