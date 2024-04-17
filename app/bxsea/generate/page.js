@@ -184,7 +184,12 @@ export default function Register() {
 
 
     const generateImageSwap = async () => {
-        const urlGambar = 'https://ai.zirolu.id/moslem/moslem-'+prompt1+'-'+getRandomInt(1, 3)+'.jpeg';
+        let urlGambar = ''
+        if(prompt1 == 'm'){
+            urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else{
+            urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 4)+'.jpeg';
+        }
         console.log(urlGambar)
 
         setNumProses(2)
@@ -233,7 +238,7 @@ export default function Register() {
             }
         
             setTimeout(() => {
-                router.push('/moslem/result');
+                router.push('/bxsea/result');
             }, 500);
         })
         } catch (error) {

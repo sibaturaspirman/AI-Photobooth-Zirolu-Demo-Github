@@ -16,7 +16,8 @@
 8. Vespa Mini
 9. Uniqlo
 10. Moslem ✅
-11. BX Sea
+11. BX Sea ✅
+12. Other (faceswap)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
