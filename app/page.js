@@ -31,11 +31,11 @@ export default function Home() {
         </Link>
         {/* <Link href='/taro' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-taro.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link>
+        </Link> */}
         <Link href='/mobilelegend' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-mobilelegend.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
-        <Link href='/uniqlo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+         {/* <Link href='/uniqlo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-uniqlo.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
         <Link href='/moslem' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
