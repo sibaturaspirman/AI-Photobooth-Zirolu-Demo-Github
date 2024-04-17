@@ -241,7 +241,18 @@ export default function Result() {
             }
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-36 flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${paytone_one.className}`}>SCAN QR CODE</h1>
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${paytone_one.className}`}>DOWNLOAD OR SCAN QR CODE</h1>
+                    <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
+                    <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
+                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                            <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        </button>
+                        <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
+                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        </a>
+                    </div>
+                    </div>
+                    <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
                     <div className='relative mt-3 w-[80%] lg:w-full mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
@@ -256,18 +267,6 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div>
-                    <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
-
-                    <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
-                    <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
-                            <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
-                        <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
-                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </a>
-                    </div>
                     </div>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     <a href='/' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
