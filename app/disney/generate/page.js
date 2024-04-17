@@ -542,7 +542,6 @@ export default function Register() {
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
                         <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAIMoana}>
                             <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                            Moana
                         </button>
                     </div>
                 }
