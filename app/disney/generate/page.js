@@ -87,10 +87,36 @@ export default function Register() {
     }
     const generateAIMoana = () => {
         setNumProses1(true)
-        setTimeout(() => {
-            // generateImage()
-            generateImageSwapMoana()
-        }, 500);
+
+        if(styleGender == 'https://ai.zirolu.id/disney/moana-cowok-swap.jpeg'){
+            toDataURL('https://ai.zirolu.id/disney/moana-cewek-swap.jpeg')
+            .then(dataUrl => {
+                // console.log('RESULT:', dataUrl)
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIMoanaBase64", dataUrl)
+                    localStorage.setItem("faceURLResultMoana", 'https://ai.zirolu.id/disney/moana-cewek-swap.jpeg')
+                }
+
+                setTimeout(() => {
+                    // generateImage()
+                    generateImageSwapMoana()
+                }, 500);
+            })
+        }else{
+            toDataURL('https://ai.zirolu.id/disney/moana-cowok-swap.jpeg')
+            .then(dataUrl => {
+                // console.log('RESULT:', dataUrl)
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIMoanaBase64", dataUrl)
+                    localStorage.setItem("faceURLResultMoana", 'https://ai.zirolu.id/disney/moana-cowok-swap.jpeg')
+                }
+
+                setTimeout(() => {
+                    // generateImage()
+                    generateImageSwapMoana()
+                }, 500);
+            })
+        }
     }
 
     const image = useMemo(() => {
@@ -273,10 +299,12 @@ export default function Register() {
         FACE_URL_RESULT = result.image.url;
 
         // emitStrsing("sendImage", result.image.url);
+        
 
         toDataURL(FACE_URL_RESULT)
         .then(dataUrl => {
             // console.log('RESULT:', dataUrl)
+            
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
@@ -294,6 +322,7 @@ export default function Register() {
             setElapsedTime(Date.now() - start);
         }
         // @snippet:end
+        
     };
 
     return (
