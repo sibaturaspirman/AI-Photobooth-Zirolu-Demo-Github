@@ -11,9 +11,9 @@ export default function Home() {
       <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>The AI Photo Booth For Events  </h1>
       <div className="relative w-full mt-7">
         <p className="text-center text-sm mb-3">Choose an AI style from the options below</p>
-        {/* <Link href='/disney' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+        <Link href='/disney' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-disney.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link> */}
+        </Link>
         <Link href='/avatar' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-avatar.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
