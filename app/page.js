@@ -37,10 +37,10 @@ export default function Home() {
         </Link>
          {/* <Link href='/uniqlo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-uniqlo.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link>
+        </Link> */}
         <Link href='/moslem' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-moslem.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link> */}
+        </Link>
         <Link href='/others' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center mt-5 ">
           <Image src='/page-others.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>

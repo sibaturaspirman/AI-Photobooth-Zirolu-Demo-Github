@@ -17,6 +17,11 @@ fal.config({
       // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
     }),
 });
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 // SETUP SOCKET
 // let SERVER_IP = "https://ag.socket.web.id:11100";
@@ -80,37 +85,10 @@ export default function Register() {
 
     const generateAI = () => {
         setNumProses1(true)
-
-        if(character == 'https://ai.zirolu.id/taro/taro-1-swap.jpeg'){
-            toDataURL('https://ai.zirolu.id/taro/taro-1-swap2.jpeg')
-            .then(dataUrl2 => {
-                // console.log('RESULT:', dataUrl)
-
-                if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("resulAIBase642", dataUrl2)
-                    localStorage.setItem("characterTaro", character)
-                }
-            
-                setTimeout(() => {
-                    // generateImage()
-                    generateImageSwap()
-                }, 500);
-            })
-        }else{
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase642", '')
-                localStorage.setItem("characterTaro", '')
-            }
-            setTimeout(() => {
-                // generateImage()
-                generateImageSwap()
-            }, 500);
-        }
-
-        // setTimeout(() => {
-        //     // generateImage()
-        //     generateImageSwap()
-        // }, 500);
+        setTimeout(() => {
+            // generateImage()
+            generateImageSwap()
+        }, 500);
     }
 
     const image = useMemo(() => {
@@ -206,11 +184,17 @@ export default function Register() {
 
 
     const generateImageSwap = async () => {
+        const urlGambar = 'https://ai.zirolu.id/moslem/moslem-'+prompt1+'-'+getRandomInt(1, 3)+'.jpeg';
+        console.log(urlGambar)
+
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
         setLoading(true);
         const start = Date.now();
+
+        
+
         try {
         const result = await fal.subscribe(
             'fal-ai/face-swap',
@@ -218,7 +202,7 @@ export default function Register() {
             input: {
                 // base_image_url: URL_RESULT,
                 // swap_image_url: '/avatar/base/'+character
-                base_image_url: character,
+                base_image_url: urlGambar,
                 swap_image_url: imageFile
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
@@ -249,7 +233,7 @@ export default function Register() {
             }
         
             setTimeout(() => {
-                router.push('/taro/result');
+                router.push('/moslem/result');
             }, 500);
         })
         } catch (error) {
@@ -298,125 +282,31 @@ export default function Register() {
                     }
                 </div> */}
                 <div className='relative mt-2 lg:mt-10 w-full'>
-                    <div className='relative w-full mt-8 lg:mt-10'>
-                        <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold text-white">Pick Your Character</label>
-                        <div className='overflow-auto'>
-                            {/* STYLE SEMENTARA */}
-                            <ul className='choose mod'>
-                            <li>
-                                <input
-                                id='choose_style1'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/taro/taro-1-swap.jpeg"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style1">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/taro/taro-1.jpeg"
-                                    alt="icon"
-                                    width={448}
-                                    height={784}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_style3'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/taro/taro-2.jpeg"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style3">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/taro/taro-2.jpeg"
-                                    alt="icon"
-                                    width={448}
-                                    height={784}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            {/* <li>
-                                <input
-                                id='choose_style2'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/xxi/xxi-3.jpeg"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style2">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/xxi/xxi-3.jpeg"
-                                    alt="icon"
-                                    width={448}
-                                    height={784}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_style4'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/xxi/xxi-4.jpeg"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style4">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/xxi/xxi-4.jpeg"
-                                    alt="icon"
-                                    width={448}
-                                    height={784}
-                                    priority
-                                />
-                                </label>
-                            </li> */}
-                            {/* <li>
-                                <input
-                                id='choose_style5'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/avatar/base/car5.JPG"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style5">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/avatar/style5.png"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_style6'
-                                type="radio"
-                                name='choose_style'
-                                value="https://ai.zirolu.id/avatar/base/car6.JPG"
-                                onChange={(e) => setCharacter(e.target.value)}
-                                />
-                                <label htmlFor="choose_style6">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/avatar/style6.png"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li> */}
+                <div className='relative w-full mb-5'>
+                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label>
+                        <div>
+                            {/* GENDER SEMENTARA */}
+                            <ul className='choose2'>
+                                <li>
+                                    <input
+                                    id='choose_gender1'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="m"
+                                    onChange={(e) => setPrompt1(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender1" className='lg:text-2xl'>Man</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_gender2'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="w"
+                                    onChange={(e) => setPrompt1(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Woman</label>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -426,7 +316,7 @@ export default function Register() {
                 {/* {CGF} */}
                 {/* {numSteps} */}
 
-                {character &&
+                {prompt1 &&
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
                         <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
