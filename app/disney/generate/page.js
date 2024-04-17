@@ -85,6 +85,13 @@ export default function Register() {
             generateImageSwap()
         }, 500);
     }
+    const generateAIMoana = () => {
+        setNumProses1(true)
+        setTimeout(() => {
+            // generateImage()
+            generateImageSwapMoana()
+        }, 500);
+    }
 
     const image = useMemo(() => {
       if (!result) {
@@ -233,6 +240,61 @@ export default function Register() {
         }
         // @snippet:end
     };
+    const generateImageSwapMoana = async () => {
+        setNumProses(2)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                // base_image_url: URL_RESULT,
+                // swap_image_url: '/avatar/base/'+character
+                base_image_url: styleGender,
+                swap_image_url: imageFile
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap(result);
+        FACE_URL_RESULT = result.image.url;
+
+        // emitStrsing("sendImage", result.image.url);
+
+        toDataURL(FACE_URL_RESULT)
+        .then(dataUrl => {
+            // console.log('RESULT:', dataUrl)
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+            }
+        
+            setTimeout(() => {
+                router.push('/disney/result-moana');
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
 
     return (
         <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
@@ -246,7 +308,7 @@ export default function Register() {
                             <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div>
-                    <div className='relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
+                    <div className='animate-upDown2 relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
@@ -393,21 +455,69 @@ export default function Register() {
                             </ul>
                         </div>
                     </div>
+                    
+                    {character == 'https://ai.zirolu.id/disney/moana.jpeg' &&
+                    <div className='relative w-full mt-3'>
+                        <label htmlFor="choose_gender" className="block mb-1 lg:mb-4 lg:text-3xl text-center font-bold text-white">Choose Moana Character</label>
+                        <div>
+                            <ul className='choose'>
+                                <li>
+                                    <input
+                                    id='choose_gender1'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="https://ai.zirolu.id/disney/moana-cowok-swap.jpeg"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender1">
+                                    <Image
+                                        className="relative h-auto w-full"
+                                        src="/disney/moana-cowok.jpeg"
+                                        alt="icon"
+                                        width={408}
+                                        height={451}
+                                        priority
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_gender2'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="https://ai.zirolu.id/disney/moana-cewek-swap.jpeg"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender2">
+                                    <Image
+                                        className="relative h-auto w-full"
+                                        src="/disney/moana-cewek.jpeg"
+                                        alt="icon"
+                                        width={408}
+                                        height={451}
+                                        priority
+                                    />
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    }
                 </div>
                 {/* {prompt} */}
                 {/* {promptCombine} */}
                 {/* {CGF} */}
                 {/* {numSteps} */}
 
-                {character == 'https://ai.zirolu.id/disney/moana.jpeg' &&
+                {styleGender &&
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
-                        <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
+                        <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAIMoana}>
                             <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                            MOANA
+                            Moana
                         </button>
                     </div>
                 }
-                {character != 'https://ai.zirolu.id/disney/moana.jpeg' &&
+                {character && character != 'https://ai.zirolu.id/disney/moana.jpeg' &&
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
                         <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
