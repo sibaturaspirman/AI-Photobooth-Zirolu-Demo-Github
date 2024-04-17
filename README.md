@@ -7,10 +7,16 @@
 
 ## PAGE
 1. Disney ✅
-2. XXI ✅
-3. Add Style
-4. 
-5. 
+2. Avatar ✅
+3. Amero ✅
+4. XXI ✅
+5. KAI (update mobile friendly)
+6. Taro ✅
+7. Mobile Legend ✅
+8. Vespa Mini
+9. Uniqlo
+10. Moslem
+11. BX Sea
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
