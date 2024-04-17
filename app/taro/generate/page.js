@@ -216,14 +216,32 @@ export default function Register() {
         .then(dataUrl => {
             // console.log('RESULT:', dataUrl)
 
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+            if(character == 'https://ai.zirolu.id/taro/taro-1-swap.jpeg'){
+
+                toDataURL('https://ai.zirolu.id/taro/taro-1.jpeg')
+                .then(dataUrl2 => {
+                    // console.log('RESULT:', dataUrl)
+
+                    if (typeof localStorage !== 'undefined') {
+                        localStorage.setItem("resulAIBase64", dataUrl)
+                        localStorage.setItem("resulAIBase642", dataUrl2)
+                        localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+                    }
+                
+                    setTimeout(() => {
+                        router.push('/taro/result');
+                    }, 500);
+                })
+            }else{
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIBase64", dataUrl)
+                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+                }
+            
+                setTimeout(() => {
+                    router.push('/taro/result');
+                }, 500);
             }
-        
-            setTimeout(() => {
-                router.push('/taro/result');
-            }, 500);
         })
         } catch (error) {
             setError(error);
@@ -281,7 +299,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="https://ai.zirolu.id/taro/taro-1.jpeg"
+                                value="https://ai.zirolu.id/taro/taro-1-swap.jpeg"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
