@@ -13,7 +13,7 @@
 5. KAI (update mobile friendly)
 6. Taro ✅
 7. Mobile Legend ✅
-8. Vespa Mini
+8. Vespa Mini ✅
 9. Uniqlo
 10. Moslem ✅
 11. BX Sea ✅
