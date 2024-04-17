@@ -41,8 +41,8 @@ export default function Register() {
         <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogoAmero></TopLogoAmero>
             <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 ${merriweather.className}`}>REGISTRATION</h1>
-            <div className="relative w-full flex flex-col justify-center items-center mt-12 mb-14">
-                <div className='relative w-[80%] mb-14 lg:mb-20'>
+            <div className="relative w-full flex flex-col justify-center items-center mt-2 lg:mt-12 mb-2 lg:mb-14">
+                <div className='relative w-[80%] mb-10 lg:mb-20'>
                     <label htmlFor="name" className={`text-light font-bold text-2xl lg:text-5xl mb-4 lg:mb-8 block ${merriweather.className}`}>Full Name</label>
                     <div className='relative w-full'>
                         <Image
@@ -65,7 +65,7 @@ export default function Register() {
                     {/* {payload.name} */}
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
-                <div className='relative w-[80%] mb-14'>
+                <div className='relative w-[80%] mb-8 lg:mb-14'>
                     <label htmlFor="name" className={`text-light font-bold text-2xl lg:text-5xl mb-4 lg:mb-8 block ${merriweather.className}`}>Phone Number</label>
                     <div className='relative w-full'>
                         <Image
@@ -81,7 +81,7 @@ export default function Register() {
                             value={payload.phone}
                             id='phone'
                             name='phone'
-                            className={`w-full rounded-lg font-semibold text-2xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-14 lg:pl-48 text-black bg-light ${merriweather.className}`}
+                            className={`w-full rounded-lg font-semibold text-2xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-28 lg:pl-48 text-black bg-light ${merriweather.className}`}
                             placeholder='Your number'
                             onChange={handleChange}
                         />

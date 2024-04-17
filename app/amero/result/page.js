@@ -341,7 +341,7 @@ export default function Result() {
                 </div>
             }
             {generateQR && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-64 flex-col z-40 bg-black bg-opacity-0'>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-24 lg:mt-64 flex-col z-40 bg-black bg-opacity-0'>
                     <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${merriweather.className}`}>SCAN QR CODE</h1>
                     <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -386,7 +386,7 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/amero' className='text-center font-semibold text-4xl mt-10 p-40'>Tap here to close</a>
+                    <a href='/amero' className='text-center font-semibold text-base lg:text-4xl lg:mt-10 py-20 p-10 lg:p-40'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
