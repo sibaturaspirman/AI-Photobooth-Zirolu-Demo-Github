@@ -222,7 +222,7 @@ export default function Register() {
             }
         
             setTimeout(() => {
-                router.push('/disney/result');
+                router.push('/xxi/result');
             }, 500);
         })
         } catch (error) {
@@ -232,64 +232,6 @@ export default function Register() {
             setElapsedTime(Date.now() - start);
         }
         // @snippet:end
-    };
-    const generateImageSwapMoana = async () => {
-        setNumProses(2)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                // base_image_url: URL_RESULT,
-                // swap_image_url: '/avatar/base/'+character
-                base_image_url: styleGender,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
-            }
-        );
-        setResultFaceSwap(result);
-        FACE_URL_RESULT = result.image.url;
-
-        // emitStrsing("sendImage", result.image.url);
-        
-
-        toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
-            // console.log('RESULT:', dataUrl)
-            
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-            }
-        
-            setTimeout(() => {
-                router.push('/disney/result-moana');
-            }, 500);
-        })
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-        
     };
 
     return (

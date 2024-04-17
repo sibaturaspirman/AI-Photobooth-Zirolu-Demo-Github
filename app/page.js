@@ -20,10 +20,10 @@ export default function Home() {
         <Link href='/amero-demo' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-amero.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
-        {/* <Link href='/xxi' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+        <Link href='/xxi' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-xxi.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
-        <Link href='/vespa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+       {/* <Link href='/vespa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-vespa.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link> */}
         <Link  href="https://ai.mudikbersamakai.com/" passHref={true} rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
