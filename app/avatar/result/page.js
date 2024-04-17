@@ -240,9 +240,9 @@ export default function Result() {
 
                     <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                        {/* <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
                             <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
+                        </button> */}
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
                             <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </a>

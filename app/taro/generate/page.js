@@ -80,10 +80,37 @@ export default function Register() {
 
     const generateAI = () => {
         setNumProses1(true)
-        setTimeout(() => {
-            // generateImage()
-            generateImageSwap()
-        }, 500);
+
+        if(character == 'https://ai.zirolu.id/taro/taro-1-swap.jpeg'){
+            toDataURL('https://ai.zirolu.id/taro/taro-1-swap2.jpeg')
+            .then(dataUrl2 => {
+                // console.log('RESULT:', dataUrl)
+
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIBase642", dataUrl2)
+                    localStorage.setItem("characterTaro", character)
+                }
+            
+                setTimeout(() => {
+                    // generateImage()
+                    generateImageSwap()
+                }, 500);
+            })
+        }else{
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase642", '')
+                localStorage.setItem("characterTaro", '')
+            }
+            setTimeout(() => {
+                // generateImage()
+                generateImageSwap()
+            }, 500);
+        }
+
+        // setTimeout(() => {
+        //     // generateImage()
+        //     generateImageSwap()
+        // }, 500);
     }
 
     const image = useMemo(() => {
@@ -216,32 +243,14 @@ export default function Register() {
         .then(dataUrl => {
             // console.log('RESULT:', dataUrl)
 
-            if(character == 'https://ai.zirolu.id/taro/taro-1-swap.jpeg'){
-
-                toDataURL('https://ai.zirolu.id/taro/taro-1.jpeg')
-                .then(dataUrl2 => {
-                    // console.log('RESULT:', dataUrl)
-
-                    if (typeof localStorage !== 'undefined') {
-                        localStorage.setItem("resulAIBase64", dataUrl)
-                        localStorage.setItem("resulAIBase642", dataUrl2)
-                        localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-                    }
-                
-                    setTimeout(() => {
-                        router.push('/taro/result');
-                    }, 500);
-                })
-            }else{
-                if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("resulAIBase64", dataUrl)
-                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-                }
-            
-                setTimeout(() => {
-                    router.push('/taro/result');
-                }, 500);
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
+        
+            setTimeout(() => {
+                router.push('/taro/result');
+            }, 500);
         })
         } catch (error) {
             setError(error);

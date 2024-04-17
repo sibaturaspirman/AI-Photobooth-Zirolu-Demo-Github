@@ -242,9 +242,9 @@ export default function Result() {
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
                             <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </a>
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                        {/* <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
                             <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
+                        </button> */}
                     </div>
                     </div>
                     <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
