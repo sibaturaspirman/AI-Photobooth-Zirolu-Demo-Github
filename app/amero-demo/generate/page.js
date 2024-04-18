@@ -291,7 +291,7 @@ export default function GenerateAmero() {
                             <Image src='/amero/morraine-loading.png' width={3645} height={405} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div>
-                    <div className='relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-4xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-4xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}

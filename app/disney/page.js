@@ -8,7 +8,7 @@ export default function DisneyHome() {
   return (
     <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
       <TopLogo></TopLogo>
-      <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}><span className="text-sm">AI PHOTOBOOTH :</span> <br></br> Disney Movie</h1>
+      <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}><span className="text-sm">AI PHOTOBOOTH :</span> <br></br> Disney</h1>
       <div className="relative w-full flex justify-center items-center mt-5 mb-6 lg:mt-12 lg:mb-14">
         <div className='animate-upDown relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
           <Image src='/disney/frozen.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />

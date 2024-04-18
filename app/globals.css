@@ -377,3 +377,10 @@ body{
     /* display: inline-block; */
 }
 /* !AMERO */
+
+/* KAI */
+.bg-kai{
+  background-image: url(../public/kai/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
