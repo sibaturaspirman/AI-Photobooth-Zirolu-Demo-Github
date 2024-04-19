@@ -49,9 +49,9 @@ export default function Home() {
         <div className="">
         <a href='https://www.instagram.com/zirolu.id' target='_blank' className='p-5 py-8 block text-center text-sm lg:text-2xl text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a>
         </div>
-        <Link href='/others' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center mt-0">
+        {/* <Link href='/others' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center mt-0">
           <Image src='/page-others.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link>
+        </Link> */}
       </div>
     </main>
   );
