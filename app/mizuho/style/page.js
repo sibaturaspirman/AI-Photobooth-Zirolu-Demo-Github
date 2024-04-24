@@ -40,7 +40,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-7'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 2)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
