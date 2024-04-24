@@ -30,26 +30,47 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
+        let urlGambar2 = '';
         if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 3)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 9)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 3)+'.jpeg';
+        }else if(character == 'formasi-2'){
+            let randomGambar = getRandomInt(1, 2);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
+            console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("formasiFix", character)
+            }
+        }else if(character == 'formasi-3'){
+            let randomGambar = getRandomInt(1, 2);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-right.jpeg';
+            console.log(randomGambar)
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
         }
         console.log(character)
         console.log(urlGambar)
+        console.log(urlGambar2)
 
         setTimeout(() => {
-            router.push('/mizuho/cam');
+            if(character == 'formasi-2' || character == 'formasi-3'){
+                router.push('/mizuho/cam/camf2');
+            }else{
+                router.push('/mizuho/cam');
+            }
         }, 500);
     }
 
