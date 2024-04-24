@@ -264,7 +264,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
             }
             setTimeout(() => {
-                router.push('/mizuho/result');
+                router.push('/mizuho/result2');
             }, 500);
         })
         } catch (error) {

@@ -101,6 +101,7 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
+            setImageFile3(faceImage)
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("faceImage3", faceImage)
             }
@@ -138,7 +139,7 @@ export default function Cam() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('faceImage')
             const itemx = localStorage.getItem('faceImage2')
-            const itemx2 = localStorage.getItem('faceImage3')
+            // const itemx2 = localStorage.getItem('faceImage3')
             const item2 = localStorage.getItem('styleFix')
             const item3 = localStorage.getItem('styleFix2')
             const item32 = localStorage.getItem('styleFix3')
@@ -146,13 +147,13 @@ export default function Cam() {
 
             setImageFile(item)
             setImageFile2(itemx)
-            setImageFile3(itemx2)
+            // setImageFile3(itemx2)
             setStyleFix(item2)
             setStyleFix2(item3)
             setStyleFix3(item32)
             setFormasiFix(item4)
         }
-    }, [imageFile, imageFile2, imageFile3, styleFix, styleFix2, styleFix3, formasiFix])
+    }, [imageFile, imageFile2, styleFix, styleFix2, styleFix3, formasiFix])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -322,7 +323,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult3", FACE_URL_RESULT3)
             }
             setTimeout(() => {
-                router.push('/mizuho/result');
+                router.push('/mizuho/result3');
             }, 500);
         })
         } catch (error) {

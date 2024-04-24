@@ -41,6 +41,18 @@ export default function Cam() {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
 
+    // AI
+    const [imageFile, setImageFile] = useState(null);
+    const [styleFix, setStyleFix] = useState(null);
+    const [numProses, setNumProses] = useState(0);
+    const [numProses1, setNumProses1] = useState();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [result, setResult] = useState(null);
+    const [resultFaceSwap, setResultFaceSwap] = useState(null);
+    const [logs, setLogs] = useState([]);
+    const [elapsedTime, setElapsedTime] = useState(0);
+
     useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
@@ -99,6 +111,7 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
+            setImageFile(faceImage)
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("faceImage", faceImage)
             }
@@ -113,27 +126,17 @@ export default function Cam() {
     }
 
     // AI
-    const [imageFile, setImageFile] = useState(null);
-    const [styleFix, setStyleFix] = useState(null);
-    const [numProses, setNumProses] = useState(0);
-    const [numProses1, setNumProses1] = useState();
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [result, setResult] = useState(null);
-    const [resultFaceSwap, setResultFaceSwap] = useState(null);
-    const [logs, setLogs] = useState([]);
-    const [elapsedTime, setElapsedTime] = useState(0);
     // @snippet:end
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item = localStorage.getItem('faceImage')
+            // const item = localStorage.getItem('faceImage')
             const item2 = localStorage.getItem('styleFix')
 
-            setImageFile(item)
+            // setImageFile(item)
             setStyleFix(item2)
         }
-    }, [imageFile, styleFix])
+    }, [styleFix])
 
     const generateAI = () => {
         setNumProses1(true)
