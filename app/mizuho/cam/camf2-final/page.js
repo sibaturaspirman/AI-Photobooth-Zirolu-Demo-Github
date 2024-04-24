@@ -100,6 +100,7 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
+            setImageFile2(faceImage)
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("faceImage2", faceImage)
             }
@@ -133,18 +134,18 @@ export default function Cam() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('faceImage')
-            const itemx = localStorage.getItem('faceImage2')
+            // const itemx = localStorage.getItem('faceImage2')
             const item2 = localStorage.getItem('styleFix')
             const item3 = localStorage.getItem('styleFix2')
             const item4 = localStorage.getItem('formasiFix')
 
             setImageFile(item)
-            setImageFile2(itemx)
+            // setImageFile2(itemx)
             setStyleFix(item2)
             setStyleFix2(item3)
             setFormasiFix(item4)
         }
-    }, [imageFile, imageFile2, styleFix, styleFix2, formasiFix])
+    }, [imageFile, styleFix, styleFix2, formasiFix])
 
     const generateAI = () => {
         setNumProses1(true)
