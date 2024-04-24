@@ -77,6 +77,9 @@ export default function Register() {
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-center.jpeg';
             urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-left.png';
+            // urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-center.png';
+            // urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-right.png';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
