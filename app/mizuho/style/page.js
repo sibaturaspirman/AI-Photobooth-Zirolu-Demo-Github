@@ -60,13 +60,24 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
+        }else if(character == 'formasi-4'){
+            let randomGambar = getRandomInt(1, 5);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-right.jpeg';
+            console.log(randomGambar)
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("formasiFix", character)
+            }
         }
         console.log(character)
         console.log(urlGambar)
         console.log(urlGambar2)
 
         setTimeout(() => {
-            if(character == 'formasi-2' || character == 'formasi-3'){
+            if(character == 'formasi-2' || character == 'formasi-3' || character == 'formasi-4'){
                 router.push('/mizuho/cam/camf2');
             }else{
                 router.push('/mizuho/cam');
