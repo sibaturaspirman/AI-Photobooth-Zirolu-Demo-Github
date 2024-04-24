@@ -37,6 +37,13 @@ export default function Register() {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
+        }else if(character == 'formasi-1'){
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 3)+'.jpeg';
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("formasiFix", character)
+            }
         }
         console.log(character)
         console.log(urlGambar)
