@@ -123,7 +123,7 @@ export default function Result() {
                     <div className='relative' id='capture'>
                         {/* <img src={imageResultAI} className='block'></img> */}
 
-                        <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-3' ? 'flex' : 'hidden'}`}>
+                        <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-2' || formasiFix == 'formasi-3' ? 'flex' : 'hidden'}`}>
                             <Image src={imageResultAI}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
                             <Image src={imageResultAI2}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
                         </div>

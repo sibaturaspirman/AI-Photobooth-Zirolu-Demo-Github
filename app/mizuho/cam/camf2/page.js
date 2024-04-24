@@ -38,8 +38,18 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [formasiFix, setFormasiFix] = useState(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+
+    useEffect(() => {
+        // Perform localStorage action
+        if (typeof localStorage !== 'undefined') {
+            const item = localStorage.getItem('formasiFix')
+
+            setFormasiFix(item)
+        }
+    }, [formasiFix])
 
     useWebcam({ videoRef,previewRef});
 
@@ -120,7 +130,10 @@ export default function Cam() {
                 <h1 className={`text-center text-2xl mt-2 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
                 <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 1 of 2</h2>
                 <div className={`relative w-[80%] mx-auto flex flex-col justify-center items-center mt-2 mb-3 lg:mt-2 lg:mb-2`}>
-                    <div className='absolute top-1 left-1 w-[70px] h-[70px]  flex justify-center items-center pointer-events-none z-10'>
+                    <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-2' ? 'flex':'hidden'}`}>
+                        <Image src='/mizuho/f2-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-3' ? 'flex':'hidden'}`}>
                         <Image src='/mizuho/f3-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='relative'>
@@ -161,7 +174,7 @@ export default function Cam() {
                             <Image src='/mizuho/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button> */}
                         <Link href='/mizuho/cam/camf2-final' className="w-full relative mx-auto flex justify-center items-center">
-                            <Image src='/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            <Image src='/mizuho/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </Link>
                         <button className="relative mx-auto flex justify-center items-center mt-2" onClick={retake}>
                             <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />

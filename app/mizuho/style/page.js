@@ -39,7 +39,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-2'){
-            let randomGambar = getRandomInt(1, 2);
+            let randomGambar = getRandomInt(1, 5);
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
             console.log(randomGambar)
