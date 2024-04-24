@@ -15,6 +15,7 @@ import BtnHexagon2 from "./../../components/BtnHexagon2";
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [imageResultAI2, setImageResultAI2] = useState(null);
+    const [imageResultAI3, setImageResultAI3] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [formasiFix, setFormasiFix] = useState(null);
@@ -35,12 +36,14 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('resulAIBase642')
+            const item22 = localStorage.getItem('resulAIBase643')
             const item3 = localStorage.getItem('formasiFix')
             setImageResultAI(item)
             setImageResultAI2(item2)
+            setImageResultAI3(item22)
             setFormasiFix(item3)
         }
-    }, [imageResultAI, imageResultAI2, formasiFix, linkQR])
+    }, [imageResultAI, imageResultAI2, imageResultAI2, formasiFix, linkQR])
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
@@ -96,6 +99,14 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-20 flex-col z-40 bg-black bg-opacity-0'>
+                <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
+                    {/* <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                        <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                    </button> */}
+                    <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
+                        <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                    </a>
+                </div>
                     <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -119,13 +130,18 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
-                <div className='relative w-[60%] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
-                    <div className='relative' id='capture'>
+                <div className='relative w-[62%] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
+                    <div className='relative bg-black' id='capture'>
                         {/* <img src={imageResultAI} className='block'></img> */}
-
+                        
                         <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-2' || formasiFix == 'formasi-3' || formasiFix == 'formasi-4' ? 'flex' : 'hidden'}`}>
                             <Image src={imageResultAI}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
                             <Image src={imageResultAI2}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
+                        </div>
+                        <div className={`relative w-full  ${formasiFix == 'formasi-5' ? 'flex' : 'hidden'}`}>
+                            <Image src={imageResultAI}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI2}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI3}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
                         </div>
                         <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-1' ? 'flex' : 'hidden'}`}>
                             <Image src={imageResultAI}  width={720} height={1080} alt='Zirolu' className='relative block w-full'></Image>
