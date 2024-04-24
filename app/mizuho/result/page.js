@@ -143,7 +143,7 @@ export default function Result() {
                             <Image src={imageResultAI2}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI3}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
                         </div> */}
-                        <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-1' ? 'flex' : 'hidden'}`}>
+                        <div className={`relative w-full  justify-center items-center ${formasiFix == 'formasi-1' || formasiFix == 'formasi-7' ? 'flex' : 'hidden'}`}>
                             <Image src={imageResultAI}  width={720} height={1080} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                         
