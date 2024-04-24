@@ -47,7 +47,7 @@ export default function Result() {
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1.7}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
@@ -99,14 +99,14 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-16 lg:mt-20 flex-col z-40 bg-black bg-opacity-0'>
-                <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
-                    {/* <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
-                        <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                    </button> */}
-                    <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                    </a>
-                </div>
+                    {/* <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
+                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                            <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        </button>
+                        <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
+                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        </a>
+                    </div> */}
                     <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -138,7 +138,7 @@ export default function Result() {
                             <Image src={imageResultAI}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
                             <Image src={imageResultAI2}  width={360} height={1080} alt='Zirolu' className='relative block w-1/2'></Image>
                         </div>
-                        <div className={`relative w-full  ${formasiFix == 'formasi-5' ? 'flex' : 'hidden'}`}>
+                        <div className={`relative w-full  ${formasiFix == 'formasi-5' || formasiFix == 'formasi-6' ? 'flex' : 'hidden'}`}>
                             <Image src={imageResultAI}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI2}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI3}  width={240} height={1080} alt='Zirolu' className='relative block w-1/3'></Image>

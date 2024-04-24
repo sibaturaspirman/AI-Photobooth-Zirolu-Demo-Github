@@ -133,9 +133,9 @@ export default function Cam() {
                     <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-5' ? 'flex':'hidden'}`}>
                         <Image src='/mizuho/f5-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
                     </div>
-                    {/* <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-3' ? 'flex':'hidden'}`}>
-                        <Image src='/mizuho/f3-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
-                    </div> */}
+                    <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-6' ? 'flex':'hidden'}`}>
+                        <Image src='/mizuho/f6-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
+                    </div>
                     <div className='relative'>
                         {captured && 
                         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
