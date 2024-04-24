@@ -67,6 +67,19 @@ body{
   /* width: 33.333%; */
   width: 250px;
 }
+.choose.mod2{
+  flex-wrap: wrap;
+}
+.choose.mod2 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 33.333%;
+  /* width: 250px; */
+}
+.choose.mod2 label{
+  padding: .3rem;
+}
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -381,6 +394,13 @@ body{
 /* KAI */
 .bg-kai{
   background-image: url(../public/kai/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+
+/* MIZUHO */
+.bg-mizuho{
+  background-image: url(../public/mizuho/bg.jpeg);
   background-size: cover;
   background-position: top center;
 }
