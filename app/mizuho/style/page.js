@@ -39,6 +39,13 @@ export default function Register() {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
+        }else if(character == 'formasi-7'){
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 2)+'.jpeg';
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("formasiFix", character)
+            }
         }else if(character == 'formasi-2'){
             let randomGambar = getRandomInt(1, 5);
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
@@ -125,10 +132,10 @@ export default function Register() {
                 <h1 className={`text-center text-2xl mt-2 mb-0 ${paytone_one.className}`}>CHOOSE YOUR FORMATION</h1>
                 <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>The style will be random GENErATE by AI</h2>
                 {/* PILIH STYLE */}
-                <div className={`relative w-[95%] mx-auto`}>
+                <div className={`relative w-[80%] mx-auto`}>
                     <div className='relative mt-0 w-full'>
                         <div className='relative w-full'>
-                            <div className='overflow-hidden'>
+                            <div className='overflow-hidden mt-[-0.6rem]'>
                                 {/* STYLE SEMENTARA */}
                                 <ul className='choose mod2'>
                                 <li>
@@ -143,6 +150,25 @@ export default function Register() {
                                     <Image
                                         className="relative h-auto w-full"
                                         src="/mizuho/formasi-1.png"
+                                        alt="icon"
+                                        width={365}
+                                        height={640}
+                                        priority
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_style7'
+                                    type="radio"
+                                    name='choose_style'
+                                    value="formasi-7"
+                                    onChange={(e) => setCharacter(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_style7">
+                                    <Image
+                                        className="relative h-auto w-full"
+                                        src="/mizuho/formasi-7.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -250,7 +276,7 @@ export default function Register() {
                         </div>
                     </div>
                     {character &&
-                        <div className="relative w-full flex justify-center items-center lg:mt-1">
+                        <div className="relative w-full flex justify-center items-center mt-[-1rem] z-20">
                             <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
                                 <Image src='/mizuho/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </button>
