@@ -131,7 +131,7 @@ export default function FaceSwap() {
                 {imageFaceSwap && 
                 <div className='relative w-full lg:w-[80%] mb-6'>
                     <label htmlFor="swap" className="text-[#D8BA78] font-bold text-2xl mb-4 block">Result</label>
-                    <div><Image src={imageFaceSwap.url} width={400} height={600} className='w-full' alt='zirolu'></Image></div>
+                    <div><Image src={imageFaceSwap.url} className='w-full' alt='zirolu'></Image></div>
                 </div>
                 }
             </div>
