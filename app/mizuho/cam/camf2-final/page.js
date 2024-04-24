@@ -172,6 +172,7 @@ export default function Cam() {
     const generateImageSwap = async () => {
         const urlGambar = styleFix;
         console.log(urlGambar)
+
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")

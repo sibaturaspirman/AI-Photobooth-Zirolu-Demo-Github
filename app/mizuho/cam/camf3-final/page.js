@@ -180,6 +180,14 @@ export default function Cam() {
     const generateImageSwap = async () => {
         const urlGambar = styleFix;
         console.log(urlGambar)
+
+        let fixBase = '';
+        if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
+            fixBase = imageFile3
+        }else{
+            fixBase = imageFile
+        }
+
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -192,7 +200,7 @@ export default function Cam() {
             {
             input: {
                 base_image_url: styleFix,
-                swap_image_url: imageFile
+                swap_image_url: fixBase
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
@@ -284,6 +292,14 @@ export default function Cam() {
     const generateImageSwap3 = async () => {
         const urlGambar = styleFix3;
         console.log(urlGambar)
+
+        let fixBase = '';
+        if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
+            fixBase = imageFile
+        }else{
+            fixBase = imageFile3
+        }
+
         setNumProses(4)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -298,7 +314,7 @@ export default function Cam() {
                 // base_image_url: URL_RESULT,
                 // swap_image_url: '/avatar/base/'+character
                 base_image_url: styleFix3,
-                swap_image_url: imageFile3
+                swap_image_url: fixBase
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
