@@ -27,6 +27,7 @@ export default function FaceSwap() {
     const [numProses1, setNumProses1] = useState();
     const [baseFaceFile, setBaseFaceFile] = useState(null);
     const [swapFaceFile, setSwapFaceFile] = useState(null);
+    const [linkURL, setLinkURL] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
@@ -86,6 +87,7 @@ export default function FaceSwap() {
             );
             setResultFaceSwap(result);
             FACE_URL_RESULT = result.image.url;
+            setLinkURL(result.image.url)
         } catch (error) {
             setError(error);
         } finally {
@@ -131,7 +133,10 @@ export default function FaceSwap() {
                 {imageFaceSwap && 
                 <div className='relative w-full lg:w-[80%] mb-6'>
                     <label htmlFor="swap" className="text-[#D8BA78] font-bold text-2xl mb-4 block">Result</label>
-                    <div><Image src={imageFaceSwap.url} className='w-full' alt='zirolu'></Image></div>
+                    <a href={linkURL} target='_blank' className="relative w-[250px] mb-2 flex justify-center items-center">
+                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                    </a>
+                    <div><Image src={imageFaceSwap.url} width={1200} height={1200} className='w-full' alt='zirolu'></Image></div>
                 </div>
                 }
             </div>
