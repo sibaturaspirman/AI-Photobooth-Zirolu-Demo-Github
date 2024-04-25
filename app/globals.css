@@ -80,6 +80,19 @@ body{
 .choose.mod2 label{
   padding: .3rem;
 }
+.choose.mod3{
+  flex-wrap: wrap;
+}
+.choose.mod3 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 100%;
+  /* width: 250px; */
+}
+.choose.mod3 label{
+  padding: 0;
+}
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -144,6 +157,20 @@ body{
     position: absolute;
     top: 10px;
     right: 12px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.choose.mod3 [type="radio"]:checked + label:after,
+.choose.mod3 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 60px;
+    right: 79px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -401,6 +428,13 @@ body{
 /* MIZUHO */
 .bg-mizuho{
   background-image: url(../public/mizuho/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+
+/* HMS */
+.bg-hms{
+  background-image: url(../public/hms/bg.jpeg);
   background-size: cover;
   background-position: top center;
 }
