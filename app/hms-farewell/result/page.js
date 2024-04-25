@@ -92,7 +92,7 @@ export default function Result() {
             let bodyFormData = new FormData();
             bodyFormData.append("name", payload.name);
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu-mizuho.png');
+            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu-hms.png');
           
             const options = {
                 method: 'POST',
@@ -103,7 +103,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/hms', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
