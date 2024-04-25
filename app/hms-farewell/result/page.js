@@ -184,15 +184,14 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
                 <div className='relative w-[1020px] mt-4 mx-auto flex justify-center items-center'>
-                    {/* <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
-                        <div className={`relative w-[98%] flex`}>
-                            <Image src={imageResultAI}  width={563} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI2}  width={563} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={563} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src='/hms/style/coba9.jpeg'  width={1738} height={1180} alt='Zirolu' className='relative block w-full'></Image>
+                    <div className='relative z-10' id='capture'>
+                        <div className={`relative w-[full] flex`}>
+                            <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
                         </div>
-                    </div> */}
-                    <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
+                    </div>
+                    <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[98%] flex`}>
                             <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
