@@ -241,24 +241,28 @@ export default function Cam() {
 
     return (
         <main className="flex fixed h-full w-full bg-hms overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="relative w-[30%] mx-auto mt-44">
+            <div className={`relative w-[30%] mx-auto mt-44 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/hms/title-takephoto.png' width={264} height={64} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
-                    <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
+                    {/* <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
                         <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
                             <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
                         </div>
+                    </div> */}
+
+                    <div className="relative w-[70%] mx-auto mb-5">
+                        <Image src='/hms/title.png' width={641} height={117} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#CB8A1B] text-center bg-[#452B04] text-[#F0D198] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 4)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#ffffff] text-left bg-slate-500 text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
+                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#CB8A1B] text-left bg-[#452B04] text-[#F0D198] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
