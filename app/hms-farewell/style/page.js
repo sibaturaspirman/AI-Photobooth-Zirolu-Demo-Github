@@ -32,20 +32,14 @@ export default function Register() {
         let urlGambar = '';
         let urlGambar2 = '';
         let urlGambar3 = '';
-        let urlGambarPrint = '';
-        let urlGambarPrint2 = '';
-        let urlGambarPrint3 = '';
         if(character == 'formasi-1'){
             let randomGambar = getRandomInt(1, 3);
-            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-left.jpeg';
-            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-center.jpeg';
-            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
-            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-left-again.png';
-            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-center-again.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-right-again.png';
-            urlGambarPrint = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-left-again.jpeg';
-            // urlGambarPrint2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-center-again.jpeg';
-            urlGambarPrint3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-right-again.jpeg';
+            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-left.jpeg';
+            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-center.jpeg';
+            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -53,15 +47,12 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
                 localStorage.setItem("formasiFix", character)
-
-                localStorage.setItem("printStyleFix", urlGambarPrint)
-                localStorage.setItem("printStyleFix3", urlGambarPrint3)
             }
         }else if(character == 'formasi-2'){
-            let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
+            let randomGambar = getRandomInt(1, 4);
+            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -71,14 +62,16 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-3'){
-            let randomGambar = getRandomInt(1, 2);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-right.jpeg';
+            let randomGambar = getRandomInt(1, 4);
+            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
                 localStorage.setItem("formasiFix", character)
             }
         }
