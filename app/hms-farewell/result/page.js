@@ -49,6 +49,9 @@ export default function Result() {
     const [imageResultAI2, setImageResultAI2] = useState(null);
     const [imageResultAI3, setImageResultAI3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [styleFix, setStyleFix] = useState(null);
+    const [styleFix2, setStyleFix2] = useState(null);
+    const [styleFix3, setStyleFix3] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [idFormEmail, setIdFormEmail] = useState(null);
@@ -75,6 +78,13 @@ export default function Result() {
             setImageResultAI2(item2)
             setImageResultAI3(item3)
             setFormasiFix(item3)
+
+            const itemx1 = localStorage.getItem('styleFix')
+            const itemx2 = localStorage.getItem('styleFix2')
+            const itemx3 = localStorage.getItem('styleFix3')
+            setStyleFix(itemx1)
+            setStyleFix2(itemx2)
+            setStyleFix3(itemx3)
         }
     }, [imageResultAI, linkQR])
 
@@ -193,9 +203,9 @@ export default function Result() {
                     </div>
                     <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[98%] flex`}>
-                            <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={styleFix}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={styleFix3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
                             {/* <Image src='/hms/style/coba11.jpeg'  width={1794} height={1206} alt='Zirolu' className='relative block w-full'></Image> */}
                         </div>
                     </div>

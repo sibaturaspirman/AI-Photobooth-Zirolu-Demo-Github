@@ -4,6 +4,11 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
+            hostname: 'ai.zirolu.id',
+            pathname: "**",
+          },
+          {
+            protocol: 'https',
             hostname: 'storage.googleapis.com',
           },
         ],
