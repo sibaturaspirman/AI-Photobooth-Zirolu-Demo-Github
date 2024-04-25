@@ -34,12 +34,12 @@ export default function Register() {
         let urlGambar3 = '';
         if(character == 'formasi-1'){
             let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
-            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-left.jpeg';
-            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-center.jpeg';
-            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-left.jpeg';
+            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-center.jpeg';
+            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -53,6 +53,9 @@ export default function Register() {
             urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-center.jpeg';
             urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+randomGambar+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-2-'+1+'-left.jpeg';
+            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+1+'-center.jpeg';
+            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-2-'+1+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -66,6 +69,9 @@ export default function Register() {
             urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-center.jpeg';
             urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+randomGambar+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-3-'+2+'-left.jpeg';
+            // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+2+'-center.jpeg';
+            // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-3-'+2+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {

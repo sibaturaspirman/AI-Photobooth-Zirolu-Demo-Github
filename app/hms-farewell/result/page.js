@@ -203,7 +203,7 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-lg text-center border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold p-2 lg:text-xl lg:font-bold w-[80%] lg:w-[50%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#CB8A1B] text-center bg-[#452B04] text-[#F0D198] lg:font-bold p-2 lg:text-2xl w-[80%] lg:w-[50%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
