@@ -34,12 +34,12 @@ export default function Register() {
         let urlGambar3 = '';
         if(character == 'formasi-1'){
             let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-right.jpeg';
-            // urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-left.png';
-            // urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-center.png';
-            // urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-right.png';
+            // urlGambar = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-left.jpeg';
+            // urlGambar2 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-center.jpeg';
+            // urlGambar3 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/hms/style/fc-'+0+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fc-'+0+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fc-'+0+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
