@@ -33,10 +33,19 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 9)+'.jpeg';
+            let randomGambar = getRandomInt(1, 3);
+            urlGambar = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-center.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/f1-'+randomGambar+'-right.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-left.png';
+            // urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-center.png';
+            // urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-right.png';
+            console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-2'){
@@ -67,14 +76,14 @@ export default function Register() {
         console.log(urlGambar2)
         console.log(urlGambar3)
 
-        setTimeout(() => {
+        // setTimeout(() => {
             router.push('/hms-farewell/cam');
-        }, 500);
+        // }, 500);
     }
 
     return (
         <main className="flex fixed h-full w-full bg-hms overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="relative w-[50%] mx-auto mt-44">
+            <div className="relative w-[50%] mx-auto mt-36">
             <Image src='/hms/title-gender.png' width={432} height={64} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}

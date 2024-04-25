@@ -46,6 +46,9 @@ import ReactToPrint from "react-to-print";
 
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
+    const [imageResultAI2, setImageResultAI2] = useState(null);
+    const [imageResultAI3, setImageResultAI3] = useState(null);
+    const [formasiFix, setFormasiFix] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [idFormEmail, setIdFormEmail] = useState(null);
@@ -54,296 +57,83 @@ export default function Result() {
     const [keKirimEmailGak, setKeKirimEmailGak] = useState(null);
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
-
     let componentRef = useRef();
-
     const [payload, setPayload] = useState({
-      name: getCookie('name'),
-      phone: getCookie('phone'),
-    });
-    // const [payload, setPayload] = useState({
-    //     name: 'AI ZIROLU DEMO',
-    //     phone: '00000',
-    //   });
+        name: 'HMS DEMO',
+        phone: '00000',
+      });
     const { Canvas } = useQRCode();
-
-    // emitNetworkConnection()
 
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item = localStorage.getItem('resulAIBase64')
-            const item2 = localStorage.getItem('faceURLResult')
+            const item = localStorage.getItem('resulAIBase64Left')
+            const item2 = localStorage.getItem('resulAIBase64')
+            const item3 = localStorage.getItem('resulAIBase64Right')
+            const item4 = localStorage.getItem('formasiFix')
             setImageResultAI(item)
-            setLinkQR(item2)
+            setImageResultAI2(item2)
+            setImageResultAI3(item3)
+            setFormasiFix(item3)
         }
-        // const item2 = getCookie('phone')
-        // const item3 = getCookie('name')
-        // setPayload(() => ({
-        //     name: item2,
-        //     phone: item3,
-        //   }));
     }, [imageResultAI, linkQR])
 
-    const downloadImageAI = async () => {
-        // import('html2canvas').then(html2canvas => {
-        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-        //     //   document.getElementById('canvasResult2').appendChild(canvas)
-        //         uploadImage(canvas)
-        //     )
-        // }).catch(e => {console("load failed")})
-        // setLoadingDownload('≈')
-        // setGenerateQR('true')
-        // setLoadingDownload(null)
-
-        // uploadImage()
-
-
-        // let bodyFormData = new FormData();
-        // bodyFormData.append("name", payload.name);
-        // bodyFormData.append("phone", payload.phone);
-        // bodyFormData.append("image", linkQR);
-        // let bodyFormData = {"name":payload.name, "phone":payload.phone,"image":linkQR}
-        // console.log(bodyFormData)
-      
-        const options = {
-            method: 'POST',
-            body: JSON.stringify({
-                name:payload.name,
-                phone:payload.phone,
-                image:linkQR
-            }),
-            headers: {
-                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        };
-        
-        await fetch('https://photo-ai-iims.zirolu.id/v1/amero', options)
-            // .then(response => response.json())
-            .then(response => {
-                // console.log(response)
-                // setLinkQR(response.file)
-                // setIdFormEmail(response.id)
-                // emitString("sendImage", response.file);
-                // response.json()
-                setGenerateQR('true')
-                setLoadingDownload(null)
-                // setImageResultAI()
-                // if (typeof localStorage !== 'undefined') {
-                //     localStorage.setItem("idSendEmail", )
-                // }
-            })
-            .catch(err => {
-                if (typeof localStorage !== 'undefined') {
-                    const item = localStorage.getItem('faceURLResult')
-                    // emitString("sendImage", item);
-                    setShowEmail('true')
-                    setLinkQR(item)
-                    // setIdFormEmail(response.id)
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                }
-            });
+    const downloadImageAI = () => {
+        import('html2canvas').then(html2canvas => {
+            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+                uploadImage(canvas)
+            )
+        }).catch(e => {console("load failed")})
     }
-
-    // const downloadPrint = () => {
-    //     downloadImageAI()
-    //     useReactToPrint({
-    //         content: () => componentRef.current,
-    //       }
-    // }
-    const uploadImage = async () => {
-        // downloadImage(canvas.toDataURL("image/jpeg", 1.0), 'my-canvas.jpeg')
-        // console.log(payload)
-        // bodyFormData.append("file", '');
+    const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
-        let bodyFormData = {"name":payload.name, "phone":payload.phone,"image":linkQR}
-        console.log(bodyFormData)
-      
-        const options = {
-            method: 'POST',
-            body: JSON.stringify({
-                "name":payload.name,
-                "phone":payload.phone,
-                "image":linkQR
-            }),
-            headers: {
-                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                'Accept': 'application/json',
-            }
-        };
-        
-        await fetch('https://photo-ai-iims.zirolu.id/v1/amero', options)
-            // .then(response => response.json())
-            .then(response => {
-                // console.log(response)
-                // setLinkQR(response.file)
-                // setIdFormEmail(response.id)
-                // emitString("sendImage", response.file);
-                response.json()
-                setGenerateQR('true')
-                setLoadingDownload(null)
-                // setImageResultAI()
-                // if (typeof localStorage !== 'undefined') {
-                //     localStorage.setItem("idSendEmail", )
-                // }
-            })
-            .catch(err => {
-                if (typeof localStorage !== 'undefined') {
-                    const item = localStorage.getItem('faceURLResult')
-                    // emitString("sendImage", item);
-                    setShowEmail('true')
-                    setLinkQR(item)
-                    // setIdFormEmail(response.id)
+
+        canvas.toBlob(async function(blob) {
+            let bodyFormData = new FormData();
+            bodyFormData.append("name", payload.name);
+            bodyFormData.append("phone", payload.phone);
+            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu-mizuho.png');
+          
+            const options = {
+                method: 'POST',
+                body: bodyFormData,
+                headers: {
+                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                    'Accept': 'application/json',
+                }
+            };
+            
+            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+                .then(response => response.json())
+                .then(response => {
+                    // console.log(response)
+                    setLinkQR(response.file)
+                    setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
-                }
-            });
-
-        // if (typeof localStorage !== 'undefined') {
-        //     const item = localStorage.getItem('faceURLResult')
-        //     // const item2 = localStorage.getItem('faceURLResult')
-        //     // setImageResultAI(item)
-        //     // setLinkQR(item2)
-        //     emitString("sendImage", item);
-        // }
-
-        // canvas.toBlob(async function(blob) {
-        //     let bodyFormData = new FormData();
-        //     bodyFormData.append("name", payload.name);
-        //     bodyFormData.append("phone", payload.phone);
-        //     bodyFormData.append("image", linkQR);
-          
-        //     const options = {
-        //         method: 'POST',
-        //         body: bodyFormData,
-        //         headers: {
-        //             'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-        //             'Accept': 'application/json',
-        //         }
-        //     };
-            
-        //     await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
-        //         .then(response => response.json())
-        //         .then(response => {
-        //             // console.log(response)
-        //             setLinkQR(response.file)
-        //             setIdFormEmail(response.id)
-        //             // emitString("sendImage", response.file);
-        //             setGenerateQR('true')
-        //             setLoadingDownload(null)
-        //             // setImageResultAI()
-        //             // if (typeof localStorage !== 'undefined') {
-        //             //     localStorage.setItem("idSendEmail", )
-        //             // }
-        //         })
-        //         .catch(err => {
-        //             if (typeof localStorage !== 'undefined') {
-        //                 const item = localStorage.getItem('faceURLResult')
-        //                 // emitString("sendImage", item);
-        //                 setShowEmail('true')
-        //                 setLinkQR(item)
-        //                 // setIdFormEmail(response.id)
-        //                 setGenerateQR('true')
-        //                 setLoadingDownload(null)
-        //             }
-        //         });
-        // });
-    }
-
-
-    const handleChange = (e) => {
-        setAlamatEmail(e.target.value)
-    };
-    const isValid = () => {
-      if (alamatEmail) return true
-      else return false;
-    };
-
-    const sendEmail = async () => {
-        // SENT EMAIL
-        // console.log(idFormEmail)
-        const options = {
-            method: 'POST',
-            body: JSON.stringify({
-                "email": alamatEmail,
-                "id": idFormEmail
-            }),
-            headers: {
-                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                'Content-Type': 'application/json',
-            }
-        };
-          
-        await fetch('https://photo-ai-iims.zirolu.id/v1/demo/email', options)
-            .then(response => response.json())
-            .then(response =>{
-                // console.log(response)
-                setKeKirimEmailGak('true')
-                // if(response.status){
-                //     setKeKirimEmailGak('true')
-                // }
-            })
-            .catch(err => console.error(err));
+                })
+                .catch(err => {
+                    if (typeof localStorage !== 'undefined') {
+                        const item = localStorage.getItem('faceURLResult')
+                        setShowEmail('true')
+                        setLinkQR(item)
+                        setGenerateQR('true')
+                        setLoadingDownload(null)
+                    }
+                });
+        });
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-amero overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <TopLogoAmeroSmall></TopLogoAmeroSmall>
+        <main className="flex fixed h-full w-full bg-hms overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <div className={`relative w-[70%] mx-auto mt-44 mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+            <Image src='/hms/title.png' width={641} height={117} alt='Zirolu' className='w-full' priority />
+            </div>
             {/* QR */}
-            {sendEmailGak &&
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center mt-0 flex-col z-50 bg-black bg-opacity-90'>
-                    <div className='relative w-[70%] mt-0 mx-auto flex justify-center items-cente'>
-                        <Image src='/popup.png' width={939} height={605} alt='Zirolu' className='w-full' priority />
-                        <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
-                            {keKirimEmailGak && 
-                                <div className='relative w-[60%]' onClick={()=>{setKeKirimEmailGak(null);setSendEmailGak(null)}}>
-                                    <Image
-                                        src='/success.png'
-                                        width={596}
-                                        height={434}
-                                        className='w-full'
-                                        alt='icon'
-                                    />
-                                </div>
-                            }
-                            <div className={`relative w-[94%] mb-2 p-2 lg:w-[80%] lg:mb-5 ${keKirimEmailGak ? 'hidden' : ''}`}>
-                                <label htmlFor="email" className="text-[#fff] font-bold text-sm lg:text-2xl mb-4 block">Input Your Email</label>
-                                <div className='relative w-full'>
-                                    <Image
-                                        src='/icon-sms.png'
-                                        width={32}
-                                        height={32}
-                                        className='absolute left-2 lg:left-4 top-1/2 -translate-y-1/2'
-                                        alt='icon'
-                                    />
-                                    <input
-                                        type='email'
-                                        value={alamatEmail}
-                                        id='email'
-                                        name='email'
-                                        className={`w-full border-2 border-[#fff] rounded-lg font-semibold text-sm lg:text-2xl outline-none py-2 lg:py-6 pr-3 pl-12 lg:pl-14 text-black bg-white'`}
-                                        placeholder='Your Email'
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className={`relative w-[60%] flex justify-center items-center ${keKirimEmailGak ? 'hidden' : ''}`}>
-                                <BtnHexagon2
-                                    disabled={!isValid()}
-                                    onClick={sendEmail}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
             {generateQR && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-24 lg:mt-64 flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 ${merriweather.className}`}>SCAN QR CODE</h1>
-                    <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-top mt-24 lg:mt-44 flex-col z-40 bg-black bg-opacity-0'>
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-black font-bold`}>Scan this QR Code to Download your image.</h1>
+                    <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
                         options={{
@@ -358,9 +148,9 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 ${merriweather.className}`}>Scan this QR Code to Download your image.</p>
+                    {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
                     
-                    <div className={`w-full`}>
+                    {/* <div className={`w-full`}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
@@ -373,7 +163,7 @@ export default function Result() {
                     }
                     content={() => componentRef}
                     />
-                    </div>
+                    </div> */}
 
                     {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
@@ -386,18 +176,20 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/amero' className='text-center font-semibold text-base lg:text-4xl lg:mt-10 py-20 p-10 lg:p-40'>Tap here to close</a>
+                    <a href='/hms-farewell' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-black w-full'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
-                <h1 className={`text-center text-xl font-bold mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-8 ${merriweather.className}`}>YOU LOOKS AMAZING!</h1>
                 {imageResultAI && 
-                <div className='relative w-[90%] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[1020px] mt-4 mx-auto flex justify-center items-center' onClick={downloadImageAI}>
                     <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
-                        {/* <img src={imageResultAI} className='block'></img> */}
-                        <Image src={imageResultAI}  width={420} height={689} alt='Zirolu' className='relative block w-full'></Image> 
+                        <div className={`relative w-full flex`}>
+                            <Image src={imageResultAI}  width={700} height={1206} alt='Zirolu' className='relative block w-[397px]'></Image>
+                            <Image src={imageResultAI2}  width={450} height={1206} alt='Zirolu' className='relative block w-[255px]'></Image>
+                            <Image src={imageResultAI3}  width={646} height={1206} alt='Zirolu' className='relative block w-[366px]'></Image>
+                        </div>
                     </div>
                     {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
                 </div>
@@ -408,60 +200,27 @@ export default function Result() {
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hiddenx' : ''}`}>
-                    {/* <div className={`relative w-[80%] mx-auto flex justify-center items-center flex-col mt-5 ${loadingDownload ? 'hidden' : ''}`}   >
-                        <button className={`relative mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
-                            <Image src='/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
-                        <button className="relative mx-auto flex justify-center items-center" onClick={sendEmail}>
-                            <Image src='/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
-                    </div> */}
-                    {/* <div className='w-full'>
-                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/amero/generate' className="relative mx-auto flex justify-center items-center">
-                                <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                            </Link>
-                        </div>
-                    </div> */}
 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
-                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                                <Image src='/hms/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
-                    </div> */}
-                    <div className={`w-full`} onClick={downloadImageAI}>
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-
-                    {/* <div className={`w-full mt-5`} onClick={downloadPrint}>
-                        <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                            <div className="block w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/amero/btn-download-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                            </div>
-                        </div>
-                    </div> */}
-
                     <div className='w-full'>
-                        <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/amero/generate' className="relative w-full mx-auto flex justify-center items-center">
-                                <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                            </Link>
+                        <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                            <a href='/hms-farewell/style' className="relative w-full mx-auto flex justify-center items-center">
+                                <Image src='/hms/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                            </a>
                         </div>
                     </div>
                 </div>
