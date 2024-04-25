@@ -268,7 +268,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className="relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10">
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -299,23 +299,6 @@ export default function Cam() {
             {!enabled && 
                 <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-black'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
-            
-            {/* <div className="py-5 flex items-center justify-center">
-                <button
-                className="py-3 px-4 bg-indigo-700 text-white text-lg rounded"
-                onClick={() => {
-                    setEnabled(!enabled);
-                }}
-                >
-                {enabled ? 'Stop' : 'Start'}
-                </button>
-                <button
-                className="py-3 px-4 bg-indigo-700 text-white text-lg rounded"
-                onClick={captureVideo}
-                >
-                    Capture
-                </button>
-            </div> */}
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[100%] justify-center items-center" onClick={captureVideo}>
@@ -323,6 +306,7 @@ export default function Cam() {
                     </button>
                 </div>
             }
+            <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
@@ -338,7 +322,7 @@ export default function Cam() {
                         <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </a> */}
                 </div>
-            </div>
+            </div></div>
         </main>
     );
 }

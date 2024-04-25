@@ -37,9 +37,9 @@ export default function Register() {
             // urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-left.jpeg';
             // urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-center.jpeg';
             // urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+randomGambar+'-right.jpeg';
-            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+1+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-left-again.png';
+            urlGambar2 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-center-again.png';
+            urlGambar3 = 'https://ai.zirolu.id/hms/style/fcfix-1-'+2+'-right-again.png';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
