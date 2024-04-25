@@ -186,9 +186,9 @@ export default function Result() {
                 <div className='relative w-[1020px] mt-4 mx-auto flex justify-center items-center' onClick={downloadImageAI}>
                     <div className='relative' id='capture' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-full flex`}>
-                            <Image src={imageResultAI}  width={700} height={1206} alt='Zirolu' className='relative block w-[397px]'></Image>
-                            <Image src={imageResultAI2}  width={450} height={1206} alt='Zirolu' className='relative block w-[255px]'></Image>
-                            <Image src={imageResultAI3}  width={646} height={1206} alt='Zirolu' className='relative block w-[366px]'></Image>
+                            <Image src={imageResultAI}  width={580} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI2}  width={580} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI3}  width={580} height={1148} alt='Zirolu' className='relative block w-1/3'></Image>
                         </div>
                     </div>
                     {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
