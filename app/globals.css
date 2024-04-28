@@ -90,7 +90,20 @@ body{
   width: 100%;
   /* width: 250px; */
 }
-.choose.mod3 label{
+.choose.mod4 label{
+  padding: 0;
+}
+.choose.mod4{
+  flex-wrap: wrap;
+}
+.choose.mod4 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 50%;
+  /* width: 250px; */
+}
+.choose.mod4 label{
   padding: 0;
 }
 @media only screen and (max-width: 1023px) {
@@ -171,6 +184,20 @@ body{
     position: absolute;
     top: 60px;
     right: 79px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.choose.mod4 [type="radio"]:checked + label:after,
+.choose.mod4 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 27px;
+    right: 64px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -435,6 +462,18 @@ body{
 /* HMS */
 .bg-hms{
   background-image: url(../public/hms/bg2.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+
+/* IQOS */
+.bg-iqos{
+  background-image: url(../public/iqos/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-iqos-border{
+  background-image: url(../public/iqos/border.png);
   background-size: cover;
   background-position: top center;
 }
