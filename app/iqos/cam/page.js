@@ -124,7 +124,7 @@ export default function Cam() {
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
-    const [numProses1, setNumProses1] = useState(true);
+    const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
@@ -232,7 +232,7 @@ export default function Cam() {
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 4)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
