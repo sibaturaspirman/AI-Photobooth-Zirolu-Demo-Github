@@ -162,9 +162,9 @@ export default function Cam() {
         // console.log(videoRef)
         // videoRef.src=''
         // STOP CAM
-        streamCam.getTracks().forEach(function(track) {
-            track.stop();
-        });
+        // streamCam.getTracks().forEach(function(track) {
+        //     track.stop();
+        // });
     }
 
     const reset2 = () => {

@@ -35,7 +35,7 @@ export default function Register() {
         if(character == 'cowok'){
             let randomGambar = getRandomInt(1, 15);
             urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+randomGambar+'.jpeg';
-            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+14+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+7+'.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
