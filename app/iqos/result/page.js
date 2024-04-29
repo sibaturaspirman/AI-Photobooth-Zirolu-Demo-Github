@@ -133,7 +133,8 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-white font-bold`}>Scan this QR Code to Download your image.</h1>
+                    <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1>
+                    {/* <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-white font-bold`}>Scan this QR Code to Download your image.</h1>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
@@ -148,7 +149,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div>
+                    </div> */}
                     {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
                     
                     {/* <div className={`w-full`}>
@@ -177,7 +178,7 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</a>
+                    <Link href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
@@ -201,27 +202,15 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-2 lg:text-2xl w-[80%] lg:w-[50%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-5 lg:text-7xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
-                <div className={`relative w-full ${loadingDownload ? 'hiddenx' : ''}`}>
+                <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/hms/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    content={() => componentRef}
-                    />
-                    </div> */}
-                    <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
@@ -229,7 +218,19 @@ export default function Result() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    content={() => componentRef}
+                    />
+                    </div> 
+                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                        <div className={`w-full mt-5`}>
+                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                                <div className="w-full relative mx-auto flex justify-center items-center">
+                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                </div>
+                            </div>
+                        </div>
+                    </div> */}
 
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">

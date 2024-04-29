@@ -42,8 +42,8 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-2'){
-            let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-2-'+randomGambar+'.jpeg';
+            let randomGambar = getRandomInt(1, 11);
+            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+randomGambar+'.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
