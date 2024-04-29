@@ -103,7 +103,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/iqos', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)

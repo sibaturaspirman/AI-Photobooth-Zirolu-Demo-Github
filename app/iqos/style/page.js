@@ -33,8 +33,8 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'formasi-1'){
-            let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-1-'+randomGambar+'.jpeg';
+            let randomGambar = getRandomInt(1, 15);
+            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+randomGambar+'.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
