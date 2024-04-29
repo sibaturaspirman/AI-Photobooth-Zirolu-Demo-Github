@@ -44,6 +44,23 @@ import ReactToPrint from "react-to-print";
 // !SETUP SOCKET
 
 
+
+// const useWebcam = ({
+//     videoRef
+//   }) => {
+//     useEffect(() => {
+//       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//         navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
+//           if (videoRef.current !== null) {
+//             stream.stop()
+//             // videoRef.current.srcObject = stream;
+//             // videoRef.current.play();
+//           }
+//         });
+//       }
+//     }, [videoRef]);
+//   };
+
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [imageResultAI2, setImageResultAI2] = useState(null);
@@ -59,10 +76,15 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'HMS DEMO',
+        name: 'IQOS',
         phone: '00000',
       });
     const { Canvas } = useQRCode();
+
+
+    // const videoRef = useRef(null);
+    // const previewRef = useRef(null);
+    // useWebcam({ videoRef,previewRef});
 
     useEffect(() => {
         // Perform localStorage action
@@ -80,7 +102,7 @@ export default function Result() {
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
@@ -90,7 +112,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name);
+            bodyFormData.append("name", 'IQOS '+formasiFix);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -191,18 +213,19 @@ export default function Result() {
                             <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
-                    {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
+                    <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[98%] flex`}>
-                            <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                            {/* <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
                             <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
+                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image> */}
                         </div>
-                    </div> */}
+                    </div>
                     {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-5 lg:text-7xl w-[80%] lg:w-[80%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
@@ -234,9 +257,9 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <a href='/iqos/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/iqos/style' className="relative w-full mx-auto flex justify-center items-center">
                                 <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

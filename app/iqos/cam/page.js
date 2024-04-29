@@ -16,12 +16,15 @@ fal.config({
 });
 
 
+let streamCam = null;
 const useWebcam = ({
     videoRef
   }) => {
     useEffect(() => {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
+            streamCam = stream
+            window.localStream = stream
           if (videoRef.current !== null) {
             videoRef.current.srcObject = stream;
             videoRef.current.play();
@@ -147,6 +150,21 @@ export default function Cam() {
     const generateAI = () => {
         setNumProses1(true)
         generateImageSwap()
+
+        // videoRef.current.stop();
+        // videoRef.current.srcObject = ''
+        // streamCam.getVideoTracks()[0].stop();
+        // console.log(streamCam)
+
+        
+        // localStream.getVideoTracks()[0].stop();
+        console.log(streamCam)
+        // console.log(videoRef)
+        // videoRef.src=''
+        // STOP CAM
+        streamCam.getTracks().forEach(function(track) {
+            track.stop();
+        });
     }
 
     const reset2 = () => {
@@ -164,6 +182,11 @@ export default function Cam() {
     }))
 
     const generateImageSwap = async () => {
+
+        // STOP CAM
+        // streamCam.getTracks().forEach(function(track) {
+        //     track.stop();
+        // });
 
         setNumProses(2)
         reset2();

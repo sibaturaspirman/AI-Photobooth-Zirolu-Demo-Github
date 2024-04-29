@@ -32,18 +32,20 @@ export default function Register() {
         let urlGambar = '';
         let urlGambar2 = '';
         let urlGambar3 = '';
-        if(character == 'formasi-1'){
+        if(character == 'cowok'){
             let randomGambar = getRandomInt(1, 15);
             urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+randomGambar+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+14+'.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-2'){
+        }else if(character == 'cewek'){
             let randomGambar = getRandomInt(1, 11);
             urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+randomGambar+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+14+'.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -77,7 +79,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="formasi-1"
+                                value="cowok"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -96,7 +98,7 @@ export default function Register() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="formasi-2"
+                                value="cewek"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
