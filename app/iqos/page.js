@@ -25,7 +25,7 @@ export default function IQOSHome() {
   // useWebcam({ videoRef,previewRef});
 
   return (
-    <Link href='/iqos/style' className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-[-4rem]">
+    <Link href='/iqos/style' className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
       <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
       <div className="relative w-[75%] mx-auto mt-0">
         <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
