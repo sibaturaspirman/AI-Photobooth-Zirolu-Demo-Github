@@ -188,16 +188,16 @@ export default function Result() {
                     />
                     </div> */}
 
-                    {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
+                    <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
+                        {/* <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
                             <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
+                        </button> */}
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
                             <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </a>
                     </div>
-                    </div> */}
+                    </div>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     <Link href='/magnumotion' className='text-center font-semibold text-base lg:text-7xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
                 </div>
@@ -215,7 +215,7 @@ export default function Result() {
                             <Image src={imageResultAI4}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
                         </div>
                     </div>
-                    <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
+                    <div className='absolute top-0 left-0 w-[90%]' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[100%] flex`}>
                             <Image src={imageResultAI}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
                             <Image src={imageResultAI2}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
