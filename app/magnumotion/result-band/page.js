@@ -66,6 +66,7 @@ export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [imageResultAI2, setImageResultAI2] = useState(null);
     const [imageResultAI3, setImageResultAI3] = useState(null);
+    const [imageResultAI4, setImageResultAI4] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
@@ -90,16 +91,16 @@ export default function Result() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            // const item = localStorage.getItem('resulAIBase64Left')
-            const item2 = localStorage.getItem('resulAIBase64')
-            // const item3 = localStorage.getItem('resulAIBase64Right')
-            const item4 = localStorage.getItem('genderFix')
-            setImageResultAI(item2)
-            // setImageResultAI2(item2)
-            // setImageResultAI3(item3)
-            setFormasiFix(item4)
+            const item = localStorage.getItem('resulAIBase64')
+            const item2 = localStorage.getItem('resulAIBase642')
+            const item3 = localStorage.getItem('resulAIBase643')
+            const item4 = localStorage.getItem('resulAIBase644')
+            setImageResultAI(item)
+            setImageResultAI2(item2)
+            setImageResultAI3(item3)
+            setImageResultAI4(item4)
         }
-    }, [imageResultAI, linkQR])
+    }, [imageResultAI, imageResultAI2, imageResultAI3, imageResultAI4, linkQR])
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
@@ -203,20 +204,23 @@ export default function Result() {
             }
             {/* QR */}
 
-            <div className={`relative w-full ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+            <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
-                <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-full' id='capture'>
+                <div className='relative w-full mt-4 mb-10 mx-auto flex justify-center items-center'>
+                    <div className='relative z-10' id='capture'>
                         <div className={`relative w-[full] flex`}>
-                            <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                            <Image src={imageResultAI}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI2}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI3}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI4}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
                         </div>
                     </div>
-                    <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
-                        <div className={`relative w-[90%] flex`}>
-                            <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
-                            {/* <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image> */}
+                    <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
+                        <div className={`relative w-[100%] flex`}>
+                            <Image src={imageResultAI}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI2}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI3}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI4}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
                         </div>
                     </div>
                     {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}

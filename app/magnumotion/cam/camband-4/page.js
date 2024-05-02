@@ -2,7 +2,7 @@
 
 import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
-import TopLogoMagnum from "../../components/TopLogoMagnum";
+import TopLogoMagnum from "../../../components/TopLogoMagnum";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -36,15 +36,24 @@ const useWebcam = ({
 };
 
 let FACE_URL_RESULT = ''
+let FACE_URL_RESULT2 = ''
+let FACE_URL_RESULT3 = ''
+let FACE_URL_RESULT4 = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
-    // const [countDown, setCoundown] = useState(5);
-    // const [counter, setCounter] = useState(60);
-    // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const [genderFix, setGenderFix] = useState(null);
+
+    useEffect(() => {
+        // Perform localStorage action
+        if (typeof localStorage !== 'undefined') {
+            const item2 = localStorage.getItem('genderFix')
+            setGenderFix(item2)
+        }
+    }, [genderFix])
 
     useWebcam({ videoRef,previewRef});
 
@@ -104,68 +113,64 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
-            setImageFile(faceImage)
+            setImageFile4(faceImage)
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("faceImage", faceImage)
+                localStorage.setItem("faceImage4", faceImage)
             }
-            // setTimeout(() => {
-            //     router.push('/generate');
-            // }, 1250);
         }, 3000);
     }
 
     const retake = () => {
         setEnabled(false)
     }
-
-
     // AI
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
+    const [imageFile4, setImageFile4] = useState(null);
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
+    const [styleFix4, setStyleFix4] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
-    const [numProses1, setNumProses1] = useState(null);
+    const [numProses1, setNumProses1] = useState();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const [resultFaceSwap, setResultFaceSwap] = useState(null);
     const [resultFaceSwap2, setResultFaceSwap2] = useState(null);
     const [resultFaceSwap3, setResultFaceSwap3] = useState(null);
+    const [resultFaceSwap4, setResultFaceSwap4] = useState(null);
     const [logs, setLogs] = useState([]);
     const [elapsedTime, setElapsedTime] = useState(0);
     // @snippet:end
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
+            const item = localStorage.getItem('faceImage')
+            const itemx = localStorage.getItem('faceImage2')
+            const itemx2 = localStorage.getItem('faceImage3')
             const item2 = localStorage.getItem('styleFix')
-            const item4 = localStorage.getItem('formasiFix')
+            const item3 = localStorage.getItem('styleFix2')
+            const item32 = localStorage.getItem('styleFix3')
+            const item33 = localStorage.getItem('styleFix4')
+
+            setImageFile(item)
+            setImageFile2(itemx)
+            setImageFile3(itemx2)
             setStyleFix(item2)
-            setFormasiFix(item4)
+            setStyleFix2(item3)
+            setStyleFix3(item32)
+            setStyleFix4(item33)
         }
-    }, [styleFix, formasiFix])
+    }, [imageFile, imageFile2, imageFile3, styleFix, styleFix2, styleFix3, styleFix4])
 
     const generateAI = () => {
         setNumProses1(true)
-        generateImageSwap()
-
-        // videoRef.current.stop();
-        // videoRef.current.srcObject = ''
-        // streamCam.getVideoTracks()[0].stop();
-        // console.log(streamCam)
-
-        
-        // localStream.getVideoTracks()[0].stop();
-        console.log(streamCam)
-        // console.log(videoRef)
-        // videoRef.src=''
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
+        setTimeout(() => {
+            generateImageSwap()
+        }, 500);
     }
 
     const reset2 = () => {
@@ -182,18 +187,17 @@ export default function Cam() {
         reader.readAsDataURL(blob)
     }))
 
-    const generateImageSwap = async () => {
 
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
+    const generateImageSwap = async () => {
+        const urlGambar = styleFix;
+        console.log(urlGambar)
 
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
         setLoading(true);
         const start = Date.now();
+
         try {
         const result = await fal.subscribe(
             'fal-ai/face-swap',
@@ -216,15 +220,174 @@ export default function Cam() {
             }
         );
         setResultFaceSwap(result);
-        FACE_URL_RESULT= result.image.url;
+        FACE_URL_RESULT = result.image.url;
 
         toDataURL(FACE_URL_RESULT)
         .then(dataUrl => {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/magnumotion/result');
+                generateImageSwap2()
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+    const generateImageSwap2 = async () => {
+        const urlGambar = styleFix2;
+        console.log(urlGambar)
+        setNumProses(3)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: styleFix2,
+                swap_image_url: imageFile2
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap2(result);
+        FACE_URL_RESULT2 = result.image.url;
+
+        toDataURL(FACE_URL_RESULT2)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase642", dataUrl)
+                localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
+            }
+            setTimeout(() => {
+                // router.push('/mizuho/result');
+                generateImageSwap3()
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+    const generateImageSwap3 = async () => {
+        const urlGambar = styleFix3;
+        console.log(urlGambar)
+
+        setNumProses(4)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: styleFix3,
+                swap_image_url: imageFile3
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap3(result);
+        FACE_URL_RESULT3= result.image.url;
+
+        toDataURL(FACE_URL_RESULT3)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase643", dataUrl)
+                localStorage.setItem("faceURLResult3", FACE_URL_RESULT3)
+            }
+            setTimeout(() => {
+                generateImageSwap4()
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+    const generateImageSwap4 = async () => {
+        const urlGambar = styleFix4;
+        console.log(urlGambar)
+
+        setNumProses(5)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                // base_image_url: URL_RESULT,
+                // swap_image_url: '/avatar/base/'+character
+                base_image_url: styleFix4,
+                swap_image_url: imageFile4
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap4(result);
+        FACE_URL_RESULT4= result.image.url;
+
+        toDataURL(FACE_URL_RESULT4)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase644", dataUrl)
+                localStorage.setItem("faceURLResult4", FACE_URL_RESULT4)
+            }
+            setTimeout(() => {
+                router.push('/magnumotion/result-band');
             }, 500);
         })
         } catch (error) {
@@ -241,9 +404,6 @@ export default function Cam() {
             <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <TopLogoMagnum></TopLogoMagnum>
             </div>
-            {/* <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
-            </div> */}
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
@@ -258,7 +418,7 @@ export default function Cam() {
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 5)`}</p>
                         {error}
                     </div>
 
@@ -272,14 +432,17 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
+            <h1 className={`text-center text-5xl mt-0 mb-4 ${numProses1 ? 'opacity-0 pointer-events-none' : ''} ${genderFix == 'cowok' ? 'flex':'hidden'}`}>TAKE SELFIE - MALE</h1>
+            <h1 className={`text-center text-5xl mt-0 mb-4 ${numProses1 ? 'opacity-0 pointer-events-none' : ''} ${genderFix == 'cewek' ? 'flex':'hidden'}`}>TAKE SELFIE - FEMALE</h1>
+            <h2 className={`text-center text-5xl mb-0 uppercase ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>Face 4 of 4</h2>
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cowok' ? 'flex':'hidden'}`}>
+                    <Image src='/magnumotion/band-4.png' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                </div>
+                <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cewek' ? 'flex':'hidden'}`}>
+                    <Image src='/magnumotion/band-cewek-4.png' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                </div>
                 <div className='relative lg:w-full'>
-                    {/* {!enabled && 
-                    <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
-                        <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
-                    </div>
-                    } */}
-
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
                         <div className='w-full animate-countdown translate-y-[35%]'>
@@ -301,7 +464,7 @@ export default function Cam() {
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-sm lg:text-4xl mt-1 mb-4 lg:mt-3 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
@@ -316,15 +479,9 @@ export default function Cam() {
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/magnumotion/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <button className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-3" onClick={retake}>
                         <Image src='/magnumotion/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </a> */}
                 </div>
             </div></div>
         </main>

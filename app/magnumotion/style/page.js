@@ -41,6 +41,7 @@ export default function Register() {
         let urlGambar = '';
         let urlGambar2 = '';
         let urlGambar3 = '';
+        let urlGambar4 = '';
         if(character == 'style1'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1a.jpeg';
             if (typeof localStorage !== 'undefined') {
@@ -61,6 +62,17 @@ export default function Register() {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
             }
+        }else if(character == 'style5'){
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-4.jpeg';
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
+                localStorage.setItem("styleFix4", urlGambar4)
+            }
         }else if(character == 'style1-cewek'){
             // let randomGambar = getRandomInt(1, 11);
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1a.jpeg';
@@ -77,17 +89,30 @@ export default function Register() {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
             }
+        }else if(character == 'style3-cewek'){
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-4.jpeg';
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
+                localStorage.setItem("styleFix4", urlGambar4)
+            }
         }
         console.log(character)
         console.log(urlGambar)
 
-        // setTimeout(() => {
+        if(character == 'style5' || character == 'style3-cewek'){
+            router.push('/magnumotion/cam/camband');
+        }else{
             router.push('/magnumotion/cam');
-        // }, 500);
+        }
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-10">
             <TopLogoMagnum></TopLogoMagnum>
             <div className="relative w-[60%] mx-auto mt-0]">
             <Image src='/magnumotion/style.png' width={236} height={41} alt='Zirolu' className='w-full' priority />
