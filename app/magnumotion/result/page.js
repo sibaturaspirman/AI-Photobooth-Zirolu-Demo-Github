@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
+import TopLogoMagnumFixed from "../../components/TopLogoMagnumFixed";
+// import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
 import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
-import { Merriweather} from "next/font/google";
-const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
-import BtnHexagon2 from "../../components/BtnHexagon2";
+// import { Merriweather} from "next/font/google";
+// const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
+// import BtnHexagon2 from "../../components/BtnHexagon2";
 import ReactToPrint from "react-to-print";
 
 
@@ -92,7 +93,7 @@ export default function Result() {
             // const item = localStorage.getItem('resulAIBase64Left')
             const item2 = localStorage.getItem('resulAIBase64')
             // const item3 = localStorage.getItem('resulAIBase64Right')
-            const item4 = localStorage.getItem('formasiFix')
+            const item4 = localStorage.getItem('genderFix')
             setImageResultAI(item2)
             // setImageResultAI2(item2)
             // setImageResultAI3(item3)
@@ -112,7 +113,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'IQOS '+formasiFix);
+            bodyFormData.append("name", 'Magnumotion '+formasiFix);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -125,7 +126,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/iqos', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
@@ -147,17 +148,14 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-        <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
-            <div className={`relative w-[60%] mx-auto mt-44 mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-            <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
-            </div>
+        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            {/* <TopLogoMagnumFixed></TopLogoMagnumFixed> */}
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1>
-                    {/* <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-white font-bold`}>Scan this QR Code to Download your image.</h1>
-                    <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                    {/* <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1> */}
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
+                    <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
                         options={{
@@ -171,7 +169,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div> */}
+                    </div>
                     {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
                     
                     {/* <div className={`w-full`}>
@@ -200,7 +198,7 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <Link href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
+                    <Link href='/iqos' className='text-center font-semibold text-base lg:text-7xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
@@ -237,7 +235,7 @@ export default function Result() {
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                <Image src='/magnumotion/btn-collect.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
@@ -255,10 +253,10 @@ export default function Result() {
                         </div>
                     </div> */}
 
-                    <div className='w-full'>
+                    <div className='w-full mt-3'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/iqos/style' className="relative w-full mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                            <Link href='/magnumotion/gender' className="relative w-full mx-auto flex justify-center items-center">
+                                <Image src='/magnumotion/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>

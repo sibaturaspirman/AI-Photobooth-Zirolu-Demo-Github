@@ -2,6 +2,7 @@
 
 import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
+import TopLogoMagnumFixed from "../../components/TopLogoMagnumFixed";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -223,7 +224,7 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
             }
             setTimeout(() => {
-                router.push('/iqos/result');
+                router.push('/magnumotion/result');
             }, 500);
         })
         } catch (error) {
@@ -236,11 +237,11 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
-            <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <TopLogoMagnumFixed></TopLogoMagnumFixed>
+            {/* <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
@@ -251,9 +252,9 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
+                        <Image src='/magnumotion/logo.png' width={207} height={53} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
@@ -303,7 +304,7 @@ export default function Cam() {
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[100%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/btn-capture.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/magnumotion/btn-capture.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -311,13 +312,13 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/iqos/btn-generate.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/magnumotion/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <button className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
-                        <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/magnumotion/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />

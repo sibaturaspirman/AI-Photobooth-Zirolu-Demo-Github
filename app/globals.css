@@ -69,6 +69,7 @@ body{
 }
 .choose.mod2{
   flex-wrap: wrap;
+  width: 100%;
 }
 .choose.mod2 li{
   display: block;
@@ -95,6 +96,8 @@ body{
 }
 .choose.mod4{
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 .choose.mod4 li{
   display: block;
@@ -105,6 +108,21 @@ body{
 }
 .choose.mod4 label{
   padding: 0;
+}
+.choose.mod5{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod5 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 33.333%;
+  /* width: 250px; */
+}
+.choose.mod5 label{
+  padding: .3rem;
 }
 @media only screen and (max-width: 1023px) {
   .choose li{
@@ -190,6 +208,20 @@ body{
 }
 .choose.mod4 [type="radio"]:checked + label:after,
 .choose.mod4 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 27px;
+    right: 64px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.choose.mod5 [type="radio"]:checked + label:after,
+.choose.mod5 [type="radio"]:not(:checked) + label:after {
     content: '';
     width: 50px;
     height: 50px;
@@ -474,6 +506,13 @@ body{
 }
 .bg-iqos-border{
   background-image: url(../public/iqos/border.png);
+  background-size: cover;
+  background-position: top center;
+}
+
+/* MAGNUMOTION */
+.bg-magnumotion{
+  background-image: url(../public/magnumotion/bg.jpeg);
   background-size: cover;
   background-position: top center;
 }
