@@ -53,8 +53,8 @@ export default function Register() {
             }
         }else if(character == 'style2'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2b.jpg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2c.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
