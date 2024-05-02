@@ -83,7 +83,7 @@ export default function Register() {
             }
         }else if(character == 'style2-cewek'){
             // let randomGambar = getRandomInt(1, 11);
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1b.jpg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2a.jpg';
             // console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -221,6 +221,7 @@ export default function Register() {
                             </li>
                             </ul> }
                             {genderFix && genderFix == 'cewek' &&
+                            <div className='px-12 '>
                             <ul className='choose mod4'>
                             <li>
                                 <input
@@ -279,7 +280,7 @@ export default function Register() {
                                 />
                                 </label>
                             </li>
-                            </ul> }
+                            </ul></div> }
                         </div>
                     </div>
                 </div>
