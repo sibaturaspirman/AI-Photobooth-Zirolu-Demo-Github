@@ -36,6 +36,8 @@ const useWebcam = ({
 };
 
 let FACE_URL_RESULT = ''
+let FACE_URL_RESULT2 = ''
+let FACE_URL_RESULT3 = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
@@ -141,12 +143,16 @@ export default function Cam() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item2 = localStorage.getItem('styleFix')
-            const item4 = localStorage.getItem('formasiFix')
-            setStyleFix(item2)
-            setFormasiFix(item4)
+            const item1 = localStorage.getItem('styleFix')
+            const item2 = localStorage.getItem('styleFix2')
+            const item3 = localStorage.getItem('styleFix3')
+            // const item4 = localStorage.getItem('formasiFix')
+            setStyleFix(item1)
+            setStyleFix2(item2)
+            setStyleFix3(item3)
+            // setFormasiFix(item4)
         }
-    }, [styleFix, formasiFix])
+    }, [styleFix, styleFix2, styleFix3])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -159,7 +165,7 @@ export default function Cam() {
 
         
         // localStream.getVideoTracks()[0].stop();
-        console.log(streamCam)
+        // console.log(streamCam)
         // console.log(videoRef)
         // videoRef.src=''
         // STOP CAM
@@ -183,12 +189,6 @@ export default function Cam() {
     }))
 
     const generateImageSwap = async () => {
-
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
-
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -222,6 +222,112 @@ export default function Cam() {
         .then(dataUrl => {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
+            }
+            setTimeout(() => {
+                // router.push('/magnumotion/result');
+                generateImageSwap2()
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+
+    const generateImageSwap2 = async () => {
+        const urlGambar = styleFix2;
+        console.log(urlGambar)
+        setNumProses(3)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: styleFix2,
+                swap_image_url: imageFile
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap2(result);
+        FACE_URL_RESULT2 = result.image.url;
+
+        toDataURL(FACE_URL_RESULT2)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase642", dataUrl)
+                localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
+            }
+            setTimeout(() => {
+                // router.push('/mizuho/result');
+                generateImageSwap3()
+            }, 500);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+    const generateImageSwap3 = async () => {
+        const urlGambar = styleFix3;
+        console.log(urlGambar)
+
+        setNumProses(4)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: styleFix3,
+                swap_image_url: imageFile
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap3(result);
+        FACE_URL_RESULT3= result.image.url;
+
+        toDataURL(FACE_URL_RESULT3)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase643", dataUrl)
+                localStorage.setItem("faceURLResult3", FACE_URL_RESULT3)
             }
             setTimeout(() => {
                 router.push('/magnumotion/result');
@@ -258,7 +364,7 @@ export default function Cam() {
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 4)`}</p>
                         {error}
                     </div>
 

@@ -132,10 +132,10 @@ export default function Cam() {
             <h2 className={`text-center text-5xl mb-0 uppercase`}>Face 2 of 4</h2>
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10`}>
                 <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cowok' ? 'flex':'hidden'}`}>
-                    <Image src='/magnumotion/band-2.png' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                    <Image src='/magnumotion/band-2.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cewek' ? 'flex':'hidden'}`}>
-                    <Image src='/magnumotion/band-cewek-2.png' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                    <Image src='/magnumotion/band-cewek-2.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className='relative lg:w-full'>
                     {captured && 

@@ -66,7 +66,9 @@ export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [imageResultAI2, setImageResultAI2] = useState(null);
     const [imageResultAI3, setImageResultAI3] = useState(null);
+    const [imageFinalAI, setImageFinalAI] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [finalResult, setFinalResult] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [idFormEmail, setIdFormEmail] = useState(null);
@@ -90,17 +92,27 @@ export default function Result() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            // const item = localStorage.getItem('resulAIBase64Left')
-            const item2 = localStorage.getItem('resulAIBase64')
-            // const item3 = localStorage.getItem('resulAIBase64Right')
+            const item = localStorage.getItem('resulAIBase64')
+            const item2 = localStorage.getItem('resulAIBase642')
+            const item3 = localStorage.getItem('resulAIBase643')
             const item4 = localStorage.getItem('genderFix')
-            setImageResultAI(item2)
-            // setImageResultAI2(item2)
-            // setImageResultAI3(item3)
+            setImageResultAI(item)
+            setImageResultAI2(item2)
+            setImageResultAI3(item3)
             setFormasiFix(item4)
         }
-    }, [imageResultAI, linkQR])
+    }, [imageResultAI, imageResultAI2, imageResultAI3, linkQR])
 
+    const setHasil = (e) => {
+        console.log(e)
+        if(e == 'result1'){
+            setImageFinalAI(imageResultAI)
+        }else if(e == 'result2'){
+            setImageFinalAI(imageResultAI2)
+        }else if(e == 'result3'){
+            setImageFinalAI(imageResultAI3)
+        }
+    }
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
             html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
@@ -170,22 +182,6 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
-                    
-                    {/* <div className={`w-full`}>
-                    <ReactToPrint
-                    trigger={() => 
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/amero/btn-print.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    content={() => componentRef}
-                    />
-                    </div> */}
 
                     <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
@@ -203,8 +199,73 @@ export default function Result() {
             }
             {/* QR */}
 
+
+            {/* DOWNLOAD & PRINT */}
+            {imageFinalAI && 
+            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
+                <div className='absolute z-10 w-full' id='capture'>
+                    <div className={`relative w-[full] flex`}>
+                        <Image src={imageFinalAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                    </div>
+                </div>
+                <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
+                    <div className={`relative w-[90%] flex`}>
+                        <Image src={imageFinalAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                    </div>
+                </div>
+            </div>
+            }
+
             <div className={`relative w-full ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 {imageResultAI && 
+                <div className='relative w-full'>
+                    <div className="relative w-[30%] mx-auto mt-0]">
+                    <Image src='/magnumotion/choose-photo.png' width={177} height={69} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className='relative w-full mt-0 mb-5 mx-auto flex justify-center items-center'>
+                        <ul className='choose mod4'>
+                            <li>
+                                <input
+                                id='choose_result1'
+                                type="radio"
+                                name='choose_result'
+                                value="result1"
+                                onChange={(e) => setHasil(e.target.value)}
+                                />
+                                <label htmlFor="choose_result1">
+                                <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_result2'
+                                type="radio"
+                                name='choose_result'
+                                value="result2"
+                                onChange={(e) => setHasil(e.target.value)}
+                                />
+                                <label htmlFor="choose_result2">
+                                <Image src={imageResultAI2}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_result3'
+                                type="radio"
+                                name='choose_result'
+                                value="result3"
+                                onChange={(e) => setHasil(e.target.value)}
+                                />
+                                <label htmlFor="choose_result3">
+                                <Image src={imageResultAI3}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                }
+
+                {/* {imageResultAI && 
                 <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capture'>
                         <div className={`relative w-[full] flex`}>
@@ -214,21 +275,18 @@ export default function Result() {
                     <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[90%] flex`}>
                             <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
-                            {/* <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image> */}
                         </div>
                     </div>
-                    {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
                 </div>
-                }
+                } */}
                 {loadingDownload && 
                     <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
-                <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
+                <div className={`relative w-full z-40 ${loadingDownload ? 'hidden' : ''}`}>
 
+                    {imageFinalAI && 
                     <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
@@ -243,15 +301,7 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div> 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    }
 
                     <div className='w-full mt-3'>
                         <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">

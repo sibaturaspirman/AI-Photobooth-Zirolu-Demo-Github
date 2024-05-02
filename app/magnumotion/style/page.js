@@ -44,23 +44,39 @@ export default function Register() {
         let urlGambar4 = '';
         if(character == 'style1'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1b.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1c.jpg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style2'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2b.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2c.jpg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style3'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3b.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3c.jpg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style4'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style5'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-1.jpeg';
@@ -76,18 +92,22 @@ export default function Register() {
         }else if(character == 'style1-cewek'){
             // let randomGambar = getRandomInt(1, 11);
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1a.jpeg';
-            // console.log(randomGambar)
-
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1b.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1c.jpg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style2-cewek'){
             // let randomGambar = getRandomInt(1, 11);
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2a.jpg';
-            // console.log(randomGambar)
-
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2b.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2c.jpg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style3-cewek'){
             urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-1.jpeg';
