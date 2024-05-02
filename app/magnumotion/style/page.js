@@ -259,8 +259,8 @@ export default function Register() {
                     </div>
                 </div>
                 {character &&
-                    <div className="relative w-full flex justify-center items-center mt-[-5rem] z-20">
-                        <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
+                    <div className="relative w-full flex justify-center items-center mt-0 z-20">
+                        <button className="relative mx-auto w-[80%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/magnumotion/btn-takephoto.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>

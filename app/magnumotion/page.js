@@ -5,7 +5,9 @@ import TopLogoMagnumFixed from "../components/TopLogoMagnumFixed";
 
 export default function MagnumotionHome() {
   return (
-    <Link href='/magnumotion/gender' className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+    <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+      {/* <Link href='/magnumotion/gender' */}
+      <Link href='/magnumotion/gender' className="fixed w-full h-full top-0 left-0 z-10"></Link>
       <TopLogoMagnumFixed></TopLogoMagnumFixed>
       {/* <div className="relative w-[75%] mx-auto mt-0">
         <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
@@ -20,6 +22,6 @@ export default function MagnumotionHome() {
           <Image src='/magnumotion/tap.png' width={191} height={52} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
-    </Link>
+    </main>
   );
 }
