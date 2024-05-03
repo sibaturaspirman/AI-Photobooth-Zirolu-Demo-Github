@@ -59,7 +59,7 @@ export default function Gender() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/gender-1.png"
+                                    src="/magnumotion/gender-new-1.png"
                                     alt="icon"
                                     width={392}
                                     height={546}
@@ -78,7 +78,7 @@ export default function Gender() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/gender-2.png"
+                                    src="/magnumotion/gender-new-2.png"
                                     alt="icon"
                                     width={392}
                                     height={546}

@@ -43,46 +43,46 @@ export default function Register() {
         let urlGambar3 = '';
         let urlGambar4 = '';
         if(character == 'style1'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1b.jpg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok1c.jpg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok1a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok1b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok1c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style2'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2b.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok2c.jpeg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok2a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok2b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok2c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style3'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3b.jpg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok3c.jpg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok3a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok3b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok3c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style4'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4b.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok4c.jpeg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok4a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok4b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok4c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style5'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-1.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-2.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-3.jpeg';
-            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cowok-band-4.jpeg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-4.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
@@ -91,9 +91,9 @@ export default function Register() {
             }
         }else if(character == 'style1-cewek'){
             // let randomGambar = getRandomInt(1, 11);
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1a.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1b.jpg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe1c.jpg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe1a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe1b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe1c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
@@ -101,19 +101,19 @@ export default function Register() {
             }
         }else if(character == 'style2-cewek'){
             // let randomGambar = getRandomInt(1, 11);
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2a.jpg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2b.jpg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewe2c.jpg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe2a.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe2b.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewe2c.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("styleFix3", urlGambar3)
             }
         }else if(character == 'style3-cewek'){
-            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-1.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-2.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-3.jpeg';
-            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-cewek-band-4.jpeg';
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-4.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("styleFix2", urlGambar2)
@@ -123,6 +123,10 @@ export default function Register() {
         }
         console.log(character)
         console.log(urlGambar)
+
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("styleGeneral", character)
+        }
 
         if(character == 'style5' || character == 'style3-cewek'){
             router.push('/magnumotion/cam/camband');
@@ -155,7 +159,7 @@ export default function Register() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cowok-1.png"
+                                    src="/magnumotion/m-new-cowok-1.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -174,7 +178,7 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cowok-2.png"
+                                    src="/magnumotion/m-new-cowok-2.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -193,7 +197,7 @@ export default function Register() {
                                 <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cowok-3.png"
+                                    src="/magnumotion/m-new-cowok-3.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -212,7 +216,7 @@ export default function Register() {
                                 <label htmlFor="choose_style4">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cowok-4.png"
+                                    src="/magnumotion/m-new-cowok-4.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -231,7 +235,7 @@ export default function Register() {
                                 <label htmlFor="choose_style5">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cowok-5.png"
+                                    src="/magnumotion/m-new-cowok-5.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -254,7 +258,7 @@ export default function Register() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cewek-1.png"
+                                    src="/magnumotion/m-new-cewek-1.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -273,7 +277,7 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cewek-2.png"
+                                    src="/magnumotion/m-new-cewek-2.png"
                                     alt="icon"
                                     width={546}
                                     height={392}
@@ -292,7 +296,7 @@ export default function Register() {
                                 <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/magnumotion/m-cewek-3.png"
+                                    src="/magnumotion/m-new-cewek-3.png"
                                     alt="icon"
                                     width={546}
                                     height={392}

@@ -68,6 +68,7 @@ export default function Result() {
     const [imageResultAI3, setImageResultAI3] = useState(null);
     const [imageResultAI4, setImageResultAI4] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [styleGeneral, setStyleGeneral] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [idFormEmail, setIdFormEmail] = useState(null);
@@ -95,12 +96,16 @@ export default function Result() {
             const item2 = localStorage.getItem('resulAIBase642')
             const item3 = localStorage.getItem('resulAIBase643')
             const item4 = localStorage.getItem('resulAIBase644')
+            const item5 = localStorage.getItem('styleGeneral')
+            const item6 = localStorage.getItem('genderFix')
             setImageResultAI(item)
             setImageResultAI2(item2)
             setImageResultAI3(item3)
             setImageResultAI4(item4)
+            setStyleGeneral(item5)
+            setFormasiFix(item6)
         }
-    }, [imageResultAI, imageResultAI2, imageResultAI3, imageResultAI4, linkQR])
+    }, [imageResultAI, imageResultAI2, imageResultAI3, imageResultAI4, styleGeneral, formasiFix, linkQR])
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
@@ -114,7 +119,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'Magnumotion '+formasiFix);
+            bodyFormData.append("name", 'Magnumotion '+formasiFix+' '+styleGeneral);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -127,7 +132,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
@@ -154,8 +159,8 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
-                    {/* <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1> */}
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
+                    <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1>
+                    {/* <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
                     <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
@@ -170,7 +175,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div>
+                    </div> */}
                     {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
                     
                     {/* <div className={`w-full`}>
@@ -188,7 +193,7 @@ export default function Result() {
                     />
                     </div> */}
 
-                    {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
+                    {/* <div className={`relative w-full  ${showEmail ? 'hiddenx' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
                         <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
                             <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
@@ -199,15 +204,30 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <Link href='/magnumotion' className='text-center font-semibold text-base lg:text-7xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
+                    <Link href='/magnumotion' className='text-center font-semibold text-base lg:text-7xl py-20 p-10 lg:p-40  lg:py-96 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
 
+
+            {/* DOWNLOAD & PRINT */}
+            {imageResultAI && 
+            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
+                <div className='absolute z-10 w-[20%]' id='capture'>
+                        <div className={`relative w-[full] flex`}>
+                            <Image src={imageResultAI}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI2}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI3}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                            <Image src={imageResultAI4}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
+                        </div>
+                </div>
+            </div>
+            }
+
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
                 <div className='relative w-full mt-4 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10' id='capture'>
+                    <div className='relative z-10' id='captureOLD'>
                         <div className={`relative w-[full] flex`}>
                             <Image src={imageResultAI}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
                             <Image src={imageResultAI2}  width={171} height={1024} alt='Zirolu' className='relative block w-1/4'></Image>
