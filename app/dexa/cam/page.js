@@ -157,10 +157,12 @@ export default function Cam() {
                 </button>
             </div> */}
             {!enabled && 
+                <div className={`relative w-full ${captured ? 'hidden' : ''}`}>
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[70%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/dexa/btn-capture.png' width={479} height={96} alt='Zirolu' className='w-full' priority />
                     </button>
+                </div>
                 </div>
             }
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>

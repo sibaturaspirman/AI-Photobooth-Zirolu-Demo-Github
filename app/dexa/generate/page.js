@@ -54,7 +54,7 @@ export default function GenerateAmero() {
     const [characterURL, setCharacterURL] = useState(null);
     
     const [numProses, setNumProses] = useState(0);
-    const [numProses1, setNumProses1] = useState(1);
+    const [numProses1, setNumProses1] = useState(null);
     // Result state
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -75,6 +75,9 @@ export default function GenerateAmero() {
         setNumProses1(true)
         // console.log(styleGender)
         // console.log(character)
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("gender", styleGender)
+        }
         
         if(styleGender =='male'){
             setTimeout(() => {
@@ -82,7 +85,11 @@ export default function GenerateAmero() {
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(0, 11))
+                generateImageSwap(character, styleGender, getRandomInt(1, 7))
+            }, 500);
+        }else if(styleGender =='hijab'){
+            setTimeout(() => {
+                generateImageSwap(character, styleGender, getRandomInt(1, 6))
             }, 500);
         }
 
@@ -135,7 +142,11 @@ export default function GenerateAmero() {
     const generateImageSwap = async (character, gender, number) => {
         // console.log(gender)
         // console.log(number)
-        const urlGambar = 'https://ai.mudikbersamakai.com/kai/style/'+gender+'-'+number+'.jpeg'
+        let genderFix = ''
+        if(gender == 'male') genderFix = 'm'
+        else if(gender == 'female') genderFix = 'f'
+        else if(gender == 'hijab') genderFix = 'h'
+        const urlGambar = 'https://ai.zirolu.id/dexa/style/'+genderFix+'-'+number+'.jpeg'
         // const urlGambar = character;
         console.log(urlGambar)
         setNumProses(2)
@@ -181,7 +192,7 @@ export default function GenerateAmero() {
             }
         
             setTimeout(() => {
-                router.push('/kai-demo/result');
+                router.push('/dexa/result');
             }, 500);
         })
         } catch (error) {
@@ -283,7 +294,7 @@ export default function GenerateAmero() {
                                     id='choose_gender3'
                                     type="radio"
                                     name='choose_gender'
-                                    value="female_hijab"
+                                    value="hijab"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender3">
