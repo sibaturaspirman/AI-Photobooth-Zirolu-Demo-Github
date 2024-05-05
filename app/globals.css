@@ -516,3 +516,10 @@ body{
   background-size: cover;
   background-position: top center;
 }
+
+/* DEXA */
+.bg-dexa{
+  background-image: url(../public/dexa/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
