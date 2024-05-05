@@ -28,9 +28,6 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
-    // const [countDown, setCoundown] = useState(5);
-    // const [counter, setCounter] = useState(60);
-    // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
 
@@ -95,9 +92,6 @@ export default function Cam() {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("faceImage", faceImage)
             }
-            // setTimeout(() => {
-            //     router.push('/generate');
-            // }, 1250);
         }, 3000);
     }
 
@@ -110,12 +104,6 @@ export default function Cam() {
             <h1 className={`text-center text-4xl font-bold mt-5 mb-10 ${poppins.className}`}>SAY &#34;CHEESEE&#34;</h1>
             <div className="relative w-full flex flex-col justify-center items-center mt-2 mb-0 lg:mt-8 lg:mb-10">
                 <div className='relative lg:w-full'>
-                    {/* {!enabled && 
-                    <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
-                        <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
-                    </div>
-                    } */}
-
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
                         <div className='w-full animate-countdown translate-y-[35%]'>
@@ -139,23 +127,7 @@ export default function Cam() {
             {!enabled && 
                 <p className='block text-center text-3xl lg:text-4xl mt-5 mb-5 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
-            
-            {/* <div className="py-5 flex items-center justify-center">
-                <button
-                className="py-3 px-4 bg-indigo-700 text-white text-lg rounded"
-                onClick={() => {
-                    setEnabled(!enabled);
-                }}
-                >
-                {enabled ? 'Stop' : 'Start'}
-                </button>
-                <button
-                className="py-3 px-4 bg-indigo-700 text-white text-lg rounded"
-                onClick={captureVideo}
-                >
-                    Capture
-                </button>
-            </div> */}
+
             {!enabled && 
                 <div className={`relative w-full ${captured ? 'hidden' : ''}`}>
                 <div className="relative w-full flex justify-center items-center">
@@ -170,15 +142,9 @@ export default function Cam() {
                     <Link href='/dexa/generate' className="block w-full relative mx-auto flex justify-center items-center">
                         <Image src='/dexa/btn-next.png' width={479} height={96} alt='Zirolu' className='w-full' priority />
                     </Link>
-                    {/* <button className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-2" onClick={retake}>
                         <Image src='/dexa/btn-retake.png' width={479} height={96} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </a> */}
                 </div>
             </div>
         </main>
