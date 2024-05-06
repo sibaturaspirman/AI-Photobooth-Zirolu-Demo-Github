@@ -12,7 +12,7 @@ export default function How() {
             <h1 className={`text-center text-4xl font-bold mt-5 mb-10 ${poppins.className}`}>HOW TO</h1>
             <div className="relative w-full flex flex-col justify-center items-center mt-3 mb-3">
                 <div className='relative w-[65%] mb-10'>
-                    <Image src='/dexa/howto.png' width={550} height={651} alt='Zirolu' className='w-full' priority />
+                    <Image src='/dexa/howto-new.png' width={550} height={651} alt='Zirolu' className='w-full' priority />
                 </div>
             </div>
 
