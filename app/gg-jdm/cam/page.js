@@ -2,7 +2,7 @@
 
 import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
-import TopLogoMagnum from "../../components/TopLogoMagnum";
+import TopLogoGG from "../../components/TopLogoGG";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -144,12 +144,12 @@ export default function Cam() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item1 = localStorage.getItem('styleFix')
-            const item2 = localStorage.getItem('styleFix2')
-            const item3 = localStorage.getItem('styleFix3')
+            // const item2 = localStorage.getItem('styleFix2')
+            // const item3 = localStorage.getItem('styleFix3')
             // const item4 = localStorage.getItem('formasiFix')
             setStyleFix(item1)
-            setStyleFix2(item2)
-            setStyleFix3(item3)
+            // setStyleFix2(item2)
+            // setStyleFix3(item3)
             // setFormasiFix(item4)
         }
     }, [styleFix, styleFix2, styleFix3])
@@ -224,113 +224,8 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
             }
             setTimeout(() => {
-                // router.push('/magnumotion/result');
-                generateImageSwap2()
-            }, 500);
-        })
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
-
-    const generateImageSwap2 = async () => {
-        const urlGambar = styleFix2;
-        console.log(urlGambar)
-        setNumProses(3)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: styleFix2,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
-            }
-        );
-        setResultFaceSwap2(result);
-        FACE_URL_RESULT2 = result.image.url;
-
-        toDataURL(FACE_URL_RESULT2)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase642", dataUrl)
-                localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
-            }
-            setTimeout(() => {
-                // router.push('/mizuho/result');
-                generateImageSwap3()
-            }, 500);
-        })
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
-    const generateImageSwap3 = async () => {
-        const urlGambar = styleFix3;
-        console.log(urlGambar)
-
-        setNumProses(4)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: styleFix3,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
-            }
-        );
-        setResultFaceSwap3(result);
-        FACE_URL_RESULT3= result.image.url;
-
-        toDataURL(FACE_URL_RESULT3)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase643", dataUrl)
-                localStorage.setItem("faceURLResult3", FACE_URL_RESULT3)
-            }
-            setTimeout(() => {
-                router.push('/magnumotion/result');
+                router.push('/gg-jdm/result');
+                // generateImageSwap2()
             }, 500);
         })
         } catch (error) {
@@ -343,13 +238,13 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <TopLogoMagnum></TopLogoMagnum>
+        <main className="flex fixed h-full w-full bg-ggjdm overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50`}>
+            <TopLogoGG></TopLogoGG>
             </div>
-            {/* <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
-            </div> */}
+            <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <Image src='/ggjdm/title-takephoto.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
+            </div>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
@@ -360,15 +255,15 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/magnumotion/logo.png' width={207} height={53} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/logo-pria.png' width={207} height={288} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#FFE872] text-center bg-[#9D1111] text-[#fff] lg:font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 4)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#201E28] text-left bg-[#33303D] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
+                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#FFE872] text-left bg-[#9D1111] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto rounded-lg'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
@@ -412,7 +307,7 @@ export default function Cam() {
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/magnumotion/btn-capture.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/btn-capture.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -420,13 +315,13 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/magnumotion/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <button className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-3" onClick={retake}>
-                        <Image src='/magnumotion/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />

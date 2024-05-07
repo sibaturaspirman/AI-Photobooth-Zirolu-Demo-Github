@@ -69,7 +69,7 @@ export default function Result() {
     //   });
     const { Canvas } = useQRCode();
 
-    // emitNetworkConnection()
+    emitNetworkConnection()
 
     useEffect(() => {
         // Perform localStorage action
@@ -120,7 +120,7 @@ export default function Result() {
                 .then(response => {
                     // console.log(response)
                     setLinkQR(response.file)
-                    // emitString("sendImage", response.file);
+                    emitString("sendImage", response.file);
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)

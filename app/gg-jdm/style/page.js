@@ -1,6 +1,6 @@
 'use client';
 
-import * as fal from '@fal-ai/serverless-client';
+// import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
 import TopLogoGG from "../../components/TopLogoGG";

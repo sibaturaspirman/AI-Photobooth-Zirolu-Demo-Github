@@ -80,9 +80,13 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'IQOS',
-        phone: '00000',
+        name: getCookie('name'),
+        phone: getCookie('phone')
       });
+    // const [payload, setPayload] = useState({
+    //     name: 'IQOS',
+    //     phone: '00000',
+    //   });
     const { Canvas } = useQRCode();
 
 
@@ -128,7 +132,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'Magnumotion '+formasiFix+' '+styleGeneral);
+            bodyFormData.append("name", payload.name+' '+styleGeneral);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -141,7 +145,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/jdmfest', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
@@ -163,13 +167,13 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-magnumotion overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-ggjdm overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             {/* <TopLogoMagnumFixed></TopLogoMagnumFixed> */}
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1>
-                    {/* <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
+                    {/* <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1> */}
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
                     <div className='relative mt-3 w-[80%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
@@ -184,7 +188,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div> */}
+                    </div>
 
                     {/* <div className={`relative w-full  ${showEmail ? 'hiddenx' : ''}`}>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
@@ -204,7 +208,7 @@ export default function Result() {
 
 
             {/* DOWNLOAD & PRINT */}
-            {imageFinalAI && 
+            {/* {imageFinalAI && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
                 <div className='absolute z-10 w-[20%]' id='capture'>
                     <div className={`relative w-[full] flex`}>
@@ -217,99 +221,45 @@ export default function Result() {
                     </div>
                 </div>
             </div>
-            }
+            } */}
 
             <div className={`relative w-full ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-                {imageResultAI && 
-                <div className='relative w-full'>
-                    <div className="relative w-[30%] mx-auto mt-0]">
-                    <Image src='/magnumotion/choose-photo.png' width={177} height={69} alt='Zirolu' className='w-full' priority />
-                    </div>
-                    <div className='relative w-full mt-0 mb-5 mx-auto flex justify-center items-center'>
-                        <ul className='choose mod4'>
-                            <li>
-                                <input
-                                id='choose_result1'
-                                type="radio"
-                                name='choose_result'
-                                value="result1"
-                                onChange={(e) => setHasil(e.target.value)}
-                                />
-                                <label htmlFor="choose_result1">
-                                <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_result2'
-                                type="radio"
-                                name='choose_result'
-                                value="result2"
-                                onChange={(e) => setHasil(e.target.value)}
-                                />
-                                <label htmlFor="choose_result2">
-                                <Image src={imageResultAI2}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
-                                </label>
-                            </li>
-                            <li>
-                                <input
-                                id='choose_result3'
-                                type="radio"
-                                name='choose_result'
-                                value="result3"
-                                onChange={(e) => setHasil(e.target.value)}
-                                />
-                                <label htmlFor="choose_result3">
-                                <Image src={imageResultAI3}  width={683} height={1024} alt='Zirolu' className='relative block w-full border-2'></Image>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                }
 
-                {/* {imageResultAI && 
+                {imageResultAI && 
                 <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capture'>
                         <div className={`relative w-[full] flex`}>
                             <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
-                    <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
+                    {/* <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[90%] flex`}>
                             <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
-                } */}
+                }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#FFE872] text-center bg-[#9D1111] text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
                 <div className={`relative w-full z-40 ${loadingDownload ? 'hidden' : ''}`}>
 
-                    {imageFinalAI && 
                     <div className={`w-full`} onClick={downloadImageAI}>
-                    <ReactToPrint
-                    trigger={() => 
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/magnumotion/btn-collect.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                                <Image src='/ggjdm/btn-download.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
-                    }
-                    content={() => componentRef}
-                    />
                     </div> 
-                    }
 
                     <div className='w-full mt-3'>
                         <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/magnumotion/gender' className="relative w-full mx-auto flex justify-center items-center">
-                                <Image src='/magnumotion/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                            <Link href='/gg-jdm/style' className="relative w-full mx-auto flex justify-center items-center">
+                                <Image src='/ggjdm/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
