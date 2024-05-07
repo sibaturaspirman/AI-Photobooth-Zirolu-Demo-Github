@@ -11,12 +11,12 @@ export default function GGJDMHome() {
       <div className="relative w-[75%] mx-auto mt-0">
         <Image src='/ggjdm/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
       </div>
-      <div className="relative w-full flex justify-center items-center mt-5 mb-6 lg:mt-24 lg:mb-14">
+      <div className="relative w-full flex justify-center items-center mt-[4vh] mb-[5vh]">
         <div className='animate-upDown relative w-[100%] mx-auto flex justify-center items-center pointer-events-none'>
           <Image src='/ggjdm/preview.png' width={864} height={721} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
-      <div className="relative w-full flex justify-center items-center lg:mt-0">
+      <div className="relative w-full flex justify-center items-center">
         <div className="relative mx-auto flex w-[68%] justify-center items-center">
           <Image src='/ggjdm/btn-start-new.png' width={1920} height={388} alt='Zirolu' className='w-full' priority />
         </div>

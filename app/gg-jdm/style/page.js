@@ -74,7 +74,7 @@ export default function Register() {
                     <div className='relative w-full'>
                         <div className='overflow-hidden'>
                             <div className='px-12 '>
-                            <ul className='choose mod4'>
+                            <ul className='choose mod6'>
                             <li>
                                 <input
                                 id='choose_style1'
@@ -117,13 +117,13 @@ export default function Register() {
                         </div>
                     </div>
                 </div>
-                {character &&
-                    <div className="relative w-full flex justify-center items-center mt-20 z-20">
+                {/* {character && */}
+                    <div className={`relative w-full flex justify-center items-center mt-10 z-20  ${character ? `` : 'opacity-20 pointer-events-none'}`}>
                         <button className="relative mx-auto w-[80%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/ggjdm/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
-                }
+                {/* } */}
             </div>
             {/* !PILIH STYLE */}
         </main>

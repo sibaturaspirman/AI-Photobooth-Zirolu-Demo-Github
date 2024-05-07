@@ -18,7 +18,7 @@ export default function How() {
                 </div>
             </div>
 
-            <div className="relative w-full flex justify-center items-center">
+            <div className="relative w-full flex justify-center items-center mt-[4vh]">
                 <Link href='/gg-jdm/style' className="relative mx-auto flex w-[70%] justify-center items-center">
                     <Image src='/ggjdm/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                 </Link>

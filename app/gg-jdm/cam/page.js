@@ -242,7 +242,7 @@ export default function Cam() {
             <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50`}>
             <TopLogoGG></TopLogoGG>
             </div>
-            <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`fixed top-[12vh] w-[50%] mx-auto  mt-0`}>
             <Image src='/ggjdm/title-takephoto-new.png' width={1553} height={234} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
@@ -273,7 +273,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-36 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-[25vh] mb-[2vh] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -296,13 +296,13 @@ export default function Cam() {
                     }
 
                     <video ref={videoRef} className={`w-full rotate-90 mx-auto top-[-8rem] border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'}  rotate-90 w-[50%] top-[-8rem] left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'}  rotate-90 w-[60%] top-[-8rem] left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-4xl mt-1 mb-9 lg:mt-24 text-white'>*Hadap & Lihat Kamera <br></br> Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-xl mt-1 mb-9 lg:mt-24 text-white'>*Hadap & Lihat Kamera <br></br> Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">

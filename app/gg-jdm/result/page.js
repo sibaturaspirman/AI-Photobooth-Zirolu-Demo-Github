@@ -173,8 +173,8 @@ export default function Result() {
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     {/* <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1> */}
-                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
-                    <div className='relative mt-3 w-[30%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                    <h1 className={`text-center text-2xl mt-[-.7rem] lg:mt-0 lg:text-5xl lg:mb-5 px-5 text-white font-bold`}>Scan this QR Code <br></br> to Download your image.</h1>
+                    <div className='relative mt-3 w-[40%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
                         options={{
@@ -201,18 +201,18 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <Link href='/gg-jdm' className='text-center font-semibold text-base lg:text-7xl py-20 p-10 lg:p-40 lg:py-96 text-white w-full'>Tap here to close</Link>
+                    <Link href='/gg-jdm' className='text-center font-semibold text-2xl lg:text-7xl py-56 p-10 lg:p-40 lg:py-96 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
 
 
             {/* DOWNLOAD & PRINT */}
-            {/* {imageFinalAI && 
-            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                <div className='absolute z-10 w-[20%]' id='capture'>
+            {/* {imageResultAI && 
+            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-50 pointer-events-none'>
+                <div className='absolute z-10 w-[20%] bg-[#000]' id='capture'>
                     <div className={`relative w-[full] flex`}>
-                        <Image src={imageFinalAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                        <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
@@ -227,7 +227,7 @@ export default function Result() {
 
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-full' id='capture'>
+                    <div className='relative z-10 w-[80%]' id='capture'>
                         <div className={`relative w-[full] flex`}>
                             <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
