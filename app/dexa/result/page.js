@@ -6,7 +6,7 @@ import TopLogoKAI from "../../components/TopLogoKAI";
 import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 import { Poppins} from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import BtnHexagon2 from "../components/BtnHexagon2";
@@ -22,25 +22,25 @@ const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // }
 
 // SETUP SOCKET
-// let SERVER_IP = "https://ag.socket.web.id:11100";
-// let NETWORK = null;
+let SERVER_IP = "https://ag.socket.web.id:11100";
+let NETWORK = null;
 
-// function emitNetworkConnection() {
-//    NETWORK = io(SERVER_IP, {
-//       withCredentials: false,
-//       transoirtOptions: {
-//          pooling: {
-//             extraHeaders: {
-//                "my-custom-header": "ag-socket",
-//             },
-//          },
-//       },
-//    });
-// }
+function emitNetworkConnection() {
+   NETWORK = io(SERVER_IP, {
+      withCredentials: false,
+      transoirtOptions: {
+         pooling: {
+            extraHeaders: {
+               "my-custom-header": "ag-socket",
+            },
+         },
+      },
+   });
+}
 
-// function emitString(key, payload) {
-//    NETWORK.emit(key, payload);
-// }
+function emitString(key, payload) {
+   NETWORK.emit(key, payload);
+}
 // !SETUP SOCKET
 
 
@@ -56,6 +56,7 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     const [gender, setGender] = useState(null);
 
+    // emitNetworkConnection()
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
@@ -119,6 +120,7 @@ export default function Result() {
                 .then(response => {
                     // console.log(response)
                     setLinkQR(response.file)
+                    // emitString("sendImage", response.file);
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)

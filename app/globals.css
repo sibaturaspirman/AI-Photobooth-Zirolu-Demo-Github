@@ -523,3 +523,10 @@ body{
   background-size: cover;
   background-position: top center;
 }
+
+/* GG JDM */
+.bg-ggjdm{
+  background-image: url(../public/ggjdm/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
