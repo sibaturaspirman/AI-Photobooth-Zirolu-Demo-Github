@@ -66,7 +66,7 @@ export default function Register() {
         <main className="flex fixed h-full w-full bg-ggjdm overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-10">
             <TopLogoGG></TopLogoGG>
             <div className="relative w-[60%] mx-auto mt-0]">
-            <Image src='/ggjdm/title-style.png' width={236} height={41} alt='Zirolu' className='w-full' priority />
+            <Image src='/ggjdm/title-style-new.png' width={1736} height={234} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
             <div className={`relative w-full mx-auto mt-10`}>

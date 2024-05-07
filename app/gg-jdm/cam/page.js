@@ -243,7 +243,7 @@ export default function Cam() {
             <TopLogoGG></TopLogoGG>
             </div>
             <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/ggjdm/title-takephoto.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
+            <Image src='/ggjdm/title-takephoto-new.png' width={1553} height={234} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
             {numProses1 && 
@@ -255,7 +255,7 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/ggjdm/logo-pria.png' width={207} height={288} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/pria-new.png' width={1897} height={1023} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#FFE872] text-center bg-[#9D1111] text-[#fff] lg:font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
@@ -273,7 +273,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-36 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -290,19 +290,19 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[52%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-[5rem] z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-[80%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[80%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-full rotate-90 mx-auto top-[-8rem] border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'}  rotate-90 w-[50%] top-[-8rem] left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-sm lg:text-4xl mt-1 mb-9 lg:mt-24 text-white'>*Hadap & Lihat Kamera <br></br> Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">

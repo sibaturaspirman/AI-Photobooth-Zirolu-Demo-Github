@@ -18,7 +18,7 @@ export default function GGJDMHome() {
       </div>
       <div className="relative w-full flex justify-center items-center lg:mt-0">
         <div className="relative mx-auto flex w-[68%] justify-center items-center">
-          <Image src='/ggjdm/btn-start.png' width={191} height={52} alt='Zirolu' className='w-full' priority />
+          <Image src='/ggjdm/btn-start-new.png' width={1920} height={388} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
     </main>
