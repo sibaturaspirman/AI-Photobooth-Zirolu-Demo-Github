@@ -13,7 +13,7 @@ export default function GGJDMHome() {
       </div>
       <div className="relative w-full flex justify-center items-center mt-[4vh] mb-[5vh]">
         <div className='animate-upDown relative w-[100%] mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/ggjdm/preview.png' width={864} height={721} alt='Zirolu' className='w-full' priority />
+          <Image src='/ggjdm/preview-new.png' width={864} height={721} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
       <div className="relative w-full flex justify-center items-center">
