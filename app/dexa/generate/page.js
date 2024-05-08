@@ -81,11 +81,11 @@ export default function GenerateAmero() {
         
         if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(1, 5))
+                generateImageSwap(character, styleGender, getRandomInt(1, 4))
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(1, 5))
+                generateImageSwap(character, styleGender, getRandomInt(1, 4))
             }, 500);
         }else if(styleGender =='hijab'){
             setTimeout(() => {
@@ -146,7 +146,7 @@ export default function GenerateAmero() {
         if(gender == 'male') genderFix = 'm'
         else if(gender == 'female') genderFix = 'f'
         else if(gender == 'hijab') genderFix = 'h'
-        const urlGambar = 'https://ai.zirolu.id/dexa/style/new-'+genderFix+'-'+number+'.jpeg'
+        const urlGambar = 'https://ai.zirolu.id/dexa/style/neww-'+genderFix+'-'+number+'.jpeg'
         // const urlGambar = character;
         console.log(urlGambar)
         setNumProses(2)
