@@ -43,12 +43,22 @@ export default function Register() {
         let urlGambar3 = '';
         let urlGambar4 = '';
         if(character == 'casual'){
-            urlGambar = 'https://ai.zirolu.id/ggjdm/style/casual-'+getRandomInt(1, 4)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-casual-'+getRandomInt(1, 4)+'.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
             }
         }else if(character == 'formal'){
-            urlGambar = 'https://ai.zirolu.id/ggjdm/style/formal-'+getRandomInt(1, 4)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-formal-'+getRandomInt(1, 4)+'.jpeg';
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+            }
+        }else if(character == 'cewek'){
+            urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-cewek-'+getRandomInt(1, 4)+'.jpeg';
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+            }
+        }else if(character == 'hijab'){
+            urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-hijab-'+getRandomInt(1, 4)+'.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
             }
@@ -69,6 +79,31 @@ export default function Register() {
             <Image src='/ggjdm/title-style-new.png' width={1736} height={234} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
+            <div className="fixed top-0 left-0 w-[250px] h-[250px]">
+                <div className="pilihshadow">
+                    <input
+                    id='choose_style3'
+                    type="radio"
+                    name='choose_style'
+                    value="cewek"
+                    onChange={(e) => setCharacter(e.target.value)}
+                    />
+                        <label htmlFor="choose_style3"></label>
+                </div>
+            </div>
+            <div className="fixed top-0 right-0 w-[250px] h-[250px]">
+                <div className="pilihshadow">
+                    <input
+                    id='choose_style4'
+                    type="radio"
+                    name='choose_style'
+                    value="hijab"
+                    onChange={(e) => setCharacter(e.target.value)}
+                    />
+                        <label htmlFor="choose_style4"></label>
+                </div>
+            </div>
+
             <div className={`relative w-full mx-auto mt-10`}>
                 <div className='relative mt-0 w-full'>
                     <div className='relative w-full'>

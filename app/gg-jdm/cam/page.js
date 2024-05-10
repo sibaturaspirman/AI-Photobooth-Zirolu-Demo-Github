@@ -242,8 +242,8 @@ export default function Cam() {
             <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50`}>
             <TopLogoGG></TopLogoGG>
             </div>
-            <div className={`fixed top-[12vh] w-[50%] mx-auto  mt-0`}>
-            <Image src='/ggjdm/title-takephoto-new.png' width={1553} height={234} alt='Zirolu' className='w-full' priority />
+            <div className={`fixed top-[12vh] w-[50%] mx-auto  mt-0 ${numProses1 ? `opacity-0 pointer-events-none` : ''}`}>
+            <Image src='/ggjdm/title-takephoto.png' width={777} height={118} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
             {numProses1 && 

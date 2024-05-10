@@ -14,7 +14,7 @@ export default function How() {
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-3 mb-3">
                 <div className='relative w-[80%] lg:mb-12'>
-                    <Image src='/ggjdm/how.png' width={1650} height={2028} alt='Zirolu' className='w-full' priority />
+                    <Image src='/ggjdm/how-new.png' width={550} height={675} alt='Zirolu' className='w-full' priority />
                 </div>
             </div>
 
