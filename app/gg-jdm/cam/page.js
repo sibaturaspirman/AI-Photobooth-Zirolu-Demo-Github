@@ -255,7 +255,7 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/ggjdm/pria-new.png' width={1897} height={1023} alt='Zirolu' className='w-full' priority />
+                        <Image src='/ggjdm/logo-pria.png' width={949} height={512} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#FFE872] text-center bg-[#9D1111] text-[#fff] lg:font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
