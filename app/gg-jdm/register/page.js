@@ -1,8 +1,8 @@
 'use client';
 
 import Image from "next/image";
+import { useEffect, useState } from 'react';
 import { setCookie } from 'cookies-next';
-import { useState } from 'react';
 import TopLogoGG from "../../components/TopLogoGG";
 import BtnHexagonGGJdm from "../../components/BtnHexagonGGJdm";
 import { useRouter } from 'next/navigation';
@@ -16,6 +16,12 @@ export default function Register() {
       name: '',
       phone: '',
     });
+
+
+    useEffect(() => {
+        document.getElementById('name').focus();
+    }, [])
+
 
     const isValid = () => {
       if (payload.name && payload.phone) return true
