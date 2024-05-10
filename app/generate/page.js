@@ -51,7 +51,7 @@ let seedGenerate = [
     {number : 103}
 ];
 let seedGenerate2 = [
-    {number : 1030},
+    {number : 1063},
     {number : 100}
 ];
 
@@ -169,7 +169,7 @@ export default function Register() {
             FIXSEEDPILIH = seedGenerate[getRandomInt(0,1)].number
         }else{
             FIXSEEDPILIH = seedGenerate2[getRandomInt(0,1)].number
-            // FIXSEEDPILIH = 1030
+            // FIXSEEDPILIH = 1063
         }
         console.log(FIXSEEDPILIH)
 
