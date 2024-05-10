@@ -44,6 +44,22 @@ fal.config({
 const DEFAULT_NEG_PROMPT = 'extra head, extra face, double head, double face, (((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), boobs, sexy, blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
+// let fixSeed = ''
+let FIXSEEDPILIH = 0
+let seedGenerate = [
+    {number : 101},
+    {number : 103}
+];
+let seedGenerate2 = [
+    {number : 201},
+    {number : 100}
+];
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 export default function Register() {
     const router = useRouter();
     const [prompt, setPrompt] = useState(null);
@@ -54,6 +70,7 @@ export default function Register() {
 
     const negative_prompt = DEFAULT_NEG_PROMPT;
     const [imageFile, setImageFile] = useState(null);
+    const [fixSeed, setFixSeed] = useState(null);
     const [CGF, setCGF] = useState(13);
     const [numSteps, setNumSteps] = useState(80);
     const [styleGender, setStyleGender] = useState(null);
@@ -148,6 +165,13 @@ export default function Register() {
 
     const generateAI = () => {
         setNumProses1(true)
+        if(prompt2 == 'alone, standing, cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed'){
+            FIXSEEDPILIH = seedGenerate[getRandomInt(0,1)].number
+        }else{
+            FIXSEEDPILIH = seedGenerate2[getRandomInt(0,1)].number
+        }
+        console.log(FIXSEEDPILIH)
+
         setTimeout(() => {
             generateImage()
         }, 500);
@@ -203,8 +227,10 @@ export default function Register() {
               negative_prompt,
               guidance_scale: CGF,
               num_inference_steps: numSteps,
-              width: 624,
-              height: 1024
+            //   seed: seedGenerate[getRandomInt(0,1)].number,
+              seed: FIXSEEDPILIH,
+              width: 1024,
+              height: 624
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
@@ -431,7 +457,7 @@ export default function Register() {
                                 />
                                 </label>
                             </li>
-                            <li>
+                            {/* <li>
                                 <input
                                 id='choose_style2'
                                 type="radio"
@@ -462,6 +488,25 @@ export default function Register() {
                                 <Image
                                     className="relative h-auto w-full"
                                     src="/style3.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li> */}
+                            <li>
+                                <input
+                                id='choose_style4'
+                                type="radio"
+                                name='choose_style'
+                                value="alone, A captivating photorealistic scene featuring a male pilot clad in a leather jacket standing on a runway, with an airplane in the background taxiing towards him. The pilot exudes confidence and authority as he gazes towards the approaching aircraft, his stance reflecting his readiness to embark on the next flight. The runway stretches into the distance, with the vast sky above hinting at the endless possibilities of flight. Realistic Photograph, Medium Shot, 50mm lens, capturing the excitement and anticipation of aviation as the pilot prepares for takeoff, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
+                                onChange={(e) => setPrompt2(e.target.value)}
+                                />
+                                <label htmlFor="choose_style4">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/style12.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
