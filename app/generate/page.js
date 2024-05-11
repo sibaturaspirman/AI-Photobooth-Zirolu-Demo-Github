@@ -230,7 +230,7 @@ export default function Register() {
               num_inference_steps: numSteps,
             //   seed: seedGenerate[getRandomInt(0,1)].number,
               seed: FIXSEEDPILIH,
-              width: 1024,
+              width: 624,
               height: 624
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
