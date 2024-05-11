@@ -49,6 +49,7 @@ export default function Register() {
             }
         }else if(character == 'formal'){
             urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-formal-'+getRandomInt(1, 4)+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/ggjdm/style/new-formal-1.jpeg';
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
             }
