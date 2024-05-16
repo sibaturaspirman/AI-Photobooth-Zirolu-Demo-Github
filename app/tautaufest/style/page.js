@@ -205,7 +205,7 @@ export default function Register() {
                                 <label htmlFor="choose_style5">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/tautaufest/style-m-5.png"
+                                    src="/tautaufest/style-m-6.png"
                                     alt="icon"
                                     width={322}
                                     height={410}
@@ -224,7 +224,7 @@ export default function Register() {
                                 <label htmlFor="choose_style6">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/tautaufest/style-m-6.png"
+                                    src="/tautaufest/style-m-5.png"
                                     alt="icon"
                                     width={322}
                                     height={410}
