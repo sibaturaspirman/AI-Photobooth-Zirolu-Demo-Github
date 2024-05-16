@@ -224,7 +224,7 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
             }
             setTimeout(() => {
-                router.push('/gg-jdm/result');
+                router.push('/tautaufest/result');
                 // generateImageSwap2()
             }, 500);
         })
@@ -238,12 +238,12 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-ggjdm overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-tautaufest overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <div className={`fixed top-10 w-[100%] mx-auto flex justify-center items-center z-50`}>
-            <TopLogoGG></TopLogoGG>
+            {/* <TopLogoGG></TopLogoGG> */}
             </div>
-            <div className={`fixed top-[12vh] w-[50%] mx-auto  mt-0 ${numProses1 ? `opacity-0 pointer-events-none` : ''}`}>
-            <Image src='/ggjdm/title-takephoto.png' width={777} height={118} alt='Zirolu' className='w-full' priority />
+            <div className={`relative top-0 w-[70%] mx-auto  mb-10 ${numProses1 ? `opacity-0 pointer-events-none` : ''}`}>
+            <Image src='/tautaufest/title-take.png' width={916} height={336} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
             {numProses1 && 
@@ -255,15 +255,15 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/ggjdm/logo-pria.png' width={949} height={512} alt='Zirolu' className='w-full' priority />
+                        <Image src='/tautaufest/logo.png' width={607} height={168} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#FFE872] text-center bg-[#9D1111] text-[#fff] lg:font-bold rounded-lg'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-4xl border-2 border-[#E5E40A] text-center bg-[#811A53] text-[#E5E40A] lg:font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#FFE872] text-left bg-[#9D1111] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto rounded-lg'>
+                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#E5E40A] text-left bg-[#811A53] text-[#E5E40A] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto rounded-lg'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
@@ -273,7 +273,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-[25vh] mb-[2vh] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-0 mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -290,24 +290,24 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-[5rem] z-10'>
+                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-full rotate-90 mx-auto top-[-8rem] border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'}  rotate-90 w-[60%] top-[-8rem] left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[80%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
 
             {!enabled && 
-                <p className='block text-center text-xl mt-1 mb-9 lg:mt-24 text-white'>*Hadap & Lihat Kamera <br></br> Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-3xl mt-0 mb-10 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/ggjdm/btn-capture.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/tautaufest/btn-capture.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -315,17 +315,11 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/ggjdm/btn-next.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/tautaufest/btn-next.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <button className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-3" onClick={retake}>
-                        <Image src='/ggjdm/btn-retake.png' width={750} height={224} alt='Zirolu' className='w-full' priority />
+                        <Image src='/tautaufest/btn-retake.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </a> */}
                 </div>
             </div></div>
         </main>

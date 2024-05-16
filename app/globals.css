@@ -251,6 +251,19 @@ body{
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}.choose.mod5.mod [type="radio"]:checked + label:after,
+.choose.mod5.mod [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 27px;
+    right: 32px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 .choose.mod6 [type="radio"]:checked + label:after,
 .choose.mod6 [type="radio"]:not(:checked) + label:after {
@@ -307,12 +320,6 @@ body{
   align-items: center;
   justify-content: center;
 }
-
-@media only screen and (max-width: 1023px) {
-  /* .choose2 li label{
-    height: 50px;
-  } */
-}
 .choose2 [type="radio"]:checked,
 .choose2 [type="radio"]:not(:checked) {
     position: absolute;
@@ -330,6 +337,61 @@ body{
 
 .choose2 [type="radio"]:checked + label,
 .choose2 [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    cursor: pointer;
+    /* display: inline-block; */
+}
+
+.choose3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.choose3 li{
+  display: block;
+  position: relative;
+  margin-right: 25px;
+  width: 33.333%;
+}
+.choose3 li:last-child{
+  margin-right: 0;
+}
+.choose3 li label{
+  border: 2px solid #888;
+  box-shadow: 3px 3px 0px 0px transparent;
+  transition: all ease 300ms;
+  padding: 30px 15px;
+  background-color: #d2d0d0;
+  color: #888;
+  width: 100%;
+  text-align: center;
+  line-height: 1.1;
+  /* height: 60px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.choose3 [type="radio"]:checked,
+.choose3 [type="radio"]:not(:checked) {
+    position: absolute;
+    left: 0;top: 0;
+    opacity: 0;
+}
+
+.choose3 [type="radio"]:checked + label{
+  background-color: #811A53;
+  border-color: #E5E40A;
+  box-shadow: 0px 0px 8px 0px #efedea;
+  color: #E5E40A !important;
+  transform: scale(1.05);
+}
+
+.choose3 [type="radio"]:checked + label,
+.choose3 [type="radio"]:not(:checked) + label
 {
     position: relative;
     cursor: pointer;
@@ -579,4 +641,11 @@ body{
   position: absolute;
   left: 0;right: 0;
   width: 100%;height: 100%;
+}
+
+/* TAUTAUFEST */
+.bg-tautaufest{
+  background-image: url(../public/tautaufest/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
 }

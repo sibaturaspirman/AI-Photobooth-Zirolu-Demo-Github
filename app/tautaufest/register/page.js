@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from 'react';
 import { setCookie } from 'cookies-next';
-import TopLogoGG from "../../components/TopLogoGG";
-import BtnHexagonGGJdm from "../../components/BtnHexagonGGJdm";
+// import TopLogoGG from "../../components/TopLogoGG";
+import BtnHexagonTauTau from "../../components/BtnHexagonTauTau";
 import { useRouter } from 'next/navigation';
 
 import { Poppins} from "next/font/google";
@@ -40,14 +40,13 @@ export default function Register() {
         setCookie('name', payload.name);
         setCookie('phone', payload.phone);
         setTimeout(() => {
-            router.push('/gg-jdm/how');
+            router.push('/tautaufest/how');
         }, 250);
     }
     return (
-        <main className="flex fixed h-full w-full bg-ggjdm overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
-            <TopLogoGG></TopLogoGG>
+        <main className="flex fixed h-full w-full bg-tautaufest overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
             <div className="relative w-[55%] mx-auto mt-0">
-                <Image src='/ggjdm/title-register.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
+                <Image src='/tautaufest/title-registration.png' width={687} height={336} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-16 mb-6">
                 <div className='relative w-[80%] mb-14 lg:mb-20'>
@@ -98,8 +97,8 @@ export default function Register() {
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
             </div>
-            <div className="relative w-[60%] flex justify-center items-center">
-                <BtnHexagonGGJdm
+            <div className="relative w-[75%] flex justify-center items-center">
+                <BtnHexagonTauTau
                     disabled={!isValid()}
                     onClick={handleSubmit}
                 />
