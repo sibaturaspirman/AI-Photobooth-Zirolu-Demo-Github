@@ -39,10 +39,32 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
-        // if(genderFix == 'm' && character == 's1'){
-        //     urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 4)+'.jpeg';
-        // }
-        urlGambar = 'https://ai.zirolu.id/tautaufest/style/f-s1-1.jpeg';
+        if(genderFix == 'm' && character == 's1'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'm' && character == 's2'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 4)+'.jpeg';
+        }else if(genderFix == 'm' && character == 's3'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'm' && character == 's4'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 3)+'.jpeg';
+        }else if(genderFix == 'm' && character == 's5'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'm' && character == 's6'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's1'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 3)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's2'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 4)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's3'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's4'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 3)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's5'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }else if(genderFix == 'f' && character == 's6'){
+            urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
+        }
+        // urlGambar = 'https://ai.zirolu.id/tautaufest/style/f-s2-2.jpeg';
         console.log(character)
         console.log(urlGambar)
 
