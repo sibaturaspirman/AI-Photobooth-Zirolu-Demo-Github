@@ -64,7 +64,7 @@ export default function Register() {
         }else if(genderFix == 'f' && character == 's6'){
             urlGambar = 'https://ai.zirolu.id/tautaufest/style/'+genderFix+'-'+character+'-'+getRandomInt(1, 2)+'.jpeg';
         }
-        // urlGambar = 'https://ai.zirolu.id/tautaufest/style/f-s2-2.jpeg';
+        // urlGambar = 'https://ai.zirolu.id/tautaufest/style/f-s3-1.jpeg';
         console.log(character)
         console.log(urlGambar)
 
