@@ -208,11 +208,11 @@ export default function Result() {
             {/* DOWNLOAD & PRINT */}
             {imageResultAI && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                {/* <div className='absolute z-10 w-[20%] bg-[#000]' id='capture'>
+                <div className='absolute z-10 w-[50%] bg-[#000]' id='capture'>
                     <div className={`relative w-[full] flex`}>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
-                </div> */}
+                </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
                     <div className={`relative w-[99.2%] flex`}>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
@@ -225,7 +225,7 @@ export default function Result() {
 
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[80%]' id='capture'>
+                    <div className='relative z-10 w-[80%]' id='capturex'>
                         <div className={`relative w-[full] flex`}>
                             <Image src={imageResultAI}  width={683} height={1638} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
