@@ -98,7 +98,7 @@ export default function Result() {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('resulAIBase642')
             const item3 = localStorage.getItem('resulAIBase643')
-            const item4 = localStorage.getItem('genderFix')
+            const item4 = localStorage.getItem('styleGenderFix')
             const item5 = localStorage.getItem('styleGeneral')
             setImageResultAI(item)
             setImageResultAI2(item2)
@@ -106,7 +106,7 @@ export default function Result() {
             setFormasiFix(item4)
             setStyleGeneral(item5)
         }
-    }, [imageResultAI, imageResultAI2, imageResultAI3, styleGeneral, linkQR])
+    }, [imageResultAI, imageResultAI2, imageResultAI3, formasiFix, styleGeneral])
 
     const setHasil = (e) => {
         console.log(e)
@@ -130,7 +130,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' '+styleGeneral);
+            bodyFormData.append("name", payload.name+' '+formasiFix+' '+styleGeneral);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -143,10 +143,10 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/demo', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/taufest', options)
                 .then(response => response.json())
                 .then(response => {
-                    // console.log(response)
+                    console.log(response)
                     setLinkQR(response.file)
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
