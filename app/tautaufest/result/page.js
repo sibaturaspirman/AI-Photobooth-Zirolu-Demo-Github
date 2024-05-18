@@ -208,7 +208,7 @@ export default function Result() {
             {/* DOWNLOAD & PRINT */}
             {imageResultAI && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                <div className='absolute z-10 w-[50%] bg-[#000]' id='capture'>
+                <div className='absolute z-10 w-[40%] bg-[#000]' id='capture'>
                     <div className={`relative w-[full] flex`}>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
