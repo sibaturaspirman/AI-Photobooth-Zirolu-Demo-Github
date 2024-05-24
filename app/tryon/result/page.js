@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import TopLogo from "../components/TopLogo";
+import TopLogo from "./../../components/TopLogo";
 import { getCookie } from 'cookies-next';
 import { useEffect, useState, useMemo } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
-import BtnHexagon2 from "../components/BtnHexagon2";
+import BtnHexagon2 from "./../../components/BtnHexagon2";
 
 
 // function downloadImage(data, filename = 'untitled.jpeg') {
