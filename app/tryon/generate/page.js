@@ -18,13 +18,10 @@ fal.config({
     }),
 });
 
-// const DEFAULT_PROMPT = 'anime style illustration of techwear, cyborg ninja, holding a sword, wearing a mask, striking pose, all limbs appear in frame, japanese vibe, detailed design for streetwear and urban style t-shirt design, solid color background, etc pro vector';
-const DEFAULT_NEG_PROMPT = 'extra head, extra face, double head, double face, (((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), boobs, sexy, blurry, low resolution, low quality, pixelated, interpolated, compression artifacts, noisey, grainy';
 let URL_RESULT = ''
-let FACE_URL_RESULT = ''
-// let fixSeed = ''
 let garmentURL = ''
 let garmentDesc = ''
+let imageCaptureBase64 = ''
 function blobToBase64(blob) {
     return new Promise((resolve, _) => {
         const reader = new FileReader();
@@ -34,20 +31,10 @@ function blobToBase64(blob) {
 }
 export default function Register() {
     const router = useRouter();
-    const [prompt, setPrompt] = useState(null);
     const [imageCapturePreview, setImageCapturePreview] = useState(null);
-    const [baseFaceFile, setBaseFaceFile] = useState(null);
 
-    const [prompt1, setPrompt1] = useState();
-    const [prompt2, setPrompt2] = useState();
-    let promptCombine = prompt1 + prompt2;
-
-    const negative_prompt = DEFAULT_NEG_PROMPT;
-    const [imageFile, setImageFile] = useState(null);
-    const [fixSeed, setFixSeed] = useState(null);
-    const [CGF, setCGF] = useState(13);
+    const [fixSeed, setFixSeed] = useState(50);
     const [numSteps, setNumSteps] = useState(80);
-    const [styleGender, setStyleGender] = useState(null);
     const [stylePrompt, setStylePrompt] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState();
@@ -55,18 +42,9 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
-    const [resultFaceSwap, setResultFaceSwap] = useState(null);
     const [logs, setLogs] = useState([]);
     const [elapsedTime, setElapsedTime] = useState(0);
-    // @snippet:end
-    // useEffect(() => {
-    //     // Perform localStorage action
-    //     if (typeof localStorage !== 'undefined') {
-    //         const item = localStorage.getItem('faceImage')
-    //         setImageFile(item)
-    //     }
-    // }, [imageFile])
-
+    
     const toDataURL = url => fetch(url)
     .then(response => response.blob())
     .then(blob => new Promise((resolve, reject) => {
@@ -78,7 +56,6 @@ export default function Register() {
 
     const handleImageUpload = async (event) => {
         const file = event.target.files[0];
-        setBaseFaceFile(event.target.files[0])
 
         if (!event.target.files || !event.target.files[0]) return;
         const FR = new FileReader();
@@ -91,11 +68,11 @@ export default function Register() {
     };
 
     const generateAI = () => {
-        // setNumProses1(true)
-        if(prompt1 == 'style1'){
+        setNumProses1(true)
+        if(stylePrompt == 'style1'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-1.jpeg'
             garmentDesc = 'T-Shirt Oversize'
-        }else if(prompt1 == 'style2'){
+        }else if(stylePrompt == 'style2'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-2.jpeg'
             garmentDesc = 'Short Sleeve Round Neck T-shirts'
         }
@@ -107,13 +84,10 @@ export default function Register() {
         }).catch(e => {console("load failed")})
     }
     const uploadImage = async (canvas) => {
-        // setLoadingDownload('≈')
-
         canvas.toBlob(async function(blob) {
-            console.log(blobToBase64(blob))
             blobToBase64(blob).then(dataUrl => {
-                console.log(dataUrl)
-                setBaseFaceFile(dataUrl)
+                // console.log(dataUrl)
+                imageCaptureBase64 = dataUrl
                 setTimeout(() => {
                     generateImage()
                 }, 150);
@@ -121,56 +95,63 @@ export default function Register() {
         });
     }
 
+    const reset = () => {
+        setLoading(false);
+        setError(null);
+        setResult(null);
+        setLogs([]);
+        setElapsedTime(0);
+      };
     const generateImage = async () => {
         setNumProses(1)
-      reset();
-      // @snippet:start("client.queue.subscribe")
-      setLoading(true);
-      const start = Date.now();
-      try {
-        const result = await fal.subscribe("fal-ai/idm-vton", {
-            input: {
-              human_image_url: baseFaceFile,
-              num_inference_stepsinteger: 30,
-              seedinteger: 42,
-              garment_image_url: garmentURL,
-              description: garmentDesc
-            },
-            logs: true,
-            onQueueUpdate(update) {
-              setElapsedTime(Date.now() - start);
-              if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-              ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                // console.log(update)
-              }
-            },
-          }
-        );
-        setResult(result);
-        URL_RESULT = result.image.url
-        console.log(URL_RESULT)
-
-        toDataURL(URL_RESULT)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", URL_RESULT)
+        reset();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        try {
+            const result = await fal.subscribe("fal-ai/idm-vton", {
+                input: {
+                human_image_url: imageCaptureBase64, 
+                num_inference_stepsinteger: numSteps,
+                seedinteger: fixSeed,
+                garment_image_url: garmentURL,
+                description: garmentDesc
+                },
+                logs: true,
+                onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                    update.status === 'IN_PROGRESS' ||
+                    update.status === 'COMPLETED'
+                ) {
+                    setLogs((update.logs || []).map((log) => log.message));
+                    // console.log(update)
+                }
+                },
             }
-        
-            // setTimeout(() => {
-            //     router.push('/tryon/result');
-            // }, 500);
-        })
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-        setElapsedTime(Date.now() - start);
-      }
-      // @snippet:end
+            );
+            setResult(result);
+            URL_RESULT = result.image.url
+            console.log(URL_RESULT)
+
+            toDataURL(URL_RESULT)
+            .then(dataUrl => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIBase64TryOn", dataUrl)
+                    localStorage.setItem("URLResultTryOn", URL_RESULT)
+                }
+            
+                setTimeout(() => {
+                    router.push('/tryon/result');
+                }, 500);
+            })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
     };
 
     return (
@@ -187,7 +168,7 @@ export default function Register() {
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 1)`}</p>
                         {error}
                     </div>
 
@@ -203,12 +184,6 @@ export default function Register() {
             {/* LOADING */}
             {/* PILIH STYLE */}
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                {/* PREVIEW CAPTURE */}
-                {/* <div className='relative w-[38%] mt-2 lg:mt-4 mx-auto flex justify-center items-center pointer-events-none  border-2 border-[#ffffffs] rounded-sm'>
-                    {imageFile && 
-                        <Image src={imageFile}  width={200} height={200} alt='Zirolu' className='w-full' priority></Image>
-                    }
-                </div> */}
                 <div className='relative mt-0 lg:mt-10 w-full'>
                     <div className='relative w-full mt-2 lg:mt-10'>
                         <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-left font-bold text-white">Pick Your Style</label>
@@ -221,7 +196,7 @@ export default function Register() {
                                 type="radio"
                                 name='choose_style'
                                 value="style1"
-                                onChange={(e) => setPrompt1(e.target.value)}
+                                onChange={(e) => setStylePrompt(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
                                 <Image
@@ -240,7 +215,7 @@ export default function Register() {
                                 type="radio"
                                 name='choose_style'
                                 value="style2"
-                                onChange={(e) => setPrompt1(e.target.value)}
+                                onChange={(e) => setStylePrompt(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
                                 <Image
@@ -298,10 +273,6 @@ export default function Register() {
                     </div>
                     }
                 </div>
-                {/* {prompt} */}
-                {/* {promptCombine} */}
-                {/* {CGF} */}
-                {/* {numSteps} */}
 
                 {imageCapturePreview &&
                     <div className="relative w-full flex justify-center items-center lg:mt-10">
@@ -310,48 +281,10 @@ export default function Register() {
                         </button>
                     </div>
                 }
-                {/* {styleGender && stylePrompt &&
-                    <div className="relative w-full flex justify-center items-center lg:mt-10">
-                        <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
-                            <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
-                    </div>
-                } */}
                 <a href='https://www.instagram.com/zirolu.id' target='_blank' className='block text-center text-sm lg:text-2xl mt-2 lg:mt-4 text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a>
             </div>
             {/* !PILIH STYLE */}
 
-            {/* HIDDEN BTN */}
-            {/* <div className='absolute left-0 bottom-0 w-[200px] h-[200px] bg-transparent z-50 opacity-[0.025]'>
-                <input
-                    id='choose_gender2'
-                    type="radio"
-                    name='choose_gender'
-                    value="woman"
-                    onChange={handleGender}
-                    className='w-full h-full'
-                />
-            </div>
-            <div className='absolute right-0 bottom-0 w-[200px] h-[200px] bg-transparent z-50 opacity-[0.025]'>
-                <input
-                    id='choose_gender3'
-                    type="radio"
-                    name='choose_gender'
-                    value="woman-hijab"
-                    onChange={handleGender}
-                    className='w-full h-full'
-                />
-            </div> */}
-            {/* HIDDEN BTN */}
-            
-
-            {/* <div className="space-y-2">
-                    <h3 className="text-xl font-light">Logs</h3>
-                    {`Elapsed Time (seconds): ${(elapsedTime / 1000).toFixed(2)}`}
-                    <pre className="text-sm bg-black/70 text-white/80 font-mono h-60 rounded whitespace-pre overflow-auto w-full ">
-                    {logs.filter(Boolean).join('\n')}
-                    </pre>
-            </div> */}
         </main>
     );
 }
