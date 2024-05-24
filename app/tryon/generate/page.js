@@ -135,7 +135,7 @@ export default function Register() {
                     human_image_url: imageCaptureBase64, 
                     num_inference_stepsinteger: numSteps,
                     seedinteger: fixSeed,
-                    garment_image_url: 'https://image.uniqlo.com/UQ/ST3/id/imagesgoods/468879/sub/idgoods_468879_sub2.jpg',
+                    garment_image_url: garmentURL,
                     description: garmentDesc
                 },
                 logs: true,
@@ -197,7 +197,7 @@ export default function Register() {
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
-                        AI generate face... <br></br>
+                        AI generate the photo... <br></br>
                         Loading model..<br></br>
                     </pre>
                 </div>
