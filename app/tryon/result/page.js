@@ -58,7 +58,7 @@ export default function Result() {
     //   phone: getCookie('phone'),
     // });
     const [payload, setPayload] = useState({
-        name: 'AI ZIROLU DEMO',
+        name: 'AI ZIROLU DEMO TRY ON',
         phone: '00000',
       });
     const { Canvas } = useQRCode();
@@ -282,6 +282,9 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hiddenx' : ''}`}>
                     <div className={`relative w-[80%] mx-auto flex justify-center items-center flex-col mt-5 ${loadingDownload ? 'hidden' : ''}`}   >
+                        {/* <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
+                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                        </a> */}
                         <button className={`relative mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
                             <Image src='/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button>
@@ -299,7 +302,7 @@ export default function Result() {
                     </div> */}
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/generate' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/tryon/generate' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

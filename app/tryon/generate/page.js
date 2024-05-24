@@ -29,12 +29,17 @@ function blobToBase64(blob) {
         reader.readAsDataURL(blob);
     });
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 export default function Register() {
     const router = useRouter();
     const [imageCapturePreview, setImageCapturePreview] = useState(null);
 
-    const [fixSeed, setFixSeed] = useState(50);
-    const [numSteps, setNumSteps] = useState(80);
+    const [fixSeed, setFixSeed] = useState(42);
+    const [numSteps, setNumSteps] = useState(30);
     const [stylePrompt, setStylePrompt] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState();
@@ -74,11 +79,26 @@ export default function Register() {
             garmentDesc = 'T-Shirt Oversize'
         }else if(stylePrompt == 'style2'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-2.jpeg'
+            garmentDesc = 'T-Shirt Oversize'
+        }else if(stylePrompt == 'style3'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-3.jpeg'
+            garmentDesc = 'Long Sleeve Sweater'
+        }else if(stylePrompt == 'style4'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-4.jpeg'
+            garmentDesc = 'Long Sleeve Sweat Cardigan'
+        }else if(stylePrompt == 'style5'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-5.jpeg'
+            garmentDesc = 'Long Sleeve Square Flannel Shirt'
+        }else if(stylePrompt == 'style6'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-6.jpeg'
+            garmentDesc = 'Long Sleeve Square Flannel Shirt'
+        }else if(stylePrompt == 'style7'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-7.jpeg'
             garmentDesc = 'Short Sleeve Round Neck T-shirts'
         }
 
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capturePreview"), {scale:1}).then(canvas => 
+            html2canvas.default(document.querySelector("#capturePreview"), {scale:3}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
@@ -107,15 +127,16 @@ export default function Register() {
         reset();
         // @snippet:start("client.queue.subscribe")
         setLoading(true);
+        // let seedRandom = getRandomInt(1,20000)
         const start = Date.now();
         try {
             const result = await fal.subscribe("fal-ai/idm-vton", {
                 input: {
-                human_image_url: imageCaptureBase64, 
-                num_inference_stepsinteger: numSteps,
-                seedinteger: fixSeed,
-                garment_image_url: garmentURL,
-                description: garmentDesc
+                    human_image_url: imageCaptureBase64, 
+                    num_inference_stepsinteger: numSteps,
+                    seedinteger: fixSeed,
+                    garment_image_url: 'https://image.uniqlo.com/UQ/ST3/id/imagesgoods/468879/sub/idgoods_468879_sub2.jpg',
+                    description: garmentDesc
                 },
                 logs: true,
                 onQueueUpdate(update) {
@@ -228,25 +249,101 @@ export default function Register() {
                                 />
                                 </label>
                             </li>
-                            {/* <li>
+                            <li>
                                 <input
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="alone, an astronaut is taking a photo in a spaceship with a view of the earth, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
-                                onChange={(e) => setPrompt2(e.target.value)}
+                                value="style3"
+                                onChange={(e) => setStylePrompt(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/tryon/style3.png"
+                                    src="/tryon/style-3.jpeg"
                                     alt="icon"
-                                    width={98}
-                                    height={98}
+                                    width={120}
+                                    height={120}
                                     priority
                                 />
                                 </label>
-                            </li> */}
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style4'
+                                type="radio"
+                                name='choose_style'
+                                value="style4"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style4">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-4.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style5'
+                                type="radio"
+                                name='choose_style'
+                                value="style5"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style5">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-5.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style6'
+                                type="radio"
+                                name='choose_style'
+                                value="style6"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style6">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-6.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style7'
+                                type="radio"
+                                name='choose_style'
+                                value="style7"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style7">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-7.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
                             </ul>
                         </div>
                     </div>
