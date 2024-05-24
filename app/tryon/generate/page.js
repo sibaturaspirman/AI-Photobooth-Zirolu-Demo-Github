@@ -72,6 +72,20 @@ export default function Register() {
         FR.readAsDataURL(event.target.files[0]);
     };
 
+    let positionYLatest = 0;
+    const upPreview = () => {
+        positionYLatest += 1;
+        let positionPercentage = positionYLatest+'%'
+        console.log(positionPercentage)
+        document.getElementById('imageCapturePreview').style.bottom=positionPercentage
+    }
+    const downPreview = () => {
+        positionYLatest -= 1;
+        let positionPercentage = positionYLatest+'%'
+        console.log(positionPercentage)
+        document.getElementById('imageCapturePreview').style.bottom=positionPercentage
+    }
+
     const generateAI = () => {
         setNumProses1(true)
         if(stylePrompt == 'style1'){
@@ -364,8 +378,16 @@ export default function Register() {
                     </div>
                     {imageCapturePreview && 
                     <div className='relative w-full mb-6'>
+                        <div className='absolute top-0 right-0 z-10 w-[70px]'>
+                            <button className="relative w-full flex justify-center items-center py-2 pt-4 px-3" onClick={upPreview}>
+                                <Image src='/tryon/up.png' width={150} height={150} alt='Zirolu' className='w-full' priority />
+                            </button>
+                            <button className="relative w-full flex justify-center items-center py-2 px-3" onClick={downPreview}>
+                                <Image src='/tryon/down.png' width={150} height={150} alt='Zirolu' className='w-full' priority />
+                            </button>
+                        </div>
                         <div className='w-full relative aspect-[3/4] overflow-hidden' id='capturePreview'>
-                            <Image src={imageCapturePreview}  width={768} height={1024} alt='Zirolu' className='absolute bottom-0 left-0 block w-full'></Image>
+                            <Image src={imageCapturePreview}  width={768} height={1024} alt='Zirolu' className='absolute bottom-0 left-0 block w-full' id='imageCapturePreview'></Image>
                         </div>
                     </div>
                     }
