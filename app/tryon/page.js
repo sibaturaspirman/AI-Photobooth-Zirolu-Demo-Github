@@ -3,7 +3,7 @@
 import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
-import TopLogo from "./../../components/TopLogo";
+import TopLogo from "./../components/TopLogo";
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import { useRouter } from 'next/navigation';

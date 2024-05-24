@@ -258,7 +258,7 @@ export default function Result() {
                         />
                     </div>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/tryon/generate' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
+                    <a href='/tryon' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
@@ -302,7 +302,7 @@ export default function Result() {
                     </div> */}
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/tryon/generate' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/tryon' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
