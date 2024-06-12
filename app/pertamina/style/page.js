@@ -3,7 +3,7 @@
 import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
-import TopLogoPertamina from "./../../components/TopLogoPertamina";
+import TopLogoMizuho from "./../../components/TopLogoMizuho";
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import { useRouter } from 'next/navigation';
@@ -47,7 +47,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'hijab'){
-            urlGambar = 'https://ai.zirolu.id/pertamina/style/hijab-'+getRandomInt(1, 8)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/pertamina/style/hijab-'+getRandomInt(1, 7)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
@@ -67,8 +67,8 @@ export default function Register() {
     return (
         <main className="flex fixed h-full w-full bg-mizuho overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-5 lg:px-20">
             <div className="flex relative h-full w-fulll max-w-xl overflow-auto flex-col items-center">
-                <TopLogoPertamina></TopLogoPertamina>
-                <h1 className={`text-center text-2xl lg:mt-20 mb-0 ${paytone_one.className}`}>IDENTIFY YOURSELF</h1>
+                <TopLogoMizuho></TopLogoMizuho>
+                <h1 className={`text-center text-2xl lg:mt-4 mb-0 ${paytone_one.className}`}>IDENTIFY YOURSELF</h1>
                 {/* <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>The style will be random GENErATE by AI</h2> */}
                 {/* PILIH STYLE */}
                 <div className={`relative w-[100%] mx-auto`}>

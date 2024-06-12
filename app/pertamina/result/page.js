@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-import TopLogoPertamina from "./../../components/TopLogoPertamina";
+import TopLogoMizuho from "./../../components/TopLogoMizuho";
 import { getCookie } from 'cookies-next';
 import { useEffect, useState, useMemo } from 'react';
 import { useQRCode } from 'next-qrcode';
@@ -94,7 +94,7 @@ export default function Result() {
     return (
         <main className="flex fixed h-full w-full bg-mizuho overflow-x-hidden overflow-y-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-5 lg:px-20">
             <div className="flex relative h-full w-fulll max-w-lg overflow-x-hidden overflow-y-auto flex-col items-center">
-                <TopLogoPertamina></TopLogoPertamina>
+                <TopLogoMizuho></TopLogoMizuho>
 
             {/* QR */}
             {generateQR && 
@@ -128,7 +128,7 @@ export default function Result() {
             }
             {/* QR */}
 
-            <div className={generateQR ? `opacity-0 pointer-events-none` : 'mt-14'}>
+            <div className={generateQR ? `opacity-0 pointer-events-none` : 'mt-4'}>
                 {imageResultAI && 
                 <div className='relative w-[364px] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
                     <div className='relative bg-slate-500' id='capture'>

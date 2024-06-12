@@ -3,7 +3,7 @@
 import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
-import TopLogoPertamina from "./../../components/TopLogoPertamina";
+import TopLogoMizuho from "./../../components/TopLogoMizuho";
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import Link from 'next/link';
@@ -220,7 +220,7 @@ export default function Cam() {
     return (
         <main className="flex fixed h-full w-full bg-mizuho overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-5 lg:px-20">
             <div className="flex relative h-full w-fulll max-w-xl overflow-auto flex-col items-center">
-                <TopLogoPertamina></TopLogoPertamina>
+                <TopLogoMizuho></TopLogoMizuho>
                 {/* LOADING */}
                 {numProses1 && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
@@ -246,7 +246,7 @@ export default function Cam() {
                 }
                 {/* LOADING */}
                 
-                <h1 className={`text-center text-2xl mt-2 lg:mt-20 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
+                <h1 className={`text-center text-2xl mt-2 lg:mt-4 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
                 <div className={`relative w-[80%] mx-auto flex flex-col justify-center items-center mt-2 mb-3 lg:mt-2 lg:mb-2 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                     <div className='relative'>
                         {captured && 
