@@ -33,7 +33,7 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'cowok'){
-            urlGambar = 'https://ai.zirolu.id/pertamina/style/cowok-'+getRandomInt(1, 11)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/pertamina/style/cowok-'+getRandomInt(3, 11)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
