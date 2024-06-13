@@ -33,14 +33,14 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'cowok'){
-            urlGambar = 'https://ai.zirolu.id/pertamina/style/cowok-'+getRandomInt(1, 8)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/pertamina/style/cowok-'+getRandomInt(1, 11)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'cewek'){
-            urlGambar = 'https://ai.zirolu.id/pertamina/style/cewek-'+getRandomInt(1, 8)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/pertamina/style/cewek-'+getRandomInt(1, 9)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
