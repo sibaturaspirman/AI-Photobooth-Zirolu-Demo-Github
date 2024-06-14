@@ -128,7 +128,7 @@ export default function GenerateAmero() {
 
     const generateImageSwap = async (gender, number) => {
         // MALAM
-        const urlGambar = 'https://ai.zirolu.id/gac/style/'+gender+'-'+number+'.jpeg'
+        const urlGambar = 'https://ai.zirolu.id/gac/style/new-'+gender+'-'+number+'.jpeg'
 
         console.log(urlGambar)
         setNumProses(2)
