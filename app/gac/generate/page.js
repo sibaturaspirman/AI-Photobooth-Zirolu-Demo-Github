@@ -174,39 +174,39 @@ export default function GenerateAmero() {
                 localStorage.setItem("styleGender", styleGender)
             }
 
-            // const options = {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //         name:payload.name+' - '+styleGender,
-            //         phone:payload.phone,
-            //         imgUrl:FACE_URL_RESULT
-            //     }),
-            //     headers: {
-            //         'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json'
-            //     }
-            // };
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    name:payload.name+' - '+styleGender,
+                    phone:payload.phone,
+                    image:FACE_URL_RESULT
+                }),
+                headers: {
+                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
             
-            // await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
-            //     .then(response => response.json())
-            //     .then(response => {
-            //         // console.log(response)
-            //         console.log(response.file)
-            //         // setLinkQR(response.file)
-            //         // setGenerateQR('true')
-            //         // setLoadingDownload(null)
-            //         setTimeout(() => {
-            //             router.push('/totem/result');
-            //         }, 10);
-            //     })
-            //     .catch(err => {
-            //         console.log(err)
-            //     });
+            await fetch('https://photo-ai-iims.zirolu.id/v1/amildgac', options)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    // console.log(response.file)
+                    // setLinkQR(response.file)
+                    // setGenerateQR('true')
+                    // setLoadingDownload(null)
+                    setTimeout(() => {
+                        router.push('/gac/result');
+                    }, 10);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         
-            setTimeout(() => {
-                router.push('/gac/result');
-            }, 100);
+            // setTimeout(() => {
+            //     router.push('/gac/result');
+            // }, 100);
         })
         } catch (error) {
             setError(error);
