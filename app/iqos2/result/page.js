@@ -226,7 +226,7 @@ export default function Result() {
                 {imageResultAI && 
                 <div className='relative w-full mt-4 mb-10 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capturex'>
-                        <div className={`relative w-[65%] mx-auto flex`}>
+                        <div className={`relative w-[90%] mx-auto flex`}>
                             <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
