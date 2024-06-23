@@ -200,27 +200,41 @@ export default function Result() {
                     </div>
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <Link href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
+                    <Link href='/iqos2' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
 
+
+            {/* DOWNLOAD & PRINT */}
+            {imageResultAI && 
+            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
+                <div className='absolute z-10 w-[20%]' id='capture'>
+                    <div className={`relative w-[full] flex`}>
+                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                    </div>
+                </div>
+                <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
+                    <div className={`relative w-[99.2%] flex`}>
+                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                    </div>
+                </div>
+            </div>
+            }
+
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
                 <div className='relative w-full mt-4 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10' id='capture'>
-                        <div className={`relative w-[full] flex`}>
-                            <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                    <div className='relative z-10 w-full' id='capturex'>
+                        <div className={`relative w-[65%] mx-auto flex`}>
+                            <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
-                    <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
+                    {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[100%] flex`}>
-                            <Image src={imageResultAI}  width={1080} height={1638} alt='Zirolu' className='relative block w-full'></Image>
-                            {/* <Image src={imageResultAI}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI2}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image>
-                            <Image src={imageResultAI3}  width={598} height={1206} alt='Zirolu' className='relative block w-1/3'></Image> */}
+                            <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
-                    </div>
+                    </div> */}
                     {/* <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div> */}
                 </div>
                 }
@@ -257,7 +271,7 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/iqos/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/iqos2/style' className="relative w-full mx-auto flex justify-center items-center">
                                 <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

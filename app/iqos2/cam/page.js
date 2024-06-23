@@ -158,7 +158,7 @@ export default function Cam() {
 
         
         // localStream.getVideoTracks()[0].stop();
-        console.log(streamCam)
+        // console.log(streamCam)
         // console.log(videoRef)
         // videoRef.src=''
         // STOP CAM
