@@ -34,18 +34,30 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'cowok'){
-            // let randomGambar = getRandomInt(1, 15);
-            urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'.jpg';
+            let randomGambar = getRandomInt(1, 2);
+            // urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'.jpg';
             // console.log(randomGambar)
+
+            if(desti == 'komodo'){
+                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'-'+randomGambar+'.jpg';
+            }else{
+                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'.jpg';
+            }
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character+' - '+desti)
             }
         }else if(character == 'cewek'){
-            // let randomGambar = getRandomInt(1, 11);
-            urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'.jpg';
+            let randomGambar = getRandomInt(1, 2);
+            // urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'.jpg';
             // console.log(randomGambar)
+
+            if(desti == 'nias'){
+                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'-'+randomGambar+'.jpg';
+            }else{
+                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'.jpg';
+            }
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
