@@ -221,6 +221,7 @@ export default function Cam() {
         .then(dataUrl => {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
                 router.push('/iqos2/result');

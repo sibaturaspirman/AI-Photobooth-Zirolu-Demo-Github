@@ -89,7 +89,7 @@ export default function Result() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            // const item = localStorage.getItem('resulAIBase64Left')
+            const item = localStorage.getItem('faceURLResult')
             const item2 = localStorage.getItem('resulAIBase64')
             // const item3 = localStorage.getItem('resulAIBase64Right')
             const item4 = localStorage.getItem('formasiFix')
@@ -97,6 +97,7 @@ export default function Result() {
             // setImageResultAI2(item2)
             // setImageResultAI3(item3)
             setFormasiFix(item4)
+            setLinkQR(item)
         }
     }, [imageResultAI, linkQR])
 
@@ -112,7 +113,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'IQOS '+formasiFix);
+            bodyFormData.append("name", 'IQOS Nusantara - '+formasiFix);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
@@ -129,7 +130,7 @@ export default function Result() {
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
-                    setLinkQR(response.file)
+                    // setLinkQR(response.file)
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
@@ -156,7 +157,7 @@ export default function Result() {
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <h1 className={`text-center text-xl mt-0 lg:mt-0 lg:text-7xl lg:mb-5 text-white font-bold`}>Congratulations, <br></br> your photo was successfully printed!</h1>
-                    {/* <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-white font-bold`}>Scan this QR Code to Download your image.</h1>
+                    <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-4xl lg:mb-5 text-white font-bold`}>Scan this QR Code to Download your image.</h1>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
                         text={linkQR}
@@ -171,7 +172,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div> */}
+                    </div>
                     {/* <p className={`text-center font-semibold text-sm lg:text-4xl mt-10 text-black`}>Scan this QR Code to Download your image.</p> */}
                     
                     {/* <div className={`w-full`}>
@@ -209,7 +210,7 @@ export default function Result() {
             {/* DOWNLOAD & PRINT */}
             {imageResultAI && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                <div className='absolute z-10 w-[20%]' id='capture'>
+                <div className='absolute z-10 w-[10%]' id='capture'>
                     <div className={`relative w-[full] flex`}>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
