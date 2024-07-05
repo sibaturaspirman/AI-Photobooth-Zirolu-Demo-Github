@@ -73,10 +73,10 @@ export default function Result() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
-            // const item2 = localStorage.getItem('faceURLResult')
+            const item2 = localStorage.getItem('faceURLResult')
             const item3 = localStorage.getItem('gender')
             setImageResultAI(item)
-            // setLinkQR(item2)
+            setLinkQR(item2)
             setGender(item3)
         }
         // const item2 = getCookie('phone')
@@ -85,7 +85,7 @@ export default function Result() {
         //     name: item2,
         //     phone: item3,
         //   }));
-    }, [imageResultAI, gender])
+    }, [imageResultAI, linkQR, gender])
 
     
     const downloadImageAI = () => {
@@ -99,25 +99,30 @@ export default function Result() {
         setLoadingDownload('≈')
 
         canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", 'FERRON - '+payload.name+' '+gender);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
+            // let bodyFormData = new FormData();
+            // bodyFormData.append("name", 'FERRON - '+payload.name+' '+gender);
+            // bodyFormData.append("phone", payload.phone);
+            // bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
             const options = {
                 method: 'POST',
-                body: bodyFormData,
+                body: JSON.stringify({
+                    name:'FERRON - '+payload.name+' '+gender,
+                    phone:payload.phone,
+                    image:linkQR
+                }),
                 headers: {
                     'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/dexa', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/ferron', options)
                 .then(response => response.json())
                 .then(response => {
-                    // console.log(response)
-                    setLinkQR(response.file)
+                    console.log(response)
+                    // setLinkQR(response.file)
                     // emitString("sendImage", response.file);
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
