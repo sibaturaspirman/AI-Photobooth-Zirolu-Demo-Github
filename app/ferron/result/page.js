@@ -107,7 +107,7 @@ export default function Result() {
             const options = {
                 method: 'POST',
                 body: JSON.stringify({
-                    name:'FERRON - '+payload.name+' '+gender,
+                    name:payload.name+' '+gender,
                     phone:payload.phone,
                     image:linkQR
                 }),
