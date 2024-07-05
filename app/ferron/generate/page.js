@@ -290,7 +290,7 @@ export default function GenerateAmero() {
                                     />
                                     </label>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <input
                                     id='choose_gender3'
                                     type="radio"
@@ -308,7 +308,7 @@ export default function GenerateAmero() {
                                         priority
                                     />
                                     </label>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
