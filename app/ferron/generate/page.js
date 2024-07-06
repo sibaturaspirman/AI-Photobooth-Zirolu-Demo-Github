@@ -49,6 +49,7 @@ export default function GenerateAmero() {
     const [numSteps, setNumSteps] = useState(80);
     const [styleGender, setStyleGender] = useState(null);
     const [styleFemale, setStyleFemale] = useState('normal');
+    const [styleMale, setStyleMale] = useState('normal');
     const [stylePrompt, setStylePrompt] = useState(null);
     const [styleNumber, setStyleNumber] = useState(null);
     const [character, setCharacter] = useState(null);
@@ -82,7 +83,7 @@ export default function GenerateAmero() {
         
         if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(1, 3))
+                generateImageSwap(styleMale, styleGender, getRandomInt(2, 3))
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
@@ -155,7 +156,12 @@ export default function GenerateAmero() {
 
          if(gender == 'male'){
             genderFix = 'm'
-            urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+            // urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+            if(character == 'normal'){
+                urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+            }else if(character == 'glasses'){
+                urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/m-1.jpg'
+            }
          }else{
             if(character == 'normal'){
                 urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/f-2.jpg'
@@ -362,6 +368,42 @@ export default function GenerateAmero() {
                                     />
                                     <label htmlFor="choose_female2" className='text-2xl'>with Hijab</label>
                                 </li>
+                            </ul>
+                        </div>
+                        }
+                        {styleGender == 'male' &&
+                        <div>
+                            <ul className='choose2'>
+                                {/* <li>
+                                    <input
+                                    id='choose_female'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female" className='text-2xl'>Normal</label>
+                                </li> */}
+                                <li>
+                                    <input
+                                    id='choose_male3'
+                                    type="radio"
+                                    name='choose_male'
+                                    value="glasses"
+                                    onChange={(e) => setStyleMale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_male3" className='text-2xl'>with Glasses</label>
+                                </li>
+                                {/* <li>
+                                    <input
+                                    id='choose_female2'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="hijab"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female2" className='text-2xl'>with Hijab</label>
+                                </li> */}
                             </ul>
                         </div>
                         }
