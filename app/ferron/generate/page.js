@@ -48,6 +48,7 @@ export default function GenerateAmero() {
     const [CGF, setCGF] = useState(13);
     const [numSteps, setNumSteps] = useState(80);
     const [styleGender, setStyleGender] = useState(null);
+    const [styleFemale, setStyleFemale] = useState('normal');
     const [stylePrompt, setStylePrompt] = useState(null);
     const [styleNumber, setStyleNumber] = useState(null);
     const [character, setCharacter] = useState(null);
@@ -85,14 +86,16 @@ export default function GenerateAmero() {
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(1, 2))
-            }, 500);
-        }else if(styleGender =='hijab'){
-            setTimeout(() => {
-                // generateImageSwap(character, styleGender, getRandomInt(1, 3))
-                generateImageSwap(character, styleGender, 1)
+                generateImageSwap(styleFemale, styleGender, getRandomInt(1, 3))
             }, 500);
         }
+        
+        // else if(styleGender =='hijab'){
+        //     setTimeout(() => {
+        //         // generateImageSwap(character, styleGender, getRandomInt(1, 3))
+        //         generateImageSwap(character, styleGender, 1)
+        //     }, 500);
+        // }
 
     }
 
@@ -147,7 +150,22 @@ export default function GenerateAmero() {
         if(gender == 'male') genderFix = 'm'
         else if(gender == 'female') genderFix = 'f'
         else if(gender == 'hijab') genderFix = 'h'
-        const urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+        // const urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+        let urlGambar = ''
+
+         if(gender == 'male'){
+            genderFix = 'm'
+            urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/'+genderFix+'-'+number+'.jpg'
+         }else{
+            if(character == 'normal'){
+                urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/f-2.jpg'
+            }else if(character == 'glasses'){
+                urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/f-1.jpg'
+            }else if(character == 'hijab'){
+                urlGambar = 'https://ai.zirolu.id/dexa/style/Juli2024/h-1.jpg'
+            }
+         }
+
         // const urlGambar = character;
         console.log(urlGambar)
         setNumProses(2)
@@ -193,7 +211,7 @@ export default function GenerateAmero() {
             }
         
             setTimeout(() => {
-                router.push('/dexa/result');
+                router.push('/ferron/result');
             }, 500);
         })
         } catch (error) {
@@ -208,7 +226,7 @@ export default function GenerateAmero() {
     return (
         <main className="flex fixed h-full w-full bg-dexa overflow-auto flex-col items-center justify-top pt-7 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogoFerron></TopLogoFerron>
-            <h1 className={`text-center text-4xl font-bold mt-5 mb-10 ${poppins.className} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE GENDER</h1>
+            <h1 className={`text-center text-4xl font-bold mt-5 mb-4 ${poppins.className} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE GENDER</h1>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -251,7 +269,7 @@ export default function GenerateAmero() {
                         {/* <label htmlFor="choose_gender" className={`block mb-5 lg:mb-5 text-2xl lg:text-5xl text-center font-bold text-white ${poppins.className}`}>I am</label> */}
                         <div>
                             {/* GENDER FIX */}
-                            <ul className='choose mod2'>
+                            <ul className='choose mod4'>
                                 <li>
                                     <input
                                     id='choose_gender1'
@@ -311,6 +329,42 @@ export default function GenerateAmero() {
                                 </li> */}
                             </ul>
                         </div>
+                        {styleGender == 'female' &&
+                        <div>
+                            <ul className='choose2'>
+                                {/* <li>
+                                    <input
+                                    id='choose_female'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female" className='text-2xl'>Normal</label>
+                                </li> */}
+                                <li>
+                                    <input
+                                    id='choose_female3'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="glasses"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female3" className='text-2xl'>with Glasses</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_female2'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="hijab"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female2" className='text-2xl'>with Hijab</label>
+                                </li>
+                            </ul>
+                        </div>
+                        }
                     </div>
                 </div>
                 {/* {prompt} */}
