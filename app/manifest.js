@@ -3,7 +3,7 @@ export default function manifest() {
       name: 'AI PHOTOBOOTH',
       short_name: 'AI PHOTOBOOTH',
       description: 'AI PHOTOBOOTH',
-      start_url: '/ferron',
+      start_url: '/veev',
       display: 'standalone',
       background_color: '#fff',
       theme_color: '#fff',
