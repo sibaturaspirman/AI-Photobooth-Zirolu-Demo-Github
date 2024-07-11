@@ -224,7 +224,7 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-xl border-2 border-[#201E28] text-center bg-[#571571] text-[#fff] lg:font-bold p-5 text-5xl w-[80%] lg:w-[80%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-xl border-2 border-[#201E28] text-center bg-[#571571] text-[#fff] lg:font-bold p-5 text-2xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
