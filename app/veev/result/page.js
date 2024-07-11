@@ -256,8 +256,8 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/veev/style' className="relative w-full mx-auto flex justify-center items-center">
-                                <Image src='/veev/btn-retake.png' width={600} height={100} alt='Zirolu' className='w-full' priority />
+                            <Link href='/veev' className="relative w-full mx-auto flex justify-center items-center">
+                                <Image src='/veev/btn-back.png' width={600} height={100} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
