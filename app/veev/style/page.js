@@ -27,14 +27,16 @@ function getRandomInt(min, max) {
 export default function Register() {
     const router = useRouter();
     const [character, setCharacter] = useState(null);
+    const [styleFemale, setStyleFemale] = useState('normal');
+    const [styleMale, setStyleMale] = useState('normal');
 
     const generateAI = () => {
         let urlGambar = '';
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'cowok'){
-            let randomGambar = getRandomInt(1, 15);
-            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-'+randomGambar+'.jpeg';
+            let randomGambar = getRandomInt(1, 2);
+            urlGambar = 'https://ai.zirolu.id/veev/style/m-'+randomGambar+'.png';
             // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-m-coba-'+1+'.jpeg';
             console.log(randomGambar)
 
@@ -43,10 +45,18 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'cewek'){
-            let randomGambar = getRandomInt(1, 11);
-            urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+randomGambar+'.jpeg';
-            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+14+'.jpeg';
-            console.log(randomGambar)
+            // let randomGambar = getRandomInt(1, 11);
+            // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+randomGambar+'.jpeg';
+            // // urlGambar = 'https://ai.zirolu.id/iqos/style/iqos-w-'+14+'.jpeg';
+            // console.log(randomGambar)
+
+
+            let randomGambar = getRandomInt(1, 2);
+            if(styleFemale == 'normal'){
+                urlGambar = 'https://ai.zirolu.id/veev/style/f-'+randomGambar+'.png'
+            }else if(styleFemale == 'hijab'){
+                urlGambar = 'https://ai.zirolu.id/veev/style/h-'+randomGambar+'.png'
+            }
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
@@ -113,6 +123,69 @@ export default function Register() {
                             </li>
                             </ul>
                         </div>
+
+                        {character == 'cewek' &&
+                        <div className="w-full">
+                            <ul className='choose4'>
+                                <li>
+                                    <input
+                                    id='choose_female'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female" className='text-2xl'>Default</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_female2'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="hijab"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female2" className='text-2xl'>with Hijab</label>
+                                </li>
+                                {/* <li>
+                                    <input
+                                    id='choose_female3'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="glasses"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female3" className='text-2xl'>with Glasses</label>
+                                </li> */}
+                            </ul>
+                        </div>
+                        }
+                        {/* {character == 'cowok' &&
+                        <div className="w-full">
+                            <ul className='choose4'>
+                                <li>
+                                    <input
+                                    id='choose_male2'
+                                    type="radio"
+                                    name='choose_male'
+                                    value="normal"
+                                    onChange={(e) => setStyleMale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_male2" className='text-2xl'>Default</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_male3'
+                                    type="radio"
+                                    name='choose_male'
+                                    value="glasses"
+                                    onChange={(e) => setStyleMale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_male3" className='text-2xl'>with Glasses</label>
+                                </li>
+                            </ul>
+                        </div>
+                        } */}
                     </div>
                 </div>
                 {character &&

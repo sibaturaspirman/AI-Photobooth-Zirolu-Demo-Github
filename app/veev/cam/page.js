@@ -158,7 +158,7 @@ export default function Cam() {
 
         
         // localStream.getVideoTracks()[0].stop();
-        console.log(streamCam)
+        // console.log(streamCam)
         // console.log(videoRef)
         // videoRef.src=''
         // STOP CAM
@@ -221,6 +221,7 @@ export default function Cam() {
         .then(dataUrl => {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
                 router.push('/veev/result');
