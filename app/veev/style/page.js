@@ -135,7 +135,7 @@ export default function Register() {
                                     value="normal"
                                     onChange={(e) => setStyleFemale(e.target.value)}
                                     />
-                                    <label htmlFor="choose_female" className='text-2xl'>Default</label>
+                                    <label htmlFor="choose_female" className='text-2xl'>without Hijab</label>
                                 </li>
                                 <li>
                                     <input
