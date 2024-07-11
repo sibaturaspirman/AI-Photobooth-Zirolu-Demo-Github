@@ -253,7 +253,7 @@ export default function Cam() {
                     <div className="relative w-[50%] mx-auto mb-5">
                         <Image src='/veev/AI photo.png' width={534} height={84} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative p-7 mt-10 text-4xl border-2 rounded-xl border-[#201E28] text-center bg-[#571571] text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative p-7 mt-10 text-3xl border-2 rounded-xl border-[#201E28] text-center bg-[#571571] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, AI Process...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
