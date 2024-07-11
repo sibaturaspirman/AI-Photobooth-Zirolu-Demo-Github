@@ -147,8 +147,7 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-        <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
+        <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <div className={`relative w-[60%] mx-auto mt-44 mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
             <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
             </div>
@@ -249,7 +248,7 @@ export default function Result() {
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                <Image src='/veev/btn-collect.png' width={616} height={120} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
@@ -258,7 +257,7 @@ export default function Result() {
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/veev/style' className="relative w-full mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                <Image src='/veev/btn-retake.png' width={600} height={100} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>

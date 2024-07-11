@@ -256,6 +256,23 @@ body{
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
+.choose.mod4.mod4m [type="radio"]:checked + label:after,
+.choose.mod4.mod4m [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 27px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
 .choose.mod5 [type="radio"]:checked + label:after,
 .choose.mod5 [type="radio"]:not(:checked) + label:after {
     content: '';
@@ -632,6 +649,13 @@ body{
 }
 .bg-iqos-border{
   background-image: url(../public/iqos/border.png);
+  background-size: cover;
+  background-position: top center;
+}
+
+/* VEEV */
+.bg-veev{
+  background-image: url(../public/veev/bg.jpg);
   background-size: cover;
   background-position: top center;
 }

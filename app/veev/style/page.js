@@ -1,9 +1,9 @@
 'use client';
 
-import * as fal from '@fal-ai/serverless-client';
+// import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo } from 'react';
-import TopLogoMizuho from "./../../components/TopLogoMizuho";
+import Link from 'next/link';
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import { useRouter } from 'next/navigation';
@@ -62,8 +62,7 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
+        <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <div className="relative w-[70%] mx-auto mt-[-5rem]">
             <Image src='/iqos/title-gender.png' width={562} height={62} alt='Zirolu' className='w-full' priority />
             </div>
@@ -73,8 +72,8 @@ export default function Register() {
                     <div className='relative w-full'>
                         <div className='overflow-hidden'>
                             {/* STYLE SEMENTARA */}
-                            <ul className='choose mod4'>
-                            <li>
+                            <ul className='choose mod4 mod4m'>
+                            <li className='pr-2'>
                                 <input
                                 id='choose_style1'
                                 type="radio"
@@ -85,15 +84,15 @@ export default function Register() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/iqos/gender-1.png"
+                                    src="/veev/gender-male.png"
                                     alt="icon"
-                                    width={421}
-                                    height={554}
+                                    width={592}
+                                    height={600}
                                     priority
                                 />
                                 </label>
                             </li>
-                            <li>
+                            <li className='pl-2'>
                                 <input
                                 id='choose_style2'
                                 type="radio"
@@ -104,10 +103,10 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/iqos/gender-2.png"
+                                    src="/veev/gender-female.png"
                                     alt="icon"
-                                    width={421}
-                                    height={554}
+                                    width={592}
+                                    height={600}
                                     priority
                                 />
                                 </label>
@@ -117,10 +116,13 @@ export default function Register() {
                     </div>
                 </div>
                 {character &&
-                    <div className="relative w-full flex justify-center items-center mt-5 z-20">
+                    <div className="relative w-full mt-10 z-20">
                         <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
-                            <Image src='/iqos/btn-takephoto.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                            <Image src='/veev/btn-takephoto.png' width={616} height={120} alt='Zirolu' className='w-full' priority />
                         </button>
+                        <Link href='/veev' className="relative mx-auto w-[100%] flex justify-center items-center">
+                            <Image src='/veev/btn-back.png' width={600} height={100} alt='Zirolu' className='w-full' priority />
+                        </Link>
                     </div>
                 }
             </div>

@@ -236,9 +236,8 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
-            <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+        <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            <div  className={`relative w-[50%] mx-auto mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
@@ -250,26 +249,26 @@ export default function Cam() {
                         </div>
                     </div> */}
 
-                    <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
+                    <div className="relative w-[50%] mx-auto mb-5">
+                        <Image src='/veev/AI photo.png' width={534} height={84} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative p-7 mt-10 text-4xl border-2 rounded-xl border-[#201E28] text-center bg-[#571571] text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#201E28] text-left bg-[#33303D] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
+                    {/* <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#201E28] text-left bg-[#33303D] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
                         AI generate face... <br></br>
                         Loading model..<br></br>
-                    </pre>
+                    </pre> */}
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -298,26 +297,26 @@ export default function Cam() {
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-3xl mt-4 mb-10 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
-                    <button className="relative mx-auto flex  w-[100%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/btn-capture.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                    <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
+                        <Image src='/veev/btn-capture.png' width={616} height={120} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col mt-0">
+                <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/iqos/btn-generate.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/veev/btn-surprise.png' width={616} height={120} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <button className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
                     </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
-                        <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/veev/btn-retake.png' width={600} height={100} alt='Zirolu' className='w-full' priority />
                     </button>
                     {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
                         <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
