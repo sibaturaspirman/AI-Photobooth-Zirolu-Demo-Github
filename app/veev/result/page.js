@@ -215,7 +215,7 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
-                <div className='relative w-[70%] mt-4 mb-10 mx-auto flex justify-center items-center'>
+                <div className='relative w-[66%] mt-4 mb-10 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capture'>
                         <div className={`relative w-full flex`}>
                             <Image src={imageResultAI}  width={1080} height={1920} alt='Zirolu' className='relative block w-full'></Image>
@@ -245,7 +245,7 @@ export default function Result() {
                     />
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
-                        <div className={`w-full mt-5`}>
+                        <div className={`w-full mt-2`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                 <Image src='/veev/btn-collect.png' width={616} height={120} alt='Zirolu' className='w-full' priority />

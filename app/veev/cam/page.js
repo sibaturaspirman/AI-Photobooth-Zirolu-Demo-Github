@@ -238,7 +238,7 @@ export default function Cam() {
 
     return (
         <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div  className={`relative w-[50%] mx-auto mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div  className={`relative w-[50%] mx-auto mb-5 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
@@ -269,7 +269,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mb-5 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -298,7 +298,7 @@ export default function Cam() {
 
 
             {!enabled && 
-                <p className='block text-center text-3xl mt-4 mb-10 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-3xl mt-4 mb-6 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
