@@ -40,7 +40,7 @@ export default function Register() {
     const generateAI = () => {
         let urlGambar = '';
 
-        if(styleFix == 'style1')
+        // if(styleFix == 'style1')
 
         if(character == 'cowok'){
             let randomGambar = getRandomInt(1, 2);
@@ -73,7 +73,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character+' - '+desti)
             }
         }
-        console.log(character)
+        // console.log(character)
         console.log(urlGambar)
 
         // setTimeout(() => {
@@ -136,7 +136,7 @@ export default function Register() {
                         </div>
                     </div>
                 </div>
-                {character &&
+                {genderFix &&
                     <div className="relative w-full flex justify-center items-center mt-10 z-20">
                         <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/iqos/neon/btn-take.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
