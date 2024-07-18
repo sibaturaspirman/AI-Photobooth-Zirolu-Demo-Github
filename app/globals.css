@@ -742,6 +742,13 @@ body{
   background-position: top center;
 }
 
+/* PLN */
+.bg-pln{
+  background-image: url(../public/pln/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* GAC */
 .bg-gac{
   background-image: url(../public/gac/bg-depan.jpeg);
