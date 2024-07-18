@@ -40,44 +40,29 @@ export default function Register() {
     const generateAI = () => {
         let urlGambar = '';
 
-        // if(styleFix == 'style1')
-
-        if(character == 'cowok'){
-            let randomGambar = getRandomInt(1, 2);
-            // urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'.jpg';
-            // console.log(randomGambar)
-
-            if(desti == 'komodo'){
-                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'-'+randomGambar+'.jpg';
+        if(styleFix == 'style1'){
+            if(genderFix == 'cowok'){
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/m-1.jpg';
             }else{
-                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cowok-'+desti+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/f-1.jpg';
             }
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character+' - '+desti)
-            }
-        }else if(character == 'cewek'){
-            let randomGambar = getRandomInt(1, 2);
-            // urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'.jpg';
-            // console.log(randomGambar)
-
-            if(desti == 'nias'){
-                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'-'+randomGambar+'.jpg';
+        }else{
+            if(genderFix == 'cowok'){
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/m-'+getRandomInt(1, 10)+'.jpg';
             }else{
-                urlGambar = 'https://ai.zirolu.id/iqos/nusantara/cewek-'+desti+'.jpg';
-            }
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character+' - '+desti)
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/f-'+getRandomInt(1, 4)+'.jpg';
             }
         }
-        // console.log(character)
+
+
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("genderFix", genderFix)
+            localStorage.setItem("urlFix", urlGambar)
+        }
         console.log(urlGambar)
 
         // setTimeout(() => {
-            router.push('/iqos2/cam');
+            router.push('/iqos3/cam');
         // }, 500);
     }
 

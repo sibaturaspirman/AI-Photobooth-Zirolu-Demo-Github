@@ -140,10 +140,10 @@ export default function Cam() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
+            const item1 = localStorage.getItem('urlFix')
             const item2 = localStorage.getItem('styleFix')
-            const item4 = localStorage.getItem('formasiFix')
-            setStyleFix(item2)
-            setFormasiFix(item4)
+            setStyleFix(item1)
+            setFormasiFix(item2)
         }
     }, [styleFix, formasiFix])
 
@@ -224,7 +224,11 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/iqos2/result');
+                if(formasiFix == 'style1'){
+                    router.push('/iqos3/result2');
+                }else{
+                    router.push('/iqos3/result');
+                }
             }, 200);
         })
         } catch (error) {
@@ -237,10 +241,10 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
-            <div  className={`relative w-[50%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/iqos/title-take.png' width={356} height={62} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+            {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
+            <div  className={`relative w-[90%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <Image src='/iqos/neon/takephoto.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
             </div>
             {/* LOADING */}
             {numProses1 && 
@@ -252,15 +256,15 @@ export default function Cam() {
                     </div> */}
 
                     <div className="relative w-[70%] mx-auto mb-5">
-                        <Image src='/iqos/title.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/neon/Curious.png' width={803} height={206} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 border-[#201E28] text-center bg-[#33303D] text-[#fff] lg:font-bold'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-2xl border-2 text-center bg-[#A91E58] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 border-[#201E28] text-left bg-[#33303D] text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
+                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 text-left bg-[#A91E58] rounded-xl text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
@@ -292,8 +296,8 @@ export default function Cam() {
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-[80%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[80%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-[70%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[70%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
@@ -303,26 +307,20 @@ export default function Cam() {
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
-                    <button className="relative mx-auto flex  w-[100%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/btn-capture.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                    <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
+                        <Image src='/iqos/neon/btn-capture.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col mt-0">
+                <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/iqos/btn-generate.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/neon/btn-generate.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <button className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-download.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </button> */}
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
-                        <Image src='/iqos/btn-retake.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/neon/btn-retake.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
                     </button>
-                    {/* <a href='/cam' className="relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-retake.png' width={820} height={192} alt='Zirolu' className='w-full' priority />
-                    </a> */}
                 </div>
             </div></div>
         </main>
