@@ -241,7 +241,7 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div  className={`relative w-[90%] mx-auto mt-[-5rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/neon/takephoto.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
@@ -264,13 +264,13 @@ export default function Cam() {
                         {error}
                     </div>
 
-                    <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 text-left bg-[#A91E58] rounded-xl text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
+                    {/* <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 text-left bg-[#A91E58] rounded-xl text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
                         AI generate face... <br></br>
                         Loading model..<br></br>
-                    </pre>
+                    </pre> */}
                 </div>
             }
             {/* LOADING */}
@@ -291,13 +291,13 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[58%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[50%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-[70%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[70%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 

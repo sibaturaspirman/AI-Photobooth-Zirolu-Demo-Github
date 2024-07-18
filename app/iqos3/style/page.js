@@ -40,7 +40,7 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div className="relative w-[90%] mx-auto mt-0">
             <Image src='/iqos/neon/select.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
@@ -94,13 +94,13 @@ export default function Register() {
                         </div>
                     </div>
                 </div>
-                {character &&
-                    <div className="relative w-full flex justify-center items-center mt-5 z-20">
+                {/* {character && */}
+                    <div className={`relative w-full flex justify-center items-center mt-5 z-20 ${character ? `` : 'opacity-0 pointer-events-none'}`}>
                         <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/iqos/neon/btn-continue.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
-                }
+                {/* } */}
             </div>
             {/* !PILIH STYLE */}
         </main>

@@ -148,7 +148,7 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
+        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
         <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
             <div className={`relative w-[60%] mx-auto mt-[17rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 <Image src='/iqos/neon/yourphoto.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
