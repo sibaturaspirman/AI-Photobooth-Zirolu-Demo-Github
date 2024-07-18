@@ -42,9 +42,9 @@ export default function Register() {
 
         if(styleFix == 'style1'){
             if(genderFix == 'cowok'){
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/m-1.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/m-'+getRandomInt(1, 2)+'.jpg';
             }else{
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/f-1.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/f-'+getRandomInt(1, 2)+'.jpg';
             }
         }else{
             if(genderFix == 'cowok'){
