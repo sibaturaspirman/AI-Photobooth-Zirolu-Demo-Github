@@ -40,7 +40,7 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-iqos-neon overflow-hidden flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div className="relative w-[90%] mx-auto mt-0">
             <Image src='/iqos/neon/select.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
