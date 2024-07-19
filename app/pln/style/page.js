@@ -33,7 +33,7 @@ export default function Register() {
         let urlGambar = '';
 
         if(character == 'cowok'){
-            let randomGambar = getRandomInt(1,2);
+            let randomGambar = getRandomInt(1,3);
             urlGambar = 'https://ai.zirolu.id/pln/style/m-'+randomGambar+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
@@ -42,7 +42,7 @@ export default function Register() {
             }
         }else{
             if(styleFemale == 'normal'){
-                let randomGambar = getRandomInt(1,3);
+                let randomGambar = getRandomInt(1,4);
                 urlGambar = 'https://ai.zirolu.id/pln/style/f-'+randomGambar+'.jpg';
     
                 if (typeof localStorage !== 'undefined') {
