@@ -397,46 +397,12 @@ export default function Cam() {
         //     },
         //   });
         //   console.log(result);
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        const raw = JSON.stringify({
-        "clientId": "DwRa1sKRHA7NFcsxPOf53g==",
-        "clientSecret": "B469tIUppiqYZpqe81b6i+l/iZ9o8pQe"
-        });
-
-        const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
-        };
-
-        fetch("https://openapi.akool.com/api/open/v3/getToken", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error));
-        
         // const myHeaders = new Headers();
-        // myHeaders.append("Authorization", "Bearer token");
         // myHeaders.append("Content-Type", "application/json");
 
         // const raw = JSON.stringify({
-        //     "sourceImage": [
-        //         {
-        //         "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1694593694387-4562-0-1694593694575-0526.png",
-        //         "opts": "262,175:363,175:313,215:272,279"
-        //         }
-        //     ],
-        //     "targetImage": [
-        //         {
-        //         "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1705462509874-9254-0-1705462510015-9261.png",
-        //         "opts": "239,364:386,366:317,472:266,539"
-        //         }
-        //     ],
-        //     "face_enhance": 0,
-        //     "modifyImage": "https://d21ksh0k4smeql.cloudfront.net/bdd1c994c4cd7a58926088ae8a479168-1705462506461-1966.jpeg",
-        //     "webhookUrl": "http://localhost:3007/api/webhook"
+        // "clientId": "DwRa1sKRHA7NFcsxPOf53g==",
+        // "clientSecret": "B469tIUppiqYZpqe81b6i+l/iZ9o8pQe"
         // });
 
         // const requestOptions = {
@@ -446,10 +412,44 @@ export default function Cam() {
         // redirect: "follow"
         // };
 
-        // fetch("https://openapi.akool.com/api/open/v3/faceswap/highquality/specifyimage", requestOptions)
+        // fetch("https://openapi.akool.com/api/open/v3/getToken", requestOptions)
         // .then((response) => response.text())
         // .then((result) => console.log(result))
         // .catch((error) => console.error(error));
+        
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWIyNTM5ZTUwOWMxYWFmYjhjNTY4NyIsInVpZCI6MzE1Nzc1NSwiZW1haWwiOiJhc2VwaXJtYW5AYW50aWdyYXZpdHkuaWQiLCJjcmVkZW50aWFsSWQiOiI2NjliMjcyYWU1MDljMWFhZmI4YzU4YmYiLCJmaXJzdE5hbWUiOiJBc2VwIiwiZnJvbSI6InRvTyIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzIxNDQ1NjIyLCJleHAiOjIwMzI0ODU2MjJ9.HQYviO_e0E1GrI_212ROxyh9JeqBHF3NGlTWDYYjBQw");
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "sourceImage": [
+                {
+                "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1694593694387-4562-0-1694593694575-0526.png",
+                "opts": "262,175:363,175:313,215:272,279"
+                }
+            ],
+            "targetImage": [
+                {
+                "path": "https://ai.zirolu.id/pln/style/m-1.jpg",
+                "opts": "239,364:386,366:317,472:266,539"
+                }
+            ],
+            "face_enhance": 0,
+            "modifyImage": "https://ai.zirolu.id/pln/style/m-1.jpg",
+            "webhookUrl": "http://localhost:3007/api/webhook"
+        });
+
+        const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+        };
+
+        await fetch("https://openapi.akool.com/api/open/v3/faceswap/highquality/specifyimage", requestOptions)
+        .then((response) => console.log(response))
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
     };
 
     const generateImageSwap = async () => {
