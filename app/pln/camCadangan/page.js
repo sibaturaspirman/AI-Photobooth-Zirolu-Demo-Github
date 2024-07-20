@@ -18,11 +18,6 @@ fal.config({
 });
 
 
-const replicate = new Replicate({
-    auth: process.env.REPLICATE_API_TOKEN
-});
-
-
 let streamCam = null;
 const useWebcam = ({
     videoRef
@@ -190,17 +185,39 @@ export default function Cam() {
     }))
 
     const generateImageSwapCadangan = async () => {
-        setNumProses(2)
-        reset2();
-        setLoading(true);
+        // setNumProses(2)
+        // reset2();
+        // setLoading(true);
 
-        const input = {
-            swap_image: "https://replicate.delivery/pbxt/JoBuzfSVFLb5lBqkf3v9xMnqx3jFCYhM5JcVInFFwab8sLg0/long-trench-coat.png",
-            target_image: "https://replicate.delivery/pbxt/JoBuz3wGiVFQ1TDEcsGZbYcNh0bHpvwOi32T1fmxhRujqcu7/9X2.png"
-        };
+        // const input = {
+        //     swap_image: "https://replicate.delivery/pbxt/JoBuzfSVFLb5lBqkf3v9xMnqx3jFCYhM5JcVInFFwab8sLg0/long-trench-coat.png",
+        //     target_image: "https://replicate.delivery/pbxt/JoBuz3wGiVFQ1TDEcsGZbYcNh0bHpvwOi32T1fmxhRujqcu7/9X2.png"
+        // };
         
-        const output = await replicate.run("omniedgeio/face-swap:d28faa318942bf3f1cbed9714def03594f99b3c69b2eb279c39fc60993cee9ac", { input });
-        console.log(output)
+        // const output = await replicate.run("omniedgeio/face-swap:d28faa318942bf3f1cbed9714def03594f99b3c69b2eb279c39fc60993cee9ac", { input });
+        // console.log(output)
+
+        // const url = 'https://faceswap-image-transformation-api.p.rapidapi.com/faceswap';
+        // const options = {
+        //     method: 'POST',
+        //     headers: {
+        //         'x-rapidapi-key': 'a568238313msh378bd947dea8e5ap180ee5jsn4f7215336ac1',
+        //         'x-rapidapi-host': 'faceswap-image-transformation-api.p.rapidapi.com',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: {
+        //         TargetImageUrl: 'https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcT2xYTv3ig7zGLvs0ABliV1ZMWG-0waOX_P6nd03SJnDLVoTiSnvuCMJ-dNpQhhYXTC',
+        //         SourceImageUrl: 'https://m.media-amazon.com/images/M/MV5BMTQzMjkwNTQ2OF5BMl5BanBnXkFtZTgwNTQ4MTQ4MTE@._V1_.jpg'
+        //     }
+        // };
+
+        // try {
+        //     const response = await fetch(url, options);
+        //     const result = await response.text();
+        //     console.log(result);
+        // } catch (error) {
+        //     console.error(error);
+        // }
 
         // const options = {
         //     method: 'POST',
@@ -228,6 +245,116 @@ export default function Cam() {
         //     .catch(err => {
         //         console.log(err)
         //     });
+
+        setNumProses(2)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        // try {
+        // const result = await fal.subscribe(
+        //     'comfy/sibaturaspirman/fal-faceswap',
+        //     {
+        //     input: {
+        //         inputImage: 'https://ai.zirolu.id/pln/style/m-1.jpg',
+        //         sourceImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Elon_Musk_in_2023_%28cropped%29.jpg/440px-Elon_Musk_in_2023_%28cropped%29.jpg'
+        //     },
+        //     pollInterval: 5000, // Default is 1000 (every 1s)
+        //     logs: true,
+        //     onQueueUpdate(update) {
+        //         setElapsedTime(Date.now() - start);
+        //         if (
+        //         update.status === 'IN_PROGRESS' ||
+        //         update.status === 'COMPLETED'
+        //         ) {
+        //         setLogs((update.logs || []).map((log) => log.message));
+        //         }
+        //     },
+        //     }
+        // );
+
+        // // const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+        // //     input: {
+        // //       inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+        // //       sourceImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Elon_Musk_in_2023_%28cropped%29.jpg/440px-Elon_Musk_in_2023_%28cropped%29.jpg"
+        // //     },
+        // //     logs: true,
+        // //     onQueueUpdate: (update) => {
+        // //       if (update.status === "IN_PROGRESS") {
+        // //         update.logs.map((log) => log.message).forEach(console.log);
+        // //       }
+        // //     },
+        // //   });
+
+        // setResultFaceSwap(result);
+        // FACE_URL_RESULT= result.image.url;
+
+        // toDataURL(FACE_URL_RESULT)
+        // .then(dataUrl => {
+        //     if (typeof localStorage !== 'undefined') {
+        //         localStorage.setItem("resulAIBase64", dataUrl)
+        //         localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+        //     }
+        //     setTimeout(() => {
+        //         router.push('/pln/result');
+        //     }, 200);
+        // })
+        // } catch (error) {
+        //     setError(error);
+        // } finally {
+        //     setLoading(false);
+        //     setElapsedTime(Date.now() - start);
+        // }
+        // @snippet:end
+
+        // try {
+        //     const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+        //         input: {
+        //         inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //         sourceImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Elon_Musk_in_2023_%28cropped%29.jpg/440px-Elon_Musk_in_2023_%28cropped%29.jpg"
+        //         },
+        //         logs: true,
+        //         onQueueUpdate: (update) => {
+        //         if (update.status === "IN_PROGRESS") {
+        //             update.logs.map((log) => log.message).forEach(console.log);
+        //         }
+        //         },
+        //     });
+        //     setResultFaceSwap(result);
+        //     FACE_URL_RESULT= result.image.url;
+        //     console.log(FACE_URL_RESULT)
+
+        //     toDataURL(FACE_URL_RESULT)
+        //     .then(dataUrl => {
+        //         if (typeof localStorage !== 'undefined') {
+        //             localStorage.setItem("resulAIBase64", dataUrl)
+        //             localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+        //         }
+        //         // setTimeout(() => {
+        //         //     router.push('/pln/result');
+        //         // }, 200);
+        //     })
+        // } catch (error) {
+        //     setError(error);
+        // } finally {
+        //     setLoading(false);
+        //     setElapsedTime(Date.now() - start);
+        // }
+        const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+            input: {
+              inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+              sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
+            },
+            logs: true,
+            onQueueUpdate: (update) => {
+              if (update.status === "IN_PROGRESS") {
+                update.logs.map((log) => log.message).forEach(console.log);
+              }
+            },
+          });
+          setResultFaceSwap(result);
+            FACE_URL_RESULT= result.image.url;
+            console.log(FACE_URL_RESULT)
     };
 
     const generateImageSwap = async () => {
@@ -243,24 +370,24 @@ export default function Cam() {
         setLoading(true);
         const start = Date.now();
         try {
-        const result = await fal.subscribe(
+            const result = await fal.subscribe(
             'fal-ai/face-swap',
             {
-            input: {
-                base_image_url: styleFix,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
+                input: {
+                    base_image_url: styleFix,
+                    swap_image_url: imageFile
+                },
+                pollInterval: 5000, // Default is 1000 (every 1s)
+                logs: true,
+                onQueueUpdate(update) {
+                    setElapsedTime(Date.now() - start);
+                    if (
+                    update.status === 'IN_PROGRESS' ||
+                    update.status === 'COMPLETED'
+                    ) {
+                    setLogs((update.logs || []).map((log) => log.message));
+                    }
+                },
             }
         );
         setResultFaceSwap(result);
