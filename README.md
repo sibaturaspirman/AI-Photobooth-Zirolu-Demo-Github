@@ -1,23 +1,9 @@
 ## HAVE TO FIXED
 1. Responsive ✅
 2. Skin Zirolu ✅
-3. Add Style
-4. 
-5. 
 
-## PAGE
-1. Disney ✅
-2. Avatar ✅
-3. Amero ✅
-4. XXI ✅
-5. KAI (update mobile friendly)
-6. Taro ✅
-7. Mobile Legend ✅
-8. Vespa Mini ✅
-9. Uniqlo
-10. Moslem ✅
-11. BX Sea ✅
-12. Other (faceswap)
+Secret : B469tIUppiqYZpqe81b6i+l/iZ9o8pQe
+Client ID : DwRa1sKRHA7NFcsxPOf53g==
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

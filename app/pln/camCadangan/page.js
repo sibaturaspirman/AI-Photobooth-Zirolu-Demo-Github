@@ -10,11 +10,11 @@ import { useRouter } from 'next/navigation';
 
 // @snippet:start(client.config)
 fal.config({
-    credentials: '26eb7078-7780-4257-99c9-907b12153ed6:cb5ce36d66049ed8882f989fc75ad54e',
-    // requestMiddleware: fal.withProxy({
-    //   targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
+    // credentials: process.env.FAL_KEY,
+    requestMiddleware: fal.withProxy({
+        targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
     //   // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
-    // }),
+    }),
 });
 
 
@@ -342,33 +342,114 @@ export default function Cam() {
         // }
 
 
-        const start = Date.now();
-        try {
-            const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
-                input: {
-                inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
-                sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
-                },
-                logs: true,
-                onQueueUpdate(update) {
-                    setElapsedTime(Date.now() - start);
-                    if (
-                    update.status === 'IN_PROGRESS' ||
-                    update.status === 'COMPLETED'
-                    ) {
-                    setLogs((update.logs || []).map((log) => log.message));
-                    }
-                },
-            });
-            setResultFaceSwap(result);
-            FACE_URL_RESULT= result.image.url;
-            console.log(FACE_URL_RESULT)
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
+        // const start = Date.now();
+        // try {
+        //     const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+        //         input: {
+        //         inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //         sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
+        //         },
+        //         logs: true,
+        //         onQueueUpdate(update) {
+        //             setElapsedTime(Date.now() - start);
+        //             if (
+        //             update.status === 'IN_PROGRESS' ||
+        //             update.status === 'COMPLETED'
+        //             ) {
+        //             setLogs((update.logs || []).map((log) => log.message));
+        //             }
+        //         },
+        //     });
+        //     setResultFaceSwap(result);
+        //     FACE_URL_RESULT= result.image.url;
+        //     console.log(FACE_URL_RESULT)
+        // } catch (error) {
+        //     setError(error);
+        // } finally {
+        //     setLoading(false);
+        //     setElapsedTime(Date.now() - start);
+        // }
+
+        // const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+        //     input: {
+        //       inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //       sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
+        //     },
+        //     logs: true,
+        //     onQueueUpdate: (update) => {
+        //       if (update.status === "IN_PROGRESS") {
+        //         update.logs.map((log) => log.message).forEach(console.log);
+        //       }
+        //     },
+        //   });
+
+        // const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
+        //     input: {
+        //       prompt: "a cute puppy",
+        //     },
+        //     pollInterval: 500,
+        //     logs: true,
+        //     onQueueUpdate: (update) => {
+        //       console.log(update.status);
+        //       if (update.status === "IN_PROGRESS") {
+        //         update.logs.map((log) => log.message).forEach(console.log);
+        //       }
+        //     },
+        //   });
+        //   console.log(result);
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+        "clientId": "DwRa1sKRHA7NFcsxPOf53g==",
+        "clientSecret": "B469tIUppiqYZpqe81b6i+l/iZ9o8pQe"
+        });
+
+        const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+        };
+
+        fetch("https://openapi.akool.com/api/open/v3/getToken", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
+        
+        // const myHeaders = new Headers();
+        // myHeaders.append("Authorization", "Bearer token");
+        // myHeaders.append("Content-Type", "application/json");
+
+        // const raw = JSON.stringify({
+        //     "sourceImage": [
+        //         {
+        //         "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1694593694387-4562-0-1694593694575-0526.png",
+        //         "opts": "262,175:363,175:313,215:272,279"
+        //         }
+        //     ],
+        //     "targetImage": [
+        //         {
+        //         "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1705462509874-9254-0-1705462510015-9261.png",
+        //         "opts": "239,364:386,366:317,472:266,539"
+        //         }
+        //     ],
+        //     "face_enhance": 0,
+        //     "modifyImage": "https://d21ksh0k4smeql.cloudfront.net/bdd1c994c4cd7a58926088ae8a479168-1705462506461-1966.jpeg",
+        //     "webhookUrl": "http://localhost:3007/api/webhook"
+        // });
+
+        // const requestOptions = {
+        // method: "POST",
+        // headers: myHeaders,
+        // body: raw,
+        // redirect: "follow"
+        // };
+
+        // fetch("https://openapi.akool.com/api/open/v3/faceswap/highquality/specifyimage", requestOptions)
+        // .then((response) => response.text())
+        // .then((result) => console.log(result))
+        // .catch((error) => console.error(error));
     };
 
     const generateImageSwap = async () => {
@@ -499,7 +580,7 @@ export default function Cam() {
                 </div>
             }
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
+            <div className={`relative w-full ${!enabled ? 'hiddexn' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/pln/btn-generate.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
