@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+
 // @snippet:start(client.config)
 fal.config({
     // credentials: 'FAL_KEY_ID:FAL_KEY_SECRET',
@@ -50,8 +51,6 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
-
-    console.log(process.env.REPLICATE_API_TOKEN)
 
     useWebcam({ videoRef,previewRef});
 
@@ -202,6 +201,33 @@ export default function Cam() {
         
         const output = await replicate.run("omniedgeio/face-swap:d28faa318942bf3f1cbed9714def03594f99b3c69b2eb279c39fc60993cee9ac", { input });
         console.log(output)
+
+        // const options = {
+        //     method: 'POST',
+        //     body:{
+        //         'target_image':'https://ai.zirolu.id/pln/style/m-1.jpg',
+        //         'swap_image':'https://ai.zirolu.id/pln/style/m-2.jpg'
+        //     },
+        //     headers: {
+        //         'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU1NTkxMCwicHJvZHVjdF9jb2RlIjoiMDY3MDAzIiwidGltZSI6MTcyMTQzMTMxMX0.Fa1dYWmW5-iIL57NMtp9b6_jefeTfU4aw8xrsVxACZg',
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // };
+        
+        // await fetch('https://developer.remaker.ai/api/remaker/v1/face-swap/create-job', options)
+        //     .then(response => response.json())
+        //     .then(response => {
+        //         console.log(response)
+        //         // setLinkQR(response.file)
+        //         // emitString("sendImage", response.file);
+        //         // setIdFormEmail(response.id)
+        //         // setGenerateQR('true')
+        //         // setLoadingDownload(null)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     });
     };
 
     const generateImageSwap = async () => {
