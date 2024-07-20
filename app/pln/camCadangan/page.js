@@ -1,7 +1,7 @@
 'use client';
 
 import * as fal from '@fal-ai/serverless-client';
-import Replicate from "replicate";
+// import Replicate from "replicate";
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
@@ -10,11 +10,11 @@ import { useRouter } from 'next/navigation';
 
 // @snippet:start(client.config)
 fal.config({
-    // credentials: 'FAL_KEY_ID:FAL_KEY_SECRET',
-    requestMiddleware: fal.withProxy({
-      targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
-      // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
-    }),
+    credentials: '26eb7078-7780-4257-99c9-907b12153ed6:cb5ce36d66049ed8882f989fc75ad54e',
+    // requestMiddleware: fal.withProxy({
+    //   targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
+    //   // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
+    // }),
 });
 
 
@@ -250,7 +250,7 @@ export default function Cam() {
         reset2();
         // @snippet:start("client.queue.subscribe")
         setLoading(true);
-        const start = Date.now();
+        // const start = Date.now();
         // try {
         // const result = await fal.subscribe(
         //     'comfy/sibaturaspirman/fal-faceswap',
@@ -340,21 +340,35 @@ export default function Cam() {
         //     setLoading(false);
         //     setElapsedTime(Date.now() - start);
         // }
-        const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
-            input: {
-              inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
-              sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
-            },
-            logs: true,
-            onQueueUpdate: (update) => {
-              if (update.status === "IN_PROGRESS") {
-                update.logs.map((log) => log.message).forEach(console.log);
-              }
-            },
-          });
-          setResultFaceSwap(result);
+
+
+        const start = Date.now();
+        try {
+            const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
+                input: {
+                inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+                sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
+                },
+                logs: true,
+                onQueueUpdate(update) {
+                    setElapsedTime(Date.now() - start);
+                    if (
+                    update.status === 'IN_PROGRESS' ||
+                    update.status === 'COMPLETED'
+                    ) {
+                    setLogs((update.logs || []).map((log) => log.message));
+                    }
+                },
+            });
+            setResultFaceSwap(result);
             FACE_URL_RESULT= result.image.url;
             console.log(FACE_URL_RESULT)
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
     };
 
     const generateImageSwap = async () => {
