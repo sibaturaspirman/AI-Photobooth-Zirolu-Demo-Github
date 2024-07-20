@@ -17,6 +17,11 @@ fal.config({
 });
 
 
+const replicate = new Replicate({
+    auth: 'r8_JZNPotQtYjvAm45CsguXVSnjIWLaU7210J5eF'
+});
+
+
 let streamCam = null;
 const useWebcam = ({
     videoRef
@@ -46,11 +51,7 @@ export default function Cam() {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
 
-    const replicate = new Replicate({
-        auth: 'r8_CHWwzMfoVMHi3BLgPebYCHaGXDtvZQh2bIJUU'
-    });
-
-    console.log(process.env.REPLICATE_API_TOKEN)
+    console.log(process.env.FAL_KEY)
 
     useWebcam({ videoRef,previewRef});
 
