@@ -18,7 +18,7 @@ fal.config({
 
 
 const replicate = new Replicate({
-    auth: 'r8_J058YhKMa3pg8oyzxiGDo7iFHyA6eIL2yGMNa'
+    auth: process.env.REPLICATE_API_TOKEN
 });
 
 
