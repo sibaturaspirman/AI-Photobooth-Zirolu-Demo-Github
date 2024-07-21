@@ -47,7 +47,7 @@ export default function Cam() {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
 
-    useWebcam({ videoRef,previewRef});
+    // useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
         width = 512,
@@ -370,18 +370,19 @@ export default function Cam() {
         //     setElapsedTime(Date.now() - start);
         // }
 
-        // const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap", {
-        //     input: {
-        //       inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
-        //       sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
-        //     },
-        //     logs: true,
-        //     onQueueUpdate: (update) => {
-        //       if (update.status === "IN_PROGRESS") {
-        //         update.logs.map((log) => log.message).forEach(console.log);
-        //       }
-        //     },
-        //   });
+        const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap2", {
+            input: {
+              inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+              sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
+            },
+            logs: true,
+            onQueueUpdate: (update) => {
+                console.log(update)
+            //   if (update.status === "IN_PROGRESS") {
+            //     update.logs.map((log) => log.message).forEach(console.log);
+            //   }
+            },
+        });
 
         // const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
         //     input: {
@@ -396,7 +397,8 @@ export default function Cam() {
         //       }
         //     },
         //   });
-        //   console.log(result);
+          console.log(result);
+
         // const myHeaders = new Headers();
         // myHeaders.append("Content-Type", "application/json");
 
@@ -417,39 +419,39 @@ export default function Cam() {
         // .then((result) => console.log(result))
         // .catch((error) => console.error(error));
         
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWIyNTM5ZTUwOWMxYWFmYjhjNTY4NyIsInVpZCI6MzE1Nzc1NSwiZW1haWwiOiJhc2VwaXJtYW5AYW50aWdyYXZpdHkuaWQiLCJjcmVkZW50aWFsSWQiOiI2NjliMjcyYWU1MDljMWFhZmI4YzU4YmYiLCJmaXJzdE5hbWUiOiJBc2VwIiwiZnJvbSI6InRvTyIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzIxNDQ1NjIyLCJleHAiOjIwMzI0ODU2MjJ9.HQYviO_e0E1GrI_212ROxyh9JeqBHF3NGlTWDYYjBQw");
-        myHeaders.append("Content-Type", "application/json");
+        // const myHeaders = new Headers();
+        // myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWIyNTM5ZTUwOWMxYWFmYjhjNTY4NyIsInVpZCI6MzE1Nzc1NSwiZW1haWwiOiJhc2VwaXJtYW5AYW50aWdyYXZpdHkuaWQiLCJjcmVkZW50aWFsSWQiOiI2NjliMjcyYWU1MDljMWFhZmI4YzU4YmYiLCJmaXJzdE5hbWUiOiJBc2VwIiwiZnJvbSI6InRvTyIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzIxNDQ1NjIyLCJleHAiOjIwMzI0ODU2MjJ9.HQYviO_e0E1GrI_212ROxyh9JeqBHF3NGlTWDYYjBQw");
+        // myHeaders.append("Content-Type", "application/json");
 
-        const raw = JSON.stringify({
-            "sourceImage": [
-                {
-                "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1694593694387-4562-0-1694593694575-0526.png",
-                "opts": "262,175:363,175:313,215:272,279"
-                }
-            ],
-            "targetImage": [
-                {
-                "path": "https://ai.zirolu.id/pln/style/m-1.jpg",
-                "opts": "239,364:386,366:317,472:266,539"
-                }
-            ],
-            "face_enhance": 0,
-            "modifyImage": "https://ai.zirolu.id/pln/style/m-1.jpg",
-            "webhookUrl": "http://localhost:3007/api/webhook"
-        });
+        // const raw = JSON.stringify({
+        //     "sourceImage": [
+        //         {
+        //         "path": "https://d21ksh0k4smeql.cloudfront.net/crop_1694593694387-4562-0-1694593694575-0526.png",
+        //         "opts": "262,175:363,175:313,215:272,279"
+        //         }
+        //     ],
+        //     "targetImage": [
+        //         {
+        //         "path": "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //         "opts": "239,364:386,366:317,472:266,539"
+        //         }
+        //     ],
+        //     "face_enhance": 0,
+        //     "modifyImage": "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //     "webhookUrl": "http://localhost:3007/api/webhook"
+        // });
 
-        const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
-        };
+        // const requestOptions = {
+        // method: "POST",
+        // headers: myHeaders,
+        // body: raw,
+        // redirect: "follow"
+        // };
 
-        await fetch("https://openapi.akool.com/api/open/v3/faceswap/highquality/specifyimage", requestOptions)
-        .then((response) => console.log(response))
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error));
+        // await fetch("https://openapi.akool.com/api/open/v3/faceswap/highquality/specifyimage", requestOptions)
+        // .then((response) => console.log(response))
+        // .then((result) => console.log(result))
+        // .catch((error) => console.error(error));
     };
 
     const generateImageSwap = async () => {
