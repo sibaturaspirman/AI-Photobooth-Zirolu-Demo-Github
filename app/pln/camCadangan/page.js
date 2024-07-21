@@ -370,34 +370,34 @@ export default function Cam() {
         //     setElapsedTime(Date.now() - start);
         // }
 
-        const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap2", {
-            input: {
-              inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
-              sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
-            },
-            logs: true,
-            onQueueUpdate: (update) => {
-                console.log(update)
-            //   if (update.status === "IN_PROGRESS") {
-            //     update.logs.map((log) => log.message).forEach(console.log);
-            //   }
-            },
-        });
-
-        // const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
+        // const result = await fal.subscribe("comfy/sibaturaspirman/fal-faceswap2", {
         //     input: {
-        //       prompt: "a cute puppy",
+        //       inputImage: "https://ai.zirolu.id/pln/style/m-1.jpg",
+        //       sourceImage: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1459166552.jpeg"
         //     },
-        //     pollInterval: 500,
         //     logs: true,
         //     onQueueUpdate: (update) => {
-        //       console.log(update.status);
-        //       if (update.status === "IN_PROGRESS") {
-        //         update.logs.map((log) => log.message).forEach(console.log);
-        //       }
+        //         console.log(update)
+        //     //   if (update.status === "IN_PROGRESS") {
+        //     //     update.logs.map((log) => log.message).forEach(console.log);
+        //     //   }
         //     },
-        //   });
-          console.log(result);
+        // });
+
+        const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
+            input: {
+              prompt: "a cute puppy",
+            },
+            pollInterval: 500,
+            logs: true,
+            onQueueUpdate: (update) => {
+              console.log(update.status);
+              if (update.status === "IN_PROGRESS") {
+                update.logs.map((log) => log.message).forEach(console.log);
+              }
+            },
+        });
+        console.log(result);
 
         // const myHeaders = new Headers();
         // myHeaders.append("Content-Type", "application/json");
