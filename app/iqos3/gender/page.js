@@ -43,18 +43,22 @@ export default function Register() {
         if(styleFix == 'style1'){
             if(genderFix == 'cowok'){
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/m-'+getRandomInt(1, 2)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/m-'+getRandomInt(1, 2)+'.jpg';
+                // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/m-'+getRandomInt(1, 2)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/little/m-'+getRandomInt(1, 2)+'.jpg';
             }else{
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/f-'+getRandomInt(1, 2)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/f-'+getRandomInt(1, 2)+'.jpg';
+                // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/f-'+getRandomInt(1, 2)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/little/f-'+getRandomInt(1, 2)+'.jpg';
             }
         }else{
             if(genderFix == 'cowok'){
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/m-'+getRandomInt(1, 10)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/m-'+getRandomInt(1, 7)+'.jpg';
+                // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/m-'+getRandomInt(1, 7)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/little/m-'+getRandomInt(1, 7)+'.jpg';
             }else{
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/f-'+getRandomInt(1, 4)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/f-'+getRandomInt(1, 4)+'.jpg';
+                // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/f-'+getRandomInt(1, 4)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/little/f-'+getRandomInt(1, 4)+'.jpg';
             }
         }
 
