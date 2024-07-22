@@ -1,12 +1,36 @@
 'use client';
 
 import * as fal from '@fal-ai/serverless-client';
-// import Replicate from "replicate";
+import Replicate from "replicate";
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+// const axios = require('axios');
+import axios from 'axios';
+
+// const fs = require('fs');
+// const path = require('path');
+
+// async function toB64(imgPath) {
+//     const data = fs.readFileSync(path.resolve(imgPath));
+//     return Buffer.from(data).toString('base64');
+// }
+
+const api_key = 'SG_8bc7975ff91a8b13';
+const url = "https://api.segmind.com/v1/faceswap-v2";
+
+// (async function() {
+//     try {
+//         const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+//         console.log(response.data);
+//     } catch (error) {
+//         console.error('Error:', error.response.data);
+//     }
+// })();
+
+const replicate = new Replicate();
 
 // @snippet:start(client.config)
 fal.config({
@@ -37,10 +61,14 @@ const useWebcam = ({
 };
 
 let FACE_URL_RESULT = ''
+
+let sourceImage = '', targetImage = '';
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [sourceImages, setSourceImages] = useState();
+    const [targetImages, setTargetImages] = useState();
     // const [countDown, setCoundown] = useState(5);
     // const [counter, setCounter] = useState(60);
     // const waktuBatasTake = useRef(null);
@@ -185,6 +213,30 @@ export default function Cam() {
     }))
 
     const generateImageSwapCadangan = async () => {
+        const data = {
+            "source_img": 'https://www.segmind.com/elon.jpg',
+            "target_img": 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/m-5.jpg',
+            "input_faces_index": 0,
+            "source_faces_index": 0,
+            "face_restore": "codeformer-v0.1.0.pth",
+            "base64": true
+        };
+
+
+        // "face_restore": "GFPGANv1.4.pth",
+
+        try {
+            const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+            console.log(response);
+            localStorage.setItem("resulAIBase64", 'data:image/png;base64,'+response.data.image)
+            setTimeout(() => {
+                router.push('/pln/result');
+            }, 200);
+            
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+
         // setNumProses(2)
         // reset2();
         // setLoading(true);
@@ -384,20 +436,20 @@ export default function Cam() {
         //     },
         // });
 
-        const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
-            input: {
-              prompt: "a cute puppy",
-            },
-            pollInterval: 500,
-            logs: true,
-            onQueueUpdate: (update) => {
-              console.log(update.status);
-              if (update.status === "IN_PROGRESS") {
-                update.logs.map((log) => log.message).forEach(console.log);
-              }
-            },
-        });
-        console.log(result);
+        // const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
+        //     input: {
+        //       prompt: "a cute puppy",
+        //     },
+        //     pollInterval: 500,
+        //     logs: true,
+        //     onQueueUpdate: (update) => {
+        //       console.log(update.status);
+        //       if (update.status === "IN_PROGRESS") {
+        //         update.logs.map((log) => log.message).forEach(console.log);
+        //       }
+        //     },
+        // });
+        // console.log(result);
 
         // const myHeaders = new Headers();
         // myHeaders.append("Content-Type", "application/json");
@@ -582,7 +634,7 @@ export default function Cam() {
                 </div>
             }
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <div className={`relative w-full ${!enabled ? 'hiddexn' : ''}`}>
+            <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/pln/btn-generate.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
