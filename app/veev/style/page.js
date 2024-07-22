@@ -51,11 +51,12 @@ export default function Register() {
             // console.log(randomGambar)
 
 
-            let randomGambar = getRandomInt(1, 2);
             if(styleFemale == 'normal'){
-                urlGambar = 'https://ai.zirolu.id/veev/style/cewek-1.jpg'
+                let randomGambar = getRandomInt(1, 2);
+                urlGambar = 'https://ai.zirolu.id/veev/style/cewek-'+randomGambar+'.jpg'
             }else if(styleFemale == 'hijab'){
-                urlGambar = 'https://ai.zirolu.id/veev/style/hijab-1.jpg'
+                let randomGambar = getRandomInt(1, 2);
+                urlGambar = 'https://ai.zirolu.id/veev/style/hijab-'+randomGambar+'.jpg'
             }
 
             if (typeof localStorage !== 'undefined') {
