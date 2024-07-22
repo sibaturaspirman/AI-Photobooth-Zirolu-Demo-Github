@@ -77,7 +77,7 @@ export default function Result() {
     let componentRef = useRef();
     const [payload, setPayload] = useState({
         name: 'IQOS',
-        phone: '00000',
+        phone: '00001',
       });
     const { Canvas } = useQRCode();
 
@@ -112,25 +112,59 @@ export default function Result() {
         setLoadingDownload('≈')
 
         canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", 'IQOS NEON - '+formasiFix);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
+            // let bodyFormData = new FormData();
+            // bodyFormData.append("name", 'IQOS NEON - '+formasiFix);
+            // bodyFormData.append("phone", payload.phone);
+            // bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
+            // const options = {
+            //     method: 'POST',
+            //     body: bodyFormData,
+            //     headers: {
+            //         'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+            //         'Accept': 'application/json',
+            //     }
+            // };
+            
+            // await fetch('https://photo-ai-iims.zirolu.id/v1/iqos', options)
+            //     .then(response => response.json())
+            //     .then(response => {
+            //         // console.log(response)
+            //         // setLinkQR(response.file)
+            //         setIdFormEmail(response.id)
+            //         setGenerateQR('true')
+            //         setLoadingDownload(null)
+            //     })
+            //     .catch(err => {
+            //         if (typeof localStorage !== 'undefined') {
+            //             const item = localStorage.getItem('faceURLResult')
+            //             setShowEmail('true')
+            //             setLinkQR(item)
+            //             setGenerateQR('true')
+            //             setLoadingDownload(null)
+            //         }
+            //     });
+
             const options = {
                 method: 'POST',
-                body: bodyFormData,
+                body: JSON.stringify({
+                    name:'IQOS NEON - '+formasiFix,
+                    phone:payload.phone,
+                    image:linkQR
+                }),
                 headers: {
                     'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/iqos', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
                 .then(response => response.json())
                 .then(response => {
-                    // console.log(response)
+                    console.log(response)
                     // setLinkQR(response.file)
+                    // emitString("sendImage", response.file);
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
