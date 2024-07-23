@@ -109,7 +109,9 @@ export default function Result() {
         }).catch(e => {console("load failed")})
     }
     const uploadImage = async (canvas) => {
-        setLoadingDownload('≈')
+        // setLoadingDownload('≈')
+        setGenerateQR('true')
+        //             setLoadingDownload(null)
 
         // canvas.toBlob(async function(blob) {
         //     let bodyFormData = new FormData();
