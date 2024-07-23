@@ -29,10 +29,10 @@ export default function IQOSHome() {
                   id='choose_lokasi1'
                   type="radio"
                   name='choose_lokasi'
-                  value="patalunia"
+                  value="tapalunia"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Patalunia</label>
+                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Tapalunia</label>
               </li>
               <li className="w-full mt-5">
                   <input
