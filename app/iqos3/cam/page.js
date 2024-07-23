@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { getCookie } from 'cookies-next';
 
 // @snippet:start(client.config)
 fal.config({
@@ -313,11 +314,22 @@ export default function Cam() {
                 </div>
             }
 
+            {getCookie('lokasiIQOS') != 'swill' &&
             <div className={`absolute pointer-events-none bottom-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className={`relative w-full`}>
                     <Image src='/iqos/neon/look.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
             </div>
+            }
+
+
+            {getCookie('lokasiIQOS') == 'swill' &&
+            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className={`relative w-full`}>
+                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
+                </div>
+            </div>
+            }
 
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>

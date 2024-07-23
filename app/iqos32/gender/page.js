@@ -7,6 +7,7 @@ import { useEffect, useState, useMemo } from 'react';
 // import { Paytone_One} from "next/font/google";
 // const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import { useRouter } from 'next/navigation';
+import { getCookie } from 'cookies-next';
 // import io from 'socket.io-client';
 
 // @snippet:start(client.config)
@@ -44,21 +45,21 @@ export default function Register() {
             if(genderFix == 'cowok'){
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/m-'+getRandomInt(1, 2)+'.jpg';
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/m-'+getRandomInt(1, 2)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/little/m-'+getRandomInt(1, 2)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/'+getCookie('lokasiIQOS')+'/m-'+getRandomInt(1, 2)+'.jpg';
             }else{
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/f-'+getRandomInt(1, 2)+'.jpg';
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/titiktemu/f-'+getRandomInt(1, 2)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/little/f-'+getRandomInt(1, 2)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style1/'+getCookie('lokasiIQOS')+'/f-'+getRandomInt(1, 2)+'.jpg';
             }
         }else{
             if(genderFix == 'cowok'){
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/m-'+getRandomInt(1, 10)+'.jpg';
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/m-'+getRandomInt(1, 7)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/little/m-'+getRandomInt(1, 7)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/'+getCookie('lokasiIQOS')+'/m-'+getRandomInt(1, 7)+'.jpg';
             }else{
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/f-'+getRandomInt(1, 4)+'.jpg';
                 // urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/titiktemu/f-'+getRandomInt(1, 4)+'.jpg';
-                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/little/f-'+getRandomInt(1, 4)+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/neon/style2/'+getCookie('lokasiIQOS')+'/f-'+getRandomInt(1, 4)+'.jpg';
             }
         }
 

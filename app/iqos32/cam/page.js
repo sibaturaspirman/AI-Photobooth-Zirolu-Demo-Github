@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import { getCookie } from 'cookies-next';
 
 const api_key = 'SG_8bc7975ff91a8b13';
 const url = "https://api.segmind.com/v1/faceswap-v2";
@@ -247,7 +248,7 @@ export default function Cam() {
             const options = {
                 method: 'POST',
                 body: JSON.stringify({
-                    name:'IQOS NEON - '+formasiFix,
+                    name:'IQOS NEON - '+formasiFix+' - '+getCookie('lokasiIQOS'),
                     phone:'000',
                     image:'data:image/png;base64,'+response.data.image
                 }),
@@ -425,11 +426,22 @@ export default function Cam() {
                 </div>
             }
 
+            {getCookie('lokasiIQOS') != 'swill' &&
             <div className={`absolute pointer-events-none bottom-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className={`relative w-full`}>
                     <Image src='/iqos/neon/look.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
             </div>
+            }
+
+
+            {getCookie('lokasiIQOS') == 'swill' &&
+            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className={`relative w-full`}>
+                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
+                </div>
+            </div>
+            }
 
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>

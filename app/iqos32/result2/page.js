@@ -204,7 +204,7 @@ export default function Result() {
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <Link href='/iqos3' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link> */}
-                    <Link href='/iqos32' className="w-[70%] relative mx-auto mt-10 flex justify-center items-center">
+                    <Link href='/iqos32/home' className="w-[70%] relative mx-auto mt-10 flex justify-center items-center">
                         <Image src='/iqos/neon/btn-back.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>

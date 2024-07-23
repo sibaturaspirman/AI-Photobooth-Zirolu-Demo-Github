@@ -1,45 +1,89 @@
+'use client';
 
 import Image from "next/image";
-import Link from 'next/link';
-
-// const useWebcam = ({
-//   videoRef
-// }) => {
-//   useEffect(() => {
-//     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//       navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
-//         if (videoRef.current !== null) {
-//           stream.stop()
-//           // videoRef.current.srcObject = stream;
-//           // videoRef.current.play();
-//         }
-//       });
-//     }
-//   }, [videoRef]);
-// };
+// import Link from 'next/link';
+import { setCookie } from 'cookies-next';
+import { useEffect, useRef, useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function IQOSHome() {
+  const router = useRouter();
+  const [lokasi, setLokasi] = useState(null);
 
-  // const videoRef = useRef(null);
-  // const previewRef = useRef(null);
-  // useWebcam({ videoRef,previewRef});
+  const handleSubmit = () => {
+    setCookie('lokasiIQOS', lokasi);
+    setTimeout(() => {
+        router.push('/iqos32/home');
+    }, 250);
+  }
 
   return (
-    <Link href='/iqos32/style' className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
-      {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
-      <div className="relative w-[75%] mx-auto mt-0 pointer-events-none">
-        <Image src='/iqos/neon/title.png' width={803} height={256} alt='Zirolu' className='w-full' priority />
-      </div>
-      <div className="relative w-full flex justify-center items-center mt-5 mb-6 lg:mt-24 lg:mb-14 opacity-0">
-        <div className='relative w-[90%] mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/iqos/preview2.png' width={864} height={721} alt='Zirolu' className='w-full' priority />
+    <div className="flex fixed h-full w-full bg-iqos-neon overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+      <div className="relative w-[90%] mt-5 mb-10 lg:mt-20 lg:mb-14">
+        <div className='relative w-full hiddenx'>
+          <label htmlFor="choose_stasiun" className="block mb-5 lg:mb-5 text-2xl lg:text-5xl text-center font-bold text-white">Pilih Lokasi</label>
+          <div>
+            <ul className='choose2-amero text-5xl flex-col'>
+              <li className="w-full mt-5">
+                  <input
+                  id='choose_lokasi1'
+                  type="radio"
+                  name='choose_lokasi'
+                  value="patalunia"
+                  onChange={(e) => setLokasi(e.target.value)}
+                  />
+                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Patalunia</label>
+              </li>
+              <li className="w-full mt-5">
+                  <input
+                  id='choose_lokasi2'
+                  type="radio"
+                  name='choose_lokasi'
+                  value="jackson"
+                  onChange={(e) => setLokasi(e.target.value)}
+                  />
+                  <label htmlFor="choose_lokasi2" className='text-2xl lg:h-[140px] lg:text-4xl'>Ms. Jackson</label>
+              </li>
+              <li className="w-full mt-5">
+                  <input
+                  id='choose_lokasi3'
+                  type="radio"
+                  name='choose_lokasi'
+                  value="izzy"
+                  onChange={(e) => setLokasi(e.target.value)}
+                  />
+                  <label htmlFor="choose_lokasi3" className='text-2xl lg:h-[140px] lg:text-4xl'>Izzy Social Club</label>
+              </li>
+              <li className="w-full mt-5">
+                  <input
+                  id='choose_lokasi4'
+                  type="radio"
+                  name='choose_lokasi'
+                  value="swill"
+                  onChange={(e) => setLokasi(e.target.value)}
+                  />
+                  <label htmlFor="choose_lokasi4" className='text-2xl lg:h-[140px] lg:text-4xl'>Swill House</label>
+              </li>
+              <li className="w-full mt-5">
+                  <input
+                  id='choose_lokasi5'
+                  type="radio"
+                  name='choose_lokasi'
+                  value="continent"
+                  onChange={(e) => setLokasi(e.target.value)}
+                  />
+                  <label htmlFor="choose_lokasi5" className='text-2xl lg:h-[140px] lg:text-4xl'>Continent</label>
+              </li>
+            </ul>
+          </div>
         </div>
+        {lokasi &&
+        <div className="relative w-full flex justify-center items-center lg:mt-20">
+          <div className="relative mx-auto flex w-[90%] justify-center items-center" onClick={handleSubmit}>
+          <Image src='/iqos/neon/btn-continue.png' width={775} height={180} alt='Zirolu' className='w-full' priority />
+          </div>
+        </div>}
       </div>
-      <div className="relative w-full flex justify-center items-center lg:mt-20 pointer-events-none">
-        <div className="relative mx-auto flex w-[68%] justify-center items-center">
-          <Image src='/iqos/neon/tap.png' width={731} height={39} alt='Zirolu' className='w-full' priority />
-        </div>
-      </div>
-    </Link>
+    </div>
   );
 }
