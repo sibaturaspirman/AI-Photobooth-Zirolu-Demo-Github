@@ -29,32 +29,32 @@ export default function IQOSHome() {
                   id='choose_lokasi1'
                   type="radio"
                   name='choose_lokasi'
-                  value="tapalunia"
+                  value="am"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Tapalunia</label>
+                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>AM Lounge</label>
               </li>
               <li className="w-full mt-5">
                   <input
                   id='choose_lokasi2'
                   type="radio"
                   name='choose_lokasi'
-                  value="jackson"
+                  value="penn"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi2" className='text-2xl lg:h-[140px] lg:text-4xl'>Ms. Jackson</label>
+                  <label htmlFor="choose_lokasi2" className='text-2xl lg:h-[140px] lg:text-4xl'>Penn</label>
               </li>
               <li className="w-full mt-5">
                   <input
                   id='choose_lokasi3'
                   type="radio"
                   name='choose_lokasi'
-                  value="izzy"
+                  value="zoo"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi3" className='text-2xl lg:h-[140px] lg:text-4xl'>Izzy Social Club</label>
+                  <label htmlFor="choose_lokasi3" className='text-2xl lg:h-[140px] lg:text-4xl'>Zoo</label>
               </li>
-              <li className="w-full mt-5">
+              {/* <li className="w-full mt-5">
                   <input
                   id='choose_lokasi4'
                   type="radio"
@@ -73,7 +73,7 @@ export default function IQOSHome() {
                   onChange={(e) => setLokasi(e.target.value)}
                   />
                   <label htmlFor="choose_lokasi5" className='text-2xl lg:h-[140px] lg:text-4xl'>Continent</label>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
