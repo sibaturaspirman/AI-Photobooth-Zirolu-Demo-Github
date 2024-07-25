@@ -304,7 +304,7 @@ export default function Cam() {
 
 
             {!enabled && 
-                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Lihat ke kamera di bawah<br></br>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
