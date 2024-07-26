@@ -176,7 +176,7 @@ export default function Cam() {
                         {/* <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                             <Image src='/mizuho/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button> */}
-                        <Link href='/mizuho/cam/camf2-final' className="w-full relative mx-auto flex justify-center items-center">
+                        <Link href='/inlay/cam/camf2-final' className="w-full relative mx-auto flex justify-center items-center">
                             <Image src='/mizuho/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </Link>
                         <button className="relative mx-auto flex justify-center items-center mt-2" onClick={retake}>
