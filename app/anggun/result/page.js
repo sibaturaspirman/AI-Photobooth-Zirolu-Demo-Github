@@ -19,12 +19,12 @@ export default function Result() {
     const [loadingDownload, setLoadingDownload] = useState(null);
     let componentRef = useRef();
 
-    const [payload, setPayload] = useState({
-      name: 'MLB',
-      phone: '001',
-      stasiun: getCookie('stasiun'),
-      stasiunName: getCookie('stasiunName'),
-    });
+    // const [payload, setPayload] = useState({
+    //   name: 'MLB',
+    //   phone: '001',
+    //   stasiun: getCookie('stasiun'),
+    //   stasiunName: getCookie('stasiunName'),
+    // });
     const { Canvas } = useQRCode();
 
     useEffect(() => {
@@ -38,11 +38,11 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'CollectYourPhoto'
-        })
+        // gtag('event', 'ClickButton', {
+        //     event_category: 'Button',
+        //     event_label: 'ResultPage - '+payload.stasiunName,
+        //     event_action: 'CollectYourPhoto'
+        // })
         
         // import('html2canvas').then(html2canvas => {
         //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
@@ -90,11 +90,11 @@ export default function Result() {
         });
     }
     const backHome = () => {
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'BackToHome'
-        })
+        // gtag('event', 'ClickButton', {
+        //     event_category: 'Button',
+        //     event_label: 'ResultPage - '+payload.stasiunName,
+        //     event_action: 'BackToHome'
+        // })
     }
 
     
@@ -139,7 +139,7 @@ export default function Result() {
 
                     <div className={`fixed left-0 bottom-0 w-full`}>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col" onClick={backHome}>
-                            <Link href='/home' className="relative w-full mx-auto flex justify-center items-center pb-14">
+                            <Link href='/anggun' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/anggun/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
@@ -167,7 +167,7 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
                 {imageResultAI && 
-                <div className='relative w-[90%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[80%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>

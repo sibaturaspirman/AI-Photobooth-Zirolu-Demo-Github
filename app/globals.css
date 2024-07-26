@@ -480,6 +480,10 @@ body{
   border-radius: 20px;
   font-weight: bold;
 }
+
+.choose4.mod li label{
+  color: #000;
+}
 .choose4 [type="radio"]:checked,
 .choose4 [type="radio"]:not(:checked) {
     position: absolute;
@@ -489,6 +493,14 @@ body{
 
 .choose4 [type="radio"]:checked + label{
   background-color: #571571;
+  border-color: #fff;
+  box-shadow: 0px 0px 8px 0px #efedea;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.choose4.mod [type="radio"]:checked + label{
+  background-color: #000;
   border-color: #fff;
   box-shadow: 0px 0px 8px 0px #efedea;
   color: #fff !important;

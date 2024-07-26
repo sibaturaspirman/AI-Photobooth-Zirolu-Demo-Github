@@ -38,6 +38,7 @@ export default function GenerateAmero() {
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
+    const [styleFemale, setStyleFemale] = useState('normal');
     // Result state
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -55,13 +56,22 @@ export default function GenerateAmero() {
     }, [imageFile])
 
     const generateAI = () => {
+        setNumProses1(true)    
         if(styleGender =='male'){
-            setNumProses1(true)    
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
         }else if(styleGender =='female'){
-            router.push('/anggun/female');
+            if(styleFemale =='hijab'){
+                setTimeout(() => {
+                    generateImageSwap('hijab', getRandomInt(1, 2))
+                }, 500);
+            }else{
+                setTimeout(() => {
+                    generateImageSwap(styleGender, getRandomInt(1, 5))
+                }, 500);
+            }
+            // router.push('/anggun/female');
             // setTimeout(() => {
             //     generateImageSwap(styleGender, getRandomInt(1, 5))
             // }, 500);
@@ -121,7 +131,7 @@ export default function GenerateAmero() {
 
     const generateImageSwap = async (gender, number) => {
         const urlGambar = 'https://ai.zirolu.id/anggun/style/'+gender+'-'+number+'.jpg'
-        // console.log(urlGambar)
+        console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -212,7 +222,7 @@ export default function GenerateAmero() {
                         <div className='relative w-[60%] mb-12 mx-auto'>
                             <Image src='/anggun/title-identity.png' width={542} height={119} alt='Zirolu' className='w-full' priority />
                         </div>
-                        <div className='w-[72%] mx-auto'>
+                        <div className='w-[90%] mx-auto'>
                             {/* GENDER FIX */}
                             <ul className='choose mod7'>
                                 <li className='mb-10'>
@@ -273,6 +283,32 @@ export default function GenerateAmero() {
                                     </label>
                                 </li> */}
                             </ul>
+                            {styleGender == 'female' &&
+                            <div className="mt-10">
+                                <ul className='choose4 mod'>
+                                    <li>
+                                        <input
+                                        id='choose_female3'
+                                        type="radio"
+                                        name='choose_female'
+                                        value="normal"
+                                        onChange={(e) => setStyleFemale(e.target.value)}
+                                        />
+                                        <label htmlFor="choose_female3" className='text-5xl'>without Hijab</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                        id='choose_female2'
+                                        type="radio"
+                                        name='choose_female'
+                                        value="hijab"
+                                        onChange={(e) => setStyleFemale(e.target.value)}
+                                        />
+                                        <label htmlFor="choose_female2" className='text-5xl'>with Hijab</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>
