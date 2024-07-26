@@ -164,7 +164,7 @@ export default function Result() {
                     </div>
                     <div className='w-full'>
                         <div className="relative w-[50%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/mizuho/style' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/inlay/style' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
