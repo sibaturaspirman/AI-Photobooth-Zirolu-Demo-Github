@@ -205,7 +205,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/mizuho/result');
+                router.push('/inlay/result');
             }, 500);
         })
         } catch (error) {

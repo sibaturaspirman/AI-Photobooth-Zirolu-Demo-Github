@@ -33,20 +33,27 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 9)+'.jpeg';
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
-            }
-        }else if(character == 'formasi-7'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/inlay/m-'+getRandomInt(1, 5)+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-2'){
+            urlGambar = 'https://ai.zirolu.id/inlay/c-'+getRandomInt(1, 5)+'.jpg';
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("formasiFix", character)
+            }
+        }else if(character == 'formasi-3'){
+            urlGambar = 'https://ai.zirolu.id/inlay/h-'+getRandomInt(1, 5)+'.jpg';
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("formasiFix", character)
+            }
+        }else if(character == 'formasi-4'){
             let randomGambar = getRandomInt(1, 5);
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
@@ -57,7 +64,7 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-3'){
+        }else if(character == 'formasi-5'){
             let randomGambar = getRandomInt(1, 2);
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-right.jpeg';
@@ -68,7 +75,7 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-4'){
+        }else if(character == 'formasi-6'){
             let randomGambar = getRandomInt(1, 5);
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-left.jpeg';
             urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-right.jpeg';
@@ -79,35 +86,6 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-5'){
-            let randomGambar = getRandomInt(1, 4);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-right.jpeg';
-            // urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-left.png';
-            // urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-center.png';
-            // urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-right.png';
-            console.log(randomGambar)
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("styleFix2", urlGambar2)
-                localStorage.setItem("styleFix3", urlGambar3)
-                localStorage.setItem("formasiFix", character)
-            }
-        }else if(character == 'formasi-6'){
-            let randomGambar = getRandomInt(1, 4);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c6-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c6-'+randomGambar+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c6-'+randomGambar+'-right.jpeg';
-            console.log(randomGambar)
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("styleFix2", urlGambar2)
-                localStorage.setItem("styleFix3", urlGambar3)
-                localStorage.setItem("formasiFix", character)
-            }
         }
         console.log(character)
         console.log(urlGambar)
@@ -115,12 +93,10 @@ export default function Register() {
         console.log(urlGambar3)
 
         setTimeout(() => {
-            if(character == 'formasi-2' || character == 'formasi-3' || character == 'formasi-4'){
-                router.push('/mizuho/cam/camf2');
-            }else if(character == 'formasi-5' || character == 'formasi-6'){
-                router.push('/mizuho/cam/camf3');
+            if(character == 'formasi-4' || character == 'formasi-5' || character == 'formasi-6'){
+                router.push('/inlay/cam/camf2');
             }else{
-                router.push('/mizuho/cam');
+                router.push('/inlay/cam');
             }
         }, 500);
     }
@@ -149,45 +125,7 @@ export default function Register() {
                                     <label htmlFor="choose_style1">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-1.png"
-                                        alt="icon"
-                                        width={365}
-                                        height={640}
-                                        priority
-                                    />
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style7'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="formasi-7"
-                                    onChange={(e) => setCharacter(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_style7">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/mizuho/formasi-7.png"
-                                        alt="icon"
-                                        width={365}
-                                        height={640}
-                                        priority
-                                    />
-                                    </label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_style3'
-                                    type="radio"
-                                    name='choose_style'
-                                    value="formasi-2"
-                                    onChange={(e) => setCharacter(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_style3">
-                                    <Image
-                                        className="relative h-auto w-full"
-                                        src="/mizuho/formasi-2.png"
+                                        src="/inlay/formasi-1.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -200,13 +138,32 @@ export default function Register() {
                                     id='choose_style2'
                                     type="radio"
                                     name='choose_style'
-                                    value="formasi-3"
+                                    value="formasi-2"
                                     onChange={(e) => setCharacter(e.target.value)}
                                     />
                                     <label htmlFor="choose_style2">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-3.png"
+                                        src="/inlay/formasi-2.png"
+                                        alt="icon"
+                                        width={365}
+                                        height={640}
+                                        priority
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_style3'
+                                    type="radio"
+                                    name='choose_style'
+                                    value="formasi-3"
+                                    onChange={(e) => setCharacter(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_style3">
+                                    <Image
+                                        className="relative h-auto w-full"
+                                        src="/inlay/formasi-3.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -225,7 +182,7 @@ export default function Register() {
                                     <label htmlFor="choose_style4">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-4.png"
+                                        src="/inlay/formasi-4.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -244,7 +201,7 @@ export default function Register() {
                                     <label htmlFor="choose_style5">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-5.png"
+                                        src="/inlay/formasi-5.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -263,7 +220,7 @@ export default function Register() {
                                     <label htmlFor="choose_style6">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-6.png"
+                                        src="/inlay/formasi-6.png"
                                         alt="icon"
                                         width={365}
                                         height={640}

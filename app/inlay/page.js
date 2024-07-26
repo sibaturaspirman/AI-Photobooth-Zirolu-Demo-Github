@@ -25,7 +25,7 @@ export default function MizuhoHome() {
           {/* <Link href='/register' className="relative mx-auto flex w-[70%] justify-center items-center">
             <Image src='/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
           </Link> */}
-          <Link href='/inlay/how' className="relative mx-auto flex w-[50%] justify-center items-center">
+          <Link href='/inlay/style' className="relative mx-auto flex w-[50%] justify-center items-center">
             <Image src='/mizuho/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
           </Link>
         </div>
