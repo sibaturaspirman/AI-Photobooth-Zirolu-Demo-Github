@@ -55,8 +55,8 @@ export default function Register() {
             }
         }else if(character == 'formasi-4'){
             let randomGambar = getRandomInt(1, 5);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/inlay/f4-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/inlay/f4-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -65,7 +65,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-5'){
-            let randomGambar = getRandomInt(1, 2);
+            let randomGambar = getRandomInt(1, 4);
             urlGambar = 'https://ai.zirolu.id/inlay/f5-'+randomGambar+'-left.jpg';
             urlGambar2 = 'https://ai.zirolu.id/inlay/f5-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
