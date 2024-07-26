@@ -29,7 +29,7 @@ export default function Result() {
     let componentRef = useRef();
     const [payload, setPayload] = useState({
         name: 'INLAY',
-        phone: '00001',
+        phone: '00002',
       });
     const { Canvas } = useQRCode();
 

@@ -28,8 +28,8 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'MIZUHO',
-        phone: '00001',
+        name: 'INLAY',
+        phone: '00002',
       });
     const { Canvas } = useQRCode();
 
