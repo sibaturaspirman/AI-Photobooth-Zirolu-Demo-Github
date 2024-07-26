@@ -76,9 +76,9 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-6'){
-            let randomGambar = getRandomInt(1, 5);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-right.jpeg';
+            let randomGambar = getRandomInt(1, 4);
+            urlGambar = 'https://ai.zirolu.id/inlay/f6-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/inlay/f6-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
