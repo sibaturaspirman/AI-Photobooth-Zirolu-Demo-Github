@@ -690,6 +690,13 @@ body{
   background-position: top center;
 }
 
+/* ANGGUN */
+.bg-anggun{
+  background-image: url(../public/anggun/bg.jpeg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* HMS */
 .bg-hms{
   background-image: url(../public/hms/bg2.jpeg);
