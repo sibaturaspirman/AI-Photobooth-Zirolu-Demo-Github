@@ -315,7 +315,7 @@ export default function Cam() {
             }
 
             {/* {(getCookie('lokasiIQOS') != 'swill' || getCookie('lokasiIQOS') != 'jackson') && */}
-            <div className={`absolute pointer-events-none bottom-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0' : ''} ${(getCookie('lokasiIQOS') == 'embassy') ? '' : 'opacity-0'}`}>
+            <div className={`absolute pointer-events-none bottom-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0' : ''} ${(getCookie('lokasiIQOS') == 'nube') ? '' : 'opacity-0'}`}>
                 <div className={`relative w-full`}>
                     <Image src='/iqos/neon/look.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
@@ -324,7 +324,7 @@ export default function Cam() {
 
 
             {/* {(getCookie('lokasiIQOS') == 'swill' || getCookie('lokasiIQOS') == 'jackson') && */}
-            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''} ${(getCookie('lokasiIQOS') == 'embassy') ? 'opacity-0' : ''}`}>
+            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''} ${(getCookie('lokasiIQOS') == 'nube') ? 'opacity-0' : ''}`}>
                 <div className={`relative w-full`}>
                     <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
