@@ -62,7 +62,7 @@ export default function GenerateAmero() {
                 localStorage.setItem("styleGender", styleGender)
             }
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 5))
+                generateImageSwap(styleGender, getRandomInt(1, 4))
             }, 500);
         }else if(styleGender =='female'){
             if(styleFemale =='hijab'){
