@@ -16,6 +16,7 @@ export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
+    const [styleGender, setStyleGender] = useState(null);
     const [loadingDownload, setLoadingDownload] = useState(null);
     let componentRef = useRef();
 
@@ -32,10 +33,12 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('faceURLResult')
+            const item3 = localStorage.getItem('styleGender')
             setImageResultAI(item)
             setLinkQR(item2)
+            setStyleGender(item3)
         }
-    }, [imageResultAI, linkQR])
+    }, [imageResultAI, linkQR, styleGender])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -49,45 +52,45 @@ export default function Result() {
         //         uploadImage(canvas)
         //     )
         // }).catch(e => {console("load failed")})
+        uploadImage()
         setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
 
-        canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("totemId", payload.stasiun);
-            bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
-          
-            const options = {
-                method: 'POST',
-                body: bodyFormData,
-                headers: {
-                    'Authorization': 'af879432-317d-40b4-88f8-d4c02267112b:VDNwFD1gOp86AKVEqlCIbfVN4evXoBxL',
-                    'Accept': 'application/json',
-                }
-            };
-            
-            await fetch('https://api.discoveryournextjourney.com/v1/photoai', options)
-                .then(response => response.json())
-                .then(response => {
-                    // console.log(response)
-                    // console.log(response.file)
-                    setLinkQR(response.file)
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                name:'ANGGUN - '+styleGender,
+                phone:'0003',
+                image:linkQR
+            }),
+            headers: {
+                'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        };
+        
+        await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                // setLinkQR(response.file)
+                // emitString("sendImage", response.file);
+                // setIdFormEmail(response.id)
+                setGenerateQR('true')
+                setLoadingDownload(null)
+            })
+            .catch(err => {
+                if (typeof localStorage !== 'undefined') {
+                    const item = localStorage.getItem('faceURLResult')
+                    // setShowEmail('true')
+                    setLinkQR(item)
                     setGenerateQR('true')
                     setLoadingDownload(null)
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        setLinkQR(item)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
-        });
+                }
+            });
     }
     const backHome = () => {
         // gtag('event', 'ClickButton', {

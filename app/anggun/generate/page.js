@@ -58,17 +58,26 @@ export default function GenerateAmero() {
     const generateAI = () => {
         setNumProses1(true)    
         if(styleGender =='male'){
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleGender", styleGender)
+            }
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
         }else if(styleGender =='female'){
             if(styleFemale =='hijab'){
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("styleGender", styleGender+' - '+styleFemale)
+                }
                 setTimeout(() => {
                     generateImageSwap('hijab', getRandomInt(1, 2))
                 }, 500);
             }else{
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("styleGender", styleGender)
+                }
                 setTimeout(() => {
-                    generateImageSwap(styleGender, getRandomInt(1, 5))
+                    generateImageSwap(styleGender, getRandomInt(1, 4))
                 }, 500);
             }
             // router.push('/anggun/female');
