@@ -244,7 +244,7 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div>  */}
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    {/* <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-2`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
@@ -252,7 +252,7 @@ export default function Result() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='w-full'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
