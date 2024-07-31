@@ -207,6 +207,8 @@ export default function Result() {
                         }}
                         />
                     </div> */}
+
+                    <h1 className={`text-center text-5xl mb-5 text-white font-bold px-20`}>Congratulations, <br></br> your photo was successfully printed!</h1>
                     <a href='/veev' className='text-center font-semibold text-4xl py-46 p-40'>Tap here to close</a>
                     {/* <Link href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link> */}
                 </div>
