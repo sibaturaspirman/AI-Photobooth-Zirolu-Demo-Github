@@ -218,7 +218,7 @@ export default function Result() {
                 <div className='relative w-[66%] mt-4 mb-10 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capture' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-full flex`}>
-                            <Image src={imageResultAI}  width={1080} height={1920} alt='Zirolu' className='relative block w-full'></Image>
+                            <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
                 </div>
