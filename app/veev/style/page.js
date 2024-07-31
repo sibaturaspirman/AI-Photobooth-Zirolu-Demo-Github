@@ -36,8 +36,8 @@ export default function Register() {
         let urlGambar3 = '';
         if(character == 'cowok'){
             let randomGambar = getRandomInt(1, 3);
-            urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINT-'+randomGambar+'.jpg';
-            // urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINT-1.jpg';
+            // urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINT-'+randomGambar+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINTcb-1.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
