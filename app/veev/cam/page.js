@@ -39,6 +39,7 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedAwal, setCapturedAwal] = useState(false);
     // const [countDown, setCoundown] = useState(5);
     // const [counter, setCounter] = useState(60);
     // const waktuBatasTake = useRef(null);
@@ -52,6 +53,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
+        setCapturedAwal(true)
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
@@ -115,6 +117,7 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
+        setCapturedAwal(false)
     }
 
 
@@ -325,7 +328,7 @@ export default function Cam() {
                 <p className='block text-center text-3xl mt-4 mb-6 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
-                <div className="relative w-full flex justify-center items-center">
+                <div className={`relative w-full flex justify-center items-center ${capturedAwal ? 'hidden' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/veev/btn-capture.png' width={616} height={120} alt='Zirolu' className='w-full' priority />
                     </button>

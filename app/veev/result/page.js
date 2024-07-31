@@ -107,6 +107,11 @@ export default function Result() {
         // }).catch(e => {console("load failed")})
 
         setLoadingDownload('≈')
+        setTimeout(() => {
+            setGenerateQR('true')
+            setLoadingDownload(null)
+        }, 200);
+
         // const options = {
         //     method: 'POST',
         //     body: JSON.stringify({
