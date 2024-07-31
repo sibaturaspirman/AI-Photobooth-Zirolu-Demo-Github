@@ -191,7 +191,7 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
-                    <h1 className={`text-center text-4xl font-bold lg:mt-0 lg:text-4xl mb-5`}>Scan this QR Code <br></br> to Download your image.</h1>
+                    {/* <h1 className={`text-center text-4xl font-bold lg:mt-0 lg:text-4xl mb-5`}>Scan this QR Code <br></br> to Download your image.</h1>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr'>
                         <Canvas
                         text={linkQR}
@@ -206,7 +206,7 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div>
+                    </div> */}
                     <a href='/veev' className='text-center font-semibold text-4xl py-46 p-40'>Tap here to close</a>
                     {/* <Link href='/iqos' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link> */}
                 </div>
