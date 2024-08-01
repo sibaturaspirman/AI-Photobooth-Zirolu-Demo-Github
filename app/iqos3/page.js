@@ -29,12 +29,12 @@ export default function IQOSHome() {
                   id='choose_lokasi1'
                   type="radio"
                   name='choose_lokasi'
-                  value="nube"
+                  value="fairground"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Nubē9 Sky Lounge & Golf </label>
+                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Fairground SCBD</label>
               </li>
-              <li className="w-full mt-5">
+              {/* <li className="w-full mt-5">
                   <input
                   id='choose_lokasi2'
                   type="radio"
@@ -63,7 +63,7 @@ export default function IQOSHome() {
                   onChange={(e) => setLokasi(e.target.value)}
                   />
                   <label htmlFor="choose_lokasi4" className='text-2xl lg:h-[140px] lg:text-4xl'>MGP Space</label>
-              </li>
+              </li> */}
               {/*<li className="w-full mt-5">
                   <input
                   id='choose_lokasi5'
