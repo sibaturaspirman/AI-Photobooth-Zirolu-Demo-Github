@@ -32,7 +32,7 @@ export default function IQOSHome() {
                   value="fairground"
                   onChange={(e) => setLokasi(e.target.value)}
                   />
-                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Fairground SCBD</label>
+                  <label htmlFor="choose_lokasi1" className='text-2xl lg:h-[140px] lg:text-4xl'>Bengkel Space</label>
               </li>
               {/* <li className="w-full mt-5">
                   <input
