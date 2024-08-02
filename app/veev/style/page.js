@@ -35,9 +35,9 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'cowok'){
-            let randomGambar = getRandomInt(1, 3);
+            let randomGambar = getRandomInt(1, 9);
             // urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINT-'+randomGambar+'.jpg';
-            urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokPRINTcb-'+randomGambar+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/veev/style/print/cowokP-'+randomGambar+'.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -52,11 +52,11 @@ export default function Register() {
 
 
             if(styleFemale == 'normal'){
-                let randomGambar = getRandomInt(1, 2);
-                urlGambar = 'https://ai.zirolu.id/veev/style/print/cewekPRINTcb-'+randomGambar+'.jpg'
+                let randomGambar = getRandomInt(1, 6);
+                urlGambar = 'https://ai.zirolu.id/veev/style/print/cewekP-'+randomGambar+'.jpg'
             }else if(styleFemale == 'hijab'){
-                let randomGambar = getRandomInt(1, 2);
-                urlGambar = 'https://ai.zirolu.id/veev/style/print/hijabPRINTcb-'+randomGambar+'.jpg'
+                let randomGambar = getRandomInt(1, 6);
+                urlGambar = 'https://ai.zirolu.id/veev/style/print/hijabP-'+randomGambar+'.jpg'
             }
 
             if (typeof localStorage !== 'undefined') {
