@@ -25,7 +25,7 @@ export default function IQOSHome() {
   // useWebcam({ videoRef,previewRef});
 
   return (
-    <Link href='/veev/style' className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5  mt-0">
+    <Link href='/veev/v2/style' className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5  mt-0">
       <div className="relative w-[55%] mx-auto mt-0">
         <Image src='/veev/AI photo.png' width={534} height={84} alt='Zirolu' className='w-full' priority />
       </div>
