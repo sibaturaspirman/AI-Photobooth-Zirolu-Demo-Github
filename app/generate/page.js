@@ -54,6 +54,10 @@ let seedGenerate2 = [
     {number : 1063},
     {number : 100}
 ];
+let seedGenerate3 = [
+    {number : 100},
+    {number : 100}
+];
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -167,6 +171,9 @@ export default function Register() {
         setNumProses1(true)
         if(prompt2 == 'alone, standing, cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed'){
             FIXSEEDPILIH = seedGenerate[getRandomInt(0,1)].number
+        }else if(prompt2 == "Capture a photo of a rockstar performing on stage, facing away from the audience in an energetic and passionate pose, representing various music genres such as alternative metal, alternative rock, pop rock, electronic rock, hard rock, heavy metal, post-hardcore, pop, nu metal, electropop, arena rock, melodic metalcore, electronicore, electronica, screamo, hardcore punk, progressive metal, and emo. The stage should be grand with dramatic lighting effects, such as colorful spotlights and smoke, while the rockstar's outfit reflects their genre—like a studded leather jacket for heavy metal or futuristic attire for electropop—against a backdrop that conveys the intense atmosphere of a large, enthusiastic concert."){
+            FIXSEEDPILIH = seedGenerate3[getRandomInt(0,1)].number
+            // FIXSEEDPILIH = 1063
         }else{
             FIXSEEDPILIH = seedGenerate2[getRandomInt(0,1)].number
             // FIXSEEDPILIH = 1063
@@ -439,6 +446,26 @@ export default function Register() {
                         <div className='overflow-auto'>
                             {/* STYLE SEMENTARA */}
                             <ul className='choose'>
+
+                            <li>
+                                <input
+                                id='choose_style2'
+                                type="radio"
+                                name='choose_style'
+                                value="Capture a photo of a rockstar performing on stage, facing away from the audience in an energetic and passionate pose, representing various music genres such as alternative metal, alternative rock, pop rock, electronic rock, hard rock, heavy metal, post-hardcore, pop, nu metal, electropop, arena rock, melodic metalcore, electronicore, electronica, screamo, hardcore punk, progressive metal, and emo. The stage should be grand with dramatic lighting effects, such as colorful spotlights and smoke, while the rockstar's outfit reflects their genre—like a studded leather jacket for heavy metal or futuristic attire for electropop—against a backdrop that conveys the intense atmosphere of a large, enthusiastic concert."
+                                onChange={(e) => setPrompt2(e.target.value)}
+                                />
+                                <label htmlFor="choose_style2">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/style-roker.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
                             <li>
                                 <input
                                 id='choose_style1'
@@ -458,26 +485,7 @@ export default function Register() {
                                 />
                                 </label>
                             </li>
-                            {/* <li>
-                                <input
-                                id='choose_style2'
-                                type="radio"
-                                name='choose_style'
-                                value="alone, standing, Craft a captivating photo capturing the essence of Korean style. Integrate modern and traditional elements seamlessly. Emphasize elegant fashion choices, vibrant colors, and perhaps include iconic Korean motifs. Pay attention to lighting to enhance the mood and ensure a visually stunning representation of Korean-inspired aesthetics, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed"
-                                onChange={(e) => setPrompt2(e.target.value)}
-                                />
-                                <label htmlFor="choose_style2">
-                                <Image
-                                    className="relative h-auto w-full"
-                                    src="/style2.png"
-                                    alt="icon"
-                                    width={98}
-                                    height={98}
-                                    priority
-                                />
-                                </label>
-                            </li>
-                            <li>
+                           {/*  <li>
                                 <input
                                 id='choose_style3'
                                 type="radio"
