@@ -45,7 +45,7 @@ const DEFAULT_NEG_PROMPT = 'extra head, extra face, double head, double face, ((
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 // let fixSeed = ''
-let FIXSEEDPILIH = 0
+let FIXSEEDPILIH = 0, PROMPTFIX = '', CGFFIX = 0, NUMFIX = 50;
 let seedGenerate = [
     {number : 101},
     {number : 103}
@@ -58,6 +58,83 @@ let seedGenerate3 = [
     {number : 100},
     {number : 100}
 ];
+
+let promptArea = [
+    {
+        gender:"male",
+        prompt:[
+            {
+                text:"Photorealistic image of a rocker performing on stage, playing an black electric guitar with intense focus. The stage lighting is dark and moody, with subtle spotlights highlighting the musician. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:13047, num:50
+            },
+            {
+                text:"Photorealistic image of a male vocalist of a metal rock band posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:13047, num:50
+            },
+            {
+                text:"Photorealistic image of a male vocalist of a metal rock band posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12047, num:50
+            },
+            {
+                text:"Photorealistic image of a male vocalist of a metal rock band screaming into the microphone on stage posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12057, num:50
+            },
+            {
+                text:"Photorealistic image of a male vocalist of a metal rock band screaming into the microphone on stage posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12047, num:50
+            },
+            {
+                text:"A rocker with a black guitar standing on stage, striking a powerful pose with the crowd of festival-goers facing him. The scene captures the energy of a rock festival, with the rocker wearing a black shirt and showcasing tattoos on his right arm. The setting is dark, emphasizing the intense atmosphere of the night, with the crowd immersed in the music.high angle shot",
+                cfg:12, seed:13149, num:50
+            },
+            {
+                text:"Photorealistic image of a rocker  holding an black electric guitar for a photo with a massive crowd of fans in the background at a metal music concert. dressed in black t-shirt, edgy attire, stand confidently, surrounded by the intense energy of the concert. The festival atmosphere is filled with the sounds of heavy music, and the crowd is fully immersed in the experience, creating a powerful and dynamic scene.The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:13047, num:50
+            },
+            {
+                text:"A black shirt metal band drummer with tattoos, captured in the moment of striking the drums during an intense metal concert. The scene is set at night, with a grand stage illuminated by powerful lighting. The drummer's energy and focus are palpable, with his tattoos reflecting the vivid lights of the stage, creating. 0,5 shot angle, drum set visible",
+                cfg:12, seed:12047, num:50
+            }
+        ]
+    },
+    {
+        gender:"female",
+        prompt:[
+            {
+                text:"Photorealistic image of a woman rocker performing on stage, playing an black electric guitar with intense focus. The stage lighting is dark and moody, with subtle spotlights highlighting the musician. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:13047, num:50
+            },
+            {
+                text:"Photorealistic image of a female vocalist of a metal rock band posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:13047, num:50
+            },
+            {
+                text:"Photorealistic image of a female vocalist of a metal rock band posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12047, num:50
+            },
+            {
+                text:"Photorealistic image of a female vocalist of a metal rock band screaming into the microphone on stage posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12057, num:50
+            },
+            {
+                text:"Photorealistic image of a female vocalist of a metal rock band screaming into the microphone on stage posing for a photo with a crowd of energetic fans jumping in the background during a nighttime concert. The stage is illuminated with intense, full lighting, capturing the electrifying atmosphere of the metal rock show. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:12047, num:50
+            },
+            {
+                text:"A woman rocker with a black guitar standing on stage, striking a powerful pose with the crowd of festival-goers facing him. The scene captures the energy of a rock festival, with the rocker wearing a black shirt and showcasing tattoos on his right arm. The setting is dark, emphasizing the intense atmosphere of the night, with the crowd immersed in the music.high angle shot",
+                cfg:12, seed:13149, num:50
+            },
+            {
+                text:"Photorealistic image of a woman rocker  holding an black electric guitar for a photo with a massive crowd of fans in the background at a metal music concert. dressed in black t-shirt, edgy attire, stand confidently, surrounded by the intense energy of the concert. The festival atmosphere is filled with the sounds of heavy music, and the crowd is fully immersed in the experience, creating a powerful and dynamic scene.The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
+                cfg:12, seed:120437, num:50
+            },
+            {
+                text:"A woman black sexy shirt metal band drummer with tattoos, captured in the moment of striking the drums during an intense metal concert. The scene is set at night, with a grand stage illuminated by powerful lighting. The drummer's energy and focus are palpable, with his tattoos reflecting the vivid lights of the stage, creating. 0,5 shot angle, drum set visible",
+                cfg:12, seed:13047, num:50
+            }
+        ]
+    }
+]
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -169,16 +246,27 @@ export default function Register() {
 
     const generateAI = () => {
         setNumProses1(true)
-        if(prompt2 == 'alone, standing, cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed'){
-            FIXSEEDPILIH = seedGenerate[getRandomInt(0,1)].number
-        }else if(prompt2 == "Capture a photo of a rockstar performing on stage, facing away from the audience in an energetic and passionate pose, representing various music genres such as alternative metal, alternative rock, pop rock, electronic rock, hard rock, heavy metal, post-hardcore, pop, nu metal, electropop, arena rock, melodic metalcore, electronicore, electronica, screamo, hardcore punk, progressive metal, and emo. The stage should be grand with dramatic lighting effects, such as colorful spotlights and smoke, while the rockstar's outfit reflects their genre—like a studded leather jacket for heavy metal or futuristic attire for electropop—against a backdrop that conveys the intense atmosphere of a large, enthusiastic concert."){
-            FIXSEEDPILIH = seedGenerate3[getRandomInt(0,1)].number
-            // FIXSEEDPILIH = 1063
+        // if(prompt2 == 'alone, standing, cyberpunk, synthwave night city, futuristic, high quality, highly detailed, high resolution, sharp, hyper realistic, extremely detailed'){
+        //     FIXSEEDPILIH = seedGenerate[getRandomInt(0,1)].number
+        // }else if(prompt2 == "Capture a photo of a rockstar performing on stage, facing away from the audience in an energetic and passionate pose, representing various music genres such as alternative metal, alternative rock, pop rock, electronic rock, hard rock, heavy metal, post-hardcore, pop, nu metal, electropop, arena rock, melodic metalcore, electronicore, electronica, screamo, hardcore punk, progressive metal, and emo. The stage should be grand with dramatic lighting effects, such as colorful spotlights and smoke, while the rockstar's outfit reflects their genre—like a studded leather jacket for heavy metal or futuristic attire for electropop—against a backdrop that conveys the intense atmosphere of a large, enthusiastic concert."){
+        //     FIXSEEDPILIH = seedGenerate3[getRandomInt(0,1)].number
+        //     // FIXSEEDPILIH = 1063
+        // }else{
+        //     FIXSEEDPILIH = seedGenerate2[getRandomInt(0,1)].number
+        //     // FIXSEEDPILIH = 1063
+        // }
+        // console.log(FIXSEEDPILIH)
+        if(prompt1 == 'Man'){
+            PROMPTFIX = promptArea[0].prompt[getRandomInt(0,7)].text
+            CGFFIX = promptArea[0].prompt[getRandomInt(0,7)].cfg
+            FIXSEEDPILIH = promptArea[0].prompt[getRandomInt(0,7)].seed
+            NUMFIX = promptArea[0].prompt[getRandomInt(0,7)].num
         }else{
-            FIXSEEDPILIH = seedGenerate2[getRandomInt(0,1)].number
-            // FIXSEEDPILIH = 1063
+            PROMPTFIX = promptArea[1].prompt[getRandomInt(0,7)].text
+            CGFFIX = promptArea[1].prompt[getRandomInt(0,7)].cfg
+            FIXSEEDPILIH = promptArea[1].prompt[getRandomInt(0,7)].seed
+            NUMFIX = promptArea[1].prompt[getRandomInt(0,7)].num
         }
-        console.log(FIXSEEDPILIH)
 
         setTimeout(() => {
             generateImage()
@@ -220,6 +308,10 @@ export default function Register() {
     };
   
     const generateImage = async () => {
+        console.log(PROMPTFIX)
+        console.log(CGFFIX)
+        console.log(NUMFIX)
+        console.log(FIXSEEDPILIH)
         setNumProses(1)
       reset();
       // @snippet:start("client.queue.subscribe")
@@ -230,15 +322,14 @@ export default function Register() {
           'fal-ai/ip-adapter-face-id',
           {
             input: {
-              prompt: promptCombine,
+              prompt: PROMPTFIX,
               face_image_url: imageFile,
               negative_prompt,
-              guidance_scale: CGF,
-              num_inference_steps: numSteps,
-            //   seed: seedGenerate[getRandomInt(0,1)].number,
+              guidance_scale: CGFFIX,
+              num_inference_steps: NUMFIX,
               seed: FIXSEEDPILIH,
               width: 624,
-              height: 624
+              height: 864
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
@@ -256,6 +347,7 @@ export default function Register() {
         );
         setResult(result);
         URL_RESULT = result.image.url
+        console.log(URL_RESULT)
         if (typeof localStorage !== 'undefined') {
             localStorage.setItem("generateURLResult", URL_RESULT)
         }
@@ -380,7 +472,7 @@ export default function Register() {
                                     id='choose_gender1'
                                     type="radio"
                                     name='choose_gender'
-                                    value="Man, "
+                                    value="Man"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender1" className='lg:text-2xl'>Man</label>
@@ -390,12 +482,12 @@ export default function Register() {
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="Woman, "
+                                    value="Woman"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender2" className='lg:text-2xl'>Woman</label>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <input
                                     id='choose_gender3'
                                     type="radio"
@@ -404,7 +496,7 @@ export default function Register() {
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender3" className='lg:text-2xl'>Woman with Hihab</label>
-                                </li>
+                                </li> */}
                             </ul>
                             {/* GENDER FIX */}
                             {/* <ul className='choose2'>
@@ -441,7 +533,7 @@ export default function Register() {
                             </ul> */}
                         </div>
                     </div>
-                    <div className='relative w-full mt-8 lg:mt-10'>
+                    <div className='relative w-full mt-8 lg:mt-10 hidden'>
                         <label htmlFor="choose_style1" className="block mb-0 lg:mb-1 lg:text-3xl text-center font-bold text-white">Pick Your Style</label>
                         <div className='overflow-auto'>
                             {/* STYLE SEMENTARA */}
@@ -755,8 +847,8 @@ export default function Register() {
                 {/* {CGF} */}
                 {/* {numSteps} */}
 
-                {prompt1 && prompt2 &&
-                    <div className="relative w-full flex justify-center items-center lg:mt-10">
+                {prompt1 &&
+                    <div className="relative w-full flex justify-center items-center mt-5">
                         <button className="relative mx-auto w-[70%] flex justify-center items-center" onClick={generateAI}>
                             <Image src='/btn-generate.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </button>
