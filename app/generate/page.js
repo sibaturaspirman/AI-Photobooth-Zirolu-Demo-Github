@@ -149,7 +149,7 @@ export default function Register() {
     const [prompt2, setPrompt2] = useState();
     let promptCombine = prompt1 + prompt2;
 
-    const negative_prompt = DEFAULT_NEG_PROMPT;
+    // const negative_prompt = DEFAULT_NEG_PROMPT;
     const [imageFile, setImageFile] = useState(null);
     const [fixSeed, setFixSeed] = useState(null);
     const [CGF, setCGF] = useState(13);
@@ -324,7 +324,7 @@ export default function Register() {
             input: {
               prompt: PROMPTFIX,
               face_image_url: imageFile,
-              negative_prompt,
+              negative_prompt: 'two faces, two heads, two bodies, boobs, sexy, bad anatomy, bad hands, blurry, low resolution, bad, ugly, low quality, pixelated, interpolated, compression artifacts, noisey, grainy',
               guidance_scale: CGFFIX,
               num_inference_steps: NUMFIX,
               seed: FIXSEEDPILIH,
