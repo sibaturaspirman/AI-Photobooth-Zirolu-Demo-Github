@@ -317,7 +317,7 @@ export default function Register() {
             }
         
             setTimeout(() => {
-                router.push('/playground/result');
+                router.push('/playground/result2');
             }, 500);
         })
         } catch (error) {
