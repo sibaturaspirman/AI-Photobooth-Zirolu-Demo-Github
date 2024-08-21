@@ -200,6 +200,7 @@ export default function Cam() {
                     </button>
                 </div>
             }
+
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-0 lg:mt-5">
                     <Link href='/playground/generate' className="block w-full relative mx-auto flex justify-center items-center">
