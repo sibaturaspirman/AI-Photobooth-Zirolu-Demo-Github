@@ -117,10 +117,10 @@ export default function Register() {
     const generateAI = () => {
         setNumProses1(true)
         if(prompt1 == 'Man'){
-            PROMPTFIX = promptArea[0].prompt[getRandomInt(0,6)].text
-            FIXSEEDPILIH = promptArea[0].prompt[getRandomInt(0,6)].seed
-            // PROMPTFIX = promptArea[0].prompt[4].text
-            // FIXSEEDPILIH = promptArea[0].prompt[4].seed
+            // PROMPTFIX = promptArea[0].prompt[getRandomInt(0,6)].text
+            // FIXSEEDPILIH = promptArea[0].prompt[getRandomInt(0,6)].seed
+            PROMPTFIX = promptArea[0].prompt[1].text
+            FIXSEEDPILIH = promptArea[0].prompt[1].seed
         }else{
             PROMPTFIX = promptArea[1].prompt[getRandomInt(0,2)].text
             FIXSEEDPILIH = promptArea[1].prompt[getRandomInt(0,2)].seed
@@ -315,6 +315,8 @@ export default function Register() {
                         {error}
                     </div>
 
+                    <div>PREVIEW SETUP : {FIXSEEDPILIH} / {CGF} / {numSteps} / {IDScale}</div>
+
                     <pre className='relative py-2 px-4 mt-5 lg:mt-24 border-2 border-[#ffffff] text-left bg-slate-500 text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
@@ -363,7 +365,7 @@ export default function Register() {
                         </div>
                     </div>
                 </div>
-                {prompt}
+                {/* <div>PREVIEW SETUP : {SEED} / {CGF} / {numSteps} / {IDScale}</div> */}
                 {/* {promptCombine} */}
                 {/* {CGF} */}
                 {/* {numSteps} */}
