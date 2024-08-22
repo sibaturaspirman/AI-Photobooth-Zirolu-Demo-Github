@@ -54,6 +54,10 @@ let promptArea = [
                 text:"Photorealistic image of a cruel rocker shows off tattoos on his chest and arms on stage, playing an black electric guitar with intense focus. The audience faces him with excitement, captured during a rock festival. The rocker has tattooed arms visible under his black leather jacket, which contrasts against the dimly lit background.  The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects",
                 seed:13042
             },
+            {
+                text:"A cruel male rock band vocalist posing with the crowd at a rock music festival. The vocalist is standing on top of a stage speaker, facing away from the audience. He's wearing a black leather jacket, showing off full tattoo sleeves on his right arm. He has a  long hair, and a nose piercing. The background is captured in a bokeh style, enhancing the focus on the vocalist while the excited crowd creates a lively atmosphere.",
+                seed:12050
+            },
         ]
     },
     {
@@ -117,13 +121,15 @@ export default function Register() {
     const generateAI = () => {
         setNumProses1(true)
         if(prompt1 == 'Man'){
-            // PROMPTFIX = promptArea[0].prompt[getRandomInt(0,6)].text
-            // FIXSEEDPILIH = promptArea[0].prompt[getRandomInt(0,6)].seed
-            PROMPTFIX = promptArea[0].prompt[1].text
-            FIXSEEDPILIH = promptArea[0].prompt[1].seed
+            let randNumb = getRandomInt(0,7)
+            PROMPTFIX = promptArea[0].prompt[randNumb].text
+            FIXSEEDPILIH = promptArea[0].prompt[randNumb].seed
+            // PROMPTFIX = promptArea[0].prompt[0].text
+            // FIXSEEDPILIH = promptArea[0].prompt[0].seed
         }else{
-            PROMPTFIX = promptArea[1].prompt[getRandomInt(0,2)].text
-            FIXSEEDPILIH = promptArea[1].prompt[getRandomInt(0,2)].seed
+            let randNumb = getRandomInt(0,2)
+            PROMPTFIX = promptArea[1].prompt[randNumb].text
+            FIXSEEDPILIH = promptArea[1].prompt[randNumb].seed
         }
 
         setTimeout(() => {
