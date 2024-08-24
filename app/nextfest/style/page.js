@@ -18,6 +18,9 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
+        let urlGambar2 = '';
+        let urlGambar3 = '';
+        let urlGambar4 = '';
 
         if(character == 'cowok' || character == 'cewek'){
             localStorage.setItem("formasiFix", character)
@@ -28,30 +31,35 @@ export default function Register() {
             }, 100);
         }
         if(character == 'cowokband'){
-            let randomGambar = getRandomInt(1,2);
-            urlGambar = 'https://ai.zirolu.id/pemata/m-'+randomGambar+'.jpg';
-
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cowok-band-4.jpeg';
             if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("genderFix", character)
                 localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
+                localStorage.setItem("styleFix4", urlGambar4)
             }
-            console.log(urlGambar)
     
             setTimeout(() => {
-                router.push('/permata/cam');
+                router.push('/nextfest/cam/camband');
             }, 100);
         }else if(character == 'cewekband'){
-            let randomGambar = getRandomInt(1,2);
-            urlGambar = 'https://ai.zirolu.id/pemata/f-'+randomGambar+'.jpg';
-
+            urlGambar = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-1.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-2.jpeg';
+            urlGambar3 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-3.jpeg';
+            urlGambar4 = 'https://ai.zirolu.id/magnumotion/style/hammersonic-new-cewek-band-4.jpeg';
             if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("genderFix", character)
                 localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character+' - '+styleFemale)
+                localStorage.setItem("styleFix2", urlGambar2)
+                localStorage.setItem("styleFix3", urlGambar3)
+                localStorage.setItem("styleFix4", urlGambar4)
             }
-            console.log(urlGambar)
-    
             setTimeout(() => {
-                router.push('/permata/cam');
+                router.push('/nextfest/cam/camband');
             }, 100);
         }
     }
@@ -118,7 +126,7 @@ export default function Register() {
                                 <label htmlFor="choose_style3">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/nextfest/gender1.png"
+                                    src="/nextfest/gender3.png"
                                     alt="icon"
                                     width={764}
                                     height={184}
@@ -137,7 +145,7 @@ export default function Register() {
                                 <label htmlFor="choose_style4">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/nextfest/gender2.png"
+                                    src="/nextfest/gender4.png"
                                     alt="icon"
                                     width={764}
                                     height={184}

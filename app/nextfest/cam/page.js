@@ -454,7 +454,7 @@ export default function Cam() {
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center mt-8">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/permata/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/nextfest/btn-capture.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }

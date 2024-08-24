@@ -98,11 +98,11 @@ export default function Result() {
         
             {/* QR */}
             {generateQR && 
-                <div className='absolute top-[-7rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
+                <div className='absolute top-[4rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[60%] mx-auto mb-10`}>
-                        <Image src='/pln/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
+                        <Image src='/nextfest/scan.png' width={802} height={336} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                    <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr'>
                         <Canvas
                         text={linkQR}
                         options={{
@@ -146,9 +146,8 @@ export default function Result() {
                     </div> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <Link href='/iqos3' className='text-center font-semibold text-base lg:text-4xl py-20 p-10 lg:p-40 text-white w-full'>Tap here to close</Link> */}
-                    <Link href='/pln' className="w-[70%] relative mx-auto mt-10 flex justify-center items-center">
-                        <Image src='/pln/btn-back.png' width={644} height={144} alt='Zirolu' className='w-full' priority />
-                    </Link>
+                    
+                    <Link href='/nextfest' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
