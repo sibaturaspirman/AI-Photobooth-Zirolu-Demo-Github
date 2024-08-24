@@ -768,6 +768,13 @@ body{
   background-position: top center;
 }
 
+/* NEXTFEST */
+.bg-nextfest{
+  background-image: url(../public/nextfest/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* PERMATA */
 .bg-permata{
   background-image: url(../public/permata/bg.jpg);
