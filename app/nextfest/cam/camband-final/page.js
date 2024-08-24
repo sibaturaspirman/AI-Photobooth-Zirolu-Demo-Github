@@ -132,6 +132,7 @@ export default function Cam() {
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
     const [styleFix4, setStyleFix4] = useState(null);
+    const [setPrint, setSetPrint] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState();
@@ -155,6 +156,7 @@ export default function Cam() {
             const item3 = localStorage.getItem('styleFix2')
             const item32 = localStorage.getItem('styleFix3')
             const item33 = localStorage.getItem('styleFix4')
+            const item4 = localStorage.getItem('setPrint')
 
             setImageFile(item)
             setImageFile2(itemx)
@@ -163,8 +165,9 @@ export default function Cam() {
             setStyleFix2(item3)
             setStyleFix3(item32)
             setStyleFix4(item33)
+            setSetPrint(item4)
         }
-    }, [imageFile, imageFile2, imageFile3, styleFix, styleFix2, styleFix3, styleFix4])
+    }, [imageFile, imageFile2, imageFile3, styleFix, styleFix2, styleFix3, styleFix4, setPrint])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -386,9 +389,18 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase644", dataUrl)
                 localStorage.setItem("faceURLResult4", FACE_URL_RESULT4)
             }
-            setTimeout(() => {
-                router.push('/nextfest/result-band');
-            }, 500);
+            if(setPrint == 'false'){
+                setTimeout(() => {
+                    router.push('/nextfest/result-band2');
+                }, 500);
+            }else{
+                setTimeout(() => {
+                    router.push('/nextfest/result-band');
+                }, 500);
+            }
+            // setTimeout(() => {
+            //     router.push('/nextfest/result-band');
+            // }, 500);
         })
         } catch (error) {
             setError(error);

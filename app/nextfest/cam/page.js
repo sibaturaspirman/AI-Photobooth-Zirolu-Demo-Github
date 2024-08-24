@@ -194,6 +194,7 @@ export default function Cam() {
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
+    const [setPrint, setSetPrint] = useState(null);
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
@@ -214,10 +215,12 @@ export default function Cam() {
         if (typeof localStorage !== 'undefined') {
             const item1 = localStorage.getItem('styleFix')
             const item2 = localStorage.getItem('formasiFix')
+            const item3 = localStorage.getItem('setPrint')
             setStyleFix(item1)
             setFormasiFix(item2)
+            setSetPrint(item3)
         }
-    }, [styleFix, formasiFix])
+    }, [styleFix, formasiFix, setPrint])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -372,10 +375,16 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
-        
-            setTimeout(() => {
-                router.push('/nextfest/result');
-            }, 500);
+            
+            if(setPrint == 'false'){
+                setTimeout(() => {
+                    router.push('/nextfest/result2');
+                }, 500);
+            }else{
+                setTimeout(() => {
+                    router.push('/nextfest/result');
+                }, 500);
+            }
         })
         } catch (error) {
             setError(error);
@@ -391,6 +400,7 @@ export default function Cam() {
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/nextfest/take.png' width={572} height={84} alt='Zirolu' className='w-full' priority />
+            {/* {setPrint} */}
             </div>
             {/* LOADING */}
             {numProses1 && 
