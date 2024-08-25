@@ -6,6 +6,9 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+const api_key = 'SG_8bc7975ff91a8b13';
+const url = "https://api.segmind.com/v1/faceswap-v2";
 
 // @snippet:start(client.config)
 fal.config({
@@ -43,6 +46,8 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedLoading, setCapturedLoading] = useState(false);
+    const [imageCamURL, setImageCamURL] = useState();
     const videoRef = useRef(null);
     const previewRef = useRef(null);
     const [genderFix, setGenderFix] = useState(null);
@@ -62,7 +67,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
-        setTimeout(() => {
+        setTimeout(async () => {
             setEnabled(true)
             setCaptured(null)
             const canvas = previewRef.current;
@@ -113,10 +118,37 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
-            setImageFile4(faceImage)
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("faceImage4", faceImage)
-            }
+            // setImageFile4(faceImage)
+            // if (typeof localStorage !== 'undefined') {
+            //     localStorage.setItem("faceImage4", faceImage)
+            // }
+
+            setCapturedLoading(true);
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    image:faceImage
+                }),
+                headers: {
+                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            await fetch('https://photoaibase64.zirolu.id/api/upload', options)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    setImageCamURL(response.imageUrl)
+                    setImageFile4(response.imageUrl)
+                    setEnabled(true)
+                    setCapturedLoading(false);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         }, 3000);
     }
 
@@ -172,7 +204,7 @@ export default function Cam() {
     const generateAI = () => {
         setNumProses1(true)
         setTimeout(() => {
-            generateImageSwap()
+            generateImageSwapCadangan()
         }, 500);
     }
 
@@ -189,6 +221,131 @@ export default function Cam() {
         reader.onerror = reject
         reader.readAsDataURL(blob)
     }))
+
+    // SWAP CADANGAN
+    const generateImageSwapCadangan = async () => {
+        const urlGambar = styleFix;
+        console.log(urlGambar)
+        setNumProses(2)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const data = {
+            "source_img": imageFile,
+            "target_img": styleFix,
+            "input_faces_index": 0,
+            "source_faces_index": 0,
+            "face_restore": "codeformer-v0.1.0.pth",
+            "base64": true
+        };
+
+        try {
+            const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase64", 'data:image/png;base64,'+response.data.image)
+            }
+            setTimeout(() => {
+                generateImageSwapCadangan2()
+            }, 500);
+            
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    };
+    const generateImageSwapCadangan2 = async () => {
+        const urlGambar = styleFix2;
+        console.log(urlGambar)
+        setNumProses(3)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const data = {
+            "source_img": imageFile,
+            "target_img": styleFix2,
+            "input_faces_index": 0,
+            "source_faces_index": 0,
+            "face_restore": "codeformer-v0.1.0.pth",
+            "base64": true
+        };
+
+        try {
+            const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase642", 'data:image/png;base64,'+response.data.image)
+            }
+            setTimeout(() => {
+                generateImageSwapCadangan3()
+            }, 500);
+            
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    };
+    const generateImageSwapCadangan3 = async () => {
+        const urlGambar = styleFix3;
+        console.log(urlGambar)
+        setNumProses(4)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const data = {
+            "source_img": imageFile,
+            "target_img": styleFix3,
+            "input_faces_index": 0,
+            "source_faces_index": 0,
+            "face_restore": "codeformer-v0.1.0.pth",
+            "base64": true
+        };
+
+        try {
+            const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase643", 'data:image/png;base64,'+response.data.image)
+            }
+            setTimeout(() => {
+                generateImageSwapCadangan4()
+            }, 500);
+            
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    };
+    const generateImageSwapCadangan4 = async () => {
+        const urlGambar = styleFix4;
+        console.log(urlGambar)
+        setNumProses(5)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const data = {
+            "source_img": imageFile,
+            "target_img": styleFix4,
+            "input_faces_index": 0,
+            "source_faces_index": 0,
+            "face_restore": "codeformer-v0.1.0.pth",
+            "base64": true
+        };
+
+        try {
+            const response = await axios.post(url, data, { headers: { 'x-api-key': api_key } });
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase644", 'data:image/png;base64,'+response.data.image)
+            }
+            if(setPrint == 'false'){
+                setTimeout(() => {
+                    router.push('/nextfest/cadangan/result-band2');
+                }, 500);
+            }else{
+                setTimeout(() => {
+                    router.push('/nextfest/cadangan/result-band');
+                }, 500);
+            }
+            
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    };
+    // !SWAP CADANGAN
 
 
     const generateImageSwap = async () => {
@@ -430,7 +587,7 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-10 px-8 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#000] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`AI Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 5)`}</p>
+                        <p>{`AI Process : ${numProses} of 5`}</p>
                         {error}
                     </div>
 
@@ -478,6 +635,9 @@ export default function Cam() {
             {!enabled && 
                 <p className='block text-center text-5xl mt-1 mb-10 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
             }
+            {capturedLoading && 
+                <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Please wait...</p> 
+            }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
@@ -485,13 +645,7 @@ export default function Cam() {
                     </button>
                 </div>
             }
-
-            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%]`}>
-                <div className={`relative w-full`}>
-                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
-                </div>
-            </div>
-            
+            <div className={`relative w-full ${capturedLoading ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
@@ -502,7 +656,7 @@ export default function Cam() {
                     <Image src='/nextfest/btn-retake.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
-            </div></div>
+            </div></div></div>
         </main>
     );
 }

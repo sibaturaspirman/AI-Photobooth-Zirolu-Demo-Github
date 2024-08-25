@@ -40,6 +40,8 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedLoading, setCapturedLoading] = useState(false);
+    const [imageCamURL, setImageCamURL] = useState();
     const videoRef = useRef(null);
     const previewRef = useRef(null);
     const [genderFix, setGenderFix] = useState(null);
@@ -59,7 +61,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
-        setTimeout(() => {
+        setTimeout(async () => {
             setEnabled(true)
             setCaptured(null)
             const canvas = previewRef.current;
@@ -111,12 +113,40 @@ export default function Cam() {
     
             let faceImage = canvas.toDataURL();
             // setImageFile(faceImage)
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("faceImage3", faceImage)
-            }
+            // if (typeof localStorage !== 'undefined') {
+            //     localStorage.setItem("faceImage2", faceImage)
+            // }
             // setTimeout(() => {
             //     router.push('/generate');
             // }, 1250);
+            setCapturedLoading(true);
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    image:faceImage
+                }),
+                headers: {
+                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            await fetch('https://photoaibase64.zirolu.id/api/upload', options)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    setImageCamURL(response.imageUrl)
+                    setEnabled(true)
+                    setCapturedLoading(false);
+                    if (typeof localStorage !== 'undefined') {
+                        localStorage.setItem("faceImage2", response.imageUrl)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         }, 3000);
     }
 
@@ -129,13 +159,13 @@ export default function Cam() {
             {/* <TopLogoMagnumFixed></TopLogoMagnumFixed> */}
             <h1 className={`text-center text-5xl mt-0 mb-4 ${genderFix == 'cowokband' ? 'flex':'hidden'}`}>TAKE SELFIE - MALE</h1>
             <h1 className={`text-center text-5xl mt-0 mb-4 ${genderFix == 'cewekband' ? 'flex':'hidden'}`}>TAKE SELFIE - FEMALE</h1>
-            <h2 className={`text-center text-5xl mb-0 uppercase`}>Face 3 of 4</h2>
+            <h2 className={`text-center text-5xl mb-0 uppercase`}>Face 2 of 4</h2>
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10`}>
                 <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cowokband' ? 'flex':'hidden'}`}>
-                    <Image src='/magnumotion/band-3.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                    <Image src='/magnumotion/band-2.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className={`absolute top-1 left-1 w-[170px] h-[170px] justify-center items-center pointer-events-none z-10 ${genderFix == 'cewekband' ? 'flex':'hidden'}`}>
-                    <Image src='/magnumotion/band-cewek-3.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
+                    <Image src='/magnumotion/band-cewek-2.jpeg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className='relative lg:w-full'>
                     {captured && 
@@ -161,10 +191,13 @@ export default function Cam() {
             {!enabled && 
                 <p className='block text-center text-5xl mt-1 mb-10 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
             }
+            {capturedLoading && 
+                <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Please wait...</p> 
+            }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/nextfest/btn-capture.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
+                    <Image src='/nextfest/btn-capture.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -174,18 +207,19 @@ export default function Cam() {
                     <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
             </div>
-            
+
+            <div className={`relative w-full ${capturedLoading ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
-                    <Link href='camband-final' className="w-full relative mx-auto flex justify-center items-center">
+                    <Link href='camband-3' className="w-full relative mx-auto flex justify-center items-center">
                     <Image src='/nextfest/btn-continue.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-10" onClick={retake}>
                         <Image src='/nextfest/btn-retake.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
-            </div></div>
+            </div></div></div>
         </main>
     );
 }

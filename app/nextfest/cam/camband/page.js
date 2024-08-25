@@ -168,6 +168,13 @@ export default function Cam() {
                     </button>
                 </div>
             }
+
+            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%]`}>
+                <div className={`relative w-full`}>
+                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
+                </div>
+            </div>
+
             <div className={`relative w-full`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">

@@ -40,6 +40,8 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedLoading, setCapturedLoading] = useState(false);
+    const [imageCamURL, setImageCamURL] = useState();
     const videoRef = useRef(null);
     const previewRef = useRef(null);
     const [genderFix, setGenderFix] = useState(null);
@@ -59,7 +61,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
-        setTimeout(() => {
+        setTimeout(async () => {
             setEnabled(true)
             setCaptured(null)
             const canvas = previewRef.current;
@@ -111,12 +113,40 @@ export default function Cam() {
     
             let faceImage = canvas.toDataURL();
             // setImageFile(faceImage)
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("faceImage3", faceImage)
-            }
+            // if (typeof localStorage !== 'undefined') {
+            //     localStorage.setItem("faceImage3", faceImage)
+            // }
             // setTimeout(() => {
             //     router.push('/generate');
             // }, 1250);
+            setCapturedLoading(true);
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    image:faceImage
+                }),
+                headers: {
+                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            await fetch('https://photoaibase64.zirolu.id/api/upload', options)
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    setImageCamURL(response.imageUrl)
+                    setEnabled(true)
+                    setCapturedLoading(false);
+                    if (typeof localStorage !== 'undefined') {
+                        localStorage.setItem("faceImage3", response.imageUrl)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         }, 3000);
     }
 
@@ -161,6 +191,9 @@ export default function Cam() {
             {!enabled && 
                 <p className='block text-center text-5xl mt-1 mb-10 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
             }
+            {capturedLoading && 
+                <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Please wait...</p> 
+            }
             {!enabled && 
                 <div className="relative w-full flex justify-center items-center">
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
@@ -168,13 +201,7 @@ export default function Cam() {
                     </button>
                 </div>
             }
-
-            <div className={`absolute pointer-events-none top-[3.2rem] left-0 right-0 mx-auto w-[31%]`}>
-                <div className={`relative w-full`}>
-                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
-                </div>
-            </div>
-            
+            <div className={`relative w-full ${capturedLoading ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
@@ -185,7 +212,7 @@ export default function Cam() {
                         <Image src='/nextfest/btn-retake.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
-            </div></div>
+            </div></div></div>
         </main>
     );
 }
