@@ -132,7 +132,7 @@ export default function Cam() {
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(true);
     const [result, setResult] = useState(null);
     const [resultFaceSwap, setResultFaceSwap] = useState(null);
     const [resultFaceSwap2, setResultFaceSwap2] = useState(null);
@@ -172,7 +172,7 @@ export default function Cam() {
 
     const reset2 = () => {
       setLoading(false);
-      setError(null);
+      setError(true);
       setElapsedTime(0);
     };
     const toDataURL = url => fetch(url)
@@ -231,7 +231,7 @@ export default function Cam() {
             }, 200);
         })
         } catch (error) {
-            setError(error);
+            setError(false);
         } finally {
             setLoading(false);
             setElapsedTime(Date.now() - start);
@@ -245,6 +245,13 @@ export default function Cam() {
             <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/permata/take.png' width={597} height={118} alt='Zirolu' className='w-full' priority />
             </div>
+            
+            <div className={`fixed top-0 left-0 w-full h-full bg-permata flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
+            <a href='/permata/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
+                <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
+            </a>
+            </div>
+
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>

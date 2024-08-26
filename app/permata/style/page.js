@@ -34,7 +34,7 @@ export default function Register() {
 
         if(character == 'cowok'){
             // let randomGambar = getRandomInt(1,6);
-            let randomGambar = 3;
+            let randomGambar = 'fix';
             urlGambar = 'https://ai.zirolu.id/permata/m-'+randomGambar+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
@@ -44,7 +44,7 @@ export default function Register() {
         }else{
             if(styleFemale == 'normal'){
                 // let randomGambar = getRandomInt(1,2);
-                let randomGambar = 1;
+                let randomGambar = 'fix';
                 urlGambar = 'https://ai.zirolu.id/permata/f-'+randomGambar+'.jpg';
     
                 if (typeof localStorage !== 'undefined') {
@@ -52,7 +52,8 @@ export default function Register() {
                     localStorage.setItem("formasiFix", character)
                 }
             }else{
-                let randomGambar = getRandomInt(1,2);
+                // let randomGambar = getRandomInt(1,2);
+                let randomGambar = 'fix';
                 urlGambar = 'https://ai.zirolu.id/permata/h-'+randomGambar+'.jpg';
     
                 if (typeof localStorage !== 'undefined') {
