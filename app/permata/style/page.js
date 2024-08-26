@@ -33,8 +33,9 @@ export default function Register() {
         let urlGambar = '';
 
         if(character == 'cowok'){
-            let randomGambar = getRandomInt(1,6);
-            urlGambar = 'https://ai.zirolu.id/pemata/m-'+randomGambar+'.jpg';
+            // let randomGambar = getRandomInt(1,6);
+            let randomGambar = 3;
+            urlGambar = 'https://ai.zirolu.id/permata/m-'+randomGambar+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
@@ -42,8 +43,9 @@ export default function Register() {
             }
         }else{
             if(styleFemale == 'normal'){
-                let randomGambar = getRandomInt(1,2);
-                urlGambar = 'https://ai.zirolu.id/pemata/style/f-'+randomGambar+'.jpg';
+                // let randomGambar = getRandomInt(1,2);
+                let randomGambar = 1;
+                urlGambar = 'https://ai.zirolu.id/permata/f-'+randomGambar+'.jpg';
     
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("styleFix", urlGambar)
@@ -51,7 +53,7 @@ export default function Register() {
                 }
             }else{
                 let randomGambar = getRandomInt(1,2);
-                urlGambar = 'https://ai.zirolu.id/pemata/style/h-'+randomGambar+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/permata/h-'+randomGambar+'.jpg';
     
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("styleFix", urlGambar)

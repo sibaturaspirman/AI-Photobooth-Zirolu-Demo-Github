@@ -39,6 +39,7 @@ export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
+    const [capturedAwal, setCapturedAwal] = useState(false);
     // const [countDown, setCoundown] = useState(5);
     // const [counter, setCounter] = useState(60);
     // const waktuBatasTake = useRef(null);
@@ -52,6 +53,7 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
+        setCapturedAwal(true)
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
@@ -115,6 +117,7 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
+        setCapturedAwal(false)
     }
 
 
@@ -302,7 +305,7 @@ export default function Cam() {
                 <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
-                <div className="relative w-full flex justify-center items-center mt-8">
+                <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/permata/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
