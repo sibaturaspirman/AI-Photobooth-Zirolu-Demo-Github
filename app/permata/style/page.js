@@ -33,7 +33,7 @@ export default function Register() {
         let urlGambar = '';
 
         if(character == 'cowok'){
-            let randomGambar = getRandomInt(1,2);
+            let randomGambar = getRandomInt(1,6);
             urlGambar = 'https://ai.zirolu.id/pemata/m-'+randomGambar+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
@@ -41,12 +41,22 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else{
-            let randomGambar = getRandomInt(1,2);
-            urlGambar = 'https://ai.zirolu.id/pemata/f-'+randomGambar+'.jpg';
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character+' - '+styleFemale)
+            if(styleFemale == 'normal'){
+                let randomGambar = getRandomInt(1,2);
+                urlGambar = 'https://ai.zirolu.id/pemata/style/f-'+randomGambar+'.jpg';
+    
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("styleFix", urlGambar)
+                    localStorage.setItem("formasiFix", character)
+                }
+            }else{
+                let randomGambar = getRandomInt(1,2);
+                urlGambar = 'https://ai.zirolu.id/pemata/style/h-'+randomGambar+'.jpg';
+    
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("styleFix", urlGambar)
+                    localStorage.setItem("formasiFix", character+' - '+styleFemale)
+                }
             }
         }
         console.log(urlGambar)
@@ -109,6 +119,44 @@ export default function Register() {
                             </li>
                             </ul>
                         </div>
+
+
+                        {character == 'cewek' &&
+                        <div className="mt-10">
+                            <ul className='choose4'>
+                                {/* <li>
+                                    <input
+                                    id='choose_female'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female" className='text-2xl'>Normal</label>
+                                </li> */}
+                                <li>
+                                    <input
+                                    id='choose_female3'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="normal"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female3" className='text-5xl'>without Hijab</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_female2'
+                                    type="radio"
+                                    name='choose_female'
+                                    value="hijab"
+                                    onChange={(e) => setStyleFemale(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_female2" className='text-5xl'>with Hijab</label>
+                                </li>
+                            </ul>
+                        </div>
+                        }
                     </div>
                 </div>
                 {/* {character && */}
