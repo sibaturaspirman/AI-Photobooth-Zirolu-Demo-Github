@@ -12,20 +12,20 @@ export default function MizuhoHome() {
         <h1 className={`text-center text-xl mt-2 lg:mt-4 lg:text-2xl lg:mb-5 ${paytone_one.className}`}>AI PHOTOBOOTH</h1>
         <div className="relative w-full flex justify-center items-center mt-5 mb-6 lg:mt-6 lg:mb-5">
           <div className='animate-upDown relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
-            <Image src='/porseni/preview-1.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
+            <Image src='/pertamina/hulu/preview-1.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
           </div>
           <div className='animate-upDown2 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
-            <Image src='/porseni/preview-2.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
+            <Image src='/pertamina/hulu/preview-2.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
           </div>
           <div className='animate-upDown3 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
-            <Image src='/porseni/preview-3.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
+            <Image src='/pertamina/hulu/preview-3.png' width={365} height={640} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
         <div className="relative w-full flex justify-center items-center">
           {/* <Link href='/register' className="relative mx-auto flex w-[70%] justify-center items-center">
             <Image src='/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
           </Link> */}
-          <Link href='/porseni/style' className="relative mx-auto flex w-[50%] justify-center items-center">
+          <Link href='/pertaminahulu/style' className="relative mx-auto flex w-[50%] justify-center items-center">
             <Image src='/mizuho/btn-taptostart.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
           </Link>
         </div>

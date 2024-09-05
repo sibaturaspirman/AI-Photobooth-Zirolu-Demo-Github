@@ -28,8 +28,8 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'PORSENI',
-        phone: '00003',
+        name: 'PERTAMINA HULU',
+        phone: '00004',
       });
     const { Canvas } = useQRCode();
 
@@ -125,7 +125,7 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    <a href='/porseni' className='text-center font-semibold text-3xl mt-2 p-20'>Tap here to close</a>
+                    <a href='/pertaminahulu' className='text-center font-semibold text-3xl mt-2 p-20'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
@@ -180,7 +180,7 @@ export default function Result() {
                     </div>
                     <div className='w-full'>
                         <div className="relative w-[50%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/porseni/style' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/pertaminahulu/style' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

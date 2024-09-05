@@ -205,7 +205,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/porseni/result');
+                router.push('/pertaminahulu/result');
             }, 500);
         })
         } catch (error) {

@@ -29,38 +29,41 @@ export default function Register() {
     const [character, setCharacter] = useState(null);
 
     const generateAI = () => {
-        let urlGambar = '';
-        let urlGambar2 = '';
-        let urlGambar3 = '';
-        if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/porseni/m-'+getRandomInt(1, 6)+'.jpg';
+        // let urlGambar = '';
+        // let urlGambar2 = '';
+        // let urlGambar3 = '';
+        // if(character == 'formasi-1'){
+        //     // urlGambar = 'https://ai.zirolu.id/porseni/m-'+getRandomInt(1, 6)+'.jpg';
 
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
-            }
-        }else if(character == 'formasi-2'){
-            urlGambar = 'https://ai.zirolu.id/porseni/f-'+getRandomInt(1, 5)+'.jpg';
+        //     if (typeof localStorage !== 'undefined') {
+        //         // localStorage.setItem("styleFix", urlGambar)
+        //         localStorage.setItem("formasiFix", character)
+        //     }
+        // }else if(character == 'formasi-2'){
+        //     // urlGambar = 'https://ai.zirolu.id/porseni/f-'+getRandomInt(1, 5)+'.jpg';
 
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
-            }
-        }else if(character == 'formasi-3'){
-            urlGambar = 'https://ai.zirolu.id/porseni/h-'+getRandomInt(1, 4)+'.jpg';
+        //     if (typeof localStorage !== 'undefined') {
+        //         // localStorage.setItem("styleFix", urlGambar)
+        //         localStorage.setItem("formasiFix", character)
+        //     }
+        // }else if(character == 'formasi-3'){
+        //     // urlGambar = 'https://ai.zirolu.id/porseni/h-'+getRandomInt(1, 4)+'.jpg';
 
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
-            }
+        //     if (typeof localStorage !== 'undefined') {
+        //         // localStorage.setItem("styleFix", urlGambar)
+        //         localStorage.setItem("formasiFix", character)
+        //     }
+        // }
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("formasiFix", character)
         }
         console.log(character)
-        console.log(urlGambar)
-        console.log(urlGambar2)
-        console.log(urlGambar3)
+        // console.log(urlGambar)
+        // console.log(urlGambar2)
+        // console.log(urlGambar3)
 
         setTimeout(() => {
-            router.push('/porseni/cam');
+            router.push('/pertaminahulu/style2');
         }, 500);
     }
 
