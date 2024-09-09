@@ -17,8 +17,8 @@ fal.config({
       // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
     }),
 });
-const DEFAULT_PROMPT = "Photorealistic image of a rocker performing on stage, playing an black electric guitar with intense focus. The stage lighting is dark and moody, with subtle spotlights highlighting the musician. The rocker has tattooed arms visible under his black t-shirt, which contrasts against the dimly lit background. The atmosphere is charged with energy, with faint silhouettes of the audience in the background. The camera captures a mid-shot, emphasizing the musician's expressive movements and the intricate details of his guitar. The scene is rendered in high resolution, with a dramatic and gritty tone, using HDR and cinematic effects"
-const DEFAULT_NEG_PROMPT = 'flaws in the eyes, flaws in the face, flaws, lowres, non-HDRi, low quality, worst quality,artifacts noise, text, watermark, glitch, deformed, mutated, ugly, disfigured, hands, low resolution, partially rendered objects,  deformed or partially rendered eyes, deformed, deformed eyeballs, cross-eyed,blurry';
+const DEFAULT_PROMPT = "A photorealistic man 28 years old standing on a beach with a backdrop featuring a caravan, palm trees, and vibrant tropical colors of purple, orange, and yellow. The scene captures the warmth and energy of a tropical paradise, with the colors blending beautifully into the sunset, creating a lively and exotic atmosphere. The man is dressed casually, embodying the relaxed vibe of the beach setting. The camera is positioned at a slight low angle, capturing the vastness of the mountain range and the woman's determined expression. Shot with a wide-angle lens for a dramatic, immersive effect. HDR, 8K resolution, hyper-detailed."
+const DEFAULT_NEG_PROMPT = 'bikini, sexy, boobs, flaws in the eyes, flaws in the face, flaws, lowres, non-HDRi, low quality, worst quality,artifacts noise, text, watermark, glitch, deformed, mutated, ugly, disfigured, hands, low resolution, partially rendered objects,  deformed or partially rendered eyes, deformed, deformed eyeballs, cross-eyed,blurry';
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 // let fixSeed = ''
@@ -114,6 +114,8 @@ export default function Register() {
   const [IDScale, setIDScale] = useState(0.8);
   const [SEED, setSEED] = useState(13047);
   const [numSteps, setNumSteps] = useState(4);
+  const [width, setWidth] = useState(768);
+  const [height, setHeight] = useState(768);
   
 
     // const negative_prompt = DEFAULT_NEG_PROMPT;
@@ -228,8 +230,8 @@ export default function Register() {
                 guidance_scale: CGF,
                 num_inference_steps: numSteps,
                 image_size: {
-                    height: 1024,
-                    width: 768
+                    height: width,
+                    width: height
                 },
                 id_scale: IDScale,
                 mode: "fidelity"
@@ -413,20 +415,6 @@ export default function Register() {
                     </div>
                 </div>
                 <div className='w-full mb-4'>
-                    <label htmlFor="cgf" className="block mb-2  mt-4 text-current font-bold">Guidance scale (CFG) : seberapa mendekati dari prompt ke hasil (max 1,5)</label>
-                    <div className="flex w-full items-center border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <input
-                        className="w-full p-[10px] outline-none text-black"
-                        id="cgf"
-                        name="cgf"
-                        type="number"
-                        placeholder="Ex : 7"
-                        value={CGF}
-                        onChange={(e) => setCGF(parseFloat(e.target.value))}
-                    />
-                    </div>
-                </div>
-                <div className='w-full mb-4'>
                     <label htmlFor="cgf" className="block mb-2  mt-4 text-current font-bold">Seed</label>
                     <div className="flex w-full items-center border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     <input
@@ -437,6 +425,48 @@ export default function Register() {
                         placeholder="Ex : 7"
                         value={SEED}
                         onChange={(e) => setSEED(parseFloat(e.target.value))}
+                    />
+                    </div>
+                </div>
+                <div className='w-full mb-4'>
+                    <label htmlFor="width" className="block mb-2  mt-4 text-current font-bold">Width : width hasil export (dalam pixels)</label>
+                    <div className="flex w-full items-center border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <input
+                        className="w-full p-[10px] outline-none text-black"
+                        id="width"
+                        name="width"
+                        type="number"
+                        placeholder="Ex : 768"
+                        value={width}
+                        onChange={(e) => setWidth(parseFloat(e.target.value))}
+                    />
+                    </div>
+                </div>
+                <div className='w-full mb-4'>
+                    <label htmlFor="height" className="block mb-2  mt-4 text-current font-bold">Height : height hasil export (dalam pixels)</label>
+                    <div className="flex w-full items-center border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <input
+                        className="w-full p-[10px] outline-none text-black"
+                        id="height"
+                        name="height"
+                        type="number"
+                        placeholder="Ex : 768"
+                        value={height}
+                        onChange={(e) => setHeight(parseFloat(e.target.value))}
+                    />
+                    </div>
+                </div>
+                <div className='w-full mb-4'>
+                    <label htmlFor="cgf" className="block mb-2  mt-4 text-current font-bold">Guidance scale (CFG) : seberapa mendekati dari prompt ke hasil (max 1,5)</label>
+                    <div className="flex w-full items-center border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <input
+                        className="w-full p-[10px] outline-none text-black"
+                        id="cgf"
+                        name="cgf"
+                        type="number"
+                        placeholder="Ex : 7"
+                        value={CGF}
+                        onChange={(e) => setCGF(parseFloat(e.target.value))}
                     />
                     </div>
                 </div>
@@ -469,7 +499,7 @@ export default function Register() {
                     </div>
                 </div>
                 </div>
-                <div>PREVIEW SETUP : {SEED} / {CGF} / {numSteps} / {IDScale}</div>
+                <div>PREVIEW SETUP : {SEED} / {width} / {height} / {CGF} / {numSteps} / {IDScale}</div>
                
 
                 {prompt &&
