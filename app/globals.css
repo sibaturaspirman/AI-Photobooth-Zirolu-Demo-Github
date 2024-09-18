@@ -782,6 +782,18 @@ body{
   background-position: top center;
 }
 
+/* ASDP */
+.bg-asdp{
+  background-image: url(../public/asdp/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-asdp2{
+  background-image: url(../public/asdp/bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* GAC */
 .bg-gac{
   background-image: url(../public/gac/bg-depan.jpeg);
