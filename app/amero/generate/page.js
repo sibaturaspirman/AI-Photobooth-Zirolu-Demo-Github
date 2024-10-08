@@ -102,6 +102,14 @@ export default function GenerateAmero() {
             setTimeout(() => {
                 generateImageSwap(character, styleGender, getRandomInt(0, 4))
             }, 500);
+        }else if(character == 'hut' && styleGender =='woman'){
+            setTimeout(() => {
+                generateImageSwap(character, styleGender, getRandomInt(0, 8))
+            }, 500);
+        }else if(character == 'hut' && styleGender =='hijab'){
+            setTimeout(() => {
+                generateImageSwap(character, styleGender, getRandomInt(0, 4))
+            }, 500);
         }
 
     }
@@ -201,10 +209,15 @@ export default function GenerateAmero() {
     const generateImageSwap = async (brand, gender, number) => {
         // console.log(gender)
         // console.log(number)
-        const urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpeg'
+        let urlGambar = ''
+        if(brand == 'hut'){
+            urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpg'
+        }else{
+            urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpeg'
+        }
         // const urlGambar = 'https://ai.zirolu.id/amero/style/contoh3.jpeg'
         // const urlGambar = 'https://ai.zirolu.id/amero/style/amero/v2/woman-2.jpeg'
-        // console.log(urlGambar)
+        console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -281,7 +294,7 @@ export default function GenerateAmero() {
                         </div>
                     </div> */}
                     <div className='relative w-[250px] h-[250px] lg:w-[450px] lg:h-[450px] overflow-hidden'>
-                        <div className={`animate-ameroloading absolute left-0 top-0 w-[3500px] lg:w-[6480px] mx-auto flex justify-center items-center pointer-events-none ${character == 'amero' ? '' : 'opacity-0'}`}>
+                        <div className={`animate-ameroloading absolute left-0 top-0 w-[3500px] lg:w-[6480px] mx-auto flex justify-center items-center pointer-events-none ${character == 'amero' || character == 'hut' ? '' : 'opacity-0'}`}>
                             <Image src='/amero/amero-loading.png' width={6480} height={405} alt='Zirolu' className='w-full' priority />
                         </div>
                         <div className={`animate-lavaniloading absolute left-0 top-0 w-[3500px] lg:w-[6480px] mx-auto flex justify-center items-center pointer-events-none ${character == 'lavani' ? '' : 'opacity-0'}`}>
