@@ -351,6 +351,25 @@ export default function GenerateAmero() {
                             <ul className='choose-amero'>
                             <li>
                                 <input
+                                id='choose_style2'
+                                type="radio"
+                                name='choose_style'
+                                value="hut"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style2">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/amero/style4.png"
+                                    alt="icon"
+                                    width={98}
+                                    height={98}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
@@ -368,7 +387,7 @@ export default function GenerateAmero() {
                                 />
                                 </label>
                             </li>
-                            <li>
+                            {/*<li>
                                 <input
                                 id='choose_style2'
                                 type="radio"
@@ -386,7 +405,7 @@ export default function GenerateAmero() {
                                     priority
                                 />
                                 </label>
-                            </li>
+                            </li>*/}
                             <li>
                                 <input
                                 id='choose_style3'
