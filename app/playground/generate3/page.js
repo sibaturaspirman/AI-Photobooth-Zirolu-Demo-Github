@@ -121,7 +121,7 @@ export default function Register() {
   
     const generateImage = async () => {
         numberProses+=1
-        randomSeed = getRandomInt(1,100000);
+        randomSeed = getRandomInt(1,500000);
         setNumProses(numberProses)
         console.log(randomSeed)
       reset();
@@ -178,7 +178,7 @@ export default function Register() {
         // console.log(result.images[0].url)
         URL_RESULT = result.images[0].url
 
-        if(numberProses == 8){
+        if(numberProses == 16){
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("generateURLResult"+numberProses, URL_RESULT)
                 localStorage.setItem("generateSeedResult"+numberProses, randomSeed)
@@ -308,7 +308,7 @@ export default function Register() {
                     </div>
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-24 lg:p-5 lg:text-2xl border-2 border-[#ffffff] text-center bg-slate-500 text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 8)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 16)`}</p>
                         {error}
                     </div>
 

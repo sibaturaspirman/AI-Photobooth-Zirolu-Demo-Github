@@ -53,6 +53,14 @@ export default function Result() {
     const [imageGeneratetAI_6, setImageGeneratetAI_6] = useState(null);
     const [imageGeneratetAI_7, setImageGeneratetAI_7] = useState(null);
     const [imageGeneratetAI_8, setImageGeneratetAI_8] = useState(null);
+    const [imageGeneratetAI_9, setImageGeneratetAI_9] = useState(null);
+    const [imageGeneratetAI_10, setImageGeneratetAI_10] = useState(null);
+    const [imageGeneratetAI_11, setImageGeneratetAI_11] = useState(null);
+    const [imageGeneratetAI_12, setImageGeneratetAI_12] = useState(null);
+    const [imageGeneratetAI_13, setImageGeneratetAI_13] = useState(null);
+    const [imageGeneratetAI_14, setImageGeneratetAI_14] = useState(null);
+    const [imageGeneratetAI_15, setImageGeneratetAI_15] = useState(null);
+    const [imageGeneratetAI_16, setImageGeneratetAI_16] = useState(null);
 
     const [seedGeneratetAI_1, setSeedGeneratetAI_1] = useState(null);
     const [seedGeneratetAI_2, setSeedGeneratetAI_2] = useState(null);
@@ -62,6 +70,14 @@ export default function Result() {
     const [seedGeneratetAI_6, setSeedGeneratetAI_6] = useState(null);
     const [seedGeneratetAI_7, setSeedGeneratetAI_7] = useState(null);
     const [seedGeneratetAI_8, setSeedGeneratetAI_8] = useState(null);
+    const [seedGeneratetAI_9, setSeedGeneratetAI_9] = useState(null);
+    const [seedGeneratetAI_10, setSeedGeneratetAI_10] = useState(null);
+    const [seedGeneratetAI_11, setSeedGeneratetAI_11] = useState(null);
+    const [seedGeneratetAI_12, setSeedGeneratetAI_12] = useState(null);
+    const [seedGeneratetAI_13, setSeedGeneratetAI_13] = useState(null);
+    const [seedGeneratetAI_14, setSeedGeneratetAI_14] = useState(null);
+    const [seedGeneratetAI_15, setSeedGeneratetAI_15] = useState(null);
+    const [seedGeneratetAI_16, setSeedGeneratetAI_16] = useState(null);
 
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
@@ -125,8 +141,51 @@ export default function Result() {
             const itemseed8 = localStorage.getItem('generateSeedResult8')
             setImageGeneratetAI_8(item8)
             setSeedGeneratetAI_8(itemseed8)
+
+            const item9 = localStorage.getItem('generateURLResult9')
+            const itemseed9 = localStorage.getItem('generateSeedResult9')
+            setImageGeneratetAI_9(item9)
+            setSeedGeneratetAI_9(itemseed9)
+
+            const item10 = localStorage.getItem('generateURLResult10')
+            const itemseed10 = localStorage.getItem('generateSeedResult10')
+            setImageGeneratetAI_10(item10)
+            setSeedGeneratetAI_10(itemseed10)
+
+            const item11 = localStorage.getItem('generateURLResult11')
+            const itemseed11 = localStorage.getItem('generateSeedResult11')
+            setImageGeneratetAI_11(item11)
+            setSeedGeneratetAI_11(itemseed11)
+
+            const item12 = localStorage.getItem('generateURLResult12')
+            const itemseed12 = localStorage.getItem('generateSeedResult12')
+            setImageGeneratetAI_12(item12)
+            setSeedGeneratetAI_12(itemseed12)
+
+            const item13 = localStorage.getItem('generateURLResult13')
+            const itemseed13 = localStorage.getItem('generateSeedResult13')
+            setImageGeneratetAI_13(item13)
+            setSeedGeneratetAI_13(itemseed13)
+
+            const item14 = localStorage.getItem('generateURLResult14')
+            const itemseed14 = localStorage.getItem('generateSeedResult14')
+            setImageGeneratetAI_14(item14)
+            setSeedGeneratetAI_14(itemseed14)
+
+            const item15 = localStorage.getItem('generateURLResult15')
+            const itemseed15 = localStorage.getItem('generateSeedResult6')
+            setImageGeneratetAI_15(item15)
+            setSeedGeneratetAI_15(itemseed15)
+
+            const item16 = localStorage.getItem('generateURLResult16')
+            const itemseed16 = localStorage.getItem('generateSeedResult16')
+            setImageGeneratetAI_16(item16)
+            setSeedGeneratetAI_16(itemseed16)
         }
-    }, [imageGeneratetAI_1, imageGeneratetAI_2, imageGeneratetAI_3, imageGeneratetAI_4, imageGeneratetAI_5, imageGeneratetAI_6, imageGeneratetAI_7, imageGeneratetAI_8, seedGeneratetAI_1, seedGeneratetAI_2, seedGeneratetAI_3, seedGeneratetAI_4, seedGeneratetAI_5, seedGeneratetAI_6, seedGeneratetAI_7, seedGeneratetAI_8, linkQR])
+    }, [
+        imageGeneratetAI_1, imageGeneratetAI_2, imageGeneratetAI_3, imageGeneratetAI_4, imageGeneratetAI_5, imageGeneratetAI_6, imageGeneratetAI_7, imageGeneratetAI_8, imageGeneratetAI_9, imageGeneratetAI_10, imageGeneratetAI_11, imageGeneratetAI_12, imageGeneratetAI_13, imageGeneratetAI_14, imageGeneratetAI_15, imageGeneratetAI_16, 
+        seedGeneratetAI_1, seedGeneratetAI_2, seedGeneratetAI_3, seedGeneratetAI_4, seedGeneratetAI_5, seedGeneratetAI_6, seedGeneratetAI_7, seedGeneratetAI_8, seedGeneratetAI_9, seedGeneratetAI_10, seedGeneratetAI_11, seedGeneratetAI_12, seedGeneratetAI_13, seedGeneratetAI_14, seedGeneratetAI_15, seedGeneratetAI_16,
+        linkQR])
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
@@ -281,6 +340,39 @@ export default function Result() {
                         <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
                             <Image src={imageGeneratetAI_8}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
                             <p className='text-center'>{seedGeneratetAI_8}</p>
+                        </div>
+
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_9}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_9}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_10}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_10}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_11}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_11}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_12}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_12}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_13}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_13}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_14}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_14}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_15}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_15}</p>
+                        </div>
+                        <div className='relative top-0 mx-auto w-[25%] mb-10 block'>
+                            <Image src={imageGeneratetAI_16}  width={1024} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-[100%] block'></Image>
+                            <p className='text-center'>{seedGeneratetAI_16}</p>
                         </div>
                     </div>
                     
