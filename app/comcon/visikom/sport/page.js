@@ -38,18 +38,35 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
+        let randomGambar = ''
 
         if(character == 's1'){
             // let randomGambar = getRandomInt(1,6);
-            let randomGambar = 'fix';
-            urlGambar = 'https://ai.zirolu.id/permata/m-'+randomGambar+'.jpg';
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFix", urlGambar)
-                localStorage.setItem("formasiFix", character)
-            }
-        }else{
+            let randomGambarDalem = '1';
+            randomGambar = randomGambarDalem
+        }else if(character == 's2'){
+            // let randomGambar = getRandomInt(1,6);
+            let randomGambarDalem = '1';
+            randomGambar = randomGambarDalem
+        }else if(character == 's3'){
+            // let randomGambar = getRandomInt(1,6);
+            let randomGambarDalem = '1';
+            randomGambar = randomGambarDalem
+        }else if(character == 's4'){
+            // let randomGambar = getRandomInt(1,6);
+            let randomGambarDalem = '1';
+            randomGambar = randomGambarDalem
+        }else if(character == 's5'){
+            // let randomGambar = getRandomInt(1,6);
+            let randomGambarDalem = '1';
+            randomGambar = randomGambarDalem
         }
+
+        urlGambar = 'https://ai.zirolu.id/comcon/visikom/style/'+formasiFix+'/'+character+'-'+randomGambar+'.jpg';
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("styleFix", urlGambar)
+        }
+        console.log(randomGambar)
         console.log(urlGambar)
 
         setTimeout(() => {

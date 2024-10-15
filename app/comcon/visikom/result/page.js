@@ -150,16 +150,16 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-permata overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-        {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div> */}
-            {/* <div className={`relative w-[60%] mx-auto mt-24 mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-                <Image src='/iqos/neon/yourphoto.png' width={803} height={97} alt='Zirolu' className='w-full' priority />
-            </div> */}
+        <main className="flex fixed h-full w-full bg-visikom overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
+            <div className={`relative w-[60%] mx-auto mt-[11rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+                <Image src='/comcon/visikom/title-photo.png' width={732} height={50} alt='Zirolu' className='w-full' priority />
+            </div>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[60%] mx-auto mb-10`}>
-                        <Image src='/permata/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
+                        <Image src='/comcon/visikom/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -208,7 +208,7 @@ export default function Result() {
                     {/* <Link href='/pln' className="w-[70%] relative mx-auto mt-10 flex justify-center items-center">
                         <Image src='/pln/btn-back.png' width={644} height={144} alt='Zirolu' className='w-full' priority />
                     </Link> */}
-                    <Link href='/permata' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link>
+                    <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
@@ -232,9 +232,9 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
-                <div className='relative w-full mt-[8rem] mb-2 mx-auto flex justify-center items-center'>
+                <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-full' id='capture'>
-                        <div className={`relative w-[80%] mx-auto flex`}>
+                        <div className={`relative w-[70%] mx-auto flex`}>
                             <Image src={imageResultAI}  width={896} height={1584} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
@@ -269,18 +269,18 @@ export default function Result() {
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-10`}>
-                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/permata/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                 <Image src='/comcon/visikom/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className='w-full'>
-                        <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/permata/style' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/permata/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                            <Link href='/comcon/visikom/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Image src='/comcon/visikom/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
