@@ -243,11 +243,11 @@ export default function Cam() {
         <main className="flex fixed h-full w-full bg-visikom overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
             <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/permata/take.png' width={597} height={118} alt='Zirolu' className='w-full' priority />
+            <Image src='/comcon/visikom/take-photo.png' width={597} height={118} alt='Zirolu' className='w-full' priority />
             </div>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-visikom flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
-            <a href='/permata/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <a href='/comcon/visikom/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
             </div>
@@ -314,7 +314,7 @@ export default function Cam() {
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/permata/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/comcon/visikom/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -322,10 +322,10 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/permata/btn-generate.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/comcon/visikom/btn-generate.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
-                        <Image src='/permata/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/comcon/visikom/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div></div>
