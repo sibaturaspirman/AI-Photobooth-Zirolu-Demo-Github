@@ -160,6 +160,21 @@ body{
 .choose.mod7 label{
   padding: 0;
 }
+.choose.mod8{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod8 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 100%;
+  /* width: 250px; */
+}
+.choose.mod8 label{
+  padding: 0;
+}
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -324,6 +339,28 @@ body{
     position: absolute;
     top: 46px;
     right: 62px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.choose.mod8 [type="radio"]:checked + label{
+  transform: scale(1) !important;
+  border-color: #fff;
+}
+.choose.mod8 li label{
+  border: 6px solid transparent;
+}
+.choose.mod8 [type="radio"]:checked + label:after,
+.choose.mod8 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 68px;
+    left: 30px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -805,6 +842,21 @@ body{
   background-size: cover;
   background-position: top center;
 }
+
+
+/* -- COMCON -- */
+/* visikom */
+.bg-visikom-front{
+  background-image: url(../public/comcon/visikom/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-visikom{
+  background-image: url(../public/comcon/visikom/bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+/* -- !COMCON -- */
 
 /* //PILIHSHADOW */
 .pilihshadow{
