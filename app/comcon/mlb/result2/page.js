@@ -66,7 +66,7 @@ export default function Result() {
     const [imageResultAI2, setImageResultAI2] = useState(null);
     const [imageResultAI3, setImageResultAI3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
-    const [generateQR, setGenerateQR] = useState(1);
+    const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [idFormEmail, setIdFormEmail] = useState(null);
     const [sendEmailGak, setSendEmailGak] = useState(null);
