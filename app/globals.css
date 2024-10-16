@@ -175,6 +175,39 @@ body{
 .choose.mod8 label{
   padding: 0;
 }
+
+.choose.mod9{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod9 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 100%;
+  /* width: 250px; */
+}
+.choose.mod9 label{
+  padding: 0;
+}
+
+.choose.mod10{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod10 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 100%;
+  /* width: 250px; */
+}
+.choose.mod10 label{
+  padding: 0;
+  position: relative;
+}
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -365,6 +398,91 @@ body{
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
+
+.choose.mod9 [type="radio"]:checked + label{
+  transform: scale(1.1) !important;
+  /* border-color: #fff; */
+}
+.choose.mod9 li label{
+  /* border: 6px solid transparent; */
+}
+.choose.mod9 [type="radio"]:checked + label:after,
+.choose.mod9 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 84px;
+    left: 195px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.choose.mod9 [type="radio"]:checked + label{
+  transform: scale(1.1) !important;
+  /* border-color: #fff; */
+}
+.choose.mod9 li label{
+  /* border: 6px solid transparent; */
+}
+.choose.mod9 [type="radio"]:checked + label:after,
+.choose.mod9 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 84px;
+    left: 195px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.choose.mod10 [type="radio"]:checked + label{
+  transform: scale(1) !important;
+  /* border-color: #fff; */
+}
+.choose.mod10 [type="radio"]:not(:checked) + label img:first-child{
+  opacity: 1;
+}
+.choose.mod10 [type="radio"]:not(:checked) + label img:last-child{
+  opacity: 0;
+}
+.choose.mod10 [type="radio"]:checked + label img:first-child{
+  opacity: 0;
+}
+.choose.mod10 [type="radio"]:checked + label img:last-child{
+  opacity: 1;
+  transform: scale(1.1) !important;
+}
+.choose.mod10 li{
+  margin-bottom: 3rem;
+}
+.choose.mod10 li label img{
+  /* border: 6px solid transparent; */
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 450ms;
+}
+.choose.mod10 [type="radio"]:checked + label:after,
+.choose.mod10 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 84px;
+    left: 195px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    display: none;
+}
+
 .choose [type="radio"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);
@@ -853,6 +971,18 @@ body{
 }
 .bg-visikom{
   background-image: url(../public/comcon/visikom/bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
+
+.bg-mlb-front{
+  background-image: url(../public/comcon/mlb/bg-front.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-mlb{
+  background-image: url(../public/comcon/mlb/bg.jpg);
   background-size: cover;
   background-position: top center;
 }
