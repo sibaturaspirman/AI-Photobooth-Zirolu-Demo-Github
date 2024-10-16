@@ -37,40 +37,40 @@ export default function Register() {
     }, [formasiFix])
 
     const generateAI = () => {
-        let urlGambar = '';
-        let randomGambar = ''
+        // let urlGambar = '';
+        // let randomGambar = ''
 
-        if(character == 's1'){
-            // let randomGambar = getRandomInt(1,6);
-            let randomGambarDalem = '1';
-            randomGambar = randomGambarDalem
-        }else if(character == 's2'){
-            // let randomGambar = getRandomInt(1,6);
-            let randomGambarDalem = '1';
-            randomGambar = randomGambarDalem
-        }else if(character == 's3'){
-            // let randomGambar = getRandomInt(1,6);
-            let randomGambarDalem = '1';
-            randomGambar = randomGambarDalem
-        }else if(character == 's4'){
-            // let randomGambar = getRandomInt(1,6);
-            let randomGambarDalem = '1';
-            randomGambar = randomGambarDalem
-        }else if(character == 's5'){
-            // let randomGambar = getRandomInt(1,6);
-            let randomGambarDalem = '1';
-            randomGambar = randomGambarDalem
-        }
+        // if(character == 's1'){
+        //     // let randomGambar = getRandomInt(1,6);
+        //     let randomGambarDalem = '1';
+        //     randomGambar = randomGambarDalem
+        // }else if(character == 's2'){
+        //     // let randomGambar = getRandomInt(1,6);
+        //     let randomGambarDalem = '1';
+        //     randomGambar = randomGambarDalem
+        // }else if(character == 's3'){
+        //     // let randomGambar = getRandomInt(1,6);
+        //     let randomGambarDalem = '1';
+        //     randomGambar = randomGambarDalem
+        // }else if(character == 's4'){
+        //     // let randomGambar = getRandomInt(1,6);
+        //     let randomGambarDalem = '1';
+        //     randomGambar = randomGambarDalem
+        // }else if(character == 's5'){
+        //     // let randomGambar = getRandomInt(1,6);
+        //     let randomGambarDalem = '1';
+        //     randomGambar = randomGambarDalem
+        // }
 
-        urlGambar = 'https://ai.zirolu.id/comcon/visikom/style/'+formasiFix+'/'+character+'-'+randomGambar+'.jpg';
+        // urlGambar = 'https://ai.zirolu.id/comcon/visikom/style/'+formasiFix+'/'+character+'-'+randomGambar+'.jpg';
         if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("styleFix", urlGambar)
+            localStorage.setItem("motorFix", character)
         }
-        console.log(randomGambar)
-        console.log(urlGambar)
+        // console.log(randomGambar)
+        // console.log(urlGambar)
 
         setTimeout(() => {
-            router.push('/comcon/visikom/cam');
+            router.push('/comcon/mlb/cam');
         }, 100);
     }
 

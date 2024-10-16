@@ -15,6 +15,123 @@ fal.config({
     }),
 });
 
+const DEFAULT_NEG_PROMPT = 'flaws in the eyes, flaws in the face, flaws, lowres, non-HDRi, low quality, worst quality,artifacts noise, text, watermark, glitch, deformed, mutated, ugly, disfigured, hands, low resolution, partially rendered objects,  deformed or partially rendered eyes, deformed, deformed eyeballs, cross-eyed,blurry';
+let URL_RESULT = ''
+let FACE_URL_RESULT = ''
+let FIXSEEDPILIH = 0, PROMPTFIX = '';
+let promptArea = [
+    {
+        gender:"male - scramble",
+        prompt:[
+            {
+                text:"A photorealistic black and white style. man sitting on a ((( Ducati Scrambler ))) motorcycle, parked in an industrial workshop setting, wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:334929
+            },
+            {
+                text:"A photorealistic black and white style. man sitting on a ((( Ducati Scrambler ))) motorcycle, parked in an industrial workshop setting, wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:484429
+            }
+        ]
+    },
+    {
+        gender:"male - caferacer",
+        prompt:[
+            {
+                text:"A photorealistic proportional black and white style. A striking motorcycle sitted on a ((( Triumph Thruxton cafe racer style ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:103836
+            },
+            {
+                text:"A photorealistic proportional black and white style. A striking motorcycle sitted on a ((( Triumph Thruxton cafe racer style ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:49811
+            }
+        ]
+    },
+    {
+        gender:"male - adventure",
+        prompt:[
+            {
+                text:"A photorealistic black and white style. highly detailed 8K image of a man (((standing))) beside an (((adventure BMW motorcycle))). The motorbike features rugged tires and a sturdy frame, built for off-road terrains. The man is fully geared with a helmet, protective jacket, and gloves. The garage surroundings feature metal tools, shelves, and machinery, with a gritty, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic",
+                seed:489327
+            },
+            {
+                text:"A photorealistic black and white style. highly detailed 8K image of a man (((standing))) beside an (((adventure BMW motorcycle))). The motorbike features rugged tires and a sturdy frame, built for off-road terrains. The man is fully geared with a helmet, protective jacket, and gloves. The garage surroundings feature metal tools, shelves, and machinery, with a gritty, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic",
+                seed:234906
+            }
+        ]
+    },
+    {
+        gender:"male - chopper",
+        prompt:[
+            {
+                text:"A photorealistic proportional black and white style. A striking motorcycle sitted on a ((( black penny Harley Davidson Softail Slim ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:233744
+            },
+            {
+                text:"A photorealistic proportional black and white style. A striking motorcycle sitted on a ((( black penny Harley Davidson Softail Slim ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:117988
+            }
+        ]
+    },
+    {
+        gender:"female - scramble",
+        prompt:[
+            {
+                text:"A photorealistic black and white style, 28 years old  woman sitting on a ((( Ducati Scrambler ))) motorcycle, parked in an industrial workshop setting, wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:10990
+            },
+            {
+                text:"A photorealistic black and white style, 28 years old  woman sitting on a ((( Ducati Scrambler ))) motorcycle, parked in an industrial workshop setting, wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:392852
+            }
+        ]
+    },
+    {
+        gender:"female - caferacer",
+        prompt:[
+            {
+                text:"A photorealistic black and white style. woman sitting on a ((( Triumph Thruxton RS cafe racer ))) with a stunning fully silver chromed tank to match its thrilling performance, wearing a leather jacket and black gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from DLRS camera, emphasizing the rider's stature and confidence. The background ((( modern clean garage ))) surroundings feature metal tools, shelves, and machinery, modern atmosphere. The scene feels authentic and realistic, mechanical setting.",
+                seed:86015
+            },
+            {
+                text:"A photorealistic black and white style. woman sitting on a ((( Triumph Thruxton RS cafe racer ))) with a stunning fully silver chromed tank to match its thrilling performance, wearing a leather jacket and black gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from DLRS camera, emphasizing the rider's stature and confidence. The background ((( modern clean garage ))) surroundings feature metal tools, shelves, and machinery, modern atmosphere. The scene feels authentic and realistic, mechanical setting.",
+                seed:173701
+            }
+        ]
+    },
+    {
+        gender:"female - adventure",
+        prompt:[
+            {
+                text:"A photorealistic black and white style, highly detailed image of a woman sitting on an ((( adventure BMW motorcycle ))) with (((one foot on the ground))). The background features a modern, clean workshop filled with tools and equipment. The scene is well-lit, showcasing the sleek design of the motorcycle and the professional look of the garage. The image is taken from an eye-level DSLR angle, with sharp focus on both the motorcycle and the workshop details. 4K resolution, realistic tones, and dramatic lighting enhance the industrial atmosphere.",
+                seed:359386
+            },
+            {
+                text:"A photorealistic black and white style, highly detailed image of a woman sitting on an ((( adventure BMW motorcycle ))) with (((one foot on the ground))). The background features a modern, clean workshop filled with tools and equipment. The scene is well-lit, showcasing the sleek design of the motorcycle and the professional look of the garage. The image is taken from an eye-level DSLR angle, with sharp focus on both the motorcycle and the workshop details. 4K resolution, realistic tones, and dramatic lighting enhance the industrial atmosphere.",
+                seed:359386
+            }
+        ]
+    },
+    {
+        gender:"female - chopper",
+        prompt:[
+            {
+                text:"A photorealistic black and white style, A striking motorcycle sitted on a ((( black penny Harley Davidson Softail Slim ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:265317
+            },
+            {
+                text:"A photorealistic black and white style, A striking motorcycle sitted on a ((( black penny Harley Davidson Softail Slim ))), wearing a black leather jacket and gloves, striking a heroic pose beside their stationary  motorcycle. The shot is taken from a low angle, emphasizing the rider's stature and confidence. The background garage surroundings feature metal tools, shelves, and machinery, industrial atmosphere. The lighting casts soft shadows, emphasizing the textures of the motorcycle's metallic body and the industrial environment. The scene feels authentic and realistic, mechanical setting.",
+                seed:2729
+            }
+        ]
+    },
+]
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 let streamCam = null;
 const useWebcam = ({
@@ -34,7 +151,6 @@ const useWebcam = ({
     }, [videoRef]);
 };
 
-let FACE_URL_RESULT = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
@@ -122,6 +238,14 @@ export default function Cam() {
 
 
     // AI
+    const [prompt1, setPrompt1] = useState();
+    const [prompt, setPrompt] = useState(null);
+    const [promptNegative, setPromptNegative] = useState(DEFAULT_NEG_PROMPT);
+    const [CGF, setCGF] = useState(1.2);
+    const [IDScale, setIDScale] = useState(0.8);
+    const [SEED, setSEED] = useState(13047);
+    const [numSteps, setNumSteps] = useState(4);
+
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
@@ -129,6 +253,7 @@ export default function Cam() {
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [motorFix, setMotorFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -145,36 +270,143 @@ export default function Cam() {
         if (typeof localStorage !== 'undefined') {
             const item1 = localStorage.getItem('styleFix')
             const item2 = localStorage.getItem('formasiFix')
+            const item3 = localStorage.getItem('motorFix')
             setStyleFix(item1)
             setFormasiFix(item2)
+            setMotorFix(item3)
         }
-    }, [styleFix, formasiFix])
+    }, [styleFix, formasiFix, motorFix])
 
     const generateAI = () => {
         setNumProses1(true)
-        generateImageSwap()
 
-        // videoRef.current.stop();
-        // videoRef.current.srcObject = ''
-        // streamCam.getVideoTracks()[0].stop();
-        // console.log(streamCam)
+        if(formasiFix == 'cowok'){
+            if(motorFix == 's1'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[0].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[0].prompt[randNumb].seed
+            }else if(motorFix == 's2'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[1].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[1].prompt[randNumb].seed
+            }else if(motorFix == 's3'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[2].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[2].prompt[randNumb].seed
+            }else if(motorFix == 's4'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[3].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[3].prompt[randNumb].seed
+            }
+        }else{
+            if(motorFix == 's1'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[4].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[4].prompt[randNumb].seed
+            }else if(motorFix == 's2'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[5].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[5].prompt[randNumb].seed
+            }else if(motorFix == 's3'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[6].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[6].prompt[randNumb].seed
+            }else if(motorFix == 's4'){
+                let randNumb = getRandomInt(0,1)
+                PROMPTFIX = promptArea[7].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[7].prompt[randNumb].seed
+            }
+        }
 
-        
-        // localStream.getVideoTracks()[0].stop();
-        // console.log(streamCam)
-        // console.log(videoRef)
-        // videoRef.src=''
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
+        setTimeout(() => {
+            generateImage()
+        }, 500);
     }
 
+
+    const reset = () => {
+        setLoading(false);
+        setError(null);
+        setResult(null);
+        setResultFaceSwap(null);
+        setLogs([]);
+        setElapsedTime(0);
+    };
     const reset2 = () => {
       setLoading(false);
-      setError(true);
+      setError(null);
       setElapsedTime(0);
     };
+
+  
+    const generateImage = async () => {
+        console.log(PROMPTFIX)
+        console.log(FIXSEEDPILIH)
+        setNumProses(1)
+      reset();
+      // @snippet:start("client.queue.subscribe")
+      setLoading(true);
+      const start = Date.now();
+      try {
+        const result = await fal.subscribe(
+            'fal-ai/pulid',{
+            input: {
+                reference_images: [{
+                        "image_url": imageFile
+                    },
+                    {
+                        "image_url": imageFile
+                    },
+                    {
+                        "image_url": imageFile
+                    },
+                    {
+                        "image_url": imageFile
+                    }
+                ],
+                prompt: PROMPTFIX,
+                negative_prompt: promptNegative,
+                seed: FIXSEEDPILIH,
+                num_images: 1,
+                guidance_scale: CGF,
+                num_inference_steps: numSteps,
+                image_size: {
+                    height: 1006,
+                    width: 683
+                },
+                id_scale: IDScale,
+                mode: "fidelity"
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+              setElapsedTime(Date.now() - start);
+              if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+              ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                // console.log(update)
+              }
+            },
+          }
+        );
+        setResult(result);
+        URL_RESULT = result.images[0].url;
+        console.log(URL_RESULT)
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("generateURLResult", URL_RESULT)
+        }
+      } catch (error) {
+        // setError(error);
+      } finally {
+        setLoading(false);
+        setElapsedTime(Date.now() - start);
+        generateImageSwap()
+      }
+      // @snippet:end
+    };
+
     const toDataURL = url => fetch(url)
     .then(response => response.blob())
     .then(blob => new Promise((resolve, reject) => {
@@ -184,13 +416,8 @@ export default function Cam() {
         reader.readAsDataURL(blob)
     }))
 
+
     const generateImageSwap = async () => {
-
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
-
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -201,7 +428,7 @@ export default function Cam() {
             'fal-ai/face-swap',
             {
             input: {
-                base_image_url: styleFix,
+                base_image_url: URL_RESULT,
                 swap_image_url: imageFile
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
@@ -218,20 +445,30 @@ export default function Cam() {
             }
         );
         setResultFaceSwap(result);
-        FACE_URL_RESULT= result.image.url;
+        FACE_URL_RESULT = result.image.url;
+        let randomHasil = getRandomInt(1,2);
+
+        // emitStrsing("sendImage", result.image.url);
 
         toDataURL(FACE_URL_RESULT)
         .then(dataUrl => {
+            // console.log('RESULT:', dataUrl)
+
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
+            
             setTimeout(() => {
-                router.push('/comcon/mlb/result');
+                if(randomHasil == 1){
+                    router.push('/comcon/mlb/result');
+                }else{
+                    router.push('/comcon/mlb/result2');
+                }
             }, 200);
         })
         } catch (error) {
-            setError(false);
+            setError(error);
         } finally {
             setLoading(false);
             setElapsedTime(Date.now() - start);
@@ -249,11 +486,11 @@ export default function Cam() {
             <Image src='/comcon/mlb/take.png' width={597} height={118} alt='Zirolu' className='w-full' priority />
             </div>
             
-            <div className={`fixed top-0 left-0 w-full h-full bg-visikom flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
+            {/* <div className={`fixed top-0 left-0 w-full h-full bg-visikom flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
             <a href='/comcon/visikom/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
-            </div>
+            </div> */}
 
             {/* LOADING */}
             {numProses1 && 
