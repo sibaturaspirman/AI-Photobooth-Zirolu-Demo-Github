@@ -155,7 +155,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'MLB '+formasiFix);
+            bodyFormData.append("name", 'MLB PROMPT - '+formasiFix);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
