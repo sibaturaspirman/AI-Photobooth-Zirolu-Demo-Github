@@ -152,7 +152,7 @@ export default function Cam() {
             setStyleFix(item1)
             setFormasiFix(item2)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "comcon24-iqos");
+        const aiInstance = new PadmaAIClient(process.env.NEXT_PUBLIC_API_URL, process.env.NEXT_PUBLIC_API_KEY, process.env.NEXT_PUBLIC_APP_ID);
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix])
