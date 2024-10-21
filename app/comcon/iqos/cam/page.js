@@ -152,7 +152,7 @@ export default function Cam() {
             setStyleFix(item1)
             setFormasiFix(item2)
         }
-        const aiInstance = new PadmaAIClient(process.env.NEXT_PUBLIC_API_URL, process.env.NEXT_PUBLIC_API_KEY, process.env.NEXT_PUBLIC_APP_ID);
+        const aiInstance = new PadmaAIClient(process.env.API_URL, process.env.API_KEY, process.env.APP_ID);
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix])
