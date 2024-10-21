@@ -986,6 +986,12 @@ body{
   background-position: top center;
 }
 
+.bg-comcon-iqos{
+  background-image: url(../public/comcon/iqos/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 
 .bg-mlb-front{
   background-image: url(../public/comcon/mlb/bg-front.jpg);
