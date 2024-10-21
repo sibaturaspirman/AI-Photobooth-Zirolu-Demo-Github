@@ -13,10 +13,10 @@ export default function IQOSHome() {
         <Link href='/comcon/iqos' className='relative w-full mx-auto flex justify-center items-center pb-10'>
           <Image src='/comcon/brand1.jpg' width={900} height={319} alt='Zirolu' className='w-full rounded-2xl shadow-xl' priority />
         </Link>
-        <Link href='/comcon/iqos' className='relative w-full mx-auto flex justify-center items-center pb-10'>
+        <Link href='/comcon/veev' className='relative w-full mx-auto flex justify-center items-center pb-10'>
           <Image src='/comcon/brand2.jpg' width={900} height={319} alt='Zirolu' className='w-full rounded-2xl shadow-xl' priority />
         </Link>
-        <Link href='/comcon/iqos' className='relative w-full mx-auto flex justify-center items-center'>
+        <Link href='/comcon/zyn' className='relative w-full mx-auto flex justify-center items-center'>
           <Image src='/comcon/brand3.jpg' width={900} height={319} alt='Zirolu' className='w-full rounded-2xl shadow-xl' priority />
         </Link>
       </div>

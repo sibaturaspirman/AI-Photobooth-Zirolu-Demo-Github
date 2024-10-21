@@ -980,6 +980,13 @@ body{
 }
 
 
+.bg-zyn{
+  background-image: url(../public/comcon/zyn/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
+
 .bg-mlb-front{
   background-image: url(../public/comcon/mlb/bg-front.jpg);
   background-size: cover;
