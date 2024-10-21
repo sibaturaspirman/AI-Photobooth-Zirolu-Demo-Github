@@ -39,26 +39,39 @@ export default function Register() {
     const generateAI = () => {
         let urlGambar = '';
         let randomGambar = ''
+        let randomGambarDalem = ''
 
         if(character == 's1'){
-            let randomGambarDalem = getRandomInt(1,2);
-            // let randomGambarDalem = '1';
+            if(formasiFix == 'cewekhijab'){
+                randomGambarDalem = getRandomInt(1,3);
+            }else{
+                randomGambarDalem = getRandomInt(1,2);
+            }
             randomGambar = randomGambarDalem
         }else if(character == 's2'){
-            let randomGambarDalem = getRandomInt(1,2);
-            // let randomGambarDalem = '1';
+            if(formasiFix == 'cewekhijab'){
+                randomGambarDalem = getRandomInt(1,3);
+            }else{
+                randomGambarDalem = getRandomInt(1,2);
+            }
             randomGambar = randomGambarDalem
         }else if(character == 's3'){
-            let randomGambarDalem = getRandomInt(1,2);
-            // let randomGambarDalem = '1';
+            if(formasiFix == 'cewekhijab' || formasiFix == 'cewek'){
+                randomGambarDalem = getRandomInt(1,3);
+            }else{
+                randomGambarDalem = getRandomInt(1,2);
+            }
             randomGambar = randomGambarDalem
         }else if(character == 's4'){
-            let randomGambarDalem = getRandomInt(1,2);
-            // let randomGambarDalem = '1';
+            if(formasiFix == 'cewekhijab'){
+                randomGambarDalem = getRandomInt(1,3);
+            }else{
+                randomGambarDalem = getRandomInt(1,2);
+            }
             randomGambar = randomGambarDalem
         }
 
-        urlGambar = 'https://ai.zirolu.id/comcon/mlb/style/'+character+'-'+randomGambar+'.jpg';
+        urlGambar = 'https://ai.zirolu.id/comcon/mlb/style/'+formasiFix+'/'+character+'-'+randomGambar+'.jpg';
         if (typeof localStorage !== 'undefined') {
             localStorage.setItem("styleFix", urlGambar)
         }

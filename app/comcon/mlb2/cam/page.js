@@ -225,9 +225,6 @@ export default function Cam() {
         setResultFaceSwap(result);
         FACE_URL_RESULT= result.image.url;
 
-        let randomHasil = getRandomInt(1,2);
-        console.log(randomHasil)
-
         toDataURL(FACE_URL_RESULT)
         .then(dataUrl => {
             if (typeof localStorage !== 'undefined') {
@@ -235,11 +232,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                if(randomHasil == 1){
-                    router.push('/comcon/mlb2/result');
-                }else{
-                    router.push('/comcon/mlb2/result2');
-                }
+                router.push('/comcon/mlb2/result');
             }, 200);
         })
         } catch (error) {
@@ -337,7 +330,7 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/comcon/mlb/btn-generate.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/comcon/mlb/btn-surprise.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
                         <Image src='/comcon/mlb/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />

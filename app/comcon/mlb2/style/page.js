@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 export default function Register() {
     const router = useRouter();
     const [character, setCharacter] = useState(null);
-    const [styleFemale, setStyleFemale] = useState('normal');
+    const [hijab, setHijab] = useState(false);
 
     const generateAI = () => {
         if(character == 'cowok'){
@@ -35,13 +35,13 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else{
-            if(styleFemale == 'normal'){
+            if(!hijab){
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("formasiFix", character)
                 }
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character+styleFemale)
+                    localStorage.setItem("formasiFix", character+'hijab')
                 }
             }
         }
@@ -49,6 +49,14 @@ export default function Register() {
         setTimeout(() => {
             router.push('/comcon/mlb2/motor');
         }, 100);
+    }
+
+    const toggleHijab = () => {
+        if(hijab){
+            setHijab(false)
+        }else{
+            setHijab(true)
+        }
     }
 
     return (
@@ -107,6 +115,27 @@ export default function Register() {
                                 </label>
                             </li>
                             </ul>
+                        </div>
+
+                        <div className={`mt-0 relative w-full mx-auto p-10  ${character == 'cewek' ? `` : 'opacity-0 pointer-events-none'}`}>
+                            <div className="relative w-[70%] mx-auto" onClick={toggleHijab}>
+                                <Image
+                                    className={`relative h-auto w-full ${hijab ? `opacity-0 pointer-events-none` : ''}`}
+                                    src="/comcon/mlb/hijab.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className={`absolute top-0 left-0 h-auto w-full ${hijab ? `` : 'opacity-0 pointer-events-none'}`}
+                                    src="/comcon/mlb/hijab_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
