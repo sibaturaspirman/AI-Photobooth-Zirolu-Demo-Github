@@ -81,8 +81,8 @@ export default function Result() {
 
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'PERMATA',
-        phone: '00001',
+        name: 'COMCON VISIKOM',
+        phone: '00002',
       });
     const { Canvas } = useQRCode();
 
