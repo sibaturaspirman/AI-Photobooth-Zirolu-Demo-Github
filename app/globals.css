@@ -979,6 +979,11 @@ body{
   background-position: top center;
 }
 
+.bg-veev{
+  background-image: url(../public/comcon/veev/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 
 .bg-zyn{
   background-image: url(../public/comcon/zyn/bg.jpg);
