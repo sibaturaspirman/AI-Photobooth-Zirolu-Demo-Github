@@ -15,7 +15,7 @@ export default function IQOSHome() {
         <Image src='/comcon/veev/preview.png' width={787} height={84} alt='Zirolu' className='w-full' priority />
       </div>
       <div className="relative w-[80%]">
-        <Link href='/comcon/veev/style' className='relative w-full mx-auto flex justify-center items-center'>
+        <Link href='/comcon/veev/aura' className='relative w-full mx-auto flex justify-center items-center'>
           <Image src='/comcon/veev/btn-continue.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
         </Link>
         <Link href='/comcon' className='relative w-full mx-auto flex justify-center items-center'>

@@ -33,6 +33,15 @@ body {
   }
 }
 
+@keyframes swipeGeser{
+  0%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(10%);
+  }
+}
+
 
 body{
   background-image: url(../public/bg.jpeg);
@@ -985,6 +994,32 @@ body{
   background-position: top center;
 }
 
+.bg-veev-1{
+  background-image: url(../public/comcon/veev/bg-1.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-veev-2{
+  background-image: url(../public/comcon/veev/bg-2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-veev-3{
+  background-image: url(../public/comcon/veev/bg-3.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-veev-4{
+  background-image: url(../public/comcon/veev/bg-4.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-veev-5{
+  background-image: url(../public/comcon/veev/bg-5.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 .bg-zyn{
   background-image: url(../public/comcon/zyn/bg.jpg);
   background-size: cover;
@@ -1007,6 +1042,14 @@ body{
   background-image: url(../public/comcon/mlb/bg.jpg);
   background-size: cover;
   background-position: top center;
+}
+
+.swipeInfo{
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 100%);
+}
+.swipeInfoHand{
+  animation: swipeGeser 350ms ease-in-out infinite alternate
 }
 /* -- !COMCON -- */
 
