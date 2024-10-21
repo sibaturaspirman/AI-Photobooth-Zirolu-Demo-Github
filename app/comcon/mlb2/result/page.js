@@ -76,8 +76,8 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'PERMATA',
-        phone: '00001',
+        name: 'MLB VISIKOM',
+        phone: '00002',
       });
     const { Canvas } = useQRCode();
 
@@ -154,28 +154,30 @@ export default function Result() {
         setLoadingDownload('≈')
 
         canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", 'MLB '+formasiFix);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
-          
             const options = {
                 method: 'POST',
-                body: bodyFormData,
+                body: JSON.stringify({
+                    name:payload.name+' '+formasiFix,
+                    phone:payload.phone,
+                    image:linkQR
+                }),
                 headers: {
                     'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response)
-                    setLinkQR(response.file)
+                    // setLinkQR(response.file)
+                    // emitString("sendImage", response.file);
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
+                    handleStartCountdown()
                 })
                 .catch(err => {
                     if (typeof localStorage !== 'undefined') {
@@ -276,9 +278,9 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none relative w-full` : 'relative w-full'}>
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-full'>
-                        <div className={`relative w-[80%] mx-auto flex`} id='capture' ref={(el) => (componentRef = el)}>
-                            <Image src={imageResultAI}  width={683} height={1006} alt='Zirolu' className='relative top-0 mx-auto w-auto h-full max-w-fit block'></Image>
+                    <div className='relative z-10 w-[80%] mx-auto'>
+                        <div className={`relative w-full mx-auto flex`} id='capture' ref={(el) => (componentRef = el)}>
+                            <Image src={imageResultAI}  width={683} height={1006} alt='Zirolu' className='relative top-0 mx-auto w-full block'></Image>
                         </div>
                     </div>
                     {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
