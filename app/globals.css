@@ -963,7 +963,11 @@ body{
 
 
 /* -- COMCON -- */
-/* visikom */
+.bg-comcon-dark{
+  background-image: url(../public/comcon/bg-dark.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 .bg-visikom-front{
   background-image: url(../public/comcon/visikom/bg.jpg);
   background-size: cover;
