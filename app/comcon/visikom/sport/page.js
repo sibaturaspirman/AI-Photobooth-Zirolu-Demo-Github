@@ -28,6 +28,10 @@ export default function Register() {
     const router = useRouter();
     const [character, setCharacter] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [urlGambarFix, setUrlGambarFix] = useState(null);
+    const [preview, setPreview] = useState(false);
+    const [persen, setPersen] = useState(0);
+    
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
@@ -68,18 +72,61 @@ export default function Register() {
         }
         console.log(randomGambar)
         console.log(urlGambar)
+        setUrlGambarFix(urlGambar)
+
+
 
         setTimeout(() => {
-            router.push('/comcon/visikom/cam');
+            setPersen(10)
+            setPreview(true)
+            setTimeout(() => {
+                setPersen(35)
+                setTimeout(() => {
+                    setPersen(47)
+                    setTimeout(() => {
+                        setPersen(68)
+                        setTimeout(() => {
+                            setPersen(88)
+                            setTimeout(() => {
+                                setPersen(100)
+                                setTimeout(() => {
+                                    router.push('/comcon/visikom/cam');
+                                }, 500);
+                            }, 400);
+                        }, 300);
+                    }, 200);
+                }, 300);
+            }, 1000);
         }, 100);
     }
 
     return (
         <main className="flex fixed h-full w-full bg-visikom overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
+            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
             <div className="relative w-[85%] mx-auto mt-0">
             <Image src='/comcon/visikom/selectsport.png' width={784} height={120} alt='Zirolu' className='w-full' priority />
             </div>
+
+
+            {/* PREVIEW */}
+            {preview && 
+                <div className='absolute top-0 bg-visikom left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
+                    <div className={`relative w-[60%] mx-auto mb-10`}>
+                        <Image src='/comcon/visikom/logo-prepare.png' width={668} height={370} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className='relative z-10 w-full'>
+                        <div className={`relative w-[50%] border-8 mx-auto flex`}>
+                            <Image src={urlGambarFix}  width={636} height={1132} alt='Zirolu' className='relative block w-full'></Image>
+                        </div>
+                    </div>
+                    <div className='text-center mt-10'>
+                        <p className='text-8xl font-bold'><span>{persen}</span>%</p>
+                        <p className='uppercase text-5xl mt-5'>processing</p>
+                    </div>
+                </div>
+            }
+            {/* PREVIEW */}
+
             {/* PILIH STYLE */}
             <div className={`relative w-[80%] mx-auto mt-10`}>
                 <div className='relative mt-0 w-full'>
