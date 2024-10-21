@@ -74,6 +74,11 @@ export default function Result() {
     const [keKirimEmailGak, setKeKirimEmailGak] = useState(null);
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
+
+    const [maxDuration, setMaxDuration] = useState(10);
+    const [countdownStart, setCountdownStart] = useState(false);
+    const timerRef = useRef(null);
+
     let componentRef = useRef();
     const [payload, setPayload] = useState({
         name: 'PERMATA',
@@ -100,7 +105,13 @@ export default function Result() {
             setFormasiFix(item3)
             setLinkQR(item)
         }
-    }, [imageResultAI, linkQR, formasiFix])
+
+        if(countdownStart){
+            if(maxDuration == 0){
+                location.href = '/comcon/visikom'
+            }
+        }
+    }, [imageResultAI, linkQR, formasiFix, countdownStart, maxDuration])
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
@@ -136,6 +147,7 @@ export default function Result() {
                     setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
+                    handleStartCountdown()
                 })
                 .catch(err => {
                     if (typeof localStorage !== 'undefined') {
@@ -148,6 +160,22 @@ export default function Result() {
                 });
         });
     }
+
+    // COUNTDOWN
+    const handleStartCountdown = () => {
+        if (maxDuration <= 10) {
+            setCountdownStart(true);
+            timerRef.current = setInterval(() => {
+                setMaxDuration((prevTime) => {
+                  if (prevTime <= 1) {
+                    clearInterval(timerRef.current);
+                    return 0;
+                  }
+                  return prevTime - 1;
+                });
+            }, 1000);
+        }
+    };
 
     return (
         <main className="flex fixed h-full w-full bg-visikom overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -208,7 +236,15 @@ export default function Result() {
                     {/* <Link href='/pln' className="w-[70%] relative mx-auto mt-10 flex justify-center items-center">
                         <Image src='/pln/btn-back.png' width={644} height={144} alt='Zirolu' className='w-full' priority />
                     </Link> */}
-                    <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link>
+
+                    <div className='text-center mt-10'>
+                        <p className='text-8xl font-bold'>{maxDuration}s</p>
+                        <p className='uppercase text-5xl mt-5'>scan before it ends</p>
+                    </div>
+                    <Link href='/comcon/visikom' className="relative w-full mx-auto flex justify-center items-center mt-[10rem]">
+                        <Image src='/comcon/visikom/btn-back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    </Link>
+                    {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
                 </div>
             }
             {/* QR */}
