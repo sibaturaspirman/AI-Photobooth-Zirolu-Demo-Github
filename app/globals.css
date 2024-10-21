@@ -461,7 +461,7 @@ body{
   transform: scale(1.1) !important;
 }
 .choose.mod10 li{
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 .choose.mod10 li label img{
   /* border: 6px solid transparent; */

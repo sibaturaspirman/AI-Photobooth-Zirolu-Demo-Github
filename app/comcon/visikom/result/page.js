@@ -279,8 +279,8 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/comcon/visikom/style' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/comcon/visikom/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                            <Link href='/comcon/visikom' className="relative w-full mx-auto flex justify-center items-center">
+                            <Image src='/comcon/visikom/btn-back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>

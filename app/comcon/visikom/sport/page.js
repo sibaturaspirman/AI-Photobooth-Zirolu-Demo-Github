@@ -81,12 +81,12 @@ export default function Register() {
             <Image src='/comcon/visikom/selectsport.png' width={784} height={120} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
-            <div className={`relative w-[85%] mx-auto mt-10`}>
+            <div className={`relative w-[80%] mx-auto mt-10`}>
                 <div className='relative mt-0 w-full'>
                     <div className='relative w-full'>
                         <div className='overflow-hidden w-full mx-auto'>
                             {/* STYLE SEMENTARA */}
-                            <ul className='choose mod8'>
+                            <ul className='choose mod10'>
                             <li className='mb-3'>
                                 <input
                                 id='choose_style1'
@@ -99,6 +99,14 @@ export default function Register() {
                                 <Image
                                     className="relative h-auto w-full"
                                     src="/comcon/visikom/sport1.jpg"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/sport1_c.jpg"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -123,6 +131,14 @@ export default function Register() {
                                     height={176}
                                     priority
                                 />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/sport2_c.jpg"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
                                 </label>
                             </li>
                             <li className='mb-3'>
@@ -137,6 +153,14 @@ export default function Register() {
                                 <Image
                                     className="relative h-auto w-full"
                                     src="/comcon/visikom/sport3.jpg"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/sport3_c.jpg"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -161,6 +185,14 @@ export default function Register() {
                                     height={176}
                                     priority
                                 />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/sport4_c.jpg"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
                                 </label>
                             </li>
                             <li>
@@ -175,6 +207,14 @@ export default function Register() {
                                 <Image
                                     className="relative h-auto w-full"
                                     src="/comcon/visikom/sport5.jpg"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/sport5_c.jpg"
                                     alt="icon"
                                     width={720}
                                     height={176}

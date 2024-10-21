@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 export default function Register() {
     const router = useRouter();
     const [character, setCharacter] = useState(null);
-    const [styleFemale, setStyleFemale] = useState('normal');
+    const [hijab, setHijab] = useState(false);
 
     const generateAI = () => {
         if(character == 'cowok'){
@@ -35,13 +35,13 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else{
-            if(styleFemale == 'normal'){
+            if(!hijab){
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("formasiFix", character)
                 }
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character+styleFemale)
+                    localStorage.setItem("formasiFix", character+'hijab')
                 }
             }
         }
@@ -49,6 +49,14 @@ export default function Register() {
         setTimeout(() => {
             router.push('/comcon/visikom/sport');
         }, 100);
+    }
+
+    const toggleHijab = () => {
+        if(hijab){
+            setHijab(false)
+        }else{
+            setHijab(true)
+        }
     }
 
     return (
@@ -63,7 +71,7 @@ export default function Register() {
                     <div className='relative w-full'>
                         <div className='overflow-hidden w-full mx-auto'>
                             {/* STYLE SEMENTARA */}
-                            <ul className='choose mod8'>
+                            <ul className='choose mod10'>
                             <li className='mb-10'>
                                 <input
                                 id='choose_style1'
@@ -81,9 +89,17 @@ export default function Register() {
                                     height={176}
                                     priority
                                 />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/gender1_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
                                 </label>
                             </li>
-                            <li>
+                            <li className="!mb-0">
                                 <input
                                 id='choose_style2'
                                 type="radio"
@@ -100,48 +116,42 @@ export default function Register() {
                                     height={176}
                                     priority
                                 />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/comcon/visikom/gender2_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
                                 </label>
                             </li>
                             </ul>
                         </div>
 
 
-                        {character == 'cewek' &&
-                        <div className="mt-10">
-                            <ul className='choose4'>
-                                {/* <li>
-                                    <input
-                                    id='choose_female'
-                                    type="radio"
-                                    name='choose_female'
-                                    value="normal"
-                                    onChange={(e) => setStyleFemale(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_female" className='text-2xl'>Normal</label>
-                                </li> */}
-                                <li>
-                                    <input
-                                    id='choose_female3'
-                                    type="radio"
-                                    name='choose_female'
-                                    value="normal"
-                                    onChange={(e) => setStyleFemale(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_female3" className='text-5xl'>without Hijab</label>
-                                </li>
-                                <li>
-                                    <input
-                                    id='choose_female2'
-                                    type="radio"
-                                    name='choose_female'
-                                    value="hijab"
-                                    onChange={(e) => setStyleFemale(e.target.value)}
-                                    />
-                                    <label htmlFor="choose_female2" className='text-5xl'>with Hijab</label>
-                                </li>
-                            </ul>
+                        {/* {character == 'cewek' && */}
+                        <div className={`mt-0 relative w-full p-10  ${character == 'cewek' ? `` : 'opacity-0 pointer-events-none'}`}>
+                            <div className="relative w-full" onClick={toggleHijab}>
+                                <Image
+                                    className={`relative h-auto w-full ${hijab ? `opacity-0 pointer-events-none` : ''}`}
+                                    src="/comcon/visikom/hijab.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className={`absolute top-0 left-0 h-auto w-full ${hijab ? `` : 'opacity-0 pointer-events-none'}`}
+                                    src="/comcon/visikom/hijab_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                            </div>
                         </div>
-                        }
+                        {/* } */}
                     </div>
                 </div>
                 {/* {character && */}
