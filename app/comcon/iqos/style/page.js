@@ -30,30 +30,26 @@ export default function Register() {
     const [hijab, setHijab] = useState(false);
 
     const generateAI = () => {
-        let urlGambar = '';
         let randomGambar = getRandomInt(1,3)
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("formasiFix", character)
+                localStorage.setItem("formasiFix", 'MALE')
             }
-            urlGambar = 'https://ai.zirolu.id/comcon/zyn/style/'+character+'-'+randomGambar+'.jpg';
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character)
+                    localStorage.setItem("formasiFix", 'FEMALE')
                 }
-                urlGambar = 'https://ai.zirolu.id/comcon/zyn/style/'+character+'-'+randomGambar+'.jpg';
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character+'hijab')
+                    localStorage.setItem("formasiFix", 'HIJAB')
                 }
-                urlGambar = 'https://ai.zirolu.id/comcon/zyn/style/'+character+'hijab-'+randomGambar+'.jpg';
             }
         }
 
-        if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("styleFix", urlGambar)
-        }
+        // if (typeof localStorage !== 'undefined') {
+        //     localStorage.setItem("styleFix", urlGambar)
+        // }
 
         setTimeout(() => {
             router.push('/comcon/iqos/cam');
