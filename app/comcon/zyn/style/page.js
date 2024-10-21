@@ -166,7 +166,7 @@ export default function Register() {
                 {/* {character && */}
                     <div className={`relative w-full flex justify-center items-center mt-[9rem] z-20 ${character ? `` : 'opacity-0 pointer-events-none'}`}>
                         <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
-                            <Image src='/comcon/zyn/btn-continue.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
+                            <Image src='/comcon/zyn/btn-continue2.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
                 {/* } */}

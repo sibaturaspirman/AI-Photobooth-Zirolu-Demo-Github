@@ -329,7 +329,7 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/comcon/zyn' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/comcon/zyn/style' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
