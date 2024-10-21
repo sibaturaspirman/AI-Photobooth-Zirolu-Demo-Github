@@ -10,7 +10,7 @@ import { useQRCode } from 'next-qrcode';
 // import { Merriweather} from "next/font/google";
 // const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 // import BtnHexagon2 from "../../components/BtnHexagon2";
-// import ReactToPrint from "react-to-print";
+import ReactToPrint from "react-to-print";
 
 
 // function downloadImage(data, filename = 'untitled.jpeg') {
@@ -178,7 +178,7 @@ export default function Result() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-zyn overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-zyn overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
         <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
             {/* <div className={`relative w-[60%] mx-auto mt-[11rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 <Image src='/comcon/visikom/title-photo.png' width={732} height={50} alt='Zirolu' className='w-full' priority />
@@ -241,8 +241,22 @@ export default function Result() {
                         <p className='text-8xl font-bold'>{maxDuration}s</p>
                         <p className='uppercase text-5xl mt-5'>scan before it ends</p>
                     </div> */}
-                    <Link href='/comcon/visikom' className="relative w-full mx-auto flex justify-center items-center mt-[10rem]">
-                        <Image src='/comcon/zyn/btn-back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    <div className={`w-full`}>
+                    <ReactToPrint
+                    trigger={() => 
+                        <div className={`w-full mt-5`}>
+                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                                <div className="w-full relative mx-auto flex justify-center items-center">
+                                    <Image src='/comcon/zyn/btn-print.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    content={() => componentRef}
+                    />
+                    </div>
+                    <Link href='/comcon' className="relative w-[60%] mx-auto flex justify-center items-center">
+                        <Image src='/comcon/zyn/try.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
                 </div>
@@ -266,12 +280,12 @@ export default function Result() {
             </div>
             } */}
 
-            <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
+            <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-full' id='capture'>
-                        <div className={`relative w-[70%] mx-auto flex`}>
-                            <Image src={imageResultAI}  width={896} height={1584} alt='Zirolu' className='relative block w-full'></Image>
+                    <div className='relative z-10 w-[80%]'>
+                        <div className={`relative w-full mx-auto flex`} id='capture' ref={(el) => (componentRef = el)}>
+                            <Image src={imageResultAI}  width={683} height={1006} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
                     {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
@@ -305,7 +319,7 @@ export default function Result() {
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-10`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                  <Image src='/comcon/zyn/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
@@ -314,9 +328,9 @@ export default function Result() {
                     </div>
 
                     <div className='w-full'>
-                        <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/comcon/zyn' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/comcon/zyn/btn-back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                            <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
