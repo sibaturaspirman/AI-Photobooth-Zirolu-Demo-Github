@@ -29,27 +29,33 @@ export default function Register() {
     const [character, setCharacter] = useState(null);
     const [hijab, setHijab] = useState(false);
 
+    
+
     const generateAI = () => {
-        let randomGambar = getRandomInt(1,3)
+        let urlGambar = '';
+        let randomGambar = getRandomInt(1,8)
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("formasiFix", 'MALE')
+                localStorage.setItem("formasiFix", character)
             }
+            urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'-'+randomGambar+'.jpg';
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", 'FEMALE')
+                    localStorage.setItem("formasiFix", character)
                 }
+                urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'-'+randomGambar+'.jpg';
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", 'HIJAB')
+                    localStorage.setItem("formasiFix", character+'hijab')
                 }
+                urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'hijab-'+randomGambar+'.jpg';
             }
         }
 
-        // if (typeof localStorage !== 'undefined') {
-        //     localStorage.setItem("styleFix", urlGambar)
-        // }
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("styleFix", urlGambar)
+        }
 
         setTimeout(() => {
             router.push('/comcon/iqos/cam');

@@ -81,7 +81,7 @@ export default function Result() {
 
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'COMCON IQOS',
+        name: 'COMCON IQOS FAL',
         phone: '00002',
       });
     const { Canvas } = useQRCode();
