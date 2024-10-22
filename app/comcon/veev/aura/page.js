@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,7 +19,7 @@ export default function Register() {
     const router = useRouter();
     const [slideIndex, setSlideIndex] = useState(0);
     const [swipeTrigger, setSwipeTrigger] = useState(false);
-
+    const [sliderProgress, setSliderProgress] = useState(0);
     const [maxDuration, setMaxDuration] = useState(5);
     const [countdownStart, setCountdownStart] = useState(false);
     const timerRef = useRef(null);
@@ -41,6 +40,17 @@ export default function Register() {
         setTimeout(() => {
             router.push('/comcon/veev/style');
         }, 200);
+    }
+
+    const SetupSlider = (e) => {
+        // console.log(e)
+        const tempSliderValue = e.target.value; 
+        setSliderProgress(e.target.value)
+        const progress = (tempSliderValue / 100) * 100;
+        // console.log(progress)
+
+        let progressBagi = progress / 25;
+        setSlideIndex(progressBagi)
     }
 
     // COUNTDOWN
@@ -64,49 +74,43 @@ export default function Register() {
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
 
             <div className={`fixed top-0 left-0 w-full h-full bg-veev-1 pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-veev-2 pointer-events-none z-10 ${slideIndex == 1 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-veev-3 pointer-events-none z-10 ${slideIndex == 2 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-veev-4 pointer-events-none z-10 ${slideIndex == 3 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-veev-5 pointer-events-none z-10 ${slideIndex == 4 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-veev-2 pointer-events-none z-10 transition-all ${slideIndex == 1 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-veev-3 pointer-events-none z-10 transition-all ${slideIndex == 2 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-veev-4 pointer-events-none z-10 transition-all ${slideIndex == 3 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-veev-5 pointer-events-none z-10 transition-all ${slideIndex == 4 ? `` : 'opacity-0'}`}></div>
 
             <div className="relative w-[90%] mx-auto mb-10 z-20">
             <Image src='/comcon/veev/bagaimana.png' width={775} height={166} alt='Zirolu' className='w-full' priority />
             </div>
+
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-10 z-20`}>
                 <div className='relative mt-0 w-full'>
-                <Swiper
-                spaceBetween={0}
-                slidesPerView={1}
-                onSlideChange={(swiper) => setSlideIndex(swiper.activeIndex)}
-                // onSwiper={(swiper) => console.log(swiper)}
-                >
-                <SwiperSlide>
-                <div className="relative w-full">
-                    <Image src='/comcon/veev/f-1.png' width={1071} height={590} alt='Zirolu' className='w-full' priority />
+                    <div className={`relative top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}>
+                        <Image src='/comcon/veev/f-1.png' width={940} height={465} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 1 ? `` : 'opacity-0'}`}>
+                        <Image src='/comcon/veev/f-2.png' width={940} height={465} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 2 ? `` : 'opacity-0'}`}>
+                        <Image src='/comcon/veev/f-3.png' width={940} height={465} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 3 ? `` : 'opacity-0'}`}>
+                        <Image src='/comcon/veev/f-4.png' width={940} height={465} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 4 ? `` : 'opacity-0'}`}>
+                        <Image src='/comcon/veev/f-5.png' width={940} height={465} alt='Zirolu' className='w-full' priority />
+                    </div>
                 </div>
-                </SwiperSlide>
-                <SwiperSlide>
                 <div className="relative w-full">
-                    <Image src='/comcon/veev/f-2.png' width={1071} height={590} alt='Zirolu' className='w-full' priority />
-                </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className="relative w-full">
-                    <Image src='/comcon/veev/f-3.png' width={1071} height={590} alt='Zirolu' className='w-full' priority />
-                </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className="relative w-full">
-                    <Image src='/comcon/veev/f-4.png' width={1071} height={590} alt='Zirolu' className='w-full' priority />
-                </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className="relative w-full">
-                    <Image src='/comcon/veev/f-5.png' width={1071} height={590} alt='Zirolu' className='w-full' priority />
-                </div>
-                </SwiperSlide>
-                </Swiper>
+                    <input type="range" 
+                    step="25"
+                    min="0"
+                    max="100"
+                    value={sliderProgress} 
+                    onInput={(e) =>  SetupSlider(e) }
+                    className="sliderProgress"/>
+                    <Image src='/comcon/veev/sliderbar.png' width={874} height={51} alt='Zirolu' className='w-full pointer-events-none' priority />
                 </div>
                 {/* {character && */}
                     <div className={`relative w-full flex justify-center items-center mt-[9rem] z-20`} onClick={generateAura}>

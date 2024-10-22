@@ -1077,3 +1077,77 @@ body{
   background-size: cover;
   background-position: top center;
 }
+
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.sliderProgress{
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  /* border-radius: 15px; */
+  height: 50px;
+  background: transparent;
+  position: absolute;
+  top: 0;left: 0;
+}
+.sliderProgress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 150px;
+  width: 150px;
+  background-image: url(../public/comcon/veev/slidericon.png);
+  background-size: cover;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+  transform: rotateZ(var(--thumb-rotate, 0deg));
+  position: relative;
+  top: -35px;
+}
+.sliderProgress::-webkit-slider-runnable-track {
+  height: 50px;
+  background: transparent;
+  border-radius: 16px;
+}
+
+.sliderProgress::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+}
+.sliderProgress:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+.sliderProgress:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
