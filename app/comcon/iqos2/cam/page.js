@@ -123,12 +123,9 @@ export default function Cam() {
 
 
     // AI
-    const [padmaAI, setPadmaAI] = useState(null);
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
-    const [progressText, setProgressText] = useState('Set Quee');
-    const [progressPersen, setProgressPersen] = useState('0%');
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
@@ -152,14 +149,11 @@ export default function Cam() {
             setStyleFix(item1)
             setFormasiFix(item2)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "comcon24-iqos-swap");
-        setPadmaAI(aiInstance);
-        
     }, [styleFix, formasiFix])
 
     const generateAI = () => {
         setNumProses1(true)
-        generateImageSwapBaru()
+        generateImageSwap()
 
         // videoRef.current.stop();
         // videoRef.current.srcObject = ''
@@ -190,43 +184,6 @@ export default function Cam() {
         reader.onerror = reject
         reader.readAsDataURL(blob)
     }))
-
-    const generateImageSwapBaru = async () => {
-        padmaAI.onProgress((progress) => {
-            // setProgress(progress.type); // Update the progress state
-            console.log("Progress:", progress); // Optional: log progress for debugging
-            if(progress.type == 'executing'){
-                setProgressText("Executing")
-            }else if(progress.type == 'progress'){
-                setProgressText("Progress : ")
-                setProgressPersen(progress.progress+'%')
-            }
-
-          });
-          
-          try {
-            // Generate the image
-            const result = await padmaAI.swapImages(imageFile, formasiFix);
-            // setImageUrl(result.imgUrl); // Assuming the image URL is returned
-
-            FACE_URL_RESULT= result.imgUrl;
-
-            toDataURL(FACE_URL_RESULT)
-            .then(dataUrl => {
-                if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("resulAIBase64", dataUrl)
-                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-                }
-                setTimeout(() => {
-                    router.push('/comcon/iqos/result');
-                }, 200);
-            })
-            console.log(FACE_URL_RESULT)
-
-          } catch (error) {
-            console.error("Error generating image:", error);
-          }
-    }
 
     const generateImageSwap = async () => {
 
@@ -271,7 +228,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/comcon/iqos/result');
+                router.push('/comcon/iqos2/result');
             }, 200);
         })
         } catch (error) {
@@ -310,8 +267,7 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#33303D] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
-                        <p>{progressText} {progressPersen}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 

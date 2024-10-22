@@ -15,7 +15,7 @@ export default function IQOSHome() {
         <Image src='/comcon/iqos/preview.png' width={787} height={84} alt='Zirolu' className='w-full' priority />
       </div>
       <div className="relative w-[80%]">
-        <Link href='/comcon/iqos/style' className='relative w-full mx-auto flex justify-center items-center'>
+        <Link href='/comcon/iqos2/style' className='relative w-full mx-auto flex justify-center items-center'>
           <Image src='/comcon/iqos/btn-continue.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
         </Link>
         <Link href='/comcon' className='relative w-full mx-auto flex justify-center items-center'>
