@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import PadmaAIClient from "padmaai-client";
 
 // @snippet:start(client.config)
 fal.config({
@@ -15,57 +16,6 @@ fal.config({
     }),
 });
 
-const DEFAULT_NEG_PROMPT = 'bikini, sexy, boobs, flaws in the eyes, flaws in the face, flaws, lowres, non-HDRi, low quality, worst quality,artifacts noise, text, watermark, glitch, deformed, mutated, ugly, disfigured, hands, low resolution, partially rendered objects,  deformed or partially rendered eyes, deformed, deformed eyeballs, cross-eyed,blurry';
-let URL_RESULT = ''
-let FACE_URL_RESULT = ''
-let FIXSEEDPILIH = 0, PROMPTFIX = '';
-let promptArea = [
-    {
-        gender:"male",
-        prompt:[
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a man in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:477402
-            },
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white portrait of a man in a close-up, half-body shot. The man is wearing a black shirt,vedora hats and the photo has a dramatic black background with moody lighting. There is headroom above the man's head, creating a cinematic effect. The style is minimalistic and stark, focusing on contrasts between light and shadow.",
-                seed:303216
-            }
-        ]
-    },
-    {
-        gender:"female",
-        prompt:[
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:29897
-            },
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white portrait of a woman half-body shot. The man is wearing a black shirt,vedora hats and the photo has a dramatic black background with moody lighting. There is headroom above the woman's head, creating a cinematic effect. The style is minimalistic and stark, focusing on contrasts between light and shadow.",
-                seed:95093
-            }
-        ]
-    },
-    {
-        gender:"hijab",
-        prompt:[
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a hijab female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:209561
-            },
-            {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a hijab female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:59179
-            }
-        ]
-    }
-]
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 let streamCam = null;
 const useWebcam = ({
@@ -85,6 +35,7 @@ const useWebcam = ({
     }, [videoRef]);
 };
 
+let FACE_URL_RESULT = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
@@ -172,21 +123,18 @@ export default function Cam() {
 
 
     // AI
-    const [prompt1, setPrompt1] = useState();
-    const [prompt, setPrompt] = useState(null);
-    const [promptNegative, setPromptNegative] = useState(DEFAULT_NEG_PROMPT);
-    const [CGF, setCGF] = useState(1.2);
-    const [IDScale, setIDScale] = useState(0.8);
-    const [SEED, setSEED] = useState(13047);
-    const [numSteps, setNumSteps] = useState(4);
-
+    const [padmaAI, setPadmaAI] = useState(null);
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
+    const [progressText, setProgressText] = useState('Set Quee');
+    const [progressPersen, setProgressPersen] = useState('0%');
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
+    const [auraFix, setAuraFix] = useState(null);
+    const [auraFix2, setAuraFix2] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -203,119 +151,41 @@ export default function Cam() {
         if (typeof localStorage !== 'undefined') {
             const item1 = localStorage.getItem('styleFix')
             const item2 = localStorage.getItem('formasiFix')
+            const item4 = localStorage.getItem('auraFix')
             setStyleFix(item1)
             setFormasiFix(item2)
+            setAuraFix(item4)
         }
-    }, [styleFix, formasiFix])
-
-
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "comcon24-veev-aura");
+        setPadmaAI(aiInstance);
+        
+    }, [styleFix, formasiFix, auraFix])
 
     const generateAI = () => {
         setNumProses1(true)
+        generateImageSwapBaru()
 
-        if(formasiFix == 'cowok'){
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[0].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[0].prompt[randNumb].seed
-        }else if(formasiFix == 'cewek'){
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[1].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[1].prompt[randNumb].seed
-        }else{
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[2].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[2].prompt[randNumb].seed
-        }
+        // videoRef.current.stop();
+        // videoRef.current.srcObject = ''
+        // streamCam.getVideoTracks()[0].stop();
+        // console.log(streamCam)
 
-        setTimeout(() => {
-            generateImage()
-        }, 500);
+        
+        // localStream.getVideoTracks()[0].stop();
+        // console.log(streamCam)
+        // console.log(videoRef)
+        // videoRef.src=''
+        // STOP CAM
+        // streamCam.getTracks().forEach(function(track) {
+        //     track.stop();
+        // });
     }
 
-
-    const reset = () => {
-        setLoading(false);
-        setError(null);
-        setResult(null);
-        setResultFaceSwap(null);
-        setLogs([]);
-        setElapsedTime(0);
-    };
     const reset2 = () => {
       setLoading(false);
-      setError(null);
+      setError(true);
       setElapsedTime(0);
     };
-
-  
-    const generateImage = async () => {
-        console.log(PROMPTFIX)
-        console.log(FIXSEEDPILIH)
-        setNumProses(1)
-      reset();
-      // @snippet:start("client.queue.subscribe")
-      setLoading(true);
-      const start = Date.now();
-      try {
-        const result = await fal.subscribe(
-            'fal-ai/pulid',{
-            input: {
-                reference_images: [{
-                        "image_url": imageFile
-                    },
-                    {
-                        "image_url": imageFile
-                    },
-                    {
-                        "image_url": imageFile
-                    },
-                    {
-                        "image_url": imageFile
-                    }
-                ],
-                prompt: PROMPTFIX,
-                negative_prompt: promptNegative,
-                seed: FIXSEEDPILIH,
-                num_images: 1,
-                guidance_scale: CGF,
-                num_inference_steps: numSteps,
-                image_size: {
-                    height: 768,
-                    width: 768
-                },
-                id_scale: IDScale,
-                mode: "fidelity"
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-              setElapsedTime(Date.now() - start);
-              if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-              ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                // console.log(update)
-              }
-            },
-          }
-        );
-        setResult(result);
-        URL_RESULT = result.images[0].url;
-        console.log(URL_RESULT)
-        if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("generateURLResult", URL_RESULT)
-        }
-      } catch (error) {
-        // setError(error);
-      } finally {
-        setLoading(false);
-        setElapsedTime(Date.now() - start);
-        generateImageSwap()
-      }
-      // @snippet:end
-    };
-
     const toDataURL = url => fetch(url)
     .then(response => response.blob())
     .then(blob => new Promise((resolve, reject) => {
@@ -325,60 +195,45 @@ export default function Cam() {
         reader.readAsDataURL(blob)
     }))
 
+    const generateImageSwapBaru = async () => {
+        padmaAI.onProgress((progress) => {
+            // setProgress(progress.type); // Update the progress state
+            console.log("Progress:", progress); // Optional: log progress for debugging
+            if(progress.type == 'executing'){
+                setProgressText("Executing")
+            }else if(progress.type == 'progress'){
+                setProgressText("Progress : ")
+                setProgressPersen(progress.progress+'%')
+            }else if(progress.type == 'executed'){
+                setProgressText("Done!")
+                setProgressPersen('Direct...')
+            }
 
-    const generateImageSwap = async () => {
-        setNumProses(2)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: URL_RESULT,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
+          });
+          
+          try {
+            // Generate the image
+            const result = await padmaAI.generateImages(imageFile, formasiFix, auraFix);
+            // setImageUrl(result.imgUrl); // Assuming the image URL is returned
+
+            FACE_URL_RESULT= result.imgUrl;
+
+            toDataURL(FACE_URL_RESULT)
+            .then(dataUrl => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIBase64", dataUrl)
+                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
-            },
-            }
-        );
-        setResultFaceSwap(result);
-        FACE_URL_RESULT = result.image.url;
+                setTimeout(() => {
+                    router.push('/comcon/veev/result');
+                }, 200);
+            })
+            console.log(FACE_URL_RESULT)
 
-        // emitStrsing("sendImage", result.image.url);
-
-        toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
-            // console.log('RESULT:', dataUrl)
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-            }
-            
-            setTimeout(() => {
-                router.push('/comcon/veev/result');
-            }, 200);
-        })
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
+          } catch (error) {
+            console.error("Error generating image:", error);
+          }
+    }
 
     return (
         <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -407,7 +262,8 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#571571] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
+                        <p>{progressText} {progressPersen}</p>
                         {error}
                     </div>
 

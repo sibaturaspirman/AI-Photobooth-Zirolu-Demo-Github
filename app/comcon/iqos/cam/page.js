@@ -228,61 +228,6 @@ export default function Cam() {
           }
     }
 
-    const generateImageSwap = async () => {
-
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
-
-        setNumProses(2)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: styleFix,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
-            }
-        );
-        setResultFaceSwap(result);
-        FACE_URL_RESULT= result.image.url;
-
-        toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-            }
-            setTimeout(() => {
-                router.push('/comcon/iqos/result');
-            }, 200);
-        })
-        } catch (error) {
-            setError(false);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
-
     return (
         <main className="flex fixed h-full w-full bg-comcon-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>

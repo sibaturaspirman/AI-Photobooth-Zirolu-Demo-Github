@@ -35,7 +35,17 @@ export default function Register() {
 
     const generateAura = () => {
         if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("auraFix", 'aura'+slideIndex+getRandomInt(1,4))
+            if(slideIndex == 0){
+                localStorage.setItem("auraFix", 'HAPPY')
+            }else if(slideIndex == 1){
+                localStorage.setItem("auraFix", 'EXCITED')
+            }else if(slideIndex == 2){
+                localStorage.setItem("auraFix", 'CHEERFUL')
+            }else if(slideIndex == 3){
+                localStorage.setItem("auraFix", 'SMILING')
+            }else if(slideIndex == 4){
+                localStorage.setItem("auraFix", 'GREAT')
+            }
         }
         setTimeout(() => {
             router.push('/comcon/veev/style');

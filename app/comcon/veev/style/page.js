@@ -32,16 +32,16 @@ export default function Register() {
     const generateAI = () => {
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("formasiFix", character)
+                localStorage.setItem("formasiFix", 'MALE')
             }
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character)
+                    localStorage.setItem("formasiFix", 'FEMALE')
                 }
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character+'hijab')
+                    localStorage.setItem("formasiFix", 'HIJAB')
                 }
             }
         }

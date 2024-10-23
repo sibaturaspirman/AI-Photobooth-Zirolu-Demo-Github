@@ -130,7 +130,7 @@ export default function Cam() {
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
-    const [numProses1, setNumProses1] = useState(null);
+    const [numProses1, setNumProses1] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(true);
     const [result, setResult] = useState(null);
@@ -245,6 +245,10 @@ export default function Cam() {
             <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/comcon/visikom/take-photo.png' width={597} height={118} alt='Zirolu' className='w-full' priority />
             </div>
+
+            <div  className={`fixed top-[10rem] right-0 left-0 w-[33%] mx-auto ${numProses1 ? '' : 'opacity-0 pointer-events-none'}`}>
+            <Image src='/comcon/visikom/logo.png' width={279} height={208} alt='Zirolu' className='w-full' priority />
+            </div>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-visikom flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
             <a href='/comcon/visikom/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
@@ -308,9 +312,9 @@ export default function Cam() {
             </div>
 
 
-            {!enabled && 
+            {/* {!enabled && 
                 <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
-            }
+            } */}
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>

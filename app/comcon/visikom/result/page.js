@@ -75,7 +75,7 @@ export default function Result() {
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
 
-    const [maxDuration, setMaxDuration] = useState(10);
+    const [maxDuration, setMaxDuration] = useState(25);
     const [countdownStart, setCountdownStart] = useState(false);
     const timerRef = useRef(null);
 
@@ -163,7 +163,7 @@ export default function Result() {
 
     // COUNTDOWN
     const handleStartCountdown = () => {
-        if (maxDuration <= 10) {
+        if (maxDuration <= 25) {
             setCountdownStart(true);
             timerRef.current = setInterval(() => {
                 setMaxDuration((prevTime) => {
