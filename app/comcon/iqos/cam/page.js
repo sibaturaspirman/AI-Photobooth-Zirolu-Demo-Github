@@ -130,7 +130,7 @@ export default function Cam() {
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
-    const [progressText, setProgressText] = useState('Set Quee');
+    const [progressText, setProgressText] = useState('Set Queue');
     const [progressPersen, setProgressPersen] = useState('0%');
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
@@ -199,7 +199,7 @@ export default function Cam() {
             // setProgress(progress.type); // Update the progress state
             console.log("Progress:", progress); // Optional: log progress for debugging
             if(progress.type == 'executing'){
-                setProgressText("Executing")
+                setProgressText("Curious?")
             }else if(progress.type == 'progress'){
                 setProgressText("Progress : ")
                 setProgressPersen(progress.progress+'%')
