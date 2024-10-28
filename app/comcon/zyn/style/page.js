@@ -31,7 +31,7 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
-        let randomGambar = getRandomInt(1,3)
+        let randomGambar = getRandomInt(1,4)
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("formasiFix", character)
