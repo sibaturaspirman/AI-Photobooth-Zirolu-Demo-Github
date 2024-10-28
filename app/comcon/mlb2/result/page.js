@@ -98,7 +98,7 @@ export default function Result() {
             // setImageResultAI2(item2)
             // setImageResultAI3(item3)
             setFormasiFix(item3)
-            // setLinkQR(item)
+            setLinkQR(item)
         }
     }, [imageResultAI, linkQR, formasiFix])
 
