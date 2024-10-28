@@ -16,7 +16,7 @@ export default function IQOSHome() {
         <Link href='/comcon/veev' className='relative w-full mx-auto flex justify-center items-center pb-10'>
           <Image src='/comcon/brand2.jpg' width={900} height={319} alt='Zirolu' className='w-full rounded-2xl shadow-xl' priority />
         </Link>
-        <Link href='/comcon/zyn' className='relative w-full mx-auto flex justify-center items-center'>
+        <Link href='/comcon/zyn2' className='relative w-full mx-auto flex justify-center items-center'>
           <Image src='/comcon/brand3.jpg' width={900} height={319} alt='Zirolu' className='w-full rounded-2xl shadow-xl' priority />
         </Link>
       </div>
