@@ -31,13 +31,14 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
-        let randomGambar = getRandomInt(1,4)
         if(character == 'cowok'){
+            let randomGambar = getRandomInt(1,4)
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("formasiFix", character)
             }
             urlGambar = 'https://ai.zirolu.id/comcon/zyn/style/'+character+'-'+randomGambar+'.jpg';
         }else{
+            let randomGambar = getRandomInt(1,3)
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("formasiFix", character)

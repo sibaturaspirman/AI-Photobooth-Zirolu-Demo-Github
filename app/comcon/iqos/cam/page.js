@@ -203,6 +203,9 @@ export default function Cam() {
             }else if(progress.type == 'progress'){
                 setProgressText("Progress : ")
                 setProgressPersen(progress.progress+'%')
+            }else if(progress.type == 'executed'){
+                setProgressText("Done!")
+                setProgressPersen('Direct...')
             }
 
           });
