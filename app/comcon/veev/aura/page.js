@@ -132,7 +132,7 @@ export default function Register() {
 
             </div>
             {/* !PILIH STYLE */}
-            <div className={`fixed top-0 bottom-0 left-0 right-0 w-full z-40 flex justify-center items-end bg-black/0 transition-all ${swipeTrigger ? `opacity-0 pointer-events-none` : ''}`}>
+            <div className={`fixed top-0 bottom-0 left-0 right-0 w-full z-40 flex justify-center items-end bg-black/0 transition-all ${swipeTrigger ? `opacity-0 pointer-events-none` : ''}`} onClick={()=> setSwipeTrigger(true)}>
                 <div className="relative p-20 pb-[13rem] w-full z-40 swipeInfo">
                     <Image src='/comcon/veev/hand.png' width={202} height={200} alt='Zirolu' className='w-[20%] mx-auto mb-10 swipeInfoHand' priority />
                     <Image src='/comcon/veev/swipe.png' width={702} height={124} alt='Zirolu' className='w-[60%] mx-auto' priority />
