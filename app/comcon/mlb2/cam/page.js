@@ -97,6 +97,8 @@ export default function Cam() {
             }
         
             // Draw the image on the canvas (cropped and resized)
+            context.translate(canvas.width, 0);
+            context.scale(-1,1);
             context.drawImage(
                 video,
                 sourceX,
@@ -310,7 +312,7 @@ export default function Cam() {
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
