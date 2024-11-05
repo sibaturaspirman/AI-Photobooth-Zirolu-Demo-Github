@@ -32,24 +32,24 @@ export default function Register() {
         let urlGambar = '';
         let urlGambar2 = '';
         let urlGambar3 = '';
-        if(character == 'formasi-1'){
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c1-'+getRandomInt(1, 9)+'.jpeg';
+        if(character == 'formasi-1'){ //1 cowok
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c1-'+getRandomInt(1, 3)+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-7'){
+        }else if(character == 'formasi-7'){ //1 cewek
             urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpeg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-2'){
-            let randomGambar = getRandomInt(1, 5);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c2-'+randomGambar+'-right.jpeg';
+        }else if(character == 'formasi-2'){ //2 cowok
+            let randomGambar = getRandomInt(1, 3);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c2-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c2-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
