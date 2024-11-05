@@ -40,7 +40,14 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-7'){ //1 cewek
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpg';
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("styleFix", urlGambar)
+                localStorage.setItem("formasiFix", character)
+            }
+        }else if(character == 'formasi-8'){ //1 hijab
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/c8-'+getRandomInt(1, 3)+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
@@ -59,8 +66,8 @@ export default function Register() {
             }
         }else if(character == 'formasi-3'){ //2 cewek
             let randomGambar = getRandomInt(1, 4);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -70,8 +77,8 @@ export default function Register() {
             }
         }else if(character == 'formasi-4'){ //2 cewek hijab
             let randomGambar = getRandomInt(1, 2);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-right.jpeg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-right.jpg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -149,7 +156,7 @@ export default function Register() {
                                     <label htmlFor="choose_style1">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-1.png"
+                                        src="/mizuho/style/pln/formasi-1.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -168,7 +175,26 @@ export default function Register() {
                                     <label htmlFor="choose_style7">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-7.png"
+                                        src="/mizuho/style/pln/formasi-7.png"
+                                        alt="icon"
+                                        width={365}
+                                        height={640}
+                                        priority
+                                    />
+                                    </label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_style8'
+                                    type="radio"
+                                    name='choose_style'
+                                    value="formasi-8"
+                                    onChange={(e) => setCharacter(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_style8">
+                                    <Image
+                                        className="relative h-auto w-full"
+                                        src="/mizuho/style/pln/formasi-8.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -187,7 +213,7 @@ export default function Register() {
                                     <label htmlFor="choose_style3">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-2.png"
+                                        src="/mizuho/style/pln/formasi-2.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -206,7 +232,7 @@ export default function Register() {
                                     <label htmlFor="choose_style2">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-3.png"
+                                        src="/mizuho/style/pln/formasi-3.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -225,7 +251,7 @@ export default function Register() {
                                     <label htmlFor="choose_style4">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-4.png"
+                                        src="/mizuho/style/pln/formasi-4.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -244,7 +270,7 @@ export default function Register() {
                                     <label htmlFor="choose_style5">
                                     <Image
                                         className="relative h-auto w-full"
-                                        src="/mizuho/formasi-5.png"
+                                        src="/mizuho/style/pln/formasi-5.png"
                                         alt="icon"
                                         width={365}
                                         height={640}
@@ -252,7 +278,7 @@ export default function Register() {
                                     />
                                     </label>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <input
                                     id='choose_style6'
                                     type="radio"
@@ -270,7 +296,7 @@ export default function Register() {
                                         priority
                                     />
                                     </label>
-                                </li>
+                                </li> */}
                                 </ul>
                             </div>
                         </div>
