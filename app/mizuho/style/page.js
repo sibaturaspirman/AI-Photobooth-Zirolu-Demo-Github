@@ -40,14 +40,14 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-7'){ //1 cewek
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c7-'+getRandomInt(1, 3)+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c7-'+getRandomInt(1, 3)+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-8'){ //1 hijab
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c8-'+getRandomInt(1, 3)+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c8-'+getRandomInt(1, 3)+'.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)

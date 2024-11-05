@@ -130,7 +130,7 @@ export default function Cam() {
                 <h1 className={`text-center text-2xl mt-2 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
                 <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 1 of 2</h2>
                 <div className={`relative w-[80%] mx-auto flex flex-col justify-center items-center mt-2 mb-3 lg:mt-2 lg:mb-2`}>
-                    <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-2' ? 'flex':'hidden'}`}>
+                    {/* <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-2' ? 'flex':'hidden'}`}>
                         <Image src='/mizuho/f2-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-3' ? 'flex':'hidden'}`}>
@@ -138,7 +138,7 @@ export default function Cam() {
                     </div>
                     <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-4' ? 'flex':'hidden'}`}>
                         <Image src='/mizuho/f4-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />
-                    </div>
+                    </div> */}
                     <div className='relative'>
                         {captured && 
                         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
