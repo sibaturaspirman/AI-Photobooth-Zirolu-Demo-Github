@@ -87,10 +87,10 @@ export default function Register() {
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-5'){
-            let randomGambar = getRandomInt(1, 4);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-center.jpeg';
-            urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+randomGambar+'-right.jpeg';
+            let randomGambar = getRandomInt(1, 3);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c5-'+randomGambar+'-left.jpg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c5-'+randomGambar+'-center.jpg';
+            urlGambar3 = 'https://ai.zirolu.id/mizuho/style/pln/c5-'+randomGambar+'-right.jpg';
             // urlGambar = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-left.png';
             // urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-center.png';
             // urlGambar3 = 'https://ai.zirolu.id/mizuho/style/c5-'+4+'-right.png';

@@ -128,7 +128,7 @@ export default function Cam() {
                 <TopLogoMizuho></TopLogoMizuho>
                 
                 <h1 className={`text-center text-2xl mt-2 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
-                <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 1 of 3 : Man</h2>
+                <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 1 of 3 : MALE</h2>
                 <div className={`relative w-[80%] mx-auto flex flex-col justify-center items-center mt-2 mb-3 lg:mt-2 lg:mb-2`}>
                     {/* <div className={`absolute top-1 left-1 w-[70px] h-[70px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'formasi-5' ? 'flex':'hidden'}`}>
                         <Image src='/mizuho/f5-1-preview.jpeg' width={120} height={120} alt='Zirolu' className='w-full' priority />

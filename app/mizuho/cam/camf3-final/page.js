@@ -181,12 +181,12 @@ export default function Cam() {
         const urlGambar = styleFix;
         console.log(urlGambar)
 
-        let fixBase = '';
-        if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
-            fixBase = imageFile3
-        }else{
-            fixBase = imageFile
-        }
+        let fixBase = imageFile3;
+        // if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
+        //     fixBase = imageFile3
+        // }else{
+        //     fixBase = imageFile
+        // }
 
         setNumProses(2)
         reset2();
@@ -293,12 +293,12 @@ export default function Cam() {
         const urlGambar = styleFix3;
         console.log(urlGambar)
 
-        let fixBase = '';
-        if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
-            fixBase = imageFile
-        }else{
-            fixBase = imageFile3
-        }
+        let fixBase = imageFile3;
+        // if(formasiFix == 'formasi-5' && styleFix == 'https://ai.zirolu.id/mizuho/style/c5-4-left.jpeg'){
+        //     fixBase = imageFile
+        // }else{
+        //     fixBase = imageFile3
+        // }
 
         setNumProses(4)
         reset2();
@@ -382,7 +382,7 @@ export default function Cam() {
                 
                 <h1 className={`text-center text-2xl mt-2 mb-0 ${paytone_one.className}`}>TAKE SELFIE</h1>
                 {formasiFix == 'formasi-5' &&
-                <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 3 of 3 : Woman</h2>
+                <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 3 of 3 : HIJAB</h2>
                 }
                 {formasiFix == 'formasi-6' &&
                 <h2 className={`text-center text-base mb-0 uppercase  ${paytone_one.className}`}>Face 3 of 3 : Man</h2>
