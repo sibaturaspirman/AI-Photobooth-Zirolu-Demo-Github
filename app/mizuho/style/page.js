@@ -57,10 +57,10 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-3'){
-            let randomGambar = getRandomInt(1, 2);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c3-'+randomGambar+'-right.jpeg';
+        }else if(character == 'formasi-3'){ //2 cewek
+            let randomGambar = getRandomInt(1, 4);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c3-'+randomGambar+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
@@ -68,10 +68,10 @@ export default function Register() {
                 localStorage.setItem("styleFix2", urlGambar2)
                 localStorage.setItem("formasiFix", character)
             }
-        }else if(character == 'formasi-4'){
-            let randomGambar = getRandomInt(1, 5);
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-left.jpeg';
-            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/c4-'+randomGambar+'-right.jpeg';
+        }else if(character == 'formasi-4'){ //2 cewek hijab
+            let randomGambar = getRandomInt(1, 2);
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-left.jpeg';
+            urlGambar2 = 'https://ai.zirolu.id/mizuho/style/pln/c4-'+randomGambar+'-right.jpeg';
             console.log(randomGambar)
 
             if (typeof localStorage !== 'undefined') {
