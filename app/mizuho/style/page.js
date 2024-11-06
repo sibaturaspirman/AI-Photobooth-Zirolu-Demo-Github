@@ -33,21 +33,24 @@ export default function Register() {
         let urlGambar2 = '';
         let urlGambar3 = '';
         if(character == 'formasi-1'){ //1 cowok
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c1-'+getRandomInt(1, 3)+'.jpg';
+            // urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c1-'+getRandomInt(1, 3)+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c1-2.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-7'){ //1 cewek
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c7-'+getRandomInt(1, 2)+'.jpg';
+            // urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c7-'+getRandomInt(1, 2)+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c7-2.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
                 localStorage.setItem("formasiFix", character)
             }
         }else if(character == 'formasi-8'){ //1 hijab
-            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c8-'+getRandomInt(1, 2)+'.jpg';
+            // urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c8-'+getRandomInt(1, 2)+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/mizuho/style/pln/c8-2.jpg';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFix", urlGambar)
