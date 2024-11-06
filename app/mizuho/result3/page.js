@@ -4,12 +4,13 @@ import Link from 'next/link';
 import Image from "next/image";
 import TopLogoMizuho from "./../../components/TopLogoMizuho";
 import { getCookie } from 'cookies-next';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
 import { Paytone_One} from "next/font/google";
 const paytone_one = Paytone_One({ subsets: ["latin"], weight: '400' });
 import BtnHexagon2 from "./../../components/BtnHexagon2";
+import ReactToPrint from "react-to-print";
 
 
 export default function Result() {
@@ -25,6 +26,7 @@ export default function Result() {
     const [keKirimEmailGak, setKeKirimEmailGak] = useState(null);
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
+    let componentRef = useRef();
     const [payload, setPayload] = useState({
         name: 'MIZUHO - PLN',
         phone: '00002',
@@ -131,7 +133,7 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : ''}>
                 {imageResultAI && 
                 <div className='relative w-[364px] mt-4 mx-auto flex justify-center items-center  border-2 border-[#ffffff] rounded-sm' onClick={downloadImageAI}>
-                    <div className='relative bg-slate-500' id='capture'>
+                    <div className='relative bg-slate-500' id='capture' ref={(el) => (componentRef = el)}>
                         {/* <img src={imageResultAI} className='block'></img> */}
                         
                         <div className={`relative w-full  ${formasiFix == 'formasi-5' || formasiFix == 'formasi-6' ? 'flex' : 'hidden'}`}>
@@ -152,9 +154,24 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hiddenx' : ''}`}>
                     <div className={`relative w-[50%] mx-auto flex justify-center items-center flex-col mt-5 ${loadingDownload ? 'hidden' : ''}`}   >
-                        <button className={`relative mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
+                        {/* <button className={`relative mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
                             <Image src='/mizuho/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
+                        </button> */}
+
+                        <div className={`w-full ${loadingDownload ? 'hidden' : ''}`} onClick={downloadImageAI}>
+                            <ReactToPrint
+                            trigger={() => 
+                                <div className={`w-full mt-0`}>
+                                    <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                                        <div className="w-full relative mx-auto flex justify-center items-center">
+                                        <Image src='/mizuho/btn-download.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            content={() => componentRef}
+                            />
+                        </div> 
                     </div>
                     <div className='w-full'>
                         <div className="relative w-[50%] mx-auto flex justify-center items-center flex-col">
