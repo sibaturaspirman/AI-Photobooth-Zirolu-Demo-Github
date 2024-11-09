@@ -104,7 +104,7 @@ export default function Result() {
 
     const downloadImageAI = () => {
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:2.11}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
