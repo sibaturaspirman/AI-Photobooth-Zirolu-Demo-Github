@@ -32,8 +32,8 @@ export default function Register() {
     const [styleFemale, setStyleFemale] = useState('normal');
 
     const generateAI = () => {
-        let urlGambar = 'https://ai.zirolu.id/zymuno/style/'+character+'-child.jpg';
-        let urlGambar2 = 'https://ai.zirolu.id/zymuno/style/'+character+'-parent.jpg';
+        let urlGambar = 'https://ai.zirolu.id/zymuno/style/'+character+'-child.png';
+        let urlGambar2 = 'https://ai.zirolu.id/zymuno/style/'+character+'-parent.png';
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("styleFixChild", urlGambar)

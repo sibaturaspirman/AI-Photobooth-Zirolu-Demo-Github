@@ -37,6 +37,7 @@ const useWebcam = ({
 };
 
 let FACE_URL_RESULT = ''
+let FACE_URL_RESULT2 = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
@@ -191,12 +192,6 @@ export default function Cam() {
     }))
 
     const generateImageSwap = async () => {
-
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
-
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -231,6 +226,54 @@ export default function Cam() {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+            }
+            generateImageSwap2()
+        })
+        } catch (error) {
+            setError(false);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
+
+
+    const generateImageSwap2 = async () => {
+        setNumProses(3)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: styleFix2,
+                swap_image_url: imageFile2
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap(result);
+        FACE_URL_RESULT2= result.image.url;
+
+        toDataURL(FACE_URL_RESULT2)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase642", dataUrl)
+                localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
             }
             setTimeout(() => {
                 router.push('/zymuno/result');
@@ -272,7 +315,7 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#571571] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p>
                         {error}
                     </div>
 
