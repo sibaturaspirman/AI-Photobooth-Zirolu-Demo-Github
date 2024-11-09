@@ -227,7 +227,7 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
-            generateImageSwap2()
+            removeBg()
         })
         } catch (error) {
             setError(false);
@@ -237,6 +237,37 @@ export default function Cam() {
         }
         // @snippet:end
     };
+
+    const removeBg = async () => {
+        const start = Date.now();
+        try {
+            const result = await fal.subscribe(
+                'fal-ai/imageutils/rembg',
+                {
+                input: {
+                    image_url: FACE_URL_RESULT
+                },
+                pollInterval: 5000, // Default is 1000 (every 1s)
+                logs: true,
+                onQueueUpdate(update) {
+                    setElapsedTime(Date.now() - start);
+                    if (
+                    update.status === 'IN_PROGRESS' ||
+                    update.status === 'COMPLETED'
+                    ) {
+                    setLogs((update.logs || []).map((log) => log.message));
+                    }
+                },
+                }
+            );
+            console.log(result)
+        } catch (error) {
+            setError(false);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+    }
 
 
     const generateImageSwap2 = async () => {
