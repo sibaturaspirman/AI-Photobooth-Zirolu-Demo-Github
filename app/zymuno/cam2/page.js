@@ -293,55 +293,26 @@ export default function Cam() {
             <div className='relative w-[25%] mx-auto flex justify-center items-center z-50'>
                 <Image src='/zymuno/logo.png' width={179} height={103} alt='Zirolu' className='w-full' priority />
             </div>
-            <h1 className={`text-center text-4xl font-bold mt-5 mb-6 ${poppins.className}`}>Take Photo : Mom</h1>
+            <h1 className={`text-center text-4xl font-bold mt-5 mb-6 ${poppins.className} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>Take Photo : Mom</h1>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-permata flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
-            <a href='/permata/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <a href='/zymuno/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
             </div>
-
-            {/* LOADING */}
-            {numProses1 && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
-                    {/* <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
-                        <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
-                            <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
-                        </div>
-                    </div> */}
-
-                    {/* <div className="relative w-[40%] mx-auto mt-[14rem] mb-5">
-                        <Image src='/pln/pln.png' width={784} height={228} alt='Zirolu' className='w-full' priority />
-                    </div> */}
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#571571] rounded-xl text-[#fff] lg:font-bold'>
-                        <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p>
-                        {error}
-                    </div>
-
-                    {/* <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 text-left bg-[#A91E58] rounded-xl text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
-                        <code>
-                        {logs.filter(Boolean).join('\n')}
-                        </code>
-                        AI generate face... <br></br>
-                        Loading model..<br></br>
-                    </pre> */}
-                </div>
-            }
-            {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
                 
                 <div className='relative w-[70%]'>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's1' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's1' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s1-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's2' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's2' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s2-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's5' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's5' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s3-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's4' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's4' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s4-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
 
@@ -359,7 +330,12 @@ export default function Cam() {
                     </div>
                     }
 
+                    <div className={`animate-scanning w-full mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-nones  ${numProses1 ? '' : 'opacity-0'}`}>
+                        <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
+                    </div>
+
                     <video ref={videoRef} className={`w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
@@ -375,7 +351,17 @@ export default function Cam() {
                     </button>
                 </div>
             }
-            <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+
+            {numProses1 && 
+            <div className={`relative w-[70%]`}>
+                <div className='animate-upDownCepet relative py-5 px-6 mt-5 text-4xl border-2 text-center bg-[#FF6600] rounded-xl text-[#fff] font-bold'>
+                    <p>{`Please wait, loading...`}</p>
+                    <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p>
+                    {error}
+                </div>
+            </div>
+            }
+            <div className={`relative w-full ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[75%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
