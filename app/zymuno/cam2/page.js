@@ -107,9 +107,9 @@ export default function Cam() {
             );
     
             let faceImage = canvas.toDataURL();
-            setImageFile(faceImage)
+            setImageFile2(faceImage)
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("faceImage", faceImage)
+                localStorage.setItem("faceImage2", faceImage)
             }
             // setTimeout(() => {
             //     router.push('/generate');
@@ -145,12 +145,16 @@ export default function Cam() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item1 = localStorage.getItem('styleFix')
+            const item = localStorage.getItem('faceImage')
+            const item1 = localStorage.getItem('styleFixChild')
+            const item11 = localStorage.getItem('styleFixParent')
             const item2 = localStorage.getItem('formasiFix')
+            setImageFile(item)
             setStyleFix(item1)
+            setStyleFix2(item11)
             setFormasiFix(item2)
         }
-    }, [styleFix, formasiFix])
+    }, [imageFile, styleFix, styleFix2, formasiFix])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -229,7 +233,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/permata/result');
+                router.push('/zymuno/result');
             }, 200);
         })
         } catch (error) {
