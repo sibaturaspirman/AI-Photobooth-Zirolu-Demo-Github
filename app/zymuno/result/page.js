@@ -226,7 +226,12 @@ export default function Result() {
                         <Image src={imageResultAI2}  width={514} height={1350} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                     }
-
+                    {formasiFix == 's3' && 
+                    <div className='relative w-full flex flex-col'>
+                        <Image src={imageResultAI}  width={1080} height={825} alt='Zirolu' className='relative block w-full'></Image>
+                        <Image src={imageResultAI2}  width={1080} height={525} alt='Zirolu' className='relative block w-full'></Image>
+                    </div>
+                    }
                     {formasiFix == 's4' && 
                     <div className='relative w-full flex'>
                         <Image src={imageResultAI2}  width={528} height={1350} alt='Zirolu' className='relative block w-full'></Image>
