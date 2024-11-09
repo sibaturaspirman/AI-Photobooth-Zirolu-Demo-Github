@@ -217,6 +217,24 @@ body{
   padding: 0;
   position: relative;
 }
+
+
+.choose.mod11{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod11 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 50%;
+  /* width: 250px; */
+}
+.choose.mod11 label{
+  padding: 0;
+  position: relative;
+}
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -490,6 +508,40 @@ body{
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     display: none;
+}
+
+.choose.mod11 [type="radio"]:checked + label{
+  /* transform: scale(1.1) !important; */
+  /* border-color: #fff; */
+}
+.choose.mod11 li label img{
+  display: block;
+}
+.choose.mod11 li label{
+  display: block !important;
+  border: 6px solid transparent;
+}
+.choose.mod11 [type="radio"]:checked + label:after,
+.choose.mod11 [type="radio"]:not(:checked) + label:after {
+    /* content: '';
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 84px;
+    left: 195px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease; */
+}
+
+.choose.mod11 [type="radio"]:checked + label{
+  /* transform: scale(1.1) !important; */
+  border-color: #fff;
+}
+.choose.mod11 li{
+  padding: 5px;
 }
 
 .choose [type="radio"]:not(:checked) + label:after {
@@ -851,6 +903,12 @@ body{
     /* display: inline-block; */
 }
 /* !AMERO */
+
+/* zymuno */
+.bg-zymuno{
+  background-image: url(../public/zymuno/bg.jpg);
+  background-size: cover;
+}
 
 /* KAI */
 .bg-kai{
