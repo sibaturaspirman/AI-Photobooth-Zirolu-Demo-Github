@@ -291,7 +291,7 @@ export default function Cam() {
                     <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's2' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s2-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's3' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's5' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s3-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's4' ? 'flex':'hidden'}`}>

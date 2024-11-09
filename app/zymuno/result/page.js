@@ -226,7 +226,7 @@ export default function Result() {
                         <Image src={imageResultAI2}  width={514} height={1350} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                     }
-                    {formasiFix == 's3' && 
+                    {formasiFix == 's5' && 
                     <div className='relative w-full flex flex-col'>
                         <Image src={imageResultAI}  width={1080} height={480} alt='Zirolu' className='relative block w-full'></Image>
                         <Image src={imageResultAI2}  width={1080} height={870} alt='Zirolu' className='relative block w-full'></Image>
@@ -260,7 +260,7 @@ export default function Result() {
                                 <Image src={imageResultAI2}  width={514} height={1350} alt='Zirolu' className='relative block w-[259px]'></Image>
                             </div>
                             }
-                            {formasiFix == 's3' && 
+                            {formasiFix == 's5' && 
                             <div className='relative w-full'>
                                 <Image src={imageResultAI}  width={1080} height={480} alt='Zirolu' className='relative block w-full'></Image>
                                 <Image src={imageResultAI2}  width={1080} height={870} alt='Zirolu' className='relative block w-full'></Image>
