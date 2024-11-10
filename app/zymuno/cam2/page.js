@@ -160,7 +160,11 @@ export default function Cam() {
             setFormasiFix(item2)
         }
 
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "d1bc2588-c1ea-4a7f-8f94-cd46d1197a3c");
+        // const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "d1bc2588-c1ea-4a7f-8f94-cd46d1197a3c"); //PULL ID
+
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "67f29a07-8bdd-49f8-86de-f99833844833"); //FACE SWAP
+
+        
         setPadmaAI(aiInstance);
 
     }, [imageFile, styleFix, styleFix2, formasiFix])
@@ -220,7 +224,7 @@ export default function Cam() {
             // Generate the image
             // const result = await padmaAI.generateImages(imageFile2, 'MALE', 'HAPPY');
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
-            const result = await padmaAI.generateImages(
+            const result = await padmaAI.swapImages(
                 {img1: imageFile, img2: imageFile2}, formasiFix
             );
 
