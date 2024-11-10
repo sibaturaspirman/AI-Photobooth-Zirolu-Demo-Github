@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Poppins} from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+import PadmaAIClient from "padmaai-client";
 
 // @snippet:start(client.config)
 fal.config({
@@ -125,9 +126,12 @@ export default function Cam() {
 
 
     // AI
+    const [padmaAI, setPadmaAI] = useState(null);
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
     const [imageFile3, setImageFile3] = useState(null);
+    const [progressText, setProgressText] = useState('Set Queue');
+    const [progressPersen, setProgressPersen] = useState('0%');
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
@@ -155,11 +159,16 @@ export default function Cam() {
             setStyleFix2(item11)
             setFormasiFix(item2)
         }
+
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "d1bc2588-c1ea-4a7f-8f94-cd46d1197a3c");
+        setPadmaAI(aiInstance);
+
     }, [imageFile, styleFix, styleFix2, formasiFix])
 
     const generateAI = () => {
         setNumProses1(true)
-        generateImageSwap()
+        // generateImageSwap()
+        generateImageSwapBaru()
 
         // videoRef.current.stop();
         // videoRef.current.srcObject = ''
@@ -191,102 +200,48 @@ export default function Cam() {
         reader.readAsDataURL(blob)
     }))
 
-    const generateImageSwap = async () => {
-        setNumProses(2)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: styleFix,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
+    const generateImageSwapBaru = async () => {
+        padmaAI.onProgress((progress) => {
+            // setProgress(progress.type); // Update the progress state
+            console.log("Progress:", progress); // Optional: log progress for debugging
+            if(progress.type == 'executing'){
+                setProgressText("Curious?")
+            }else if(progress.type == 'progress'){
+                setProgressText("Progress : ")
+                setProgressPersen(progress.progress+'%')
+            }else if(progress.type == 'executed'){
+                setProgressText("Done!")
+                setProgressPersen('Direct...')
+            }
+
+          });
+          
+          try {
+            // Generate the image
+            // const result = await padmaAI.generateImages(imageFile2, 'MALE', 'HAPPY');
+            // setImageUrl(result.imgUrl); // Assuming the image URL is returned
+            const result = await padmaAI.generateImages(
+                {img1: imageFile, img2: imageFile2}, formasiFix
+            );
+
+            FACE_URL_RESULT= result.imgUrl;
+
+            toDataURL(FACE_URL_RESULT)
+            .then(dataUrl => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("resulAIBase64", dataUrl)
+                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
-            },
-            }
-        );
-        setResultFaceSwap(result);
-        FACE_URL_RESULT= result.image.url;
+                setTimeout(() => {
+                    router.push('/zymuno/result');
+                }, 200);
+            })
+            console.log(FACE_URL_RESULT)
 
-        toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
-            }
-            generateImageSwap2()
-        })
-        } catch (error) {
-            setError(false);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
-
-
-    const generateImageSwap2 = async () => {
-        setNumProses(3)
-        reset2();
-        // @snippet:start("client.queue.subscribe")
-        setLoading(true);
-        const start = Date.now();
-        try {
-        const result = await fal.subscribe(
-            'fal-ai/face-swap',
-            {
-            input: {
-                base_image_url: styleFix2,
-                swap_image_url: imageFile2
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
-            }
-        );
-        setResultFaceSwap(result);
-        FACE_URL_RESULT2= result.image.url;
-
-        toDataURL(FACE_URL_RESULT2)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase642", dataUrl)
-                localStorage.setItem("faceURLResult2", FACE_URL_RESULT2)
-            }
-            setTimeout(() => {
-                router.push('/zymuno/result');
-            }, 200);
-        })
-        } catch (error) {
-            setError(false);
-        } finally {
-            setLoading(false);
-            setElapsedTime(Date.now() - start);
-        }
-        // @snippet:end
-    };
+          } catch (error) {
+            console.error("Error generating image:", error);
+          }
+    }
 
     return (
         <main className="flex fixed h-full w-full bg-zymuno overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -303,16 +258,16 @@ export default function Cam() {
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
                 
                 <div className='relative w-[70%]'>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's1' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z4' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s1-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's2' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z1' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s2-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's5' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z3' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s3-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's4' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z2' ? 'flex':'hidden'} ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                         <Image src='/zymuno/s4-2.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
 
@@ -356,7 +311,8 @@ export default function Cam() {
             <div className={`relative w-[70%]`}>
                 <div className='animate-upDownCepet relative py-5 px-6 mt-5 text-4xl border-2 text-center bg-[#FF6600] rounded-xl text-[#fff] font-bold'>
                     <p>{`Please wait, loading...`}</p>
-                    <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p>
+                    {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p> */}
+                    <p>{progressText} {progressPersen}</p>
                     {error}
                 </div>
             </div>

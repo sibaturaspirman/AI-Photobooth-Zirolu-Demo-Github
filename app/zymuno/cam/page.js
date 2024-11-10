@@ -285,16 +285,16 @@ export default function Cam() {
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 
                 <div className='relative w-[70%]'>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's1' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z4' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s1-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's2' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z1' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s2-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's5' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z3' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s3-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 's4' ? 'flex':'hidden'}`}>
+                    <div className={`absolute top-1 left-1 w-[100px] h-[124px] justify-center items-center pointer-events-none z-10 ${formasiFix == 'Z2' ? 'flex':'hidden'}`}>
                         <Image src='/zymuno/s4-1.jpg' width={100} height={124} alt='Zirolu' className='w-full' priority />
                     </div>
 

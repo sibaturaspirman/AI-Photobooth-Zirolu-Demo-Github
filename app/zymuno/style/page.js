@@ -32,16 +32,9 @@ export default function Register() {
     const [styleFemale, setStyleFemale] = useState('normal');
 
     const generateAI = () => {
-        let urlGambar = 'https://ai.zirolu.id/zymuno/style/'+character+'-child.png';
-        let urlGambar2 = 'https://ai.zirolu.id/zymuno/style/'+character+'-parent.png';
-
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("styleFixChild", urlGambar)
-                localStorage.setItem("styleFixParent", urlGambar2)
-                localStorage.setItem("formasiFix", character)
-            }
-        console.log(urlGambar)
-        console.log(urlGambar2)
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("formasiFix", character)
+        }
 
         setTimeout(() => {
             router.push('/zymuno/cam');
@@ -68,7 +61,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="s1"
+                                value="Z4"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
@@ -87,7 +80,7 @@ export default function Register() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="s2"
+                                value="Z1"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
@@ -106,7 +99,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="s5"
+                                value="Z3"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
@@ -125,7 +118,7 @@ export default function Register() {
                                 id='choose_style4'
                                 type="radio"
                                 name='choose_style'
-                                value="s4"
+                                value="Z2"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style4">
