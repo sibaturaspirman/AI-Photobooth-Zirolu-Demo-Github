@@ -81,7 +81,7 @@ export default function Result() {
 
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'META',
+        name: 'META 1',
         phone: '00003',
       });
     const { Canvas } = useQRCode();
@@ -127,7 +127,7 @@ export default function Result() {
             const options = {
                 method: 'POST',
                 body: JSON.stringify({
-                    name:payload.name+' '+formasiFix,
+                    name:payload.name+' - '+formasiFix,
                     phone:payload.phone,
                     image:linkQR
                 }),
