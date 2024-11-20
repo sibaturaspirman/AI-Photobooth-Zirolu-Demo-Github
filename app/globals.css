@@ -904,6 +904,13 @@ body{
 }
 /* !AMERO */
 
+/* META */
+.bg-meta{
+  background-image: url(../public/meta/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* zymuno */
 .bg-zymuno{
   background-image: url(../public/zymuno/bg.jpg);
