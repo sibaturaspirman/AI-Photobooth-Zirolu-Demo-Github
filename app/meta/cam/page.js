@@ -293,7 +293,7 @@ export default function Cam() {
             {numProses1 && 
             <div className={`relative w-[90%]`}>
                 <div className='animate-upDownCepet relative py-5 px-6 mt-5 text-6xl border-2 text-center bg-[#08CF6A] rounded-xl text-[#fff] font-bold'>
-                    <p>{`Please wait, loading...`}</p>
+                    <p>{`Please wait, scanning...`}</p>
                     {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 3)`}</p> */}
                     <p>{progressText} {progressPersen}</p>
                     {error}
