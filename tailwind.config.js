@@ -19,6 +19,8 @@ module.exports = {
       upDown: "upDown 2700ms ease infinite alternate",
       upDown2: "upDown2 2100ms ease infinite alternate",
       upDown3: "upDown 3700ms ease infinite alternate",
+      upDown4: "upDown2 950ms ease infinite alternate",
+      bgScale: "bgscale 950ms ease infinite alternate",
       loading1: "loading1 9000ms ease infinite",
       loading2: "loading2 5000ms ease infinite",
       countdown: "countdown 3500ms ease 1 alternate",
@@ -38,6 +40,10 @@ module.exports = {
       morraineLoading: {
         "0%": { transform: "translateX(0%)"},
         "100%": { transform: "translateX(-89%)"},
+      },
+      bgscale: {
+        "0%": { transform: "scale(1)"},
+        "100%": { transform: "scale(1.01)"},
       },
       upDown: {
         "0%": { transform: "translateY(5%)" },

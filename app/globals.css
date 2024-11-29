@@ -904,6 +904,13 @@ body{
 }
 /* !AMERO */
 
+/* music */
+.bg-music{
+  background-image: url(../public/music/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* META */
 .bg-meta{
   background-image: url(../public/meta/bg.jpg);
