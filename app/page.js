@@ -14,6 +14,9 @@ export default function Home() {
         {/* <Link href='/dexa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-dexa.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link> */}
+        <Link href='/aura' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+          <Image src='/page-aura.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
+        </Link>
         <Link href='/disney' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-disney.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
