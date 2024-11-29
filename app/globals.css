@@ -1264,3 +1264,7 @@ body{
 .sliderProgress2:focus::-webkit-slider-thumb {
   box-shadow: 0 0 0 13px rgba(255,85,0, .2)
 }
+
+.mx-i{
+  max-width: initial !important;
+}
