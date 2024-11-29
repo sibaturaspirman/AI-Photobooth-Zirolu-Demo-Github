@@ -910,6 +910,11 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-music2{
+  background-image: url(../public/music/bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 
 /* META */
 .bg-meta{
@@ -1274,4 +1279,48 @@ body{
 
 .mx-i{
   max-width: initial !important;
+}
+
+.sliderProgress3{
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  /* border-radius: 15px; */
+  height: 50px;
+  background: transparent;
+  position: absolute;
+  top: 0;left: 0;
+}
+.sliderProgress3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  /* width: 116px;
+  height: 58px; */
+  width: 70px;
+  height: 35px;
+  background-image: url(../public/music/icon.png);
+  background-size: cover;
+  /* border-radius: 50%; */
+  border: none;
+  transition: .2s ease-in-out;
+  transform: rotateZ(var(--thumb-rotate, 0deg));
+  position: relative;
+  top: -10px;
+}
+.sliderProgress3::-webkit-slider-runnable-track {
+  height: 50px;
+  background: transparent;
+  border-radius: 16px;
+}
+
+.sliderProgress3::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+}
+.sliderProgress3:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+.sliderProgress3:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
 }

@@ -28,7 +28,7 @@ export default function Register() {
         handleStartCountdown()
         if(countdownStart){
             if(maxDuration == 0){
-                // setSwipeTrigger(true)
+                setSwipeTrigger(true)
             }
         }
     }, [swipeTrigger, countdownStart, maxDuration])
