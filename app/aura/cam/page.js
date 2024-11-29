@@ -410,7 +410,7 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[95%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
@@ -430,7 +430,7 @@ export default function Cam() {
             }
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-2 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
-                    <button className="relative mx-auto flex  w-[95%] justify-center items-center" onClick={captureVideo}>
+                    <button className="relative mx-auto flex  w-[65%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture-a.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
