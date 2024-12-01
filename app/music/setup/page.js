@@ -20,11 +20,11 @@ export default function Register() {
     const [numProses1, setNumProses1] = useState(null);
     const [Name, setName] = useState(null);
     const [slideIndex, setSlideIndex] = useState(0);
-    const [slideIndex2, setSlideIndex2] = useState(1);
+    const [slideIndex2, setSlideIndex2] = useState(0);
     const [moodType, setMoodType] = useState('emotional');
     const [swipeTrigger, setSwipeTrigger] = useState(false);
     const [sliderProgress, setSliderProgress] = useState(0);
-    const [sliderProgress2, setSliderProgress2] = useState(50);
+    const [sliderProgress2, setSliderProgress2] = useState(0);
     const [maxDuration, setMaxDuration] = useState(5);
     const [countdownStart, setCountdownStart] = useState(false);
     const [statusAPI, setStatusAPI] = useState();
@@ -88,11 +88,8 @@ export default function Register() {
         const progress = (tempSliderValue / 100) * 100;
         // console.log(progress)
 
-        let progressBagi = progress / 50;
+        let progressBagi = progress / 100;
         setSlideIndex2(progressBagi)
-        if(progressBagi == 0) setMoodType('emotional')
-        else if(progressBagi == 1) setMoodType('energetic')
-        else if(progressBagi == 2) setMoodType('loveanthem')
     }
 
     // COUNTDOWN
@@ -168,14 +165,14 @@ export default function Register() {
                     <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex2 == 1 ? `` : 'opacity-0'}`}>
                         <Image src='/music/meter2-22.png' width={800} height={130} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex2 == 2 ? `` : 'opacity-0'}`}>
+                    {/* <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex2 == 2 ? `` : 'opacity-0'}`}>
                         <Image src='/music/meter2-32.png' width={800} height={130} alt='Zirolu' className='w-full' priority />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="relative w-[300px] mx-auto">
                     <input type="range" 
                     name="setupslider2"
-                    step="50"
+                    step="100"
                     min="0"
                     max="100"
                     value={sliderProgress2} 
