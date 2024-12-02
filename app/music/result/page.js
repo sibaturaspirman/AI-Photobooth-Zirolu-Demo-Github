@@ -129,6 +129,26 @@ export default function Result() {
     }
 
     const downloadImageAI = async () => {
+        try {
+            console.log(imageResultAI)
+            const response = await fetch(imageResultAI);
+            const blob = await response.blob();
+            const file = new File([blob], 'AI MUSIC', { type: blob.type });
+      
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              await navigator.share({
+                files: [file],
+                title: 'Video Keren',
+                text: 'Lihat video keren ini!',
+              });
+              alert('Video berhasil dibagikan!');
+            } else {
+              alert('Perangkat Anda tidak mendukung berbagi file.');
+            }
+          } catch (error) {
+            console.error('Gagal membagikan video:', error);
+            alert('Terjadi kesalahan saat membagikan video.');
+          }
         // fetchVideo(imageResultAI).then(function(blob) {
         //     // blobVideoShare = blob;
         //     setBlobVideoShare(blob)
@@ -136,16 +156,16 @@ export default function Result() {
         //         console.log(blobVideoShare)
         //     }, 200);
         // }); 
-        console.log(blobVideoShare)
-        const data = {
-            files: [
-                new File([blobVideoShare], 'AI MUSIC', {
-                type: blobVideoShare.type,
-              }),
-            ],
-            title: 'Find Your Spark - NTMY x AntiGRVTY',
-            text: 'Find Your Spark - NTMY x AntiGRVTY https://findyourspark.app',
-        };
+        // console.log(blobVideoShare)
+        // const data = {
+        //     files: [
+        //         new File([blobVideoShare], 'AI MUSIC', {
+        //         type: blobVideoShare.type,
+        //       }),
+        //     ],
+        //     title: 'Find Your Spark - NTMY x AntiGRVTY',
+        //     text: 'Find Your Spark - NTMY x AntiGRVTY https://findyourspark.app',
+        // };
       
         // if (navigator.canShare(data)) {
         //     await navigator.share(data);
@@ -157,10 +177,10 @@ export default function Result() {
         // }
 
         // setTimeout(async () => {
-            await navigator
-                .share(data)
-                .then(() => console.log('Successful share'))
-                .catch(() => console.log('Error sharing'));
+            // await navigator
+            //     .share(data)
+            //     .then(() => console.log('Successful share'))
+            //     .catch(() => console.log('Error sharing'));
         // }, 200);
 
 
