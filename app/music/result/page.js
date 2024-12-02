@@ -129,6 +129,7 @@ export default function Result() {
     }
 
     const downloadImageAI = async () => {
+        setLoadingDownload('≈')
         try {
             console.log(imageResultAI)
             const fileName='ai-music'
@@ -141,16 +142,19 @@ export default function Result() {
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               await navigator.share({
                 files: [file],
-                title: 'Video Keren',
-                text: 'Lihat video keren ini!',
+                title: 'AI Music Records',
+                text: 'AI Music Records',
               });
-              alert('Video berhasil dibagikan!');
+              setLoadingDownload(null)
+              alert('Video shared successfully!');
             } else {
-              alert('Perangkat Anda tidak mendukung berbagi file.');
+                setLoadingDownload(null)
+                alert('Your device does not support file sharing.');
             }
           } catch (error) {
+            setLoadingDownload(null)
             console.error('Gagal membagikan video:', error);
-            alert('Terjadi kesalahan saat membagikan video.');
+            alert('An error occurred while sharing the video.');
           }
         // fetchVideo(imageResultAI).then(function(blob) {
         //     // blobVideoShare = blob;

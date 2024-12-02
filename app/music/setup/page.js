@@ -74,6 +74,7 @@ export default function Register() {
             })
             .catch(err => {
                 console.log(err)
+                setStatusAPI('ERROR API!')
             });
     }
 
@@ -128,7 +129,7 @@ export default function Register() {
                             <Image src='/music/creating.png' width={775} height={166} alt='Zirolu' className='w-full' priority />
                         </div>
                         <p>{`Please wait, loading...`} {statusAPI}</p>
-                        <p className='text-sm'>{`Estimated 20-30 seconds`} {statusAPI}</p>
+                        <p className='text-sm'>{`Estimated 20-30 seconds`}</p>
                     </div>
                 </div>
             }
