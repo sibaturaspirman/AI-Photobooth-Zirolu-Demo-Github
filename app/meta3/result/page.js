@@ -255,7 +255,7 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div> */}
-                    <Link href='/meta2' className="relative w-[80%] mx-auto pt-10 flex justify-center items-center">
+                    <Link href='/meta3' className="relative w-[80%] mx-auto pt-10 flex justify-center items-center">
                         <Image src='/meta/back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
