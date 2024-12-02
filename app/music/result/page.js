@@ -6,6 +6,7 @@ import Image from "next/image";
 // import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
+import ReactPlayer from 'react-player'
 // import io from 'socket.io-client';
 // import { Merriweather} from "next/font/google";
 // const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
@@ -79,6 +80,7 @@ export default function Result() {
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
     const [blobVideoShare, setBlobVideoShare] = useState();
+    const [playVideo, setPlayVideo] = useState(false);
 
     const [maxDuration, setMaxDuration] = useState(10);
     const [countdownStart, setCountdownStart] = useState(false);
@@ -101,12 +103,6 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('urlVideo')
             setImageResultAI(item)
-
-            // const files = item
-            fetchVideo(item).then(function(blob) {
-                // blobVideoShare = blob;
-                setBlobVideoShare(blob)
-            }); 
         }
 
         // console.log(blobVideoShare)
@@ -120,7 +116,7 @@ export default function Result() {
         //         location.href = '/comcon/visikom'
         //     }
         // }
-    }, [imageResultAI, blobVideoShare])
+    }, [imageResultAI])
 
     const fetchVideo = async (url) => {
         return fetch(url).then(function(response) {        
@@ -202,39 +198,6 @@ export default function Result() {
         //   }, 500); 
     }
     
-    const downloadResult = async (filename, file) => {
-        if(webShareSupported){
-          const data = {
-            files: [
-                new File([blobVideoShare], filename, {
-                type: blobVideoShare.type,
-              }),
-            ],
-            title: 'Find Your Spark - NTMY x AntiGRVTY',
-            text: 'Find Your Spark - NTMY x AntiGRVTY https://findyourspark.app',
-          };
-      
-          if (navigator.canShare(data)) {
-            await navigator.share(data);
-            try {
-              await navigator.share(data);
-            } catch (error) {
-              console.log(error.message)
-            }
-          }
-        }else{
-          var link = document.createElement("a"); 
-          link.download = filename;  
-          link.target = "_blank"; 
-          link.href = file; 
-          document.body.appendChild(link);  
-          setTimeout(function() { 
-              link.click();  
-              document.body.removeChild(link); 
-          }, 500); 
-        }
-    }
-    
 
     return (
         <main className="flex fixed h-full w-full bg-music2 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -258,10 +221,16 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
-                <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
+                <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center' onClick={()=>{setPlayVideo(true)}}>
                     <div className='relative z-10 w-[70%]'>
-                        <div className={`relative w-full overflow-hidden flex justify-center items-center`}>
-                            <video src={imageResultAI} autoPlay playsInline loop className=" mx-auto w-full border-4 shadow-xl border-white"></video>
+                        {!playVideo && 
+                        <button className="absolute left-0 top-0 bottom-0 right-0 mx-auto flex justify-center items-center w-[20%]">
+                        <Image src='/music/play.png' width={300} height={300} alt='Zirolu' className='w-full' priority />
+                        </button>
+                        }
+                        <div className={`w-full flex items-center justify-center`}>
+                            {/* <video src={imageResultAI} playsInline loop className="mx-auto w-full border-4 shadow-xl border-white"></video> */}
+                            <ReactPlayer url={[imageResultAI]}  playing={playVideo} loop width="100%" height="100%" className="border-2 shadow-xl border-white p-1"/>
                         </div>
                     </div>
                 </div>
