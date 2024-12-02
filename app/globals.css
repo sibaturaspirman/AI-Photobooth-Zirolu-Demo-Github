@@ -922,6 +922,16 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-meta2{
+  background-image: url(../public/meta/bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-meta3{
+  background-image: url(../public/meta/bg3.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 .bg-a{
   background-image: url(../public/bg-a.jpg);
   background-size: cover;
