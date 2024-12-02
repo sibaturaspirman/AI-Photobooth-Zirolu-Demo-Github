@@ -141,14 +141,17 @@ export default function Result() {
                 title: 'AI Music Records',
                 text: 'AI Music Records',
               });
+              setPlayVideo(false)
               setLoadingDownload(null)
               alert('Video shared successfully!');
             } else {
+                setPlayVideo(false)
                 setLoadingDownload(null)
                 alert('Your device does not support file sharing.');
             }
           } catch (error) {
             setLoadingDownload(null)
+            setPlayVideo(false)
             console.error('Gagal membagikan video:', error);
             alert('Try Again to download!');
           }
