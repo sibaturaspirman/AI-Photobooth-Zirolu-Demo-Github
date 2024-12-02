@@ -154,7 +154,7 @@ export default function Result() {
           } catch (error) {
             setLoadingDownload(null)
             console.error('Gagal membagikan video:', error);
-            alert('An error occurred while sharing the video.');
+            alert('Try Again to download!');
           }
         // fetchVideo(imageResultAI).then(function(blob) {
         //     // blobVideoShare = blob;
