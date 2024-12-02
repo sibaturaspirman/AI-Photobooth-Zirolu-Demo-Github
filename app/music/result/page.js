@@ -240,7 +240,7 @@ export default function Result() {
                 }
                 {loadingDownload && 
                     <div className='relative mt-2 border-2 text-base py-2 text-sm text-center bg-[#FFF1B8] text-[#000] w-[70%] mx-auto'>
-                        <p>Please wait, prepare your video...</p>
+                        <p>Please wait, preparing your video...</p>
                     </div>
                 }
 
