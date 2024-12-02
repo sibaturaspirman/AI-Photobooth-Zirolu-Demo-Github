@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 // import * as fal from '@fal-ai/serverless-client';
 import Image from "next/image";
 import { useEffect, useState, useMemo, useRef } from 'react';
@@ -28,6 +29,7 @@ export default function Register() {
     const [maxDuration, setMaxDuration] = useState(5);
     const [countdownStart, setCountdownStart] = useState(false);
     const [statusAPI, setStatusAPI] = useState();
+    const [urlVideo, setUrlVideo] = useState();
     const timerRef = useRef(null);
 
     useEffect(() => {
@@ -60,7 +62,15 @@ export default function Register() {
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                setStatusAPI(response.status)
+                // setStatusAPI(response.status)
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("urlVideo", response.data)
+                }
+                setNumProses1(null)
+                setUrlVideo(response.data)
+                // setTimeout(() => {
+                //     router.push('/music/result');
+                // }, 100);
             })
             .catch(err => {
                 console.log(err)
@@ -118,10 +128,36 @@ export default function Register() {
                             <Image src='/music/creating.png' width={775} height={166} alt='Zirolu' className='w-full' priority />
                         </div>
                         <p>{`Please wait, loading...`} {statusAPI}</p>
+                        <p className='text-sm'>{`Estimated 20-30 seconds`} {statusAPI}</p>
                     </div>
                 </div>
             }
             {/* LOADING */}
+
+            {/* RESULT */}
+            {urlVideo && 
+                <div className='absolute bg-music2 top-0 left-0 right-0 bottom-0 overflow-hidden flex items-center justify-center flex-col z-50'>
+                    <div className='relative text-center text-[#fff] w-[60%]'>
+                        <video src={urlVideo} autoPlay playsInline loop className=" mx-auto w-full border-4 shadow-xl border-white"></video>
+                        
+                        {/* <div className={`relative w-full flex justify-center items-center mt-6 z-20`} onClick={generateAura}>
+                            <button className="relative mx-auto w-full flex justify-center items-center">
+                                <Image src='/music/btn-download.png' width={776} height={200} alt='Zirolu' className='w-full' priority />
+                            </button>
+                        </div> */}
+                        <div className="relative w-full flex justify-center items-center mt-6 z-20">
+                            <a href={urlVideo} target='_blank' className="relative mx-auto flex justify-center items-center">
+                            <Image src='/music/btn-download.png' width={776} height={200} alt='Zirolu' className='w-full' priority />
+                            </a>
+                        </div>
+
+                        <Link href='/music' className="relative w-[60%] mx-auto flex justify-center items-center">
+                        <Image src='/music/back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        </Link>
+                    </div>
+                </div>
+            }
+            {/* RESULT */}
 
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-10 z-20`}>
