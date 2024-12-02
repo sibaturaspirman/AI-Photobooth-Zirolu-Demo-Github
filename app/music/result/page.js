@@ -10,7 +10,10 @@ import { useQRCode } from 'next-qrcode';
 // import { Merriweather} from "next/font/google";
 // const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 // import BtnHexagon2 from "../../components/BtnHexagon2";
-import ReactToPrint from "react-to-print";
+// import ReactToPrint from "react-to-print";
+// var blobVideoShare, videoResult, nameResult, blobGifShare;
+// const webShareSupported = 'canShare' in navigator;
+// let blobVideo
 
 
 // function downloadImage(data, filename = 'untitled.jpeg') {
@@ -75,6 +78,7 @@ export default function Result() {
     const [keKirimEmailGak, setKeKirimEmailGak] = useState(null);
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [showEmail, setShowEmail] = useState(null);
+    const [blobVideoShare, setBlobVideoShare] = useState();
 
     const [maxDuration, setMaxDuration] = useState(10);
     const [countdownStart, setCountdownStart] = useState(false);
@@ -97,61 +101,113 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('urlVideo')
             setImageResultAI(item)
+
+            // const files = item
+            fetchVideo(item).then(function(blob) {
+                // blobVideoShare = blob;
+                setBlobVideoShare(blob)
+            }); 
         }
+
+        // console.log(blobVideoShare)
+
+        // if (navigator.share) {
+            // setNativeShare(true);
+        // }
 
         // if(countdownStart){
         //     if(maxDuration == 0){
         //         location.href = '/comcon/visikom'
         //     }
         // }
-    }, [imageResultAI, formasiFix, auraFix, countdownStart, maxDuration])
+    }, [imageResultAI, blobVideoShare])
 
-    const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:3}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
-    }
-    
-    const uploadImage = async (canvas) => {
-        setLoadingDownload('≈')
-
-        canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", 'VEEV AURA - '+formasiFix);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
-          
-            const options = {
-                method: 'POST',
-                body: bodyFormData,
-                headers: {
-                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                    'Accept': 'application/json',
-                }
-            };
-            
-            await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response)
-                    setLinkQR(response.file)
-                    setIdFormEmail(response.id)
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        setShowEmail('true')
-                        setLinkQR(item)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
+    const fetchVideo = async (url) => {
+        return fetch(url).then(function(response) {        
+            return response.blob();
         });
     }
+
+    const downloadImageAI = async () => {
+        // fetchVideo(imageResultAI).then(function(blob) {
+        //     // blobVideoShare = blob;
+        //     setBlobVideoShare(blob)
+        //     setTimeout(() => {
+        //         console.log(blobVideoShare)
+        //     }, 200);
+        // }); 
+        console.log(blobVideoShare)
+        const data = {
+            files: [
+                new File([blobVideoShare], 'AI MUSIC', {
+                type: blobVideoShare.type,
+              }),
+            ],
+            title: 'Find Your Spark - NTMY x AntiGRVTY',
+            text: 'Find Your Spark - NTMY x AntiGRVTY https://findyourspark.app',
+        };
+      
+        // if (navigator.canShare(data)) {
+        //     await navigator.share(data);
+        //     try {
+        //       await navigator.share(data);
+        //     } catch (error) {
+        //       console.log(error.message)
+        //     }
+        // }
+
+        // setTimeout(async () => {
+            await navigator
+                .share(data)
+                .then(() => console.log('Successful share'))
+                .catch(() => console.log('Error sharing'));
+        // }, 200);
+
+
+        // var link = document.createElement("a"); 
+        //   link.download = 'AI MUSIC';  
+        //   link.target = "_blank"; 
+        //   link.href = imageResultAI; 
+        //   document.body.appendChild(link);  
+        //   setTimeout(function() { 
+        //       link.click();  
+        //       document.body.removeChild(link); 
+        //   }, 500); 
+    }
+    
+    const downloadResult = async (filename, file) => {
+        if(webShareSupported){
+          const data = {
+            files: [
+                new File([blobVideoShare], filename, {
+                type: blobVideoShare.type,
+              }),
+            ],
+            title: 'Find Your Spark - NTMY x AntiGRVTY',
+            text: 'Find Your Spark - NTMY x AntiGRVTY https://findyourspark.app',
+          };
+      
+          if (navigator.canShare(data)) {
+            await navigator.share(data);
+            try {
+              await navigator.share(data);
+            } catch (error) {
+              console.log(error.message)
+            }
+          }
+        }else{
+          var link = document.createElement("a"); 
+          link.download = filename;  
+          link.target = "_blank"; 
+          link.href = file; 
+          document.body.appendChild(link);  
+          setTimeout(function() { 
+              link.click();  
+              document.body.removeChild(link); 
+          }, 500); 
+        }
+    }
+    
 
     return (
         <main className="flex fixed h-full w-full bg-music2 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -188,11 +244,15 @@ export default function Result() {
                         <p>Please wait, loading...</p>
                     </div>
                 }
+
                 <div className={`relative w-[60%] ${loadingDownload ? 'hidden' : ''}`}>
                     <div className="relative w-full flex justify-center items-center mt-2 z-20">
-                        <a href={imageResultAI} target='_blank' className="relative mx-auto flex justify-center items-center">
+                        <button className="relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
                         <Image src='/music/btn-download.png' width={776} height={200} alt='Zirolu' className='w-full' priority />
-                        </a>
+                        </button>
+                        {/* <a href={imageResultAI} target='_blank' className="relative mx-auto flex justify-center items-center">
+                        <Image src='/music/btn-download.png' width={776} height={200} alt='Zirolu' className='w-full' priority />
+                        </a> */}
                     </div>
 
                     <Link href='/music' className="relative w-[60%] mx-auto flex justify-center items-center">
@@ -200,6 +260,26 @@ export default function Result() {
                     </Link>
                 </div>
             </div>
+
+
+            {/* {typeof window !== 'undefined' && navigator && navigator?.share && (
+              <div>
+              <button
+                className="absolute top-6 right-16"
+                onClick={() => {
+                  navigator
+                    .share({
+                      title: 'Title: ',
+                      url: 'http://localhost:3000/articles/'
+                    })
+                    .then(() => console.log('Successful share'))
+                    .catch(() => console.log('Error sharing'));
+                }}
+              >
+                SHARE 
+              </button>
+              </div>
+            )} */}
         </main>
     );
 }
