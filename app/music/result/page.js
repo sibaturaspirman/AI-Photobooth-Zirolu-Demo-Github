@@ -131,9 +131,12 @@ export default function Result() {
     const downloadImageAI = async () => {
         try {
             console.log(imageResultAI)
+            const fileName='ai-music'
             const response = await fetch(imageResultAI);
             const blob = await response.blob();
-            const file = new File([blob], 'AI MUSIC', { type: blob.type });
+            const mimeType = blob.type || 'video/mp4'; // Set MIME type default
+            const fileExtension = fileName.endsWith('.mp4') ? '' : '.mp4'; // Tambahkan ekstensi jika tidak ada
+            const file = new File([blob], `${fileName}${fileExtension}`, { type: mimeType });
       
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               await navigator.share({
