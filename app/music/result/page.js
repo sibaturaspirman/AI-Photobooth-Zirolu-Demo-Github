@@ -230,7 +230,7 @@ export default function Result() {
                         }
                         <div className={`w-full flex items-center justify-center`}>
                             {/* <video src={imageResultAI} playsInline loop className="mx-auto w-full border-4 shadow-xl border-white"></video> */}
-                            <ReactPlayer url={[imageResultAI]}  playing={playVideo} loop width="100%" height="100%" className="border-2 shadow-xl border-white p-1"/>
+                            <ReactPlayer url={[imageResultAI]}  playing={playVideo} playsinline loop width="100%" height="100%" className="border-2 shadow-xl border-white p-1"/>
                         </div>
                     </div>
                 </div>
