@@ -267,8 +267,8 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-2 border-2 text-base py-3 text-center bg-[#1B3CD8] rounded-xl text-[#fff] w-[70%] mx-auto'>
-                        <p>Please wait, loading...</p>
+                    <div className='relative mt-2 border-2 text-base py-2 text-sm text-center bg-[#FFF1B8] text-[#000] w-[70%] mx-auto'>
+                        <p>Please wait, prepare your video...</p>
                     </div>
                 }
 

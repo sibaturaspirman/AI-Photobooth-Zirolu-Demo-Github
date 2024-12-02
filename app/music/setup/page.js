@@ -129,7 +129,7 @@ export default function Register() {
                             <Image src='/music/creating.png' width={775} height={166} alt='Zirolu' className='w-full' priority />
                         </div>
                         {statusAPI && 
-                            <p className='text-red text-bold'>{statusAPI}</p>
+                            <p className='text-red-600 text-bold'>{statusAPI}</p>
                         }
                         <p>{`Please wait, loading...`}</p>
                         <p className='text-sm'>{`Estimated 20-30 seconds`}</p>
