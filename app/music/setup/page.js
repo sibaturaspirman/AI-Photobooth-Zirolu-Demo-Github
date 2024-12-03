@@ -132,7 +132,7 @@ export default function Register() {
                             <p className='text-red-600 text-bold'>{statusAPI}</p>
                         }
                         <p>{`Please wait, loading...`}</p>
-                        <p className='text-sm'>{`Estimated 20-30 seconds`}</p>
+                        <p className='text-sm'>{`Estimated 10-30 seconds`}</p>
                     </div>
                 </div>
             }
