@@ -17,7 +17,10 @@ export default function How() {
             </div>
 
             <div className="relative w-full flex justify-center items-center">
-                <Link href='/amero/generate2' className="relative mx-auto flex w-[70%] justify-center items-center">
+                {/* <Link href='/amero/generate2' className="relative mx-auto flex w-[70%] justify-center items-center">
+                    <Image src='/amero/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                </Link> */}
+                <Link href='/amero/cam' className="relative mx-auto flex w-[70%] justify-center items-center">
                     <Image src='/amero/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                 </Link>
             </div>
