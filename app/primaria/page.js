@@ -33,7 +33,7 @@ export default function PrimariaHome() {
 
   return (
     <Link href='/primaria/data' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
-      <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none -z-1"></canvas>
+      <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none -z-1 scale-[1.02]"></canvas>
       <div className="relative w-full flex justify-center items-center flex-col top-[-6rem]">
         <div className='animate-upDown relative w-[90%] mx-auto flex justify-center items-center pointer-events-none'>
           <Image src='/primaria/logo.png' width={880} height={347} alt='Zirolu' className='w-full' priority />

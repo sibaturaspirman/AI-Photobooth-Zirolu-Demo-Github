@@ -66,8 +66,8 @@ export default function Data() {
         setCookie('PMR_rokok', payload.rokok);
         setCookie('PMR_jenisrokok', payload.jenisrokok);
         setTimeout(() => {
-            router.push('/amero/how');
-        }, 250);
+            router.push('/primaria/frame');
+        }, 100);
     }
     return (
         <main className="flex fixed h-full w-full bg-primaria overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
