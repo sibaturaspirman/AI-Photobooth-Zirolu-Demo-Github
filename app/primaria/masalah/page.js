@@ -1,6 +1,6 @@
 'use client';
 
-import Image from "next/image";
+// import Image from "next/image";
 import { setCookie } from 'cookies-next';
 import { useState } from 'react';
 import TopLogoPrimaria from "../../components/TopLogoPrimaria";
@@ -21,18 +21,10 @@ export default function Masalah() {
       else return false;
     };
 
-    const handleChange = (e) => {
-        const { value, name } = e.target;
-        setPayload((prev) => ({
-          ...prev,
-          [name]: value,
-        }));
-    };
-
     const handleSubmit = () => {
         setCookie('PMR_frame', payload.frame);
         setTimeout(() => {
-            router.push('/amero/how');
+            router.push('/primaria/how');
         }, 250);
     }
     return (
@@ -49,7 +41,7 @@ export default function Masalah() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value='f1'
+                                value='m1'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -79,7 +71,7 @@ export default function Masalah() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value='f3'
+                                value='m3'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -109,7 +101,7 @@ export default function Masalah() {
                                 id='choose_style5'
                                 type="radio"
                                 name='choose_style'
-                                value='f5'
+                                value='m5'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -139,7 +131,7 @@ export default function Masalah() {
                                 id='choose_style7'
                                 type="radio"
                                 name='choose_style'
-                                value='f7'
+                                value='m7'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
