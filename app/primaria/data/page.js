@@ -60,6 +60,7 @@ export default function Data() {
     };
 
     const handleSubmit = () => {
+        localStorage.setItem('formasiFix', payload.gender)
         setCookie('PMR_name', payload.name);
         setCookie('PMR_gender', payload.gender);
         setCookie('PMR_ktp', payload.ktp);

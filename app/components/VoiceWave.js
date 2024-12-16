@@ -74,7 +74,7 @@ export default function VoiceWave() {
 
             if(udhBeres){
                 setTimeout(() => {
-                    router.push('/primaria');
+                    router.push('/primaria/cam');
                 }, 1500);
             }
 

@@ -2,6 +2,18 @@
 1. Responsive ✅
 2. Skin Zirolu ✅
 
+## PROMPT PMIRARIA
+A photorealistic, highly detailed 8K  of a man in a mid-torso shot, wearing a black shirt with big smile. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+190096, 181454, 487630, 371547, 190096
+
+=======================
+A photorealistic, highly detailed 8K  of a man in a mid-torso shot  with big smile & happy. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+19231, 414771, 190192, 388855, 382505
+
+
+## ID
 Secret : B469tIUppiqYZpqe81b6i+l/iZ9o8pQe
 Client ID : DwRa1sKRHA7NFcsxPOf53g==
 Token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWIyNTM5ZTUwOWMxYWFmYjhjNTY4NyIsInVpZCI6MzE1Nzc1NSwiZW1haWwiOiJhc2VwaXJtYW5AYW50aWdyYXZpdHkuaWQiLCJjcmVkZW50aWFsSWQiOiI2NjliMjcyYWU1MDljMWFhZmI4YzU4YmYiLCJmaXJzdE5hbWUiOiJBc2VwIiwiZnJvbSI6InRvTyIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzIxNDQ1NjIyLCJleHAiOjIwMzI0ODU2MjJ9.HQYviO_e0E1GrI_212ROxyh9JeqBHF3NGlTWDYYjBQw
