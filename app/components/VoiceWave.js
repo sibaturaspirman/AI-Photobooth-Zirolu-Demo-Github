@@ -100,7 +100,7 @@ export default function VoiceWave() {
             for (let i = 0; i < dataArrayRef.current.length; i++) {
               const v = (dataArrayRef.current[i] - 90) / 128;
               const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
-              const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1.2) * variation;
+              const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1) * variation;
 
               if (i === 0) {
                 ctx.moveTo(x, y);
@@ -148,7 +148,7 @@ export default function VoiceWave() {
             </div>
             <div className={`animate-upDownCepet text-4xl text-center mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
-        <div className="fixed bottom-0 left-0 w-full">
+        <div className="fixed bottom-[3rem] left-0 w-full">
             <canvas
                 ref={canvasRef}
                 width="1080"
