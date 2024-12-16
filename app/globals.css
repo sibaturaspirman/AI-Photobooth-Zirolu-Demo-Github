@@ -235,6 +235,24 @@ body{
   padding: 0;
   position: relative;
 }
+
+.choose.mod12{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod12 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 50%;
+  /* width: 250px; */
+}
+.choose.mod12 label{
+  padding: 0;
+  position: relative;
+}
+
 @media only screen and (max-width: 1023px) {
   .choose li{
     width: 110px;
@@ -542,6 +560,32 @@ body{
 }
 .choose.mod11 li{
   padding: 5px;
+}
+
+.choose.mod12 [type="radio"]:checked + label{
+  transform: scale(1) !important;
+  /* border-color: #fff; */
+}
+.choose.mod12 [type="radio"]:not(:checked) + label img:first-child{
+  opacity: 1;
+}
+.choose.mod12 [type="radio"]:not(:checked) + label img:last-child{
+  opacity: 0;
+}
+.choose.mod12 [type="radio"]:checked + label img:first-child{
+  opacity: 0;
+}
+.choose.mod12 [type="radio"]:checked + label img:last-child{
+  opacity: 1;
+  transform: scale(1.05) !important;
+}
+.choose.mod12 li label img{
+  /* border: 6px solid transparent; */
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 450ms;
+}
+.choose.mod12 [type="radio"]:checked + label:after,
+.choose.mod12 [type="radio"]:not(:checked) + label:after {
+    display: none;
 }
 
 .choose [type="radio"]:not(:checked) + label:after {
@@ -1334,3 +1378,10 @@ body{
 .sliderProgress3:focus::-webkit-slider-thumb {
   box-shadow: 0 0 0 13px rgba(255,85,0, .2)
 }
+
+/* PRIMARIA */
+.bg-primaria{
+  background-image: url(../public/primaria/bg.jpg);
+  background-size: cover;
+}
+/* PRIMARIA */
