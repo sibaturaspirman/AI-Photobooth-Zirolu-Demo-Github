@@ -2,8 +2,8 @@
 1. API CMS
 2. API AI
 
-## PROMPT PMIRARIA
-A photorealistic, highly detailed 8K  of a man in a mid-torso shot, wearing a black shirt with big smile. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+## PROMPT PMIRARIA | 824x1064
+A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
 ---
 190096, 181454, 487630, 371547, 190096
 
@@ -11,6 +11,63 @@ A photorealistic, highly detailed 8K  of a man in a mid-torso shot, wearing a bl
 A photorealistic, highly detailed 8K  of a man in a mid-torso shot  with big smile & happy. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
 ---
 19231, 414771, 190192, 388855, 382505
+
+
+
+===#MALE#==============================================
+=========================================================
+==COMFY== / MALE / 0.45 / OFFICE
+A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+190096, 181454, 487630, 371547, 382505
+
+A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+389855, 382505, 41834170440, 83453929590, 79619218720
+
+A photorealistic, highly detailed 8K  of a man in a portait shot with big laugh & happy take a load off at the office. The background is dramatically in modern office with red ornament. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression
+---
+71015714077
+=========================================================
+
+=========================================================
+==COMFY== / MALE / 0.45 / KAMAR
+A photorealistic, highly detailed 8K of a man in a mid-torso shot use black shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+86142386987, 52260716717
+
+A photorealistic, highly detailed 8K of a man in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+1284142671, 522974193
+
+A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+82423819105, 31958588377, 99858391871, 41039874604
+=========================================================
+
+
+===#FEMALE#==============================================
+=========================================================
+==COMFY== / FEMALE / 0.45 / OFFICE
+A photorealistic, highly detailed 8K  of a woman in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+71800130604, 85496775613, 94779527275, 61004405013
+
+A photorealistic, highly detailed 8K  of a woman in a portait shot with big laugh & happy take a load off at the office. The background is dramatically in modern office with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression
+---
+22574612887, 81586982481
+=========================================================
+
+=========================================================
+==COMFY== / FEMALE / 0.45 / KAMAR
+A photorealistic, highly detailed 8K of a woman in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+81586982481, 52191007329, 57080350604
+
+A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+69929947825, 18499706992, 32019683252, 70853149744
+=========================================================
 
 
 ## ID
