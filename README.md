@@ -1,6 +1,6 @@
 ## HAVE TO FIXED
-1. Responsive ✅
-2. Skin Zirolu ✅
+1. API CMS
+2. API AI
 
 ## PROMPT PMIRARIA
 A photorealistic, highly detailed 8K  of a man in a mid-torso shot, wearing a black shirt with big smile. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
