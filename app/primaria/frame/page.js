@@ -22,6 +22,7 @@ export default function Frame() {
     };
 
     const handleSubmit = () => {
+        localStorage.setItem('PMR_frame', payload.frame)
         setCookie('PMR_frame', payload.frame);
         setTimeout(() => {
             router.push('/primaria/masalah');

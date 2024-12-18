@@ -25,41 +25,130 @@ let FACE_URL_RESULT = ''
 let FIXSEEDPILIH = 0, PROMPTFIX = '';
 let promptArea = [
     {
-        gender:"male",
+        gender:"male - office",
         prompt:[
             {
-                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot  with big smile & happy. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:19231
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:190096
             },
             {
-                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot  with big smile & happy. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:414771
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:181454
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:487630
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:371547
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:382505
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:389855
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:382505
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:407916
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:834539
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:79619
             }
         ]
     },
     {
-        gender:"female",
+        gender:"male - kamar",
         prompt:[
             {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:29897
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot use black shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:861423
             },
             {
-                text:"A photorealistic, highly detailed 8K black-and-white portrait of a woman half-body shot. The man is wearing a black shirt,vedora hats and the photo has a dramatic black background with moody lighting. There is headroom above the woman's head, creating a cinematic effect. The style is minimalistic and stark, focusing on contrasts between light and shadow.",
-                seed:95093
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot use black shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:52260
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:292085
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:292085
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:292085
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:381188
             }
         ]
     },
     {
-        gender:"hijab",
+        gender:"female - office",
         prompt:[
             {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a hijab female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:209561
+                text:"A photorealistic, highly detailed 8K  of a woman in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:718001
             },
             {
-                text:"A photorealistic, highly detailed 8K black-and-white image of a hijab female an in a mid-torso shot, wearing a black shirt. The background is dramatically black with intense contrasts of light and shadow. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
-                seed:59179
+                text:"A photorealistic, highly detailed 8K  of a woman in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:854967
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a woman in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:947795
+            },
+            {
+                text:"A photorealistic, highly detailed 8K  of a woman in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red ornament at modern office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:61004
+            }
+        ]
+    },
+    {
+        gender:"female - kamar",
+        prompt:[
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:81586
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:52191
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.",
+                seed:57080
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:69929
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:184997
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:320196
+            },
+            {
+                text:"A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt with big laugh & happy take a load off at the bed room . The background is dramatically in modern bed room with red ornament. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.",
+                seed:708531
             }
         ]
     }
@@ -189,7 +278,7 @@ export default function Cam() {
     const [imageFile3, setImageFile3] = useState(null);
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
-    const [styleFix3, setStyleFix3] = useState(null);
+    const [masalah, setMasalah] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -207,28 +296,39 @@ export default function Cam() {
         if (typeof localStorage !== 'undefined') {
             const item1 = localStorage.getItem('styleFix')
             const item2 = localStorage.getItem('formasiFix')
+            const item3 = localStorage.getItem('PMR_masalah')
             setStyleFix(item1)
             setFormasiFix(item2)
+            setMasalah(item3)
         }
-    }, [styleFix, formasiFix])
+    }, [styleFix, formasiFix, masalah])
 
 
 
     const generateAI = () => {
         setNumProses1(true)
+        console.log(masalah)
 
         if(formasiFix == 'cowok'){
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[0].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[0].prompt[randNumb].seed
+            if(masalah == 'm1' || masalah == 'm2' || masalah == 'm3' || masalah == 'm7'){
+                let randNumb = getRandomInt(0,9)
+                PROMPTFIX = promptArea[0].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[0].prompt[randNumb].seed
+            }else{
+                let randNumb = getRandomInt(0,5)
+                PROMPTFIX = promptArea[1].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[1].prompt[randNumb].seed
+            }
         }else if(formasiFix == 'cewek'){
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[1].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[1].prompt[randNumb].seed
-        }else{
-            let randNumb = getRandomInt(0,1)
-            PROMPTFIX = promptArea[2].prompt[randNumb].text
-            FIXSEEDPILIH = promptArea[2].prompt[randNumb].seed
+            if(masalah == 'm1' || masalah == 'm2' || masalah == 'm3' || masalah == 'm7'){
+                let randNumb = getRandomInt(0,3)
+                PROMPTFIX = promptArea[2].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[2].prompt[randNumb].seed
+            }else{
+                let randNumb = getRandomInt(0,6)
+                PROMPTFIX = promptArea[3].prompt[randNumb].text
+                FIXSEEDPILIH = promptArea[3].prompt[randNumb].seed
+            }
         }
 
         setTimeout(() => {

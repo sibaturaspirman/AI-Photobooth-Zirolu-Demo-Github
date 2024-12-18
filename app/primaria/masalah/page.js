@@ -17,12 +17,13 @@ export default function Masalah() {
     });
 
     const isValid = () => {
-      if (payload.frame) return true
+      if (payload.masalah) return true
       else return false;
     };
 
     const handleSubmit = () => {
-        setCookie('PMR_frame', payload.frame);
+        localStorage.setItem('PMR_masalah', payload.masalah)
+        setCookie('PMR_masalah', payload.masalah);
         setTimeout(() => {
             router.push('/primaria/how');
         }, 250);
@@ -56,11 +57,11 @@ export default function Masalah() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="f2"
+                                value="m2"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
@@ -75,7 +76,7 @@ export default function Masalah() {
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
@@ -86,11 +87,11 @@ export default function Masalah() {
                                 id='choose_style4'
                                 type="radio"
                                 name='choose_style'
-                                value="f4"
+                                value="m4"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
@@ -116,11 +117,11 @@ export default function Masalah() {
                                 id='choose_style6'
                                 type="radio"
                                 name='choose_style'
-                                value="f6"
+                                value="m6"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
@@ -135,7 +136,7 @@ export default function Masalah() {
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
@@ -146,11 +147,11 @@ export default function Masalah() {
                                 id='choose_style8'
                                 type="radio"
                                 name='choose_style'
-                                value="f8"
+                                value="m8"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
-                                        frame: e.target.value,
+                                        masalah: e.target.value,
                                     }))
                                 }
                                 />
