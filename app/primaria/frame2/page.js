@@ -31,12 +31,12 @@ export default function Frame() {
     return (
         <main className="flex fixed h-full w-full bg-primaria overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogoPrimaria></TopLogoPrimaria>
-            <h1 className={`text-center text-6xl font-medium mt-10 ${kanit.className}`}>Pilih frame yang lo suka</h1>
-            <div className="relative w-full flex flex-col justify-center items-center mt-2 lg:mt-8 mb-2 lg:mb-14">
+            <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 ${kanit.className}`}>Pilih frame yang lo suka</h1>
+            <div className="relative w-full flex flex-col justify-center items-center mt-0 lg:mt-8 mb-0 lg:mb-14">
                 <div className='relative w-[80%]'>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>
-                            <ul className='choose mod11'>
+                            <ul className='choose mod11 !mt-0'>
                             <li className="pr-2">
                                 <input
                                 id='choose_style1'

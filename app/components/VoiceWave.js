@@ -134,21 +134,21 @@ export default function VoiceWave({ direct }) {
   }, []);
 
   return (
-    <div className="relative top-0 left-0 mt-20 w-full h-full">
+    <div className="relative top-0 left-0 mt-5 lg:mt-20 w-full h-full">
         <div className="relative w-full">
-            <div className='relative w-[50%] mx-auto flex justify-center items-center'>
+            <div className='relative w-[35%] lg:w-[50%] mx-auto flex justify-center items-center'>
                 <Image src='/primaria/orang-1.png' width={512} height={512} alt='Zirolu' className={`w-full ${progressKetawa >= 40 ? 'opacity-0' : ''}`} priority />
                 <Image src='/primaria/orang-2.png' width={512} height={512} alt='Zirolu' className={`w-full absolute w-full ${progressKetawa >= 40 && progressKetawa <= 80  ? '' : 'opacity-0'}`} priority />
                 <Image src='/primaria/orang-3.png' width={512} height={512} alt='Zirolu' className={`w-full absolute w-full ${progressKetawa >= 80 ? '' : 'opacity-0'}`} priority />
             </div>
-            <div className="relative bg-white w-[80%] h-[50px] mt-14 mx-auto rounded-full p-2 overflow-hidden">
+            <div className="relative bg-white w-[80%] h-[30px] lg:h-[50px] mt-5 lg:mt-14 mx-auto rounded-full p-2 overflow-hidden">
                 <div className="absolute top-0 left-0 border-4 bg-gradient-to-r from-[#FF2A38] to-[#EF000F] h-full mx-auto rounded-full flex items-center justify-center" style={{ width: progressKetawa+"%" }}>
-                    <span className="text-3xl">{progressKetawa}%</span>
+                    <span className="text-xl lg:text-3xl">{progressKetawa}%</span>
                 </div>
             </div>
-            <div className={`animate-upDownCepet text-4xl text-center mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
+            <div className={`animate-upDownCepet text-xl lg:text-5xl text-center mt-5 lg:mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
-        <div className="fixed bottom-[3rem] left-0 w-full">
+        <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full">
             <canvas
                 ref={canvasRef}
                 width="1080"

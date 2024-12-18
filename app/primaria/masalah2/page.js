@@ -31,13 +31,13 @@ export default function Masalah() {
     return (
         <main className="flex fixed h-full w-full bg-primaria overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogoPrimaria></TopLogoPrimaria>
-            <h1 className={`text-center text-6xl font-medium mt-10 mb-10 ${kanit.className}`}>Apa masalah yang lagi lo hadepin?</h1>
-            <div className="relative w-full flex flex-col justify-center items-center mt-2 lg:mt-8 mb-2 lg:mb-14">
+            <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 ${kanit.className}`}>Apa masalah yang lagi lo hadepin?</h1>
+            <div className="relative w-full flex flex-col justify-center items-center mt-2 lg:mt-14 mb-0 lg:mb-4">
                 <div className='relative w-full'>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>
                             <ul className='choose5'>
-                            <li className="pr-5">
+                            <li className="pr-2 lg:pr-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style1'
                                 type="radio"
@@ -50,9 +50,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style1" className="text-4xl">Dikejar deadline</label>
+                                <label htmlFor="choose_style1" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Dikejar deadline</label>
                             </li>
-                            <li className="pl-5">
+                            <li className="pl-2 lg:pl-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style2'
                                 type="radio"
@@ -65,9 +65,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style2" className="text-4xl">Kerja lembur</label>
+                                <label htmlFor="choose_style2" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Kerja lembur</label>
                             </li>
-                            <li className="pr-5">
+                            <li className="pr-2 lg:pr-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style3'
                                 type="radio"
@@ -80,9 +80,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style3" className="text-4xl">Dimarahin bos</label>
+                                <label htmlFor="choose_style3" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Dimarahin bos</label>
                             </li>
-                            <li className="pl-5">
+                            <li className="pl-2 lg:pl-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style4'
                                 type="radio"
@@ -95,9 +95,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style4" className="text-4xl">Lagi bokek</label>
+                                <label htmlFor="choose_style4" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Lagi bokek</label>
                             </li>
-                            <li className="pr-5">
+                            <li className="pr-2 lg:pr-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style5'
                                 type="radio"
@@ -110,9 +110,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style5" className="text-4xl">Ditikung temen</label>
+                                <label htmlFor="choose_style5" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Ditikung temen</label>
                             </li>
-                            <li className="pl-5">
+                            <li className="pl-2 lg:pl-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style6'
                                 type="radio"
@@ -125,9 +125,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style6" className="text-4xl">Putus cinta</label>
+                                <label htmlFor="choose_style6" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Putus cinta</label>
                             </li>
-                            <li className="pr-5">
+                            <li className="pr-2 lg:pr-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style7'
                                 type="radio"
@@ -140,9 +140,9 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style7" className="text-4xl">Bayar Cicilan</label>
+                                <label htmlFor="choose_style7" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Bayar Cicilan</label>
                             </li>
-                            <li className="pl-5">
+                            <li className="pl-2 lg:pl-5 !mb-5 lg:!mb-8">
                                 <input
                                 id='choose_style8'
                                 type="radio"
@@ -155,7 +155,7 @@ export default function Masalah() {
                                     }))
                                 }
                                 />
-                                <label htmlFor="choose_style8" className="text-4xl">Masih cari kerja</label>
+                                <label htmlFor="choose_style8" className="text-base lg:text-4xl !px-0 !py-5 lg:!py-20">Masih cari kerja</label>
                             </li>
                             </ul>
                         </div>

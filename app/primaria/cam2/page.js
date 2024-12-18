@@ -1,7 +1,8 @@
 'use client';
 
-import * as fal from '@fal-ai/serverless-client';
+// import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
+import { getCookie } from 'cookies-next';
 import Image from "next/image";
 // import Link from 'next/link';
 // import TopLogoPrimaria from "../../components/TopLogoPrimaria";
@@ -156,7 +157,7 @@ export default function Cam() {
         
     }, [styleFix, formasiFix, masalah, frame])
 
-    const generateAI = () => {
+    const generateAI = async () => {
         setNumProses1(true)
         generateImageSwapBaru()
 
@@ -203,8 +204,8 @@ export default function Cam() {
             genderOpsi = formasiFix+'_KAMAR'
         }
 
-        console.log(genderOpsi)
-        console.log(framePrompt)
+        // console.log(genderOpsi)
+        // console.log(framePrompt)
 
         padmaAI.onProgress((progress) => {
             // setProgress(progress.type); // Update the progress state
@@ -229,16 +230,43 @@ export default function Cam() {
             FACE_URL_RESULT= result.imgUrl;
 
             toDataURL(FACE_URL_RESULT)
-            .then(dataUrl => {
+            .then(async dataUrl => {
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("resulAIBase64", dataUrl)
                     localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
-                setTimeout(() => {
-                    router.push('/primaria/result2');
-                }, 200);
+                // setTimeout(() => {
+                //     router.push('/primaria/result2');
+                // }, 200);
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        "name":getCookie('PMR_name'),
+                        "ktp6":getCookie('PMR_ktp'),
+                        "gender":getCookie('PMR_gender'),
+                        "isSmoker":true,
+                        "cigaretteBrand":getCookie('PMR_jenisrokok'),
+                        "totemLocation":"Jakarta",
+                        "imageURL":FACE_URL_RESULT
+                    }),
+                    headers: {
+                        'x-api-key': process.env.API_KEY_PRIMARIA,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                };
+                
+                await fetch(process.env.API_URL_PRIMARIA, options)
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log(response)
+                        router.push('/primaria/result2');
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    });
             })
-            console.log(FACE_URL_RESULT)
+            // console.log(FACE_URL_RESULT)
 
           } catch (error) {
             console.error("Error generating image:", error);
@@ -248,7 +276,7 @@ export default function Cam() {
     return (
         <main className="flex fixed h-full w-full bg-primaria overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
            {/* <TopLogoPrimaria></TopLogoPrimaria> */}
-           <h1 className={`text-center text-6xl font-medium mt-10 ${kanit.className}`}>Tunjukin ekspresi ketawa lo yang paling lepas bebas</h1>
+           <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 px-10 lg:px-0 ${kanit.className}`}>Tunjukin ekspresi ketawa lo yang paling lepas bebas</h1>
 
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
@@ -284,10 +312,10 @@ export default function Cam() {
 
             {!enabled && 
                 // <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
-                <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri</p> 
+                <p className='block text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri</p> 
             }
             {!enabled && 
-                <div className={`relative w-full flex justify-center items-center mt-10 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className={`relative w-full flex justify-center items-center mt-2 lg:mt-10 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[90%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/primaria/btn-capture.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                     </button>
@@ -296,7 +324,7 @@ export default function Cam() {
 
             {numProses1 && 
             <div className={`relative w-[90%]`}>
-                <div className='animate-upDownCepet relative py-6 px-2 mt-5 text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
+                <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
                     <p>{`Sedang MENG-CAPTURE MOMENT lo!`}</p>
                     <p>{progressText} {progressPersen}</p>
                         {/* <p>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik (${numProses}/2)`}</p> */}

@@ -1,6 +1,6 @@
 ## HAVE TO FIXED
-1. API CMS
-2. API AI
+1. API CMS ✅
+2. API AI ✅
 
 ## PROMPT PMIRARIA | 824x1064
 A photorealistic, highly detailed 8K  of a man in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.

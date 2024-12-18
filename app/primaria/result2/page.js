@@ -46,16 +46,16 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('faceURLResult')
             const item2 = localStorage.getItem('resulAIBase64')
-            const item3 = localStorage.getItem('formasiFix')
+            // const item3 = localStorage.getItem('formasiFix')
             // const item4 = localStorage.getItem('auraFix')
-            const item5 = localStorage.getItem('PMR_masalah')
-            const item6 = localStorage.getItem('PMR_frame')
+            // const item5 = localStorage.getItem('PMR_masalah')
+            // const item6 = localStorage.getItem('PMR_frame')
             setImageResultAI(item2)
             // setImageResultAI2(item2)
             // setAuraFix(item4)
-            setFormasiFix(item3)
-            setMasalah(item5)
-            setFrame(item6)
+            // setFormasiFix(item3)
+            // setMasalah(item5)
+            // setFrame(item6)
             setLinkQR(item)
         }
 
@@ -67,51 +67,16 @@ export default function Result() {
     }, [imageResultAI, formasiFix, countdownStart, maxDuration, masalah, frame, linkQR])
 
     const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
-    }
-    const uploadImage = async (canvas) => {
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
         setLoadingDownload('≈')
-
-        canvas.toBlob(async function(blob) {
-            const options = {
-                method: 'POST',
-                body: JSON.stringify({
-                    name:payload.name+' '+formasiFix+' '+frame+"_"+masalah,
-                    phone:payload.phone,
-                    image:linkQR
-                }),
-                headers: {
-                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            };
-            
-            await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response)
-                    // setLinkQR(response.file)
-                    // emitString("sendImage", response.file);
-                    setIdFormEmail(response.id)
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                    // handleStartCountdown()
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        setShowEmail('true')
-                        setLinkQR(item)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
-        });
+        setTimeout(() => {
+            setGenerateQR('true')
+            setLoadingDownload(null)
+        }, 500);
     }
 
     return (
@@ -121,11 +86,11 @@ export default function Result() {
             </div>
             {/* QR */}
             {generateQR && 
-                <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
+                <div className='absolute top-0 lg:top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[80%] mx-auto flex items-center justify-center`}>
                         <Image src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority />
                         <div className='absolute w-[90%]'>
-                            <div className='relative w-[80%] mt-[9rem] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                            <div className='relative w-[80%] mt-16 lg:mt-[9rem] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                                 <Canvas
                                 text={linkQR}
                                 options={{
@@ -140,7 +105,7 @@ export default function Result() {
                                 }}
                                 />
                             </div>
-                            <p className='block text-center text-4xl mt-1 mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p> 
+                            <p className='block text-center text-base lg:text-4xl mt-2 lg:mt-1 lg:mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p> 
                             <Link href='/primaria' className="relative w-[90%] mx-auto flex justify-center items-center">
                                 <Image src='/primaria/btn-tutup.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                             </Link>
@@ -210,8 +175,8 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
-                <div className='relative w-full mt-10 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[90%]'>
+                <div className='relative w-full lg:mt-10 mb-2 mx-auto flex justify-center items-center'>
+                    <div className='relative z-10 w-[60%] lg:w-[90%]'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={824} height={1064} alt='Zirolu' className='relative top-0 mx-auto w-full block'></Image>
 
@@ -226,7 +191,7 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='animate-upDownCepet relative py-6 px-8 mt-5 text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
+                    <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
@@ -248,7 +213,7 @@ export default function Result() {
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-2`}>
-                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[70%] lg:w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                  <Image src='/primaria/btn-collect.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                                 </div>
@@ -257,7 +222,7 @@ export default function Result() {
                     </div>
 
                     <div className='w-full'>
-                        <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                        <div className="relative w-[65%] lg:w-[80%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/primaria' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/primaria/btn-selesai.png' width={819} height={126} alt='Zirolu' className='w-full' priority />
                             </Link>
