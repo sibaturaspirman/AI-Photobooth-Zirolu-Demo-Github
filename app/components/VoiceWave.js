@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 let convertPersen = 0, sensitiveSuara = 1, udhBeres = false
 
-export default function VoiceWave() {
+export default function VoiceWave({ direct }) {
   const router = useRouter();
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
@@ -74,7 +74,7 @@ export default function VoiceWave() {
 
             if(udhBeres){
                 setTimeout(() => {
-                    router.push('/primaria/cam');
+                    router.push('/primaria/'+direct);
                 }, 1500);
             }
 
