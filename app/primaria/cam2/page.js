@@ -160,21 +160,6 @@ export default function Cam() {
     const generateAI = async () => {
         setNumProses1(true)
         generateImageSwapBaru()
-
-        // videoRef.current.stop();
-        // videoRef.current.srcObject = ''
-        // streamCam.getVideoTracks()[0].stop();
-        // console.log(streamCam)
-
-        
-        // localStream.getVideoTracks()[0].stop();
-        // console.log(streamCam)
-        // console.log(videoRef)
-        // videoRef.src=''
-        // STOP CAM
-        // streamCam.getTracks().forEach(function(track) {
-        //     track.stop();
-        // });
     }
 
     const reset2 = () => {
@@ -245,6 +230,7 @@ export default function Cam() {
                         "ktp6":getCookie('PMR_ktp'),
                         "gender":getCookie('PMR_gender'),
                         "isSmoker":true,
+                        "problem":masalah,
                         "cigaretteBrand":getCookie('PMR_jenisrokok'),
                         "totemLocation":"Jakarta",
                         "imageURL":FACE_URL_RESULT

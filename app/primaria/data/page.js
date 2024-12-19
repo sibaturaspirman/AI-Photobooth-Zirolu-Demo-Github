@@ -84,16 +84,16 @@ export default function Data() {
             </div>
             
             <TopLogoPrimaria></TopLogoPrimaria>
-            <h1 className={`text-center text-6xl font-medium mt-10 ${kanit.className}`}>Masukkan data diri lo</h1>
+            <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 ${kanit.className}`}>Masukkan data diri lo</h1>
             <div className="relative w-full flex flex-col justify-center items-center mt-2 lg:mt-12 mb-2 lg:mb-14">
-                <div className='relative w-[80%] mb-10 lg:mb-10'>
+                <div className='relative w-[80%] mb-3 lg:mb-10'>
                     <div className='relative w-full'>
                         <input
                             type='text'
                             value={payload.name}
                             id='name'
                             name='name'
-                            className={`w-full text-2xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-14 lg:pl-14 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
+                            className={`w-full text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
                             placeholder='Isi nama lo'
                             onChange={handleChange}
                         />
@@ -101,14 +101,14 @@ export default function Data() {
                     {/* {payload.name} */}
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
-                <div className='relative w-[80%] mb-10 lg:mb-14'>
+                <div className='relative w-[80%] mb-5 lg:mb-14'>
                     <div className='relative w-full'>
                         <input
                             type='number'
                             value={payload.ktp}
                             id='ktp'
                             name='ktp'
-                            className={`w-full text-2xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-14 lg:pl-14 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
+                            className={`w-full text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
                             placeholder='Isi 6 digit terakhir no KTP lo'
                             onChange={handleChange}
                         />
@@ -116,11 +116,11 @@ export default function Data() {
                     {/* {payload.ktp} */}
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
-                <div className='relative w-[80%] mb-10 lg:mb-14'>
-                    <label htmlFor="choose_style" className={`text-light text-center text-2xl lg:text-5xl mb-4 lg:mb-8 block ${kanit.className}`}>Pilih Gender</label>
+                <div className='relative w-[80%] mb-0 lg:mb-14'>
+                    <label htmlFor="choose_style" className={`text-light text-center text-base lg:text-5xl mb-1 lg:mb-8 block ${kanit.className}`}>Pilih Gender</label>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>
-                            <ul className='choose mod12'>
+                            <ul className='choose mod12 !mt-0'>
                             <li className="pr-2">
                                 <input
                                 id='choose_style1'
@@ -193,10 +193,10 @@ export default function Data() {
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
                 <div className='relative w-[80%]'>
-                    <label htmlFor="choose_rokok" className={`text-light text-center text-2xl lg:text-5xl mb-4 lg:mb-4 block ${kanit.className}`}>Apakah lo seorang perokok?</label>
+                    <label htmlFor="choose_rokok" className={`text-light text-center text-base lg:text-5xl mb-1 lg:mb-8 block ${kanit.className}`}>Apakah lo seorang perokok?</label>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto flex justify-center items-center'>
-                            <ul className='choose mod12 !w-[60%] mx-auto'>
+                            <ul className='choose mod12 !w-[60%] mx-auto !mt-0'>
                             <li className="pr-2">
                                 <input
                                 id='choose_rokok1'
@@ -266,14 +266,14 @@ export default function Data() {
                     </div>
                     {/* {payload.rokok} */}
                 </div>
-                <div className={`relative w-[80%] mt-10 lg:mt-14 ${payload.rokok == 'yes' ? '' : 'hidden'}`}>
+                <div className={`relative w-[80%] mt-0 lg:mt-14 ${payload.rokok == 'yes' ? '' : 'hidden'}`}>
                     <div className='relative w-full'>
                         <input
                             type='text'
                             value={payload.jenisrokok}
                             id='jenisrokok'
                             name='jenisrokok'
-                            className={`w-full text-2xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-14 lg:pl-14 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
+                            className={`w-full text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
                             placeholder='Lo ngerokok apa?'
                             onChange={handleChange}
                         />
