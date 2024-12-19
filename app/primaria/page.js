@@ -5,7 +5,7 @@ import BgWave from "../components/BgWave";
 
 export default function PrimariaHome() {
   return (
-    <Link href='/primaria/data' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+    <Link href='/primaria/data2' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
       <BgWave></BgWave>
       <div className="relative w-full flex justify-center items-center flex-col top-[-6rem]">
         <div className='animate-upDown relative w-[90%] mx-auto flex justify-center items-center pointer-events-none'>
