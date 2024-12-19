@@ -54,13 +54,13 @@ export default function VoiceWave({ direct }) {
           const adjustedRMS = Math.max(rms, MIN_RMS); // Ensure RMS is never too low
 
           // Log adjusted RMS
-        //   console.log("Adjusted RMS:", adjustedRMS);
+          console.log("Adjusted RMS:", adjustedRMS.toFixed(2) * 100);
 
           // Calculate dB value. If RMS is too low, set dB to 0.
         //   const dbValue = adjustedRMS > 0 ? 20 * Math.log10(adjustedRMS) : 100; // We can set a very low value for silence
         //   const finalDB = dbValue < 0 ? 0 : dbValue; // Ensure dB is not negative
         //   const finalDB = dbValue * -1;
-          let finalDB = adjustedRMS.toFixed(0) * 100;
+          let finalDB = adjustedRMS.toFixed(2) * 100;
 
           if(finalDB >= sensitiveSuara){
             convertPersen += (finalDB / 10000) * 100;
@@ -80,7 +80,7 @@ export default function VoiceWave({ direct }) {
 
             // if(convertPersen >=)
           }
-        //   setDB(finalDB);
+          setDB(finalDB);
 
           // Clear canvas
           ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -149,6 +149,7 @@ export default function VoiceWave({ direct }) {
             <div className={`animate-upDownCepet text-xl lg:text-5xl text-center mt-5 lg:mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full">
+        <p className="text-base lg:text-5xl text-center mb-5">Volume (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"} | {progressKetawa}</p>
             <canvas
                 ref={canvasRef}
                 width="1080"
@@ -156,7 +157,6 @@ export default function VoiceWave({ direct }) {
                 style={{ border: "1px solid transparent", display: "block", margin: "0 auto" }}
             ></canvas>
             {/* <p>Volume (dB): {dB} {dB > 0 ? dB.toFixed(0) : "No Signal"}</p> */}
-            {/* <p className="text-5xl text-center mb-5">Volume (dB): {dB !== -Infinity ? dB.toFixed(2) : "No Signal"} | {progressKetawa}</p> */}
         </div>
       
     </div>
