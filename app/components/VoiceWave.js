@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-let convertPersen = 0, sensitiveSuara = 1, udhBeres = false
+let convertPersen = 0, sensitiveSuara = 5, udhBeres = false
 
 export default function VoiceWave({ direct }) {
   const router = useRouter();
@@ -149,7 +149,7 @@ export default function VoiceWave({ direct }) {
             <div className={`animate-upDownCepet text-xl lg:text-5xl text-center mt-5 lg:mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full">
-        <p className="text-base lg:text-5xl text-center mb-5">Volume (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"} | {progressKetawa}</p>
+        <p className="text-base lg:text-5xl text-center mb-5">Volume (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"} | {progressKetawa}%</p>
             <canvas
                 ref={canvasRef}
                 width="1080"
