@@ -189,9 +189,11 @@ export default function PlayNotes() {
 
       console.log(udahIsiBirthStatus)
       console.log(udahAPIStatus)
-
+      
       if(udahIsiBirthStatus && udahAPIStatus){
-        router.push('/music/v3/result');
+        setTimeout(() => {
+          router.push('/music/v3/result');
+        }, 1500);
       }
     }
   };
