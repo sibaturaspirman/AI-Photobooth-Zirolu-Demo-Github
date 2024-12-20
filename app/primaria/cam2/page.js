@@ -194,7 +194,7 @@ export default function Cam() {
 
         padmaAI.onProgress((progress) => {
             // setProgress(progress.type); // Update the progress state
-            console.log("Progress:", progress); // Optional: log progress for debugging
+            // console.log("Progress:", progress); // Optional: log progress for debugging
             if(progress.type == 'executing'){
                 setProgressText("Executing")
             }else if(progress.type == 'progress'){
@@ -246,7 +246,8 @@ export default function Cam() {
                     .then(response => response.json())
                     .then(response => {
                         console.log(response)
-                        router.push('/primaria/result2');
+                        // router.push('/primaria/result2');
+                        location.href = '/primaria/result2'
                     })
                     .catch(err => {
                         console.log(err)
