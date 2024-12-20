@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import { Kanit} from "next/font/google";
+const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
+
 let streamCam = null;
 const useWebcam = ({
     videoRef
@@ -33,6 +36,8 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const [statusAPI, setStatusAPI] = useState();
+    const [urlVideo, setUrlVideo] = useState();
 
     useWebcam({ videoRef,previewRef});
 
@@ -80,6 +85,17 @@ export default function Cam() {
             }
         
             // Draw the image on the canvas (cropped and resized)
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw a circular clipping region
+            context.beginPath();
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY); // Circle radius
+            context.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+            context.clip();
+
+            // Draw the video frame within the clipping region
+            // context.drawImage(video, 0, 0, canvas.width, canvas.height);
             context.drawImage(
                 video,
                 sourceX,
@@ -110,13 +126,9 @@ export default function Cam() {
 
 
     // AI
-    const [prompt1, setPrompt1] = useState();
-    const [prompt, setPrompt] = useState(null);
-    const [promptNegative, setPromptNegative] = useState();
-    const [CGF, setCGF] = useState(1.2);
-    const [IDScale, setIDScale] = useState(0.8);
-    const [SEED, setSEED] = useState(13047);
-    const [numSteps, setNumSteps] = useState(4);
+    const [firstNameAmild, setFirstNameAmild] = useState();
+    const [lastNameAmild, setLastNameAmild] = useState();
+    const [rasiBintangAmild, setRasiBintangAmild] = useState();
 
     const [imageFile, setImageFile] = useState(null);
     const [imageFile2, setImageFile2] = useState(null);
@@ -139,21 +151,69 @@ export default function Cam() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item1 = localStorage.getItem('styleFix')
-            const item2 = localStorage.getItem('formasiFix')
-            setStyleFix(item1)
-            setFormasiFix(item2)
+            const item1 = localStorage.getItem('firstnameAmild')
+            const item2 = localStorage.getItem('lastnameAmild')
+            const item3 = localStorage.getItem('rasiBintangAmild')
+            setFirstNameAmild(item1)
+            setLastNameAmild(item2)
+            setRasiBintangAmild(item3)
         }
-    }, [styleFix, formasiFix])
+    }, [firstNameAmild, lastNameAmild, rasiBintangAmild])
 
 
 
-    const generateAI = () => {
+    const generateAI = async () => {
         setNumProses1(true)
+        // console.log(imageFile)
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                name: firstNameAmild+' '+lastNameAmild,
+                image:imageFile
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        };
+        
+        await fetch('https://musicai-api.antigravity.dev/generate', options)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                // setStatusAPI(response.status)
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("urlVideo", response.data)
+                }
+                // setNumProses1(null)
+                setUrlVideo(response.data)
+                setTimeout(() => {
+                    router.push('/music/v2/result');
+                }, 100);
+            })
+            .catch(err => {
+                console.log(err)
+                // setStatusAPI('ERROR API!')
+            });
     }
 
     return (
         <main className="flex fixed h-full w-full bg-[#CC1419] overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            {/* LOADING */}
+            {numProses1 && 
+                <div className='absolute bg-[#CC1419] top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-50'>
+                    <div className='animate-upDownCepet relative py-5 px-2 border-2 text-center text-[#fff] w-[94%] bg-black/30'>
+                        {statusAPI && 
+                            <p className='text-red-600 text-bold'>{statusAPI}</p>
+                        }
+                        <p className={`uppercase text-4xl  ${kanit.className}`}>A {rasiBintangAmild}, HUH?
+                        is that why you strive for a perfect music?</p>
+                        <p className='text-sm'>{`Estimated 10-30 seconds`}</p>
+                    </div>
+                </div>
+            }
+            {/* LOADING */}
+            
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div  className={`relative w-[50%] mx-auto mb-1 ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <Image src='/comcon/zyn/take.png' width={485} height={80} alt='Zirolu' className='w-full' priority />
@@ -208,7 +268,7 @@ export default function Cam() {
                 </div>
             }
 
-            {numProses1 && 
+            {/* {numProses1 && 
             <div className={`relative w-[70%]`}>
                 <div className='animate-upDownCepet relative py-2 px-2 mt-5 text-base border-2 text-center bg-[#1B3CD8] rounded-xl text-[#fff] font-bold'>
                     <p>{`Please wait, scanning...`}</p>
@@ -216,7 +276,7 @@ export default function Cam() {
                     {error}
                 </div>
             </div>
-            }
+            } */}
 
             <div className={`relative w-full ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>

@@ -11,7 +11,7 @@ export default function IQOSHome() {
         </div>
       </div>
       <div className="absolute mx-auto bottom-[5rem] w-[80%] animate-upDown4 z-20">
-        <Link href='/music/v2/setup' className='relative w-full mx-auto flex justify-center items-center'>
+        <Link href='/music/v2/firstname' className='relative w-full mx-auto flex justify-center items-center'>
           <Image src='/music/btn-start.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
         </Link>
       </div>

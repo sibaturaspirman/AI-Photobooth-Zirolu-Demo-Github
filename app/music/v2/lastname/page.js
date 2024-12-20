@@ -19,7 +19,7 @@ export default function PlayNotes() {
     const inputValue = e.target.value;
     setName(inputValue);
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem("firstnameAmild", inputValue)
+      localStorage.setItem("lastnameAmild", inputValue)
     }
 
     if (inputValue.length > 0) {
@@ -55,20 +55,19 @@ export default function PlayNotes() {
     <div className="flex fixed bg-[#CC1419] h-full w-full overflow-auto flex-col items-center justify-center">
       <div className={`relative w-full ${udahIsiNama ? '' : 'hidden'}`}>
         <h1 className={`text-center text-4xl lg:text-6xl font-medium mt-1 lg:mt-10 ${kanit.className}`}>
-          NICE MELODY
+          COOL STUFF
         </h1>
         <div className='animate-upDownCepet relative w-[60%] mx-auto flex justify-center items-center mt-5 mb-6'>
           <Image src='/music/played.png' width={248} height={56} alt='Zirolu' className='w-full' priority />
         </div>
-        <Link href='/music/v2/lastname' className="relative mx-auto flex w-[60%] justify-center items-center">
-          <Image src='/music/btn-next2.png' width={236} height={56} alt='Zirolu' className='w-full' priority />
+        <Link href='/music/v2/birth' className="relative mx-auto flex w-[60%] justify-center items-center">
+            <Image src='/music/btn-next2.png' width={236} height={56} alt='Zirolu' className='w-full' priority />
         </Link>
       </div>
       <div className={`relative w-full ${udahIsiNama ? 'hidden' : ''}`}>
         <h1 className={`text-center text-4xl lg:text-6xl font-medium mt-1 lg:mt-10 ${kanit.className}`}>
-          START WITH <br></br>
-          ENTERING YOUR <br></br>
-          FIRST NAME
+          NEXT, ENTER <br></br>
+          YOUR LAST NAME
         </h1>
         <div className="relative w-full flex flex-col justify-center items-center mt-6 lg:mt-12 mb-2 lg:mb-14">
           <div className='relative w-[80%] mb-3 lg:mb-10'>
