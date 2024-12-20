@@ -106,7 +106,7 @@ export default function VoiceWave({ direct }) {
               ctx.beginPath();
   
               for (let i = 0; i < dataArrayRef.current.length; i++) {
-                const v = (dataArrayRef.current[i] - 128) / 10;
+                const v = (dataArrayRef.current[i] - 128) / 5;
                 const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
                 const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1) * variation;
   
