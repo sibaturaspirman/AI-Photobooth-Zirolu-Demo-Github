@@ -158,7 +158,7 @@ export default function VoiceWave({ direct }) {
             <div className={`animate-upDownCepet text-xl lg:text-5xl text-center mt-5 lg:mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full">
-        <p className="text-base lg:text-5xl text-center mb-5">Suara Lo (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"}</p>
+        <p className="text-base lg:text-5xl text-center mb-5">Suara Lo : {dB !== -Infinity ? dB.toFixed(0) +' dB' : "No Signal"}</p>
             <canvas
                 ref={canvasRef}
                 width="1080"
