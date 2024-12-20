@@ -16,109 +16,113 @@ export default function VoiceWave({ direct }) {
   useEffect(() => {
     const initAudio = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
-        const audioContext = audioContextRef.current;
-
-        const source = audioContext.createMediaStreamSource(stream);
-        analyserRef.current = audioContext.createAnalyser();
-        analyserRef.current.fftSize = 2048;
-
-        const analyser = analyserRef.current;
-        source.connect(analyser);
-
-        dataArrayRef.current = new Uint8Array(analyser.frequencyBinCount);
-
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-
-        const drawWave = () => {
-          analyser.getByteTimeDomainData(dataArrayRef.current);
-
-          // Log to check if we are getting the audio data
-        //   console.log("Audio Data:", dataArrayRef.current);
-
-          // Calculate RMS (Root Mean Square) and check its value
-          let sum = 0;
-          for (let i = 0; i < dataArrayRef.current.length; i++) {
-            const value = (dataArrayRef.current[i] - 128) / 128; // Normalize to [-1, 1]
-            sum += value * value;
-          }
-          const rms = Math.sqrt(sum / dataArrayRef.current.length);
-
-          // Log RMS value
-        //   console.log("RMS Value:", rms);
-
-          // Adjust RMS if it's too low for reasonable dB calculation
-          const MIN_RMS = 0.0001;  // Minimum RMS value before calculating dB
-          const adjustedRMS = Math.max(rms, MIN_RMS); // Ensure RMS is never too low
-
-          // Log adjusted RMS
-          console.log("Adjusted RMS:", adjustedRMS.toFixed(2) * 100);
-
-          // Calculate dB value. If RMS is too low, set dB to 0.
-        //   const dbValue = adjustedRMS > 0 ? 20 * Math.log10(adjustedRMS) : 100; // We can set a very low value for silence
-        //   const finalDB = dbValue < 0 ? 0 : dbValue; // Ensure dB is not negative
-        //   const finalDB = dbValue * -1;
-          let finalDB = adjustedRMS.toFixed(2) * 1000;
-
-          if(finalDB >= sensitiveSuara){
-            convertPersen += (finalDB / 10000) * 100;
-            // console.log(convertPersen)
-            if(convertPersen <= 100){
-                setProgressKetawa(convertPersen.toFixed(0));
-            }
-            if(convertPersen.toFixed(0) == 100){
-                udhBeres = true
-            }
-
-            if(udhBeres){
-                setTimeout(() => {
-                    router.push('/primaria/'+direct);
-                }, 1500);
-            }
-
-            // if(convertPersen >=)
-          }
-          setDB(finalDB);
-
-          // Clear canvas
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-          // Define colors for 4 different waveforms
-          const waveColors = ['#ff5733', '#33c4ff', '#9b33ff', '#75ff33'];
-
-          // Draw 4 different waveforms
-          const sliceWidth = canvas.width / dataArrayRef.current.length;
-          let x = 0;
-
-          for (let lineIndex = 0; lineIndex < 4; lineIndex++) {
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = waveColors[lineIndex];
-            ctx.beginPath();
-
+        // if(!udhBeres){
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+          const audioContext = audioContextRef.current;
+  
+          const source = audioContext.createMediaStreamSource(stream);
+          analyserRef.current = audioContext.createAnalyser();
+          analyserRef.current.fftSize = 2048;
+  
+          const analyser = analyserRef.current;
+          source.connect(analyser);
+  
+          dataArrayRef.current = new Uint8Array(analyser.frequencyBinCount);
+  
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext("2d");
+  
+          const drawWave = () => {
+            analyser.getByteTimeDomainData(dataArrayRef.current);
+  
+            // Log to check if we are getting the audio data
+            // console.log("Audio Data:", dataArrayRef.current);
+  
+            // Calculate RMS (Root Mean Square) and check its value
+            let sum = 0;
             for (let i = 0; i < dataArrayRef.current.length; i++) {
-              const v = (dataArrayRef.current[i] - 90) / 128;
-              const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
-              const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1) * variation;
-
-              if (i === 0) {
-                ctx.moveTo(x, y);
-              } else {
-                ctx.lineTo(x, y);
-              }
-              x += sliceWidth;
+              const value = (dataArrayRef.current[i] - 128) / 128; // Normalize to [-1, 1]
+              sum += value * value;
             }
-
-            ctx.stroke();
-            x = 0; // Reset x for the next line
-          }
-
-          // Continue animation
-          requestAnimationFrame(drawWave);
-        };
-
-        drawWave();
+            const rms = Math.sqrt(sum / dataArrayRef.current.length);
+  
+            // Log RMS value
+          //   console.log("RMS Value:", rms);
+  
+            // Adjust RMS if it's too low for reasonable dB calculation
+            const MIN_RMS = 0.0001;  // Minimum RMS value before calculating dB
+            const adjustedRMS = Math.max(rms, MIN_RMS); // Ensure RMS is never too low
+  
+            // Log adjusted RMS
+            console.log("Adjusted RMS:", adjustedRMS.toFixed(2) * 100);
+  
+            // Calculate dB value. If RMS is too low, set dB to 0.
+          //   const dbValue = adjustedRMS > 0 ? 20 * Math.log10(adjustedRMS) : 100; // We can set a very low value for silence
+          //   const finalDB = dbValue < 0 ? 0 : dbValue; // Ensure dB is not negative
+          //   const finalDB = dbValue * -1;
+            let finalDB = adjustedRMS.toFixed(2) * 1000;
+  
+            if(finalDB >= sensitiveSuara){
+              convertPersen += (finalDB / 10000) * 100;
+              // console.log(convertPersen)
+              if(convertPersen <= 100){
+                  setProgressKetawa(convertPersen.toFixed(0));
+              }
+              if(convertPersen.toFixed(0) >= 100 || convertPersen.toFixed(0) >= 99){
+                  udhBeres = true
+                  setProgressKetawa(100);
+              }
+  
+              if(udhBeres){
+                  setTimeout(() => {
+                      // router.push('/primaria/'+direct);
+                      location.href = '/primaria/'+direct
+                  }, 1500);
+              }
+  
+              // if(convertPersen >=)
+            }
+            setDB(finalDB);
+  
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+            // Define colors for 4 different waveforms
+            const waveColors = ['#ff5733', '#33c4ff', '#9b33ff', '#75ff33'];
+  
+            // Draw 4 different waveforms
+            const sliceWidth = canvas.width / dataArrayRef.current.length;
+            let x = 0;
+  
+            for (let lineIndex = 0; lineIndex < 4; lineIndex++) {
+              ctx.lineWidth = 2;
+              ctx.strokeStyle = waveColors[lineIndex];
+              ctx.beginPath();
+  
+              for (let i = 0; i < dataArrayRef.current.length; i++) {
+                const v = (dataArrayRef.current[i] - 128) / 128;
+                const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
+                const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1) * variation;
+  
+                if (i === 0) {
+                  ctx.moveTo(x, y);
+                } else {
+                  ctx.lineTo(x, y);
+                }
+                x += sliceWidth;
+              }
+  
+              ctx.stroke();
+              x = 0; // Reset x for the next line
+            }
+  
+            // Continue animation
+            requestAnimationFrame(drawWave);
+          };
+  
+          drawWave();
+        // }
       } catch (error) {
         console.error("Error accessing microphone:", error);
       }
@@ -149,7 +153,7 @@ export default function VoiceWave({ direct }) {
             <div className={`animate-upDownCepet text-xl lg:text-5xl text-center mt-5 lg:mt-14 ${progressKetawa == 100 ? '' : 'hidden'}`}>Yeayyy!! Tunggu sebentar..</div>
         </div>
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full">
-        <p className="text-base lg:text-5xl text-center mb-5">Volume (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"} | {progressKetawa}%</p>
+        <p className="text-base lg:text-5xl text-center mb-5">Suara Lo (dB): {dB !== -Infinity ? dB.toFixed(0) : "No Signal"}</p>
             <canvas
                 ref={canvasRef}
                 width="1080"
