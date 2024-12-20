@@ -265,7 +265,7 @@ export default function Result() {
                         </a> */}
                     </div>
 
-                    <Link href='/music' className="relative w-[60%] mx-auto flex justify-center items-center">
+                    <Link href='/music/v2' className="relative w-[60%] mx-auto flex justify-center items-center">
                     <Image src='/music/back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
