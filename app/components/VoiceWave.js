@@ -55,7 +55,7 @@ export default function VoiceWave({ direct }) {
             const adjustedRMS = Math.max(rms, MIN_RMS); // Ensure RMS is never too low
   
             // Log adjusted RMS
-            console.log("Adjusted RMS:", adjustedRMS.toFixed(2) * 100);
+            // console.log("Adjusted RMS:", adjustedRMS.toFixed(2) * 100);
   
             // Calculate dB value. If RMS is too low, set dB to 0.
           //   const dbValue = adjustedRMS > 0 ? 20 * Math.log10(adjustedRMS) : 100; // We can set a very low value for silence
@@ -77,13 +77,18 @@ export default function VoiceWave({ direct }) {
               if(udhBeres){
                   setTimeout(() => {
                       // router.push('/primaria/'+direct);
-                      location.href = '/primaria/'+direct
+                      // location.href = '/primaria/'+direct
                   }, 1500);
               }
   
               // if(convertPersen >=)
             }
-            setDB(finalDB);
+
+            if(finalDB <= 30){
+              setDB(0);
+            }else{
+              setDB(finalDB);
+            }
   
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -101,7 +106,7 @@ export default function VoiceWave({ direct }) {
               ctx.beginPath();
   
               for (let i = 0; i < dataArrayRef.current.length; i++) {
-                const v = (dataArrayRef.current[i] - 128) / 128;
+                const v = (dataArrayRef.current[i] - 128) / 10;
                 const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
                 const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1) * variation;
   
