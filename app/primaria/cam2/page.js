@@ -309,6 +309,13 @@ export default function Cam() {
                 </div>
             }
 
+
+            <div className={`absolute pointer-events-none top-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0' : ''}`}>
+                <div className={`relative w-full`}>
+                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
+                </div>
+            </div>
+
             {numProses1 && 
             <div className={`relative w-[90%]`}>
                 <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
