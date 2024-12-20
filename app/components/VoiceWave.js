@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-let convertPersen = 0, sensitiveSuara = 5, udhBeres = false
+let convertPersen = 0, sensitiveSuara = 20, udhBeres = false
 
 export default function VoiceWave({ direct }) {
   const router = useRouter();
@@ -60,7 +60,7 @@ export default function VoiceWave({ direct }) {
         //   const dbValue = adjustedRMS > 0 ? 20 * Math.log10(adjustedRMS) : 100; // We can set a very low value for silence
         //   const finalDB = dbValue < 0 ? 0 : dbValue; // Ensure dB is not negative
         //   const finalDB = dbValue * -1;
-          let finalDB = adjustedRMS.toFixed(2) * 100;
+          let finalDB = adjustedRMS.toFixed(2) * 1000;
 
           if(finalDB >= sensitiveSuara){
             convertPersen += (finalDB / 10000) * 100;
