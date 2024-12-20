@@ -77,7 +77,7 @@ export default function VoiceWave({ direct }) {
               if(udhBeres){
                   setTimeout(() => {
                       // router.push('/primaria/'+direct);
-                      // location.href = '/primaria/'+direct
+                      location.href = '/primaria/'+direct
                   }, 1500);
               }
   
