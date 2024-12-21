@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import { Kanit} from "next/font/google";
 const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
-let udahIsiBirthStatus = false, udahAPIStatus = false
+let udahIsiBirthStatus = false, udahAPIStatus = false, namaTerakhir = ''
 
 export default function PlayNotes() {
   const router = useRouter();
@@ -43,10 +43,11 @@ export default function PlayNotes() {
     // setNumProses1(true)
     // router.push('/music/v3/firstname');
     // console.log(imageFile)
+    console.log(namaTerakhir)
     const options = {
         method: 'POST',
         body: JSON.stringify({
-            name: firstNameAmild+' '+lastNameAmild,
+            name: firstNameAmild+' '+namaTerakhir,
             image:imageFile
         }),
         headers: {
@@ -84,6 +85,7 @@ export default function PlayNotes() {
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setName(inputValue);
+    namaTerakhir=inputValue
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem("lastnameAmild", inputValue)
     }
