@@ -192,7 +192,7 @@ export default function Result() {
                 }
                 {loadingDownload && 
                     <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
-                        <p>Please wait, loading...</p>
+                        <p>Tunggu sebentar...</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>

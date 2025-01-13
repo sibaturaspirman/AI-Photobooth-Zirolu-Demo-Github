@@ -340,8 +340,8 @@ export default function Cam() {
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/primaria/btn-surprise.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                     </button>
-                    <button className="relative w-[70%] mx-auto flex justify-center items-center mt-0" onClick={retake}>
-                        <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    <button className="relative w-[90%] mx-auto flex justify-center items-center mt-0" onClick={retake}>
+                        <Image src='/primaria/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div></div>
