@@ -13,6 +13,7 @@ const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
 export default function Data() {
     const router = useRouter();
     const [errorUmur, setErrorUmur] = useState(true)
+    const [errorRokok, setErrorRokok] = useState(true)
     const [payload, setPayload] = useState({
       name: '',
       ktp: '',
@@ -22,7 +23,7 @@ export default function Data() {
     });
 
     const isValid = () => {
-      if (payload.name && payload.ktp && payload.ktp.length == 6 && errorUmur && payload.gender && payload.rokok == 'yes' && payload.jenisrokok) return true
+      if (payload.name && payload.ktp && payload.ktp.length == 6 && errorUmur && payload.gender && payload.rokok || payload.jenisrokok) return true
       else return false;
     };
 
@@ -53,7 +54,7 @@ export default function Data() {
                 // console.log(isAgeValid(value.slice(0,2)))
                 // if(isAgeValid(value.slice(0,2))) setErrorUmur(false); else setErrorUmur(true);
 
-                setErrorUmur(isAgeValid(value.slice(0,2)))
+                // setErrorUmur(isAgeValid(value.slice(0,2)))
                 // console.log(errorUmur)
             }
         }
@@ -66,9 +67,33 @@ export default function Data() {
         setCookie('PMR_ktp', payload.ktp);
         setCookie('PMR_rokok', payload.rokok);
         setCookie('PMR_jenisrokok', payload.jenisrokok);
-        setTimeout(() => {
-            router.push('/primaria/frame2');
-        }, 100);
+
+
+        if(isAgeValid(payload.ktp.slice(0,2))){
+            // alert("VALID")
+            setErrorUmur(true)
+        }else{
+            // alert("GAK VALID")
+            setErrorUmur(false)
+        }
+
+        if(payload.rokok == 'no'){
+            setErrorRokok(false)
+        }
+
+        if(payload.rokok == 'yes' && isAgeValid(payload.ktp.slice(0,2))){
+             setTimeout(() => {
+                router.push('/primaria/frame2');
+            }, 100);
+        }else{
+            if(!isAgeValid(payload.ktp.slice(0,2))){
+                setErrorUmur(false)
+            }
+    
+            if(payload.rokok == 'no'){
+                setErrorRokok(false)
+            }
+        }
     }
     return (
         <main className="flex fixed h-full w-full bg-primaria overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
@@ -77,7 +102,7 @@ export default function Data() {
                 <Image src='/primaria/error_umur.png' width={960} height={814} alt='Zirolu' className='w-full' priority />
             </a>
             </div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur flex items-center justify-center z-50 ${payload.rokok == 'no' ? '' : 'hidden'}`}>
+            <div className={`fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur flex items-center justify-center z-50 ${errorRokok ? 'hidden' : ''}`}>
             <a href='/primaria' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/primaria/error_rokok.png' width={960} height={742} alt='Zirolu' className='w-full' priority />
             </a>
@@ -104,7 +129,9 @@ export default function Data() {
                 <div className='relative w-[80%] mb-5 lg:mb-14'>
                     <div className='relative w-full'>
                         <input
-                            type='number'
+                            type='text'
+                            inputMode="numeric" // Keyboard hanya angka
+                            maxLength={6}
                             value={payload.ktp}
                             id='ktp'
                             name='ktp'

@@ -69,6 +69,65 @@ A photorealistic, highly detailed 8K of a woman in a mid-torso shot use shirt wi
 69929947825, 18499706992, 32019683252, 70853149744
 =========================================================
 
+=========================================================
+==COMFY== / MALE / 0.75 / OFFICE
+A photorealistic, highly detailed 8K  of a man wearing a shirt without a tie in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red & black ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+42821619909, 47929008045, 79795715266
+
+
+A photorealistic, highly detailed 8K  of a man wearing a white shirt without a tie in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red & black ornament at office. The lighting creates a moody atmosphere with extra headroom above the man's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+42821619909, 47929008045, 79795715266
+----------------------------------------------------------
+
+==COMFY== / FEMALE / 0.75 / OFFICE
+A photorealistic, highly detailed 8K  of a woman wearing a white shirt without a tie in a mid-torso shot with big laugh & happy take a load off at the office. The background is dramatically in office with red & black ornament at office. The lighting creates a moody atmosphere with extra headroom above the woman's head, enhancing the cinematic effect. The overall style is stark and minimalist, emphasizing fine details in the facial expression and texture of the clothing.
+---
+42821619909, 47929008045, 79795715266
+==========================================================
+
+=========================================================
+==COMFY== / MALE / 0.75 / KAMAR
+A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+42821619909, 
+
+A photorealistic, highly detailed 8K of a man in a mid-torso shot lying in the room use clean shirt to relieve stress with laughter. The background is dramatically in modern bed room with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+79795715266, 42821619909, 32019683252
+--------------------------------------------------------
+==COMFY== / FEMALE / 0.75 / KAMAR
+A photorealistic, highly detailed 8K of a woman in a mid-torso shot lying in the room use shirt to relieve stress with laughter. The background is dramatically in modern bed room with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+47929008045, 52191007329, 32019683252
+==========================================================
+
+=========================================================
+==COMFY== / MALE / 0.75 / HANGOUT
+A photorealistic, highly detailed 8K of a man in a mid-torso shot hangout at cafe to relieve stress with laughter. The background is dramatically in modern cafe with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+42821619909, 52191007329
+
+A photorealistic, highly detailed 8K of a man in a mid-torso shot hangout at cafe use clean shirt to relieve stress with laughter. The background is dramatically in modern cafe with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+52191007329, 79795715266, 42821619909
+--------------------------------------------------------
+==COMFY== / FEMALE / 0.75 / HANGOUT
+A photorealistic, highly detailed 8K of a woman in a mid-torso shot hangout at cafe use clean shirt to relieve stress with laughter. The background is dramatically in modern cafe with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+98715266, 42821619909
+
+A photorealistic, highly detailed 8K of a woman in a mid-torso shot hangout at cafe to relieve stress with laughter. The background is dramatically in modern cafe with red & black ornament. The lighting is soft and inviting, highlighting the cheerful expression.  The overall style is stark and minimalist.
+---
+98715266, 619909, 36753
+
+=========================================================
+
+
+NEGATIVE
+bikini, sexy, boobs, flaws in the eyes, flaws in the face, flaws, lowres, non-HDRi, low quality, worst quality,artifacts noise, text, watermark, glitch, deformed, mutated, ugly, disfigured, hands, low resolution, partially rendered objects,  deformed or partially rendered eyes, deformed, deformed eyeballs, cross-eyed,blurry
+
 
 ## ID
 Secret : B469tIUppiqYZpqe81b6i+l/iZ9o8pQe
