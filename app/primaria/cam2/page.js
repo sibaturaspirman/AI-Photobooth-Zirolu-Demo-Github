@@ -204,7 +204,7 @@ export default function Cam() {
                 setProgressPersen(progress.progress+'%')
             }else if(progress.type == 'executed'){
                 setProgressText("Done!")
-                setProgressPersen('Direct...')
+                // setProgressPersen('Direct...')
             }
 
           });
@@ -301,7 +301,10 @@ export default function Cam() {
 
             {!enabled && 
                 // <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
-                <p className='block text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri</p> 
+                <p className='flex justify-center items-center text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white bg-white/30 p-7 rounded-full'>
+                    <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
+                    *Foto hanya sendiri
+                </p> 
             }
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-2 lg:mt-10 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
@@ -314,15 +317,17 @@ export default function Cam() {
 
             <div className={`absolute pointer-events-none top-[3rem] left-0 right-0 mx-auto w-[35%] ${numProses1 ? 'opacity-0' : ''}`}>
                 <div className={`relative w-full`}>
-                    <Image src='/iqos/neon/look2.png'  width={264} height={110} alt='Zirolu' className='relative block w-full'></Image>
+                    <Image src='/primaria/lihat.png' width={294} height={160} alt='Zirolu' className='relative block w-full'></Image>
                 </div>
             </div>
 
             {numProses1 && 
             <div className={`relative w-[90%]`}>
-                <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
+                <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
+                    <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
                     <p>{`Sedang MENG-CAPTURE MOMENT lo!`}</p>
-                    <p>{progressText} {progressPersen}</p>
+                    <p>&nbsp; {progressPersen}</p>
+                    {/* <p>{progressText} {progressPersen}</p> */}
                         {/* <p>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik (${numProses}/2)`}</p> */}
                     {error}
                 </div>
