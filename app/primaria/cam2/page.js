@@ -183,8 +183,10 @@ export default function Cam() {
         // console.log(masalah)
         framePrompt = masalah+frame
 
-        if(masalah == 'DEADLINE' || masalah == 'CICILAN' || masalah == 'DIMARAHIN' || masalah == 'LEMBUR'){
+        if(masalah == 'DEADLINE' || masalah == 'DIMARAHIN' || masalah == 'LEMBUR'){
             genderOpsi = formasiFix+'_OFFICE'
+        }else if(masalah == 'BOKEK' || masalah == 'DITIKUNG' || masalah == 'PUTUS'){
+            genderOpsi = formasiFix+'_HANGOUT'
         }else{
             genderOpsi = formasiFix+'_KAMAR'
         }
