@@ -325,7 +325,7 @@ export default function Cam() {
             <div className={`relative w-[90%]`}>
                 <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
                     <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
-                    <p>{`Sedang MENG-CAPTURE MOMENT lo!`}</p>
+                    <p>{`Sedang meng-capture moment lo!`}</p>
                     <p>&nbsp; {progressPersen}</p>
                     {/* <p>{progressText} {progressPersen}</p> */}
                         {/* <p>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik (${numProses}/2)`}</p> */}

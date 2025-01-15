@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-let convertPersen = 0, sensitiveSuara = 40, udhBeres = false
+let convertPersen = 0, sensitiveSuara = 180, udhBeres = false
 
 export default function VoiceWave({ direct }) {
   const router = useRouter();
