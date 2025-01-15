@@ -183,7 +183,7 @@ export default function Result() {
     }
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:pb-16 lg:px-13">
+        <main className="flex fixed h-full w-full flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:pb-16 lg:px-13">
             <TopLogo></TopLogo>
 
             {/* QR */}
