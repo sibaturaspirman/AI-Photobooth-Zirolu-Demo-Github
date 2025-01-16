@@ -68,10 +68,10 @@ export default function Result() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item = localStorage.getItem('resulAIBase64')
-            // const item2 = localStorage.getItem('faceURLResult')
-            setImageResultAI(item)
-            // setLinkQR(item2)
+            // const item = localStorage.getItem('resulAIBase64')
+            const item2 = localStorage.getItem('faceURLResult')
+            setImageResultAI(item2)
+            setLinkQR(item2)
         }
         // const item2 = getCookie('phone')
         // const item3 = getCookie('name')
@@ -82,12 +82,14 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
-            //   document.getElementById('canvasResult').appendChild(canvas)
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
+        setGenerateQR('true')
+        setLoadingDownload(null)
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:3}).then(canvas => 
+        //     //   document.getElementById('canvasResult').appendChild(canvas)
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
     }
     const uploadImage = async (canvas) => {
         // downloadImage(canvas.toDataURL("image/jpeg", 1.0), 'my-canvas.jpeg')
@@ -307,7 +309,7 @@ export default function Result() {
                     </div> */}
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/playground/capture' className="relative mx-auto flex justify-center items-center">
+                            <Link href='/playground/capture/cam' className="relative mx-auto flex justify-center items-center">
                                 <Image src='/btn-retake.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

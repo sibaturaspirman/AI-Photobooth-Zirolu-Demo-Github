@@ -208,6 +208,10 @@ export default function Cam() {
             input: {
                 prompt: PROMPTFIX,
                 image_url: imageFile,
+                image_size: {
+                    "width": 1280,
+                    "height": 1280
+                }
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
@@ -233,7 +237,7 @@ export default function Cam() {
 
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+                localStorage.setItem("faceURLResult", URL_RESULT)
             }
             
             setTimeout(() => {
