@@ -80,6 +80,7 @@ export default function Cam() {
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
+            setCapturedAwal(true)
             const canvas = previewRef.current;
             const video = videoRef.current;
             video.play;
@@ -273,8 +274,8 @@ export default function Cam() {
                         <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
                     </div>
 
-                    <video ref={videoRef} className={`w-[80%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[80%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-[90%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
@@ -282,7 +283,7 @@ export default function Cam() {
                 <p className='block text-center text-sm lg:text-2xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti frame pose dan tidak terlalu zoom</p> 
             }
             {!enabled && 
-                <div className="relative w-full flex justify-center items-center">
+                <div className={`relative w-full flex justify-center items-center mt-2 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[70%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                     </button>
@@ -292,7 +293,7 @@ export default function Cam() {
 
             {numProses1 && 
             <div className={`relative w-[70%]`}>
-                <div className='animate-upDownCepet relative py-2 px-2 mt-2 mb-2 text-base border-2 text-center bg-[#1B3CD8] rounded-xl text-[#fff] font-bold'>
+                <div className='animate-upDownCepet relative py-2 px-2 mt-2 mb-2 text-base border-2 text-center bg-[#222] rounded-xl text-[#fff] font-bold'>
                     <p>{`Please wait, scanning...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 1)`}</p>
                     {error}
@@ -302,7 +303,7 @@ export default function Cam() {
 
             <div className={`relative w-full ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-0 lg:mt-5">
+                <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col mt-0 lg:mt-5">
                     <button className="block w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/btn-next.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                     </button>
