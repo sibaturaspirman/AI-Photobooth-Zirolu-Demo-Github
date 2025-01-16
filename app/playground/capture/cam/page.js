@@ -141,6 +141,7 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
+        setCapturedAwal(false)
     }
 
 
