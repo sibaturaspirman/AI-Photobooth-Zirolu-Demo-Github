@@ -253,7 +253,7 @@ export default function Cam() {
         <main className="flex fixed h-full w-full flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogo></TopLogo>
             <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>SAY &#34;CHEESEE&#34;</h1>
-            <div className="relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10">
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
                 <div className='relative'>
 
                     {captured && 
@@ -264,11 +264,18 @@ export default function Cam() {
                     </div>
                     }
 
+
                     {!enabled && 
+                    <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
+                        <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
+                    </div>
+                    }
+
+                    {/* {!enabled && 
                     <div className='w-[60%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
-                    }
+                    } */}
 
                     <div className={`animate-scanning w-[90%] mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-nones  ${numProses1 ? '' : 'opacity-0'}`}>
                         <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
