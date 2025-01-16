@@ -73,8 +73,8 @@ export default function Cam() {
     useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
-        width = 1080,
-        height = 1080,
+        width = 1280,
+        height = 1280,
     }) => {
         setCaptured(true)
         setTimeout(() => {
