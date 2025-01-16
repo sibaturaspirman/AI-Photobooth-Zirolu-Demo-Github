@@ -269,7 +269,7 @@ export default function Result() {
                     </div>
                     {/* <p className='text-center font-semibold text-sm lg:text-2xl mt-5'>Scan this QR Code to Download your image.</p> */}
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <a href='/others' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
+                    <a href='/playground/capture' className='text-center font-semibold text-lg mt-2 p-20'>Tap here to close</a>
                 </div>
             }
             {/* QR */}
