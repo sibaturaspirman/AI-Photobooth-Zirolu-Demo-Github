@@ -373,7 +373,7 @@ export default function Cam() {
             <div className={`relative w-[70%]`}>
                 <div className='animate-upDownCepet relative py-2 px-2 mt-2 mb-2 text-base border-2 text-center bg-[#222] rounded-xl text-[#fff] font-bold'>
                     <p>{`Please wait, scanning...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 1)`}</p>
+                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                     {error}
                 </div>
             </div>
