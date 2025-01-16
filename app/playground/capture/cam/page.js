@@ -73,8 +73,8 @@ export default function Cam() {
     useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
-        width = 1280,
-        height = 1280,
+        width = 512,
+        height = 512,
     }) => {
         setCaptured(true)
         setTimeout(() => {
@@ -218,8 +218,8 @@ export default function Cam() {
                 image_url: imageFile,
                 seed:FIXSEEDPILIH,
                 image_size: {
-                    "width": 1280,
-                    "height": 1280
+                    "width": 512,
+                    "height": 512
                 }
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
