@@ -27,12 +27,12 @@ let promptArea = [
         gender:"male",
         prompt:[
             {
-                text:"professional advertising design of a man. golden glow at a fairground. a tranquil lake with mountains in the background.",
-                seed:477402
+                text:"A photorealistic man 28 years old standing on a beach with a backdrop featuring a caravan, palm trees, and vibrant tropical colors of purple, orange, and yellow. The scene captures the warmth and energy of a tropical paradise, with the colors blending beautifully into the sunset, creating a lively and exotic atmosphere. The man is dressed casually, embodying the relaxed vibe of the beach setting. The camera is positioned at a slight low angle, capturing the vastness of the mountain range and the woman's determined expression. Shot with a wide-angle lens for a dramatic, immersive effect. HDR, 8K resolution, hyper-detailed.",
+                seed:13047
             },
             {
-                text:"professional advertising design of a man. golden glow at a fairground. a tranquil lake with mountains in the background.",
-                seed:303216
+                text:"A photorealistic man 28 years old standing on a beach with a backdrop featuring a caravan, palm trees, and vibrant tropical colors of purple, orange, and yellow. The scene captures the warmth and energy of a tropical paradise, with the colors blending beautifully into the sunset, creating a lively and exotic atmosphere. The man is dressed casually, embodying the relaxed vibe of the beach setting. The camera is positioned at a slight low angle, capturing the vastness of the mountain range and the woman's determined expression. Shot with a wide-angle lens for a dramatic, immersive effect. HDR, 8K resolution, hyper-detailed.",
+                seed:13047
             }
         ]
     },
@@ -160,6 +160,7 @@ export default function Cam() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(true);
     const [result, setResult] = useState(null);
+    const [resultFaceSwap, setResultFaceSwap] = useState(null);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [logs, setLogs] = useState([]);
 
@@ -180,9 +181,15 @@ export default function Cam() {
         setLoading(false);
         setError(null);
         setResult(null);
-        // setResultFaceSwap(null);
+        setResultFaceSwap(null);
         setLogs([]);
         setElapsedTime(0);
+    };
+    const reset2 = () => {
+      setLoading(false);
+      setError(null);
+      // setLogs([]);
+      setElapsedTime(0);
     };
 
     const toDataURL = url => fetch(url)
@@ -209,6 +216,7 @@ export default function Cam() {
             input: {
                 prompt: PROMPTFIX,
                 image_url: imageFile,
+                seed:FIXSEEDPILIH,
                 image_size: {
                     "width": 1280,
                     "height": 1280
@@ -231,27 +239,85 @@ export default function Cam() {
         setResult(result);
         URL_RESULT = result.images[0].url;
         console.log(URL_RESULT)
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("generateURLResult", URL_RESULT)
+        }
 
-        toDataURL(URL_RESULT)
-        .then(dataUrl => {
-            // console.log('RESULT:', dataUrl)
+        // toDataURL(URL_RESULT)
+        // .then(dataUrl => {
+        //     // console.log('RESULT:', dataUrl)
 
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("resulAIBase64", dataUrl)
-                localStorage.setItem("faceURLResult", URL_RESULT)
-            }
+        //     if (typeof localStorage !== 'undefined') {
+        //         localStorage.setItem("resulAIBase64", dataUrl)
+        //         localStorage.setItem("faceURLResult", URL_RESULT)
+        //     }
             
-            setTimeout(() => {
-                router.push('/playground/capture/result');
-            }, 200);
-        })
+        //     // setTimeout(() => {
+        //     //     router.push('/playground/capture/result');
+        //     // }, 200);
+        // })
       } catch (error) {
         // setError(error);
       } finally {
         setLoading(false);
         setElapsedTime(Date.now() - start);
+        generateImageSwap()
       }
       // @snippet:end
+    };
+
+    const generateImageSwap = async () => {
+        setNumProses(2)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: URL_RESULT,
+                swap_image_url: imageFile
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
+                }
+            },
+            }
+        );
+        setResultFaceSwap(result);
+        FACE_URL_RESULT = result.image.url;
+
+        // emitStrsing("sendImage", result.image.url);
+
+        toDataURL(FACE_URL_RESULT)
+        .then(dataUrl => {
+            // console.log('RESULT:', dataUrl)
+
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+            }
+        
+            setTimeout(() => {
+                router.push('/playground/capture/result');
+            }, 200);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
     };
 
     return (

@@ -282,7 +282,7 @@ export default function Result() {
                         {/* <img src={imageResultAI} className='block'></img> */}
                         <Image src={imageResultAI}  width={768} height={1024} alt='Zirolu' className='relative top-0 mx-auto w-full max-w-fit block'></Image>
                         </div>
-                    <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10'></div>
+                    <div id='canvasResult' className='absolute top-0 left-0 right-0 bottom-0 z-10 pointer-events-none'></div>
                 </div>
                 }
                 {loadingDownload && 
