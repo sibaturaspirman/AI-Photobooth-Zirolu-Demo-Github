@@ -9,9 +9,8 @@ import { EffectCards } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
-import { Mouse_Memoirs, Slackside_One } from "next/font/google";
+import { Mouse_Memoirs } from "next/font/google";
 const MouseMemoirs = Mouse_Memoirs({ subsets: ["latin"], weight: ['400'] });
-const SlacksideOne = Slackside_One({ subsets: ["latin"], weight: ['400'] });
 
 // const useWebcam = ({
 //     videoRef
@@ -191,7 +190,7 @@ export default function Register() {
                                         </div>
                                     </div>
                                     <div></div>
-                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${SlacksideOne.className}`}>Jewel Rain Vortex</p>
+                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>Jewel Rain Vortex</p>
                                     <div className='absolute right-2 bottom-14 w-[80px] z-10 shadow-xl hidden'>
                                         <Image src='/digitalstamp/stamp.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
@@ -213,7 +212,7 @@ export default function Register() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${SlacksideOne.className}`}>Jewel Rain Vortex</p>
+                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>Jewel Rain Vortex</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -232,7 +231,7 @@ export default function Register() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${SlacksideOne.className}`}>Jewel Rain Vortex</p>
+                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>Jewel Rain Vortex</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -251,7 +250,7 @@ export default function Register() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${SlacksideOne.className}`}>Jewel Rain Vortex</p>
+                                    <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>Jewel Rain Vortex</p>
                                 </div>
                             </div>
                         </SwiperSlide>
