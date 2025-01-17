@@ -73,7 +73,7 @@ export default function Register() {
 
     const captureVideo  = ({
         width = 512,
-        height = 616,
+        height = 512,
     }) => {
         setCaptured(true)
         setCapturedAwal(true)
@@ -178,7 +178,7 @@ export default function Register() {
 
                                             <div className='absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-10'>
                                                 <video ref={videoRef} className={`w-full mx-auto ${enabled ? 'absolute opacity-0':'relative'}`} playsInline></video>
-                                                <canvas ref={previewRef} width="512" height="616" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto pointer-events-none`}></canvas>
+                                                <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto pointer-events-none`}></canvas>
                                             </div>
 
                                             <div className={`${isCameraOn ? '':'opacity-0'} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-20`}>
