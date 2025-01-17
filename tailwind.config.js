@@ -21,6 +21,9 @@ module.exports = {
       upDown3: "upDown 3700ms ease infinite alternate",
       upDown4: "upDown2 950ms ease infinite alternate",
       bgScale: "bgscale 950ms ease infinite alternate",
+      bgScale2: "bgscale2 800ms ease infinite alternate",
+      kiriKanan: "kiriKanan 8500ms linear infinite alternate",
+      rotateKiriKanan: "rotateKiriKanan 800ms linear infinite alternate",
       loading1: "loading1 9000ms ease infinite",
       loading2: "loading2 5000ms ease infinite",
       countdown: "countdown 3500ms ease 1 alternate",
@@ -44,6 +47,10 @@ module.exports = {
       bgscale: {
         "0%": { transform: "scale(1)"},
         "100%": { transform: "scale(1.01)"},
+      },
+      bgscale2: {
+        "0%": { transform: "scale(1)"},
+        "100%": { transform: "scale(1.1)"},
       },
       upDown: {
         "0%": { transform: "translateY(5%)" },
@@ -69,6 +76,14 @@ module.exports = {
         "65%": { transform: "translateY(-35%)"},
         "90%": { transform: "translateY(-35%)"},
         "100%": { transform: "translateY(-35%)"},
+      },
+      kiriKanan: {
+        "0%": { transform: "translateX(-5%)"},
+        "100%": { transform: "translateX(5%)"},
+      },
+      rotateKiriKanan: {
+        "0%": { transform: "rotate(30deg)"},
+        "100%": { transform: "rotate(-30deg)"},
       },
       loading1: {
         "0%": { transform: "translateY(0%)"},

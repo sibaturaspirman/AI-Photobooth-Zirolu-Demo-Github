@@ -1440,3 +1440,45 @@ body{
   background-size: cover;
 }
 /* PRIMARIA */
+
+
+/* DIGITAL STAMP */
+.bg-digstamp-blue{
+  background-image: url(../public/digitalstamp/bg-blue.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.photocard{
+  position: relative;
+}
+  .photocard:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: calc((408 / 311) * 100%);
+  }
+  .photocard > .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+.photocard-take{
+  position: relative;
+}
+  .photocard-take:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: calc((336 / 279) * 100%);
+  }
+  .photocard-take > .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
