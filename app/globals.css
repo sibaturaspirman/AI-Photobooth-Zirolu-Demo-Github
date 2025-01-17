@@ -1448,6 +1448,22 @@ body{
   background-size: cover;
   background-position: center;
 }
+.bg-digstamp-blue2{
+  background-image: url(../public/digitalstamp/bg-blue2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-digstamp-red{
+  background-image: url(../public/digitalstamp/bg-red.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-digstamp-green{
+  background-image: url(../public/digitalstamp/bg-green.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
 
 .photocard{
   position: relative;
