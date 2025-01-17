@@ -36,7 +36,8 @@ export default function Register() {
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
     const [capturedAwal, setCapturedAwal] = useState(false);
-    const [isCameraOn, setIsCameraOn] = useState(false); // Status kamera
+    const [isCameraOn, setIsCameraOn] = useState(false);
+    const [facingMode, setFacingMode] = useState("user");
     const videoRef = useRef(null);
     const previewRef = useRef(null);
 
@@ -59,13 +60,32 @@ export default function Register() {
     const startCamera = async () => {
         try {
         // Meminta akses kamera
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: {
+            facingMode: facingMode
+        }});
         videoRef.current.srcObject = stream; // Hubungkan stream ke elemen video
         videoRef.current.play(); // Mulai pemutaran video
         setIsCameraOn(true); // Update status kamera
         } catch (error) {
         console.error("Gagal mengakses kamera:", error);
         alert("Tidak dapat mengakses kamera. Pastikan izin telah diberikan.");
+        }
+    };
+
+    const stopCamera = () => {
+        const stream = videoRef.current.srcObject;
+        if (stream) {
+          const tracks = stream.getTracks();
+          tracks.forEach((track) => track.stop()); // Hentikan setiap track
+        }
+        videoRef.current.srcObject = null; // Lepaskan stream dari video
+    };
+
+    const toggleCamera = () => {
+        setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
+        if (isCameraOn) {
+          stopCamera();
+          setTimeout(() => startCamera(), 500); // Restart kamera dengan facingMode baru
         }
     };
 
@@ -106,8 +126,8 @@ export default function Register() {
             }
         
             // Resize the canvas to the target dimensions
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
         
             const context = canvas.getContext('2d');
             if (context === null) {
@@ -115,17 +135,21 @@ export default function Register() {
             }
         
             // Draw the image on the canvas (cropped and resized)
-            context.drawImage(
-                video,
-                sourceX,
-                sourceY,
-                sourceWidth,
-                sourceHeight,
-                0,
-                0,
-                width,
-                height
-            );
+            context.save();
+            // context.scale(-1, 1)
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // context.drawImage(
+            //     video,
+            //     sourceX,
+            //     sourceY,
+            //     sourceWidth,
+            //     sourceHeight,
+            //     0,
+            //     0,
+            //     width,
+            //     height
+            // );
+            context.restore();
     
             let faceImage = canvas.toDataURL();
             // setImageFile(faceImage)
@@ -135,6 +159,7 @@ export default function Register() {
             // setTimeout(() => {
             //     router.push('/generate');
             // }, 1250);
+            stopCamera()
         }, 3000);
     }
 
@@ -151,6 +176,13 @@ export default function Register() {
                 <p className={`text-base text-[#F0E6CC] uppercase ${MouseMemoirs.className}`}>Hi, {Name}!</p>
                 <p className={`text-4xl uppercase ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Airport Together!</p>
                 <div className='relative w-full mt-0 p-5'>
+                    {captured && 
+                    <div className='absolute -top-[7.5rem] left-0 right-0 bottom-0 w-[100px] h-[100px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
+                        <div className='w-full animate-countdown translate-y-[35%]'>
+                            <Image src='/countdown.png' width={174} height={522} alt='Zirolu' className='w-full' priority />
+                        </div>
+                    </div>
+                    }
                     <Swiper
                         effect={'cards'}
                         grabCursor={true}
@@ -167,7 +199,7 @@ export default function Register() {
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
                                         <div className='inner flex justify-center items-center'>
-                                            <div className='relative w-[50%]' onClick={startCamera}>
+                                            <div className={`${isCameraOn ? 'opacity-0 pointer-events-none':''} relative w-[50%]`} onClick={startCamera}>
                                                 <div className="animate-rotateKiriKanan relative mx-auto w-[70%] flex justify-center items-center mb-3">
                                                     <Image src='/digitalstamp/hand.png' width={96} height={96}  alt='Zirolu' className='animate-bgScale2 w-full' priority />
                                                 </div>
@@ -176,12 +208,18 @@ export default function Register() {
                                                 </div>
                                             </div>
 
-                                            <div className='absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-10'>
-                                                <video ref={videoRef} className={`w-full mx-auto ${enabled ? 'absolute opacity-0':'relative'}`} playsInline></video>
-                                                <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto pointer-events-none`}></canvas>
+                                            <div className={`${isCameraOn ? '':'opacity-0'} absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-10`}>
+                                                <video ref={videoRef} className={`w-full mx-auto my-auto  ${enabled ? 'absolute opacity-0':'relative'} `} playsInline></video>
+                                                <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto my-auto pointer-events-none`}></canvas>
                                             </div>
 
-                                            <div className={`${isCameraOn ? '':'opacity-0'} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-20`}>
+                                            <div className={`${isCameraOn ? '':'opacity-0 pointer-events-none'} ${capturedAwal ? 'opacity-0 pointer-events-none' : ''} absolute left-0 top-0 w-[50px] overflow-hidden z-20`}>
+                                                <button className="relative mx-auto w-full flex justify-center items-center" onClick={toggleCamera}>
+                                                    <Image src='/digitalstamp/icon-flip.png' width={89} height={40} alt='Zirolu' className='w-full' priority />
+                                                </button>
+                                            </div>
+
+                                            <div className={`${isCameraOn ? '':'opacity-0'} ${capturedAwal ? 'opacity-0 pointer-events-none' : ''} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-20`}>
                                                 <button className="relative mx-auto w-[30%] flex justify-center items-center" onClick={captureVideo}>
                                                     <Image src='/digitalstamp/btn-capture.png' width={89} height={40} alt='Zirolu' className='w-full' priority />
                                                 </button>
