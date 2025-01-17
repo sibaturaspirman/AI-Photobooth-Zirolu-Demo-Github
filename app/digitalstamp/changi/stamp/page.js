@@ -222,7 +222,7 @@ export default function Register() {
 
     return (
         <main className="flex fixed h-full w-full overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
-            <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-none' : 'pointer-events-none'}`}>
+            <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-nonex' : 'pointer-events-none'}`}>
 
                 <canvas ref={canvasRef} style={{ touchAction: "none" }} className={`relative'`}/>
             </div>
@@ -255,7 +255,7 @@ export default function Register() {
                         } }
                         onSwiper={(swiper) => console.log(swiper)}
                         >
-                        <SwiperSlide className='pt-0'>
+                        <SwiperSlide className='shadow-xl'>
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
@@ -296,7 +296,7 @@ export default function Register() {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide>
+                        <SwiperSlide className='shadow-xl'>
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
@@ -315,7 +315,7 @@ export default function Register() {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide>
+                        <SwiperSlide className='shadow-xl'>
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
@@ -334,7 +334,7 @@ export default function Register() {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide>
+                        <SwiperSlide className='shadow-xl'>
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>

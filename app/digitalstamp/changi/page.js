@@ -29,7 +29,7 @@ export default function Register() {
                 <p className={`text-5xl uppercase text-center ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Together!</p>
                 <div className='w-full mt-5'>
                     <input
-                        className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg`}
+                        className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg shadow-xl`}
                         id="name"
                         name="name"
                         type="text"
@@ -40,7 +40,7 @@ export default function Register() {
                 </div>
                 <div className='w-full mt-5'>
                     <input
-                        className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg`}
+                        className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg shadow-xl`}
                         id="phone"
                         name="phone"
                         type='text'
