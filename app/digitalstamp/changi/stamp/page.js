@@ -149,7 +149,7 @@ export default function Register() {
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-10 z-20`}>
                 <p className={`text-base text-[#F0E6CC] uppercase ${MouseMemoirs.className}`}>Hi, {Name}!</p>
-                <p className={`text-4xl uppercase ${MouseMemoirs.className}`}>Let's Explore <br></br> Changi Airport Together!</p>
+                <p className={`text-4xl uppercase ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Airport Together!</p>
                 <div className='relative w-full mt-0 p-5'>
                     <Swiper
                         effect={'cards'}

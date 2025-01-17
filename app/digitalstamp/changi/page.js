@@ -26,7 +26,7 @@ export default function Register() {
 
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-10 z-20`}>
-                <p className={`text-5xl uppercase text-center ${MouseMemoirs.className}`}>Let's Explore <br></br> Changi Together!</p>
+                <p className={`text-5xl uppercase text-center ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Together!</p>
                 <div className='w-full mt-5'>
                     <input
                         className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg`}
