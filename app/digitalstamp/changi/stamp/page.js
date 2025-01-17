@@ -177,11 +177,11 @@ export default function Register() {
                                             </div>
 
                                             <div className='absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-10'>
-                                                <video ref={videoRef} className={`w-full h-full mx-auto ${enabled ? 'absolute opacity-0':'relative'}`} playsInline></video>
+                                                <video ref={videoRef} className={`w-full mx-auto ${enabled ? 'absolute opacity-0':'relative'}`} playsInline></video>
                                                 <canvas ref={previewRef} width="512" height="616" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto pointer-events-none`}></canvas>
                                             </div>
 
-                                            <div className={`${isCameraOn ? '':'opacity-0'} absolute left-0 right-0 bottom-4 w-full overflow-hidden`}>
+                                            <div className={`${isCameraOn ? '':'opacity-0'} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-20`}>
                                                 <button className="relative mx-auto w-[30%] flex justify-center items-center" onClick={captureVideo}>
                                                     <Image src='/digitalstamp/btn-capture.png' width={89} height={40} alt='Zirolu' className='w-full' priority />
                                                 </button>
