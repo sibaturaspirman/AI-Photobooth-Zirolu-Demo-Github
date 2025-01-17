@@ -89,8 +89,6 @@ export default function Register() {
         }
     };
 
-
-
     const captureVideo  = ({
         width = 512,
         height = 512,
@@ -163,8 +161,71 @@ export default function Register() {
         }, 3000);
     }
 
+
+    const [touches, setTouches] = useState([]);
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const handleTouchStart = (e) => {
+        e.preventDefault();
+        const newTouches = Array.from(e.touches).map((t) => ({
+            id: t.identifier,
+            x: t.pageX,
+            y: t.pageY,
+        }));
+        setTouches(newTouches);
+        drawTouches(ctx, newTouches);
+        };
+
+        const handleTouchMove = (e) => {
+        e.preventDefault();
+        const updatedTouches = Array.from(e.touches).map((t) => ({
+            id: t.identifier,
+            x: t.pageX,
+            y: t.pageY,
+        }));
+        setTouches(updatedTouches);
+        drawTouches(ctx, updatedTouches);
+        };
+
+        const handleTouchEnd = (e) => {
+        e.preventDefault();
+        setTouches([]);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        };
+
+        const drawTouches = (ctx, touchPoints) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "blue";
+        touchPoints.forEach((t) => {
+            ctx.beginPath();
+            ctx.arc(t.x, t.y, 20, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        };
+
+        canvas.addEventListener("touchstart", handleTouchStart);
+        canvas.addEventListener("touchmove", handleTouchMove);
+        canvas.addEventListener("touchend", handleTouchEnd);
+
+        return () => {
+        canvas.removeEventListener("touchstart", handleTouchStart);
+        canvas.removeEventListener("touchmove", handleTouchMove);
+        canvas.removeEventListener("touchend", handleTouchEnd);
+        };
+    }, []);
+
     return (
         <main className="flex fixed h-full w-full overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
+            <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-none' : 'pointer-events-none'}`}>
+
+                <canvas ref={canvasRef} style={{ touchAction: "none" }} className={`relative'`}/>
+            </div>
 
             <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-blue pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}></div>
             <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-red pointer-events-none z-10 transition-all ${slideIndex == 1 ? `` : 'opacity-0'}`}></div>
