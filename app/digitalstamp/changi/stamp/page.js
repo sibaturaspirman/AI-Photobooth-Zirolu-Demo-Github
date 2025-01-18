@@ -91,7 +91,11 @@ export default function Register() {
           });
           setStream(mediaStream);
           setIsCameraOn(true);
-          setEnabled(false)
+
+          setTimeout(() => {
+            setEnabled(false)
+          }, 1500);
+
           videoRefs[activeVideoIndex].current.srcObject = mediaStream;
           videoRefs[activeVideoIndex].current.play();
         } catch (error) {
@@ -412,11 +416,11 @@ export default function Register() {
                                     </div>
                                     <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>{lokasi[index].name}</p>
 
-                                    <div className={`absolute right-2 bottom-14 w-[80px] z-20 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                    <div className={`absolute right-2 top-2 w-[80px] z-20 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
                                         <Image src='/digitalstamp/stamp.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
 
-                                    <div className={`absolute right-2 bottom-0 w-[120px] z-20 ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                    <div className={`absolute right-0 bottom-0 w-[120px] z-20 ${lokasi[index].stamp ? '' : 'hidden'}`}>
                                         <Image src='/digitalstamp/stamp-done.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
                                 </div>
