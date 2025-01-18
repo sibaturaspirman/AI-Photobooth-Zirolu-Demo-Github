@@ -17,21 +17,21 @@ export default function Register() {
         localStorage.setItem('dsName', Name)
         localStorage.setItem('dsPhone', Phone)
         setTimeout(() => {
-            router.push('/digitalstamp/changi/stamp');
+            router.push('/digitalstamp/singapore/stamp');
         }, 100);
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-digstamp-blue overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-digstamp-green2 overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
 
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-2 z-20`}>
                 <div className='relative w-[100px] mb-3 overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
                     <div className='w-full'>
-                        <Image src='/digitalstamp/changilogo.png' width={483} height={131} alt='Zirolu' className='w-full' priority />
+                        <Image src='/digitalstamp/vslogo.svg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                     </div>
                 </div>
-                <p className={`text-5xl uppercase text-center ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Together!</p>
+                <p className={`text-5xl uppercase text-center ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Singapore Together!</p>
                 <div className='w-full mt-5'>
                     <input
                         className={`${MouseMemoirs.className} w-full p-4 text-xl outline-none text-[#404F6A] bg-white rounded-lg shadow-xl`}
@@ -70,7 +70,7 @@ export default function Register() {
 
             <div className='absolute left-0 right-0 -bottom-4 w-full overflow-hidden'>
                 <div className="animate-kiriKanan relative mx-auto w-[550px] flex justify-center items-center">
-                    <Image src='/digitalstamp/preview-changi.png' width={550} height={222}  alt='Zirolu' className='w-full' priority />
+                    <Image src='/digitalstamp/preview-sgp.png' width={550} height={222}  alt='Zirolu' className='w-full' priority />
                 </div>
             </div>
         </main>

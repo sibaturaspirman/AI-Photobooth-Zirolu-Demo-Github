@@ -15,22 +15,22 @@ const MouseMemoirs = Mouse_Memoirs({ subsets: ["latin"], weight: ['400'] });
 let activeStampIndex = 0
 let lokasi = [
     {
-        name : 'Jewel Rain Vortex',
+        name : 'Jewel Changi Airport',
         stamp : false,
         foto : ''
     },
     {
-        name : 'Canopy Park',
+        name : 'Garden By The Bay',
         stamp : false,
         foto : ''
     },
     {
-        name : 'Changi Experience Studio',
+        name : 'Singapore Flyer Raffles',
         stamp : false,
         foto : ''
     },
     {
-        name : 'Hedge Maze',
+        name : 'Merlion Singapore',
         stamp : false,
         foto : ''
     },
@@ -383,21 +383,21 @@ export default function Register() {
                 <canvas ref={canvasRef} style={{ touchAction: "none" }} className={`relative'`}/>
             </div>
 
-            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-blue pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-red pointer-events-none z-10 transition-all ${slideIndex == 1 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-blue2 pointer-events-none z-10 transition-all ${slideIndex == 2 ? `` : 'opacity-0'}`}></div>
-            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-green pointer-events-none z-10 transition-all ${slideIndex == 3 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-green2 pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-blue3 pointer-events-none z-10 transition-all ${slideIndex == 1 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-pink pointer-events-none z-10 transition-all ${slideIndex == 2 ? `` : 'opacity-0'}`}></div>
+            <div className={`fixed top-0 left-0 w-full h-full bg-digstamp-yellow pointer-events-none z-10 transition-all ${slideIndex == 3 ? `` : 'opacity-0'}`}></div>
+            
 
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-6 z-20`}>
-                <div className='absolute -top-2 right-0 w-[110px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
+                <div className='absolute -top-10 right-0 w-[110px] h-[110px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
                     <div className='w-full'>
-                        <Image src='/digitalstamp/changilogo.png' width={483} height={131} alt='Zirolu' className='w-full' priority />
+                        <Image src='/digitalstamp/vslogo.svg' width={200} height={200} alt='Zirolu' className='w-full' priority />
                     </div>
                 </div>
-
-                <p className={`text-base text-[#F0E6CC] uppercase ${MouseMemoirs.className}`}>Hi, {Name}!</p>
-                <p className={`text-4xl uppercase ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Changi Airport Together!</p>
+                <p className={`text-xl text-[#404F6A] uppercase ${MouseMemoirs.className}`}>Hi, {Name}!</p>
+                <p className={`text-4xl uppercase ${MouseMemoirs.className}`}>Let&apos;s Explore <br></br> Singapore Together!</p>
 
                 <div className='relative w-full mt-0 p-5'>
                     {captured && 
@@ -492,11 +492,11 @@ export default function Register() {
                                     <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>{lokasi[index].name}</p>
 
                                     <div className={`absolute right-2 top-2 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''} ${lokasi[index].foto == '' || lokasi[index].foto == null ? 'hidden' : ''}`}>
-                                        <Image src='/digitalstamp/stamp.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
+                                        <Image src={'/digitalstamp/stamp.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
 
                                     <div className={`absolute right-0 bottom-0 w-[140px] z-50 ${lokasi[index].stamp ? '' : 'hidden'}`}>
-                                        <Image src='/digitalstamp/stamp-done.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
+                                        <Image src={'/digitalstamp/stamp-sg-done-'+index+'.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
                                 </div>
                             </div>

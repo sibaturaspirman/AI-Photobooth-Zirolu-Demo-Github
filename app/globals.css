@@ -1453,6 +1453,11 @@ body{
   background-size: cover;
   background-position: center;
 }
+.bg-digstamp-blue3{
+  background-image: url(../public/digitalstamp/bg-blue3.jpg);
+  background-size: cover;
+  background-position: center;
+}
 .bg-digstamp-red{
   background-image: url(../public/digitalstamp/bg-red.jpg);
   background-size: cover;
@@ -1460,6 +1465,21 @@ body{
 }
 .bg-digstamp-green{
   background-image: url(../public/digitalstamp/bg-green.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-digstamp-green2{
+  background-image: url(../public/digitalstamp/bg-green2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-digstamp-pink{
+  background-image: url(../public/digitalstamp/bg-pink.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-digstamp-yellow{
+  background-image: url(../public/digitalstamp/bg-yellow.jpg);
   background-size: cover;
   background-position: center;
 }
