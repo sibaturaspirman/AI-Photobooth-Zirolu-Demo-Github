@@ -379,7 +379,7 @@ export default function Register() {
                         >
 
                         {videoRefs.map((videoRef, index) => (
-                        <SwiperSlide className='shadow-xl'>
+                        <SwiperSlide key={'slider-'+index} className='shadow-xl'>
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
