@@ -485,7 +485,7 @@ export default function Register() {
                                     </div>
                                     <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>{lokasi[index].name}</p>
 
-                                    <div className={`absolute right-2 top-2 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                    <div className={`absolute right-2 top-2 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''} ${lokasi[index].foto == '' || lokasi[index].foto == null ? 'hidden' : ''}`}>
                                         <Image src='/digitalstamp/stamp.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
 
