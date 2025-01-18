@@ -12,39 +12,27 @@ import 'swiper/css/effect-cards';
 import { Mouse_Memoirs } from "next/font/google";
 const MouseMemoirs = Mouse_Memoirs({ subsets: ["latin"], weight: ['400'] });
 
-// const useWebcam = ({
-//     videoRef
-//   }) => {
-//     // useEffect(() => {
-//       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//         navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
-//             window.localStream = stream
-//             if (videoRef.current !== null) {
-//                 videoRef.current.srcObject = stream;
-//                 videoRef.current.play();
-//             }
-//         });
-//       }
-//     // }, [videoRef]);
-// };
-
 let activeStampIndex = 0
 let lokasi = [
     {
         name : 'Jewel Rain Vortex',
-        stamp : false
+        stamp : false,
+        foto : ''
     },
     {
         name : 'Canopy Park',
-        stamp : false
+        stamp : false,
+        foto : ''
     },
     {
         name : 'Changi Experience Studio',
-        stamp : false
+        stamp : false,
+        foto : ''
     },
     {
         name : 'Hedge Maze',
-        stamp : false
+        stamp : false,
+        foto : ''
     },
 ]
 
@@ -58,8 +46,20 @@ export default function Register() {
     const [capturedAwal, setCapturedAwal] = useState(false);
     const [isCameraOn, setIsCameraOn] = useState(false);
     const [facingMode, setFacingMode] = useState("user");
+    const [statusStamp, setStatusStamp] = useState(false);
+    const [startStamp, setStartStamp] = useState(false);
     // const videoRef = useRef(null);
     const previewRef = useRef(null);
+
+    const [hasilFoto0, setHasilFoto0] = useState();
+    const [hasilFoto1, setHasilFoto1] = useState();
+    const [hasilFoto2, setHasilFoto2] = useState();
+    const [hasilFoto3, setHasilFoto3] = useState();
+    const [hasilFoto0Stamp, setHasilFoto0Stamp] = useState();
+    const [hasilFoto1Stamp, setHasilFoto1Stamp] = useState();
+    const [hasilFoto2Stamp, setHasilFoto2Stamp] = useState();
+    const [hasilFoto3Stamp, setHasilFoto3Stamp] = useState();
+
 
     const videoRefs = [useRef(null), useRef(null), useRef(null), useRef(null)]; // Referensi untuk 4 elemen video
     const canvasRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
@@ -70,23 +70,48 @@ export default function Register() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('dsName')
+            const itemFace0 = localStorage.getItem('faceImage0')
+            const itemFace1 = localStorage.getItem('faceImage1')
+            const itemFace2 = localStorage.getItem('faceImage2')
+            const itemFace3 = localStorage.getItem('faceImage3')
+            const itemFace0Stamp = localStorage.getItem('faceImageStamp0')
+            const itemFace1Stamp = localStorage.getItem('faceImageStamp1')
+            const itemFace2Stamp = localStorage.getItem('faceImageStamp2')
+            const itemFace3Stamp = localStorage.getItem('faceImageStamp3')
+
+            // console.log(itemFace3)
+
+            if(itemFace0Stamp != null) lokasi[0].stamp = true
+            if(itemFace1Stamp != null) lokasi[1].stamp = true
+            if(itemFace2Stamp != null) lokasi[2].stamp = true
+            if(itemFace3Stamp != null) lokasi[3].stamp = true
+
+            lokasi[0].foto = itemFace0
+            lokasi[1].foto = itemFace1
+            lokasi[2].foto = itemFace2
+            lokasi[3].foto = itemFace3
+
+            setHasilFoto0(itemFace0)
+            setHasilFoto1(itemFace1)
+            setHasilFoto2(itemFace2)
+            setHasilFoto3(itemFace3)
+
+            setHasilFoto0Stamp(itemFace0Stamp)
+            setHasilFoto1Stamp(itemFace1Stamp)
+            setHasilFoto2Stamp(itemFace2Stamp)
+            setHasilFoto3Stamp(itemFace3Stamp)
+
+            console.log(lokasi)
+
             setName(item)
         }
-    }, [Name])
-
-    const generateAura = async () => {
-        localStorage.setItem('dsName', Name)
-        localStorage.setItem('dsPhone', Phone)
-        setTimeout(() => {
-            router.push('/digitalstamp/changi/stamp');
-        }, 100);
-    }
+    }, [Name, hasilFoto0, hasilFoto1, hasilFoto2, hasilFoto3, hasilFoto0Stamp, hasilFoto1Stamp, hasilFoto2Stamp, hasilFoto3Stamp])
 
     // 1 Kamera 4 Video
     const startCamera = async () => {
         try {
           const mediaStream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: {facingMode: facingMode},
             audio: false,
           });
           setStream(mediaStream);
@@ -105,7 +130,6 @@ export default function Register() {
     };
 
     const captureImage = (index) => {
-
         setCaptured(true)
         setCapturedAwal(true)
         setTimeout(() => {
@@ -116,10 +140,21 @@ export default function Register() {
             const canvasElement = canvasRefs[index].current;
         
             if (videoElement && canvasElement) {
-            const ctx = canvasElement.getContext("2d");
-            canvasElement.width = videoElement.videoWidth;
-            canvasElement.height = videoElement.videoHeight;
-            ctx.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+                const ctx = canvasElement.getContext("2d");
+                canvasElement.width = videoElement.videoWidth;
+                canvasElement.height = videoElement.videoHeight;
+                ctx.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+
+                let faceImage = canvasElement.toDataURL();
+                lokasi[activeStampIndex].foto = faceImage
+                if(activeStampIndex == 0) setHasilFoto0(faceImage)
+                else if(activeStampIndex == 1) setHasilFoto1(faceImage)
+                else if(activeStampIndex == 2) setHasilFoto2(faceImage)
+                else if(activeStampIndex == 3) setHasilFoto3(faceImage)
+                // setImageFile(faceImage)
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("faceImage"+activeStampIndex, faceImage)
+                }
             }
 
             stopCamera()
@@ -161,114 +196,19 @@ export default function Register() {
         // Tampilkan stream di video berikutnya
         videoRefs[nextIndex].current.srcObject = stream;
         videoRefs[nextIndex].current.play();
-      };
+    };
+
+
+    const toggleCamera = () => {
+        setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
+        if (isCameraOn) {
+          stopCamera();
+          setTimeout(() => startCamera(), 500); // Restart kamera dengan facingMode baru
+        }
+    };
     //==================
 
-    // const startCamera = async () => {
-    //     try {
-    //     // Meminta akses kamera
-    //     const stream = await navigator.mediaDevices.getUserMedia({ video: {
-    //         facingMode: facingMode
-    //     }});
-    //     videoRef.current.srcObject = stream; // Hubungkan stream ke elemen video
-    //     videoRef.current.play(); // Mulai pemutaran video
-    //     setIsCameraOn(true); // Update status kamera
-    //     } catch (error) {
-    //     console.error("Gagal mengakses kamera:", error);
-    //     alert("Tidak dapat mengakses kamera. Pastikan izin telah diberikan.");
-    //     }
-    // };
-
-    // const stopCamera = () => {
-    //     const stream = videoRef.current.srcObject;
-    //     if (stream) {
-    //       const tracks = stream.getTracks();
-    //       tracks.forEach((track) => track.stop()); // Hentikan setiap track
-    //     }
-    //     videoRef.current.srcObject = null; // Lepaskan stream dari video
-    // };
-
-    // const toggleCamera = () => {
-    //     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
-    //     if (isCameraOn) {
-    //       stopCamera();
-    //       setTimeout(() => startCamera(), 500); // Restart kamera dengan facingMode baru
-    //     }
-    // };
-
-    // const captureVideo  = ({
-    //     width = 512,
-    //     height = 512,
-    // }) => {
-    //     setCaptured(true)
-    //     setCapturedAwal(true)
-    //     setTimeout(() => {
-    //         setEnabled(true)
-    //         setCaptured(null)
-    //         const canvas = previewRef.current;
-    //         const video = videoRef.current;
-    //         video.play;
-    //         if (canvas === null || video === null) {
-    //             return;
-    //         }
-        
-    //         // Calculate the aspect ratio and crop dimensions
-    //         const aspectRatio = video.videoWidth / video.videoHeight;
-    //         let sourceX, sourceY, sourceWidth, sourceHeight;
-        
-    //         if (aspectRatio > 1) {
-    //             // If width is greater than height
-    //             sourceWidth = video.videoHeight;
-    //             sourceHeight = video.videoHeight;
-    //             sourceX = (video.videoWidth - video.videoHeight) / 2;
-    //             sourceY = 0;
-    //         } else {
-    //             // If height is greater than or equal to width
-    //             sourceWidth = video.videoWidth;
-    //             sourceHeight = video.videoWidth;
-    //             sourceX = 0;
-    //             sourceY = (video.videoHeight - video.videoWidth) / 2;
-    //         }
-        
-    //         // Resize the canvas to the target dimensions
-    //         canvas.width = video.videoWidth;
-    //         canvas.height = video.videoHeight;
-        
-    //         const context = canvas.getContext('2d');
-    //         if (context === null) {
-    //             return;
-    //         }
-        
-    //         // Draw the image on the canvas (cropped and resized)
-    //         context.save();
-    //         // context.scale(-1, 1)
-    //         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    //         // context.drawImage(
-    //         //     video,
-    //         //     sourceX,
-    //         //     sourceY,
-    //         //     sourceWidth,
-    //         //     sourceHeight,
-    //         //     0,
-    //         //     0,
-    //         //     width,
-    //         //     height
-    //         // );
-    //         context.restore();
-    
-    //         let faceImage = canvas.toDataURL();
-    //         // setImageFile(faceImage)
-    //         if (typeof localStorage !== 'undefined') {
-    //             localStorage.setItem("faceImage", faceImage)
-    //         }
-    //         // setTimeout(() => {
-    //         //     router.push('/generate');
-    //         // }, 1250);
-    //         stopCamera()
-    //     }, 3000);
-    // }
-
-
+    let sentuhan = {};
     const [touches, setTouches] = useState([]);
     const canvasRef = useRef(null);
 
@@ -285,29 +225,133 @@ export default function Register() {
                 x: t.pageX,
                 y: t.pageY,
             }));
+            sentuhan = newTouches
             setTouches(newTouches);
-            drawTouches(ctx, newTouches);
+            setStartStamp(true)
+            // drawTouches(ctx, newTouches);
+
+            // console.log(touches.length)
+            // alert(sentuhan.length)
 
             // alert(activeStampIndex)
-            lokasi[activeStampIndex].stamp = true
+            // if(sentuhan.length == 4){
+            //     lokasi[activeStampIndex].stamp = true
+            // }
+            // setStatusStamp(true)
+            // lokasi[activeStampIndex].stamp = true
+
+            // DEBUG STAMP
+            // setStatusStamp(true)
+            // lokasi[activeStampIndex].stamp = true
+            
+            // if(activeStampIndex == 0) setHasilFoto0Stamp('true')
+            // else if(activeStampIndex == 1) setHasilFoto1Stamp('true')
+            // else if(activeStampIndex == 2) setHasilFoto2Stamp('true')
+            // else if(activeStampIndex == 3) setHasilFoto3Stamp('true')
+
+            // if (typeof localStorage !== 'undefined') {
+            //     localStorage.setItem("faceImageStamp"+activeStampIndex, true)
+            // }
         };
 
         const handleTouchMove = (e) => {
-        e.preventDefault();
-        const updatedTouches = Array.from(e.touches).map((t) => ({
-            id: t.identifier,
-            x: t.pageX,
-            y: t.pageY,
-        }));
-        setTouches(updatedTouches);
-        drawTouches(ctx, updatedTouches);
+            e.preventDefault();
+            const updatedTouches = Array.from(e.touches).map((t) => ({
+                id: t.identifier,
+                x: t.pageX,
+                y: t.pageY,
+            }));
+            setTouches(updatedTouches);
+            // drawTouches(ctx, updatedTouches);
         };
 
         const handleTouchEnd = (e) => {
             e.preventDefault();
-            setTouches([]);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            setCapturedAwal(false)
+            if(lokasi[activeStampIndex].stamp){
+                setCapturedAwal(false)
+            }
+
+            // console.log(sentuhan)
+            if (Object.keys(sentuhan).length === 4) {
+                const points = Object.values(sentuhan);
+                // console.log(points)
+                // console.log(checkSquarePattern(points))
+                if (checkSquarePattern(points)) {
+                    // alert("4 Fingers detected: Square Pattern!");
+                    // console.log("4 fingers")
+                    setStatusStamp(true)
+                    lokasi[activeStampIndex].stamp = true
+                    
+                    if(activeStampIndex == 0) setHasilFoto0Stamp('true')
+                    else if(activeStampIndex == 1) setHasilFoto1Stamp('true')
+                    else if(activeStampIndex == 2) setHasilFoto2Stamp('true')
+                    else if(activeStampIndex == 3) setHasilFoto3Stamp('true')
+
+                    if (typeof localStorage !== 'undefined') {
+                        localStorage.setItem("faceImageStamp"+activeStampIndex, true)
+                    }
+
+                    setTimeout(() => {
+                        setStatusStamp(false)
+                        setStartStamp(false)
+
+                        sentuhan = {}
+                        setTouches([]);
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }, 1500);
+                }
+            }
+            
+
+            // setTouches([]);
+            // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        };
+
+        const checkSquarePattern = (points) => {
+            if (points.length !== 4) return false;
+            // console.log(points)
+    
+            // Sort points by x and y positions
+            points.sort((a, b) => a.x - b.x || a.y - b.y);
+            // const [topLeft, topRight, bottomLeft, bottomRight] = points;
+            const [topLeft, bottomLeft, topRight, bottomRight] = points;
+            // console.log(points)
+    
+            // Calculate distances between adjacent points
+            // const topEdge = getDistance(topLeft, topRight);
+            // const bottomEdge = getDistance(bottomLeft, bottomRight);
+            // const leftEdge = getDistance(topLeft, bottomLeft);
+            // const rightEdge = getDistance(topRight, bottomRight);
+    
+            // Check if edges form a square
+            const threshold = 20;
+            const thresholdRightXMax = 45;
+            const thresholdRightXMin = 25;
+            const isBottomAligned = Math.abs(bottomLeft.y - bottomRight.y) < threshold;
+            const isLeftAligned = Math.abs(bottomLeft.x - topLeft.x) < threshold;
+            const isRightAligned = Math.abs(bottomRight.x - topRight.x) < thresholdRightXMax && Math.abs(bottomRight.x - topRight.x) >= thresholdRightXMin;
+            const isTopXAligned = Math.abs(topLeft.x - topRight.x) >= 85 && Math.abs(topLeft.x - topRight.x) <= 95;
+            const isTopYAligned = Math.abs(topLeft.y - topRight.y) >= 40 && Math.abs(topLeft.y - topRight.y) <= 50;
+
+            // console.log("TL X : "+topLeft.x)
+            // console.log("TR X : "+topRight.x)
+            // console.log("BL X : "+bottomLeft.x)
+            // console.log("BR X : "+bottomRight.x)
+            // console.log(Math.abs(bottomLeft.x - topLeft.x))
+            // console.log(Math.abs(bottomRight.x - topRight.x))
+            // console.log(Math.abs(topLeft.y - topRight.y))
+            // console.log(isBottomAligned)
+            // console.log(isLeftAligned)
+            // console.log(isRightAligned)
+            // console.log(isTopXAligned)
+            // console.log(isTopYAligned)
+
+            return isBottomAligned && isLeftAligned && isRightAligned && isTopXAligned && isTopYAligned;
+        };
+        const getDistance = (p1, p2) => {
+            return Math.sqrt(
+            Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)
+            );
         };
 
         const drawTouches = (ctx, touchPoints) => {
@@ -317,6 +361,8 @@ export default function Register() {
             ctx.beginPath();
             ctx.arc(t.x, t.y, 20, 0, Math.PI * 2);
             ctx.fill();
+            ctx.font = "10px Arial";
+            ctx.fillText("X : "+t.x+' | Y : '+t.y,t.x -30,t.y+30);
         });
         };
 
@@ -387,8 +433,27 @@ export default function Register() {
                             <div className='photocard bg-white'>
                                 <div className='inner p-5'>
                                     <div className='photocard-take border-dashed border-[#A5B3CC] border-2 bg-[#F1F4F9]'>
-                                        <div className='inner flex justify-center items-center'>
-                                            <div className={`${isCameraOn ? 'opacity-0 pointer-events-none':''} ${lokasi[index].stamp ? 'opacity-0 pointer-events-none':'!opacity-100'} relative w-[50%]`} onClick={startCamera}>
+                                        <div className={`${(lokasi[index].foto != null || lokasi[index].foto != '') && lokasi[index].stamp  ? '' : 'hidden'} inner flex justify-center items-center overflow-hidden`}>
+                                            <div className='relative overflow-hidden flex justify-center items-center'>
+                                                {hasilFoto0 && hasilFoto0Stamp  && 
+                                                <Image src={hasilFoto0}  width={768} height={1024} alt='Zirolu' className={`${index == 0 ? '' : 'hidden'} relative top-0 mx-auto w-full block`}></Image>
+                                                }
+
+                                                {hasilFoto1 && hasilFoto1Stamp && 
+                                                <Image src={hasilFoto1}  width={768} height={1024} alt='Zirolu' className={`${index == 1 ? '' : 'hidden'} relative top-0 mx-auto w-full block`}></Image>
+                                                }
+
+                                                {hasilFoto2 && hasilFoto2Stamp && 
+                                                <Image src={hasilFoto2}  width={768} height={1024} alt='Zirolu' className={`${index == 2 ? '' : 'hidden'} relative top-0 mx-auto w-full block`}></Image>
+                                                }
+
+                                                {hasilFoto3 && hasilFoto3Stamp && 
+                                                <Image src={hasilFoto3}  width={768} height={1024} alt='Zirolu' className={`${index == 3 ? '' : 'hidden'} relative top-0 mx-auto w-full block`}></Image>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className={`${(lokasi[index].foto != null || lokasi[index].foto != '') && lokasi[index].stamp ? 'hidden' : ''} inner flex justify-center items-center`}>
+                                            <div className={`${isCameraOn ? 'opacity-0 pointer-events-none':''} ${lokasi[index].stamp ? 'opacity-0 pointer-events-none':'!opacity-100'} relative w-[50%] z-10`} onClick={startCamera}>
                                                 <div className="animate-rotateKiriKanan relative mx-auto w-[70%] flex justify-center items-center mb-3">
                                                     <Image src='/digitalstamp/hand.png' width={96} height={96}  alt='Zirolu' className='animate-bgScale2 w-full' priority />
                                                 </div>
@@ -397,15 +462,19 @@ export default function Register() {
                                                 </div>
                                             </div>
                                             
-                                            <div className={` absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-10`}>
+                                            <div className={`absolute w-full left-0 top-0 h-full overflow-hidden pointer-events-none flex justify-center items-center z-40`}>
                                                 <video key={index} ref={videoRef} className={`w-full mx-auto my-auto  ${enabled ? 'absolute opacity-0':'relative'} `} playsInline></video>
                                                 <canvas ref={canvasRefs[index]} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-full top-0 left-0 right-0 mx-auto my-auto pointer-events-none`}></canvas>
                                             </div>
 
+                                            <div className={`${isCameraOn ? '':'opacity-0 pointer-events-none'} ${capturedAwal ? 'opacity-0 pointer-events-none' : ''} absolute left-0 top-0 w-[50px] overflow-hidden z-50`}>
+                                                <button className="relative mx-auto w-full flex justify-center items-center" onClick={toggleCamera}>
+                                                    <Image src='/digitalstamp/icon-flip.png' width={89} height={40} alt='Zirolu' className='w-full' priority />
+                                                </button>
+                                            </div>
 
-
-                                            <div className={`${isCameraOn ? '':'opacity-0'} ${capturedAwal ? 'opacity-0 pointer-events-none' : ''} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-20`}>
-                                                <button className="relative mx-auto w-[30%] flex justify-center items-center" onClick={() => captureImage(index)}
+                                            <div className={`${isCameraOn ? '':'opacity-0'} ${capturedAwal ? 'opacity-0 pointer-events-none' : ''} absolute left-0 right-0 bottom-4 w-full overflow-hidden z-50`}>
+                                                <button className="relative mx-auto w-[40%] flex justify-center items-center" onClick={() => captureImage(index)}
                                                 disabled={activeVideoIndex !== index || !isCameraOn}
                                                     >
                                                     <Image src='/digitalstamp/btn-capture.png' width={89} height={40} alt='Zirolu' className='w-full' priority />
@@ -416,11 +485,11 @@ export default function Register() {
                                     </div>
                                     <p className={`text-xl mt-2 text-[#2B3B4F] text-center ${MouseMemoirs.className}`}>{lokasi[index].name}</p>
 
-                                    <div className={`absolute right-2 top-2 w-[80px] z-20 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                    <div className={`absolute right-2 top-2 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
                                         <Image src='/digitalstamp/stamp.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
 
-                                    <div className={`absolute right-0 bottom-0 w-[120px] z-20 ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                    <div className={`absolute right-0 bottom-0 w-[120px] z-50 ${lokasi[index].stamp ? '' : 'hidden'}`}>
                                         <Image src='/digitalstamp/stamp-done.png' width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                     </div>
                                 </div>
@@ -428,7 +497,16 @@ export default function Register() {
                         </SwiperSlide>
                         ))}
                     </Swiper>
-                    <p className={`text-center text-xl text-[#2B3B4F] mt-5 ${MouseMemoirs.className}`}>{slideIndex + 1} / 4</p>
+
+                    {/* <p>{touches.length}</p> */}
+                    <p className={`text-center text-2xl text-[#2B3B4F] mt-5 ${MouseMemoirs.className}`}>{slideIndex + 1} / 4</p>
+
+                    {statusStamp && startStamp &&
+                        <p className={`text-center text-base text-[#2B3B4F] mt-0 ${MouseMemoirs.className}`}>Stamp Done!</p>
+                    }
+                    {!statusStamp && startStamp &&
+                        <p className={`text-center text-base text-[#2B3B4F] mt-0 ${MouseMemoirs.className}`}>Stamp Failed!</p>
+                    }
                 </div>
 
             </div>
