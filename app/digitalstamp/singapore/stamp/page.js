@@ -511,7 +511,7 @@ export default function Register() {
                         <p className={`text-center text-base text-[#2B3B4F] mt-0 ${MouseMemoirs.className}`}>Stamp Done!</p>
                     }
                     {!statusStamp && startStamp &&
-                        <p className={`text-center text-base text-[#2B3B4F] mt-0 ${MouseMemoirs.className}`}>Stamp Failed!</p>
+                        <p className={`text-center text-base text-[#2B3B4F] mt-0 ${MouseMemoirs.className}`}></p>
                     }
                 </div>
 
