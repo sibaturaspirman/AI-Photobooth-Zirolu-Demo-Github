@@ -84,7 +84,7 @@ export default function Result() {
     const [showEmail, setShowEmail] = useState(null);
     const [blobVideoShare, setBlobVideoShare] = useState();
     const [playVideo, setPlayVideo] = useState(false);
-    const [firstNameAmild, setFirstNameAmild] = useState();
+    const [firstNameAmild, setFirstNameAmild] = useState('a');
 
     const [maxDuration, setMaxDuration] = useState(10);
     const [countdownStart, setCountdownStart] = useState(false);
@@ -286,7 +286,7 @@ export default function Result() {
                         </a> */}
                     </div>
 
-                    <Link href='/music/v3' className="relative w-[60%] mx-auto flex justify-center items-center">
+                    <Link href='/music/v4' className="relative w-[60%] mx-auto flex justify-center items-center">
                     <Image src='/music/back.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
