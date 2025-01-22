@@ -329,7 +329,7 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/meta2/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/meta4/style' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/comcon/iqos/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
