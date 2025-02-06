@@ -12,6 +12,8 @@ import PadmaAIClient from "padmaai-client";
 import { Kanit} from "next/font/google";
 const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
 
+let progressCamera = 0
+
 
 let streamCam = null;
 const useWebcam = ({
@@ -125,6 +127,7 @@ export default function Cam() {
     const [imageFile3, setImageFile3] = useState(null);
     const [progressText, setProgressText] = useState('Set Queue');
     const [progressPersen, setProgressPersen] = useState('0%');
+    const [progressPersen2, setProgressPersen2] = useState(0);
     const [styleFix, setStyleFix] = useState(null);
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
@@ -202,10 +205,13 @@ export default function Cam() {
             }else if(progress.type == 'progress'){
                 setProgressText("Progress : ")
                 setProgressPersen(progress.progress+'%')
+                setProgressPersen2(progress.progress)
             }else if(progress.type == 'executed'){
                 setProgressText("Done!")
                 // setProgressPersen('Direct...')
             }
+
+            console.log(progressPersen2)
 
           });
           
@@ -292,6 +298,20 @@ export default function Cam() {
                     <div className={`animate-scanning w-[90%] mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-nones  ${numProses1 ? '' : 'opacity-0'}`}>
                         <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
                     </div>
+
+                    <div className={`absolute w-[90%] mx-auto h-full mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-none flex justify-center items-center ${progressPersen2 >= 0 && progressPersen2 <= 25 && numProses1 ? '' : 'opacity-0'}`}>
+                        <Image src='/primaria/loading-1.png' width={583} height={136} alt='Zirolu' className='w-[80%]' priority />
+                    </div>
+                    <div className={`absolute w-[90%] mx-auto h-full mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-none flex justify-center items-center ${progressPersen2 >= 26 && progressPersen2 && numProses1 <= 50 ? '' : 'opacity-0'}`}>
+                        <Image src='/primaria/loading-2.png' width={583} height={136} alt='Zirolu' className='w-[80%]' priority />
+                    </div>
+                    <div className={`absolute w-[90%] mx-auto h-full mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-none flex justify-center items-center ${progressPersen2 >= 51 && progressPersen2 && numProses1 <= 75 ? '' : 'opacity-0'}`}>
+                        <Image src='/primaria/loading-3.png' width={583} height={136} alt='Zirolu' className='w-[80%]' priority />
+                    </div>
+                    <div className={`absolute w-[90%] mx-auto h-full mx-auto absolute left-0 right-0 bottom-0 z-10 pointer-events-none flex justify-center items-center ${progressPersen2 >= 76 && progressPersen2 && numProses1 <= 100 ? '' : 'opacity-0'}`}>
+                        <Image src='/primaria/loading-4.png' width={583} height={136} alt='Zirolu' className='w-[80%]' priority />
+                    </div>
+                    
 
                     <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
