@@ -11,6 +11,10 @@
   "dependencies": {
     "@fal-ai/serverless-client": "^0.8.2",
     "@fal-ai/serverless-proxy": "^0.7.4",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@tensorflow-models/facemesh": "^0.0.5",
+    "@tensorflow/tfjs": "^4.22.0",
     "axios": "^1.7.2",
     "cookies-next": "^4.1.1",
     "html2canvas": "^1.4.1",
