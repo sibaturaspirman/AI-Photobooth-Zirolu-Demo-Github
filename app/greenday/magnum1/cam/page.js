@@ -43,6 +43,9 @@ export default function Cam() {
 
     const leftEyeImgSrc = "/greenday/petir-kiri.png";
     const rightEyeImgSrc = "/greenday/petir-kanan.png";
+    const [leftEyeStatus, setLeftEyeStatus] = useState(false);
+    const [rightEyeStatus, setRightEyeStatus] = useState(false);
+
 
     useEffect(() => {
         setIsClient(true);
@@ -169,10 +172,12 @@ export default function Cam() {
 
                     leftEyeImg.onload = () => {
                         drawEyeOverlay(ctx, leftEyeImg, leftEye, rightEye, img.width, img.height, scale);
+                        setLeftEyeStatus(true)
                     };
 
                     rightEyeImg.onload = () => {
                         drawEyeOverlay(ctx, rightEyeImg, rightEye, leftEye, img.width, img.height, scale);
+                        setRightEyeStatus(true)
                     };
                 });
 
@@ -371,6 +376,17 @@ export default function Cam() {
             </div>
             }
 
+
+
+            {enabled && !leftEyeStatus && !rightEyeStatus && 
+            <div className={`relative w-full lg:w-[90%]`}>
+                <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
+                <p>{`Mohon tunggu...`}</p>
+                </div>
+            </div>
+            }
+
+            <div className={`relative w-full ${leftEyeStatus && rightEyeStatus  ? '' : 'hidden opacity-0 pointer-events-none'}`}>
             <div className={`relative w-full ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col mt-0">
@@ -381,7 +397,7 @@ export default function Cam() {
                         <NextImage src='/greenday/m-retake.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
-            </div></div>
+            </div></div></div>
         </main>
     );
 }
