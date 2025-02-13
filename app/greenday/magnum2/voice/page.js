@@ -42,7 +42,7 @@ export default function Voice() {
     const [showPreview, setShowPreview] = useState(false);
 
     const togglePreview = () => {
-        setShowPreview(prevState => !prevState);
+        // setShowPreview(prevState => !prevState);
     };
     
     useEffect(() => {
