@@ -166,7 +166,7 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-veev overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-greenday-v overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
         <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50 hidden lg:block"></div>
             <div className={`relative w-[10%] lg:w-[30%] mx-auto mt-0 mb-2 lg:mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 <Image src='/greenday/v-logo.png' width={520} height={83} alt='Zirolu' className='w-full' priority />
