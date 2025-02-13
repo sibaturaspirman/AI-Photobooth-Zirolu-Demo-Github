@@ -8,7 +8,7 @@ export default function GreendayMagnumHome() {
     <Link href='/greenday/magnum2/voice' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
       <BgWaveCustom bg={'/greenday/m-bg.jpg'}></BgWaveCustom>
       <div className="relative w-full flex justify-center items-center flex-col lg:top-[-6rem]">
-        <div className='animate-upDown relative w-[35%] lg:top-[-14rem] lg:w-[80%] mb-5 lg:mb-[5rem] mx-auto flex justify-center items-center pointer-events-none'>
+        <div className='animate-upDown relative w-[35%] lg:top-[-11rem] lg:w-[80%] mb-5 lg:mb-[5rem] mx-auto flex justify-center items-center pointer-events-none'>
           <Image src='/greenday/m-berani.png' width={954} height={186} alt='Zirolu' className='w-full' priority />
         </div>
 

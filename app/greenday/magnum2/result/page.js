@@ -103,7 +103,7 @@ export default function Result() {
                 <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[80%] mx-auto flex items-center justify-center flex-col`}>
 
-                        <div className='relative w-[80%] lg:w-[80%] mx-auto mb-2 lg:mb-10 flex justify-center items-center z-10'>
+                        <div className='relative lg:top-[-14rem] w-[80%] lg:w-[80%] mx-auto mb-2 lg:mb-10 flex justify-center items-center z-10'>
                             <Image src='/greenday/m-dapatkan.png' width={954} height={172} alt='Zirolu' className='w-full' priority />
                         </div>
                         <div className='relative w-[80%] mt-2 mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
