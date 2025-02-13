@@ -122,7 +122,7 @@ export default function Result() {
                             />
                         </div>
                         <p className='block text-center text-base lg:text-4xl mt-1 mb-3 lg:mb-10 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p> 
-                        <Link href='/greenday/magnum2' className="relative w-[80%] mx-auto flex justify-center items-center">
+                        <Link href='/greenday/magnum21' className="relative w-[80%] mx-auto flex justify-center items-center">
                             <Image src='/greenday/m-btn-kembali2.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
@@ -153,16 +153,16 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full lg:mt-10 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[66%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
+                    {/* <div className='relative z-10 w-[66%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={720} height={1280} alt='Zirolu' className='relative top-0 mx-auto w-full block z-20'></Image>
                         </div>
-                    </div>
-                    {/* <div className='relative z-10 w-[90%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
+                    </div> */}
+                    <div className='relative z-10 w-[90%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={720} height={720} alt='Zirolu' className='relative top-0 mx-auto w-full block z-20'></Image>
                         </div>
-                    </div> */}
+                    </div>
                     {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
                         <div className={`relative w-[100%] flex`}>
                             <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
@@ -204,7 +204,7 @@ export default function Result() {
 
                     <div className='w-full mt-2 lg:mt-8'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/greenday/magnum2' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/greenday/magnum21' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/greenday/m-btn-kembali.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
