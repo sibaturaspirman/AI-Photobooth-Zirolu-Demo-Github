@@ -141,7 +141,7 @@ export default function Voice() {
                     for (let i = 0; i < dataArrayRef.current.length; i++) {
                         const v = (dataArrayRef.current[i] - 128) / 5;
                         const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
-                        const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * .2) * variation;
+                        const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1.2) * variation;
         
                         if (i === 0) {
                         ctx.moveTo(x, y);
