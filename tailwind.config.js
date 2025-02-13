@@ -22,6 +22,7 @@ module.exports = {
       upDown4: "upDown2 950ms ease infinite alternate",
       bgScale: "bgscale 950ms ease infinite alternate",
       bgScale2: "bgscale2 800ms ease infinite alternate",
+      bgScale3: "bgscale2 200ms ease infinite alternate",
       kiriKanan: "kiriKanan 8500ms linear infinite alternate",
       rotateKiriKanan: "rotateKiriKanan 800ms linear infinite alternate",
       loading1: "loading1 9000ms ease infinite",
