@@ -124,43 +124,45 @@ export default function Result() {
     
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
+        setGenerateQR('true')
+        setLoadingDownload(null)
 
-        canvas.toBlob(async function(blob) {
-            const options = {
-                method: 'POST',
-                body: JSON.stringify({
-                    name:payload.name+' '+formasiFix,
-                    phone:payload.phone,
-                    image:linkQR
-                }),
-                headers: {
-                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            };
+        // canvas.toBlob(async function(blob) {
+        //     const options = {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             name:payload.name+' '+formasiFix,
+        //             phone:payload.phone,
+        //             image:linkQR
+        //         }),
+        //         headers: {
+        //             'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         }
+        //     };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response)
-                    // setLinkQR(response.file)
-                    // emitString("sendImage", response.file);
-                    setIdFormEmail(response.id)
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                    // handleStartCountdown()
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        setShowEmail('true')
-                        setLinkQR(item)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
-        });
+        //     await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
+        //         .then(response => response.json())
+        //         .then(response => {
+        //             console.log(response)
+        //             // setLinkQR(response.file)
+        //             // emitString("sendImage", response.file);
+        //             setIdFormEmail(response.id)
+        //             setGenerateQR('true')
+        //             setLoadingDownload(null)
+        //             // handleStartCountdown()
+        //         })
+        //         .catch(err => {
+        //             if (typeof localStorage !== 'undefined') {
+        //                 const item = localStorage.getItem('faceURLResult')
+        //                 setShowEmail('true')
+        //                 setLinkQR(item)
+        //                 setGenerateQR('true')
+        //                 setLoadingDownload(null)
+        //             }
+        //         });
+        // });
     }
 
     return (
