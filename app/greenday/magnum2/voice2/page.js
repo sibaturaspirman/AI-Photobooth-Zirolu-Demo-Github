@@ -40,7 +40,7 @@ export default function Voice() {
     const [imageSrc, setImageSrc] = useState(null);
     const [stream, setStream] = useState(null);
 
-    const [showPreview, setShowPreview] = useState(true);
+    const [showPreview, setShowPreview] = useState(false);
 
     const togglePreview = () => {
         setShowPreview(prevState => !prevState);
@@ -194,8 +194,8 @@ export default function Voice() {
                 setHideVideo(true)
 
                 setTimeout(() => {
-                    // router.push('/greenday/magnum2/result');
-                }, 1200);
+                    router.push('/greenday/magnum2/result');
+                }, 800);
             }
             if(maxDuration2 == 5){
                 captureImage()
@@ -328,19 +328,18 @@ export default function Voice() {
             return;
         }
     
-        // Menggunakan ukuran asli video
+        // Ukuran asli video (landscape)
         const videoWidth = video.videoWidth;
         const videoHeight = video.videoHeight;
-    
-        // Atur ukuran canvas sesuai dengan ukuran asli video
-        canvas.width = videoWidth;
-        canvas.height = videoHeight;
 
-        // console.log(videoWidth)
-        // console.log(videoHeight)
-    
-        // Gambar hasil video ke canvas tanpa cropping
-        ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
+        // Atur canvas menjadi portrait (tinggi lebih besar dari lebar)
+        canvas.width = videoHeight; // Balik lebar dan tinggi
+        canvas.height = videoWidth; 
+
+        // Rotasi canvas agar gambar dari landscape menjadi portrait
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(-Math.PI / 2); // Putar 90 derajat counter-clockwise
+        ctx.drawImage(video, -videoWidth / 2, -videoHeight / 2, videoWidth, videoHeight);
     
         // Konversi ke data URL (base64)
         const imageDataUrl = canvas.toDataURL("image/png");
@@ -424,7 +423,7 @@ export default function Voice() {
         </div> */}
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full z-20">
         {/* <p className="text-base lg:text-5xl text-center mb-5">Suara Lo : {dB !== -Infinity ? dB.toFixed(0) +' dB' : "No Signal"}</p> */}
-        <p className="text-3xl">{maxDuration2}</p>
+        {/* <p className="text-3xl">{maxDuration2}</p> */}
             <canvas
                 ref={canvasRef}
                 width="1080"
