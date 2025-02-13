@@ -244,11 +244,12 @@ export default function Voice() {
         async function startCamera() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
-                        width: { ideal: 720 },
-                        height: { ideal: 1280 },
-                        aspectRatio: 9 / 16
-                    }
+                    // video: {
+                    //     width: { ideal: 720 },
+                    //     height: { ideal: 1280 },
+                    //     aspectRatio: 9 / 16
+                    // }
+                    video: true
                 });
     
                 videoRef.current.srcObject = stream;
@@ -270,49 +271,91 @@ export default function Voice() {
 
 
 
-    function captureImage() {
-        console.log("CAPTURE")
+    // function captureImage() {
+    //     console.log("CAPTURE")
 
+    //     const video = videoRef.current;
+    //     const canvas = captureCanvasRef.current;
+    //     const ctx = canvas.getContext("2d");
+
+    //     // Ukuran hasil capture (1000x1000 px)
+    //     const targetWidth = 720;
+    //     const targetHeight = 1280;
+
+    //     // Ukuran asli video
+    //     const videoWidth = video.videoWidth;
+    //     const videoHeight = video.videoHeight;
+
+    //     // Tentukan skala untuk crop agar tetap proporsional
+    //     const scale = Math.max(targetWidth / videoWidth, targetHeight / videoHeight);
+    //     const scaledWidth = videoWidth * scale;
+    //     const scaledHeight = videoHeight * scale;
+
+    //     // Hitung posisi crop agar gambar tetap di tengah
+    //     const offsetX = (scaledWidth - targetWidth) / 2;
+    //     const offsetY = (scaledHeight - targetHeight) / 2;
+
+    //     // Atur ukuran canvas sesuai dengan target
+    //     canvas.width = targetWidth;
+    //     canvas.height = targetHeight;
+
+    //     // Gambar hasil video ke canvas dengan crop di tengah
+    //     ctx.drawImage(video, -offsetX, -offsetY, scaledWidth, scaledHeight);
+
+    //     // Konversi ke data URL (base64)
+    //     const imageDataUrl = canvas.toDataURL("image/png");
+    //     setImageSrc(imageDataUrl);
+    //     if (typeof localStorage !== 'undefined') {
+    //         localStorage.setItem("faceImage", imageDataUrl)
+    //     }
+
+    //     if (stream) {
+    //         stream.getTracks().forEach(track => track.stop());
+    //         setStream(null);
+    //     }
+
+    // }
+
+    function captureImage() {
+        console.log("CAPTURE");
+    
         const video = videoRef.current;
         const canvas = captureCanvasRef.current;
         const ctx = canvas.getContext("2d");
-
-        // Ukuran hasil capture (1000x1000 px)
-        const targetWidth = 720;
-        const targetHeight = 1280;
-
-        // Ukuran asli video
+    
+        if (!video || !canvas || !ctx) {
+            console.error("Video or canvas context is not available.");
+            return;
+        }
+    
+        // Menggunakan ukuran asli video
         const videoWidth = video.videoWidth;
         const videoHeight = video.videoHeight;
+    
+        // Atur ukuran canvas sesuai dengan ukuran asli video
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
 
-        // Tentukan skala untuk crop agar tetap proporsional
-        const scale = Math.max(targetWidth / videoWidth, targetHeight / videoHeight);
-        const scaledWidth = videoWidth * scale;
-        const scaledHeight = videoHeight * scale;
-
-        // Hitung posisi crop agar gambar tetap di tengah
-        const offsetX = (scaledWidth - targetWidth) / 2;
-        const offsetY = (scaledHeight - targetHeight) / 2;
-
-        // Atur ukuran canvas sesuai dengan target
-        canvas.width = targetWidth;
-        canvas.height = targetHeight;
-
-        // Gambar hasil video ke canvas dengan crop di tengah
-        ctx.drawImage(video, -offsetX, -offsetY, scaledWidth, scaledHeight);
-
+        // console.log(videoWidth)
+        // console.log(videoHeight)
+    
+        // Gambar hasil video ke canvas tanpa cropping
+        ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
+    
         // Konversi ke data URL (base64)
         const imageDataUrl = canvas.toDataURL("image/png");
         setImageSrc(imageDataUrl);
-        if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("faceImage", imageDataUrl)
+    
+        // Simpan ke localStorage jika tersedia
+        if (typeof localStorage !== "undefined") {
+            localStorage.setItem("faceImage", imageDataUrl);
         }
-
+    
+        // Matikan kamera setelah capture
         if (stream) {
             stream.getTracks().forEach(track => track.stop());
             setStream(null);
         }
-
     }
 
     return (
@@ -353,11 +396,13 @@ export default function Voice() {
             </div>
         </div>
 
-        <div className={`absolute mx-auto z-50 pointer-events-none ${showPreview ? '' : 'opacity-0'}`}>
-            <video ref={videoRef} className={`w-[50%] videoRatio916 mx-auto border-2 border-[#ffffff] rounded-sm relative`} autoPlay playsInline height={1280}></video>
-            <canvas ref={canvasCaptureRef} width="720" height="1280" className={`absolute opacity-0 w-[50%] top-0 left-0 right-0 mx-auto pointer-events-none border-2 border-[#ffffff] rounded-sm z-20`}></canvas>
+        <div className={`absolute mx-auto w-full z-50 pointer-events-none ${showPreview ? '' : 'opacity-0'}`}>
+            {/* <video ref={videoRef} className={`w-[50%] videoRatio916 mx-auto border-2 border-[#ffffff] rounded-sm relative`} autoPlay playsInline height={1280}></video> */}
+            <video ref={videoRef} className={`w-[90%] videoRatio916x mx-auto border-2 border-[#ffffff] rounded-sm relative`} autoPlay playsInline></video>
+            {/* <canvas ref={canvasCaptureRef} width="720" height="1280" className={`absolute opacity-0 w-[50%] top-0 left-0 right-0 mx-auto pointer-events-none border-2 border-[#ffffff] rounded-sm z-20`}></canvas> */}
+            <canvas ref={canvasCaptureRef} className={`absolute opacity-0 w-[90%] top-0 left-0 right-0 mx-auto pointer-events-none border-2 border-[#ffffff] rounded-sm z-20`}></canvas>
 
-            {imageSrc && <img ref={imgRef} src={imageSrc} alt="Face" className={`absolute w-[50%] top-0 left-0 right-0 mx-auto pointer-events-none border-2 border-[#ffffff] rounded-sm z-20`} />}
+            {imageSrc && <img ref={imgRef} src={imageSrc} alt="Face" className={`absolute w-[90%] top-0 left-0 right-0 mx-auto pointer-events-none border-2 border-[#ffffff] rounded-sm z-20`} />}
 
             <canvas ref={captureCanvasRef} className="hidden" />
 
