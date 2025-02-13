@@ -192,7 +192,7 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    <div className={`w-full mt-10`}>
+                    {/* <div className={`w-full mt-10`}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
@@ -205,7 +205,7 @@ export default function Result() {
                     }
                     content={() => componentRef}
                     />
-                    </div>
+                    </div> */}
                     <Link href='/greenday/veev' className="relative w-[60%] mx-auto flex justify-center items-center">
                         <Image src='/comcon/zyn/try.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
