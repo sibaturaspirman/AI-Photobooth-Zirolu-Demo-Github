@@ -317,7 +317,7 @@ export default function Voice() {
        <div className="flex fixed h-full w-full overflow-hidden flex-col items-center justify-center" onClick={togglePreview}>
         <BgWaveCustom bg={'/greenday/m-bg.jpg'}></BgWaveCustom>
         <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition ${playVideo ? '' : 'opacity-0'}  ${hideVideo ? 'opacity-0' : ''} `}>
-            <ReactPlayer url={['/greenday/scream.mp4']}  playing={playVideo} width={1080} height={1920} className="!w-full !h-full" />
+            <ReactPlayer url={['/greenday/scream.mp4']}  playing={playVideo} playsinline width={1080} height={1920} className="!w-full !h-full" />
         </div>
 
         <div className={`absolute w-[80%] top-[7rem] lg:w-[80%] mx-auto z-20 flex justify-center items-center transition duration-150 ease-in-out ${maxDuration == 0 ? '' : 'opacity-0  pointer-events-none'}  ${hideVideo ? 'opacity-0' : ''}`}>
