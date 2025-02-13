@@ -20,15 +20,16 @@ export default function Voice() {
     const [dB, setDB] = useState(0); // Set initial value to 0
     const [progressKetawa, setProgressKetawa] = useState(0); 
 
-    const [playVideo, setPlayVideo] = useState(false);
+    const [playVideo, setPlayVideo] = useState(true);
+    const [showVideo, setShowVideo] = useState(false);
     const [hideVideo, setHideVideo] = useState(false);
     const [screamStatus, setScreamStatus] = useState(false);
 
-    const [maxDuration, setMaxDuration] = useState(8);
+    const [maxDuration, setMaxDuration] = useState(5);
     const [countdownStart, setCountdownStart] = useState(false);
     const timerRef = useRef(null);
 
-    const [maxDuration2, setMaxDuration2] = useState(23);
+    const [maxDuration2, setMaxDuration2] = useState(12);
     const [countdownStart2, setCountdownStart2] = useState(false);
     const timerRef2 = useRef(null);
 
@@ -141,7 +142,7 @@ export default function Voice() {
                     for (let i = 0; i < dataArrayRef.current.length; i++) {
                         const v = (dataArrayRef.current[i] - 128) / 5;
                         const variation = Math.sin((i + lineIndex * 50) / 10); // Add variation for each line
-                        const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1.2) * variation;
+                        const y = canvas.height / 2 + v * (canvas.height / 2) * (adjustedRMS * 1.8) * variation;
         
                         if (i === 0) {
                         ctx.moveTo(x, y);
@@ -181,7 +182,8 @@ export default function Voice() {
         handleStartCountdown2()
         if(countdownStart){
             if(maxDuration == 0){
-                setPlayVideo(true)
+                // setPlayVideo(true)
+                setShowVideo(true)
             }
         }
         if(countdownStart2){
@@ -195,7 +197,7 @@ export default function Voice() {
                     router.push('/greenday/magnum2/result');
                 }, 1200);
             }
-            if(maxDuration2 == 10){
+            if(maxDuration2 == 5){
                 captureImage()
             }
         }
@@ -316,7 +318,7 @@ export default function Voice() {
     return (
        <div className="flex fixed h-full w-full overflow-hidden flex-col items-center justify-center" onClick={togglePreview}>
         <BgWaveCustom bg={'/greenday/m-bg.jpg'}></BgWaveCustom>
-        <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition ${playVideo ? '' : 'opacity-0'}  ${hideVideo ? 'opacity-0' : ''} `}>
+        <div className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition ${showVideo ? '' : 'opacity-0'}  ${hideVideo ? 'opacity-0' : ''} `}>
             <ReactPlayer url={['/greenday/scream-v2.mp4']}  playing={playVideo} playsinline width={1080} height={1920} className="!w-full !h-full" />
         </div>
 
@@ -377,7 +379,7 @@ export default function Voice() {
         </div> */}
         <div className="fixed bottom-[-3rem] lg:bottom-[3rem] left-0 w-full z-20">
         {/* <p className="text-base lg:text-5xl text-center mb-5">Suara Lo : {dB !== -Infinity ? dB.toFixed(0) +' dB' : "No Signal"}</p> */}
-        {/* <p className="text-3xl">{maxDuration2}</p> */}
+        <p className="text-3xl">{maxDuration2}</p>
             <canvas
                 ref={canvasRef}
                 width="1080"
