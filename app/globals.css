@@ -1143,6 +1143,11 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-greenday-v{
+  background-image: url(../public/greenday/v-bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 
 /* DSS */
 .bg-dss-front{
