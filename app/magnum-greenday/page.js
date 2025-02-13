@@ -326,7 +326,6 @@ fal.config({
     // credentials: 'FAL_KEY_ID:FAL_KEY_SECRET',
     requestMiddleware: fal.withProxy({
       targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
-      // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
     }),
 });
 
@@ -423,38 +422,6 @@ export default function FaceWithObject() {
       data[i + 2] = avg;
     }
     ctx.putImageData(imageData, 0, 0);
-
-
-    // const imageData = ctx.getImageData(0, 0, width, height);
-    // const data = imageData.data;
-
-    // for (let i = 0; i < data.length; i += 4) {
-    //   const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    //   const contrastFactor = 2;
-    //   const contrast = Math.max(0, Math.min(255, (avg - 40) * contrastFactor + 0.1));
-    //   const edge = contrast > 128 ? 255 : 0;
-    //   data[i] = edge;
-    //   data[i + 1] = edge;
-    //   data[i + 2] = edge;
-    // }
-
-    // ctx.putImageData(imageData, 0, 0);
-
-    // const imageData = ctx.getImageData(0, 0, width, height);
-    // const data = imageData.data;
-
-    // for (let i = 0; i < data.length; i += 4) {
-    //   const r = data[i];
-    //   const g = data[i + 1];
-    //   const b = data[i + 2];
-
-    //   // Efek tepi dengan shifting warna RGB
-    //   data[i] = Math.abs(r - g) * 2; // Red
-    //   data[i + 1] = Math.abs(g - b) * 2; // Green
-    //   data[i + 2] = Math.abs(b - r) * 2; // Blue
-    // }
-
-    // ctx.putImageData(imageData, 0, 0);
   }
 
   function drawEyeOverlay(ctx, overlayImg, eye, oppositeEye, imgWidth, imgHeight, scale) {
@@ -504,7 +471,6 @@ export default function FaceWithObject() {
   }))
 
   async function removeBG(imageData){
-
     try {
         const result = await fal.subscribe("fal-ai/bria/background/remove", {
             input: {
@@ -583,84 +549,182 @@ export default function FaceWithObject() {
 
 // "use client";
 
+// import * as fal from '@fal-ai/serverless-client';
 // import { useEffect, useRef, useState } from "react";
 // import { FaceMesh } from "@mediapipe/face_mesh";
+// import { useRouter } from 'next/navigation';
 
+// fal.config({
+//     requestMiddleware: fal.withProxy({
+//       targetUrl: '/api/fal/proxy',
+//     }),
+// });
+
+// let URL_RESULT = ''
 // export default function FaceWithObject() {
-//   const canvasRef = useRef(null);
-//   const imgRef = useRef(null);
-//   const captureCanvasRef = useRef(null);
-//   const [isClient, setIsClient] = useState(false);
-//   const [scale, setScale] = useState(.5);
-//   const [capturedImage, setCapturedImage] = useState(null);
+//     const router = useRouter();
+//     const canvasRef = useRef(null);
+//     const imgRef = useRef(null);
+//     const videoRef = useRef(null);
+//     const captureCanvasRef = useRef(null);
+//     const [isClient, setIsClient] = useState(false);
+//     const [scale, setScale] = useState(0.5);
+//     const [capturedImage, setCapturedImage] = useState(null);
+//     const [imageSrc, setImageSrc] = useState(null);
+//     const [result, setResult] = useState(null);
+//     const [stream, setStream] = useState(null);
 
-//   useEffect(() => {
-//     setIsClient(true);
-//   }, []);
+//     const leftEyeImgSrc = "/magnum-greenday/petir-kiri.png";
+//     const rightEyeImgSrc = "/magnum-greenday/petir-kanan.png";
 
-//   useEffect(() => {
-//     if (!isClient) return;
+//     useEffect(() => {
+//         setIsClient(true);
+//         // const storedImage = localStorage.getItem("faceImage");
+//         // if (storedImage) {
+//         //     setImageSrc(storedImage);
+//         // }
+//     }, []);
 
-//     async function detectFace() {
-//       const img = imgRef.current;
-//       if (!img.complete) {
-//         img.onload = detectFace;
-//         return;
-//       }
+//     useEffect(() => {
+//         if (!isClient) return;
+        
+//         async function startCamera() {
+//             try {
+//                 const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+//                 videoRef.current.srcObject = stream;
+//                 setStream(stream);
+//             } catch (error) {
+//                 console.error("Error accessing camera:", error);
+//             }
+//         }
 
-//       const canvas = canvasRef.current;
-//       const ctx = canvas.getContext("2d");
+//         startCamera();
+//     }, [isClient]);
 
-//       // Atur ukuran canvas sesuai gambar
-//       canvas.width = img.width;
-//       canvas.height = img.height;
-//       ctx.drawImage(img, 0, 0, img.width, img.height);
-
-//       // Terapkan efek sketsa dengan kontras tinggi
-//       applySketchEffect(ctx, canvas.width, canvas.height);
+//     function captureImage() {
+//         const video = videoRef.current;
+//         const canvas = captureCanvasRef.current;
+//         const ctx = canvas.getContext("2d");
+//         canvas.width = video.videoWidth;
+//         canvas.height = video.videoHeight;
+//         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+//         const imageDataUrl = canvas.toDataURL("image/png");
+//         setImageSrc(imageDataUrl);
 //     }
 
-//     detectFace();
-//   }, [isClient, scale]);
+//     useEffect(() => {
+//         if (!isClient || !imageSrc) return;
 
-//   function applySketchEffect(ctx, width, height) {
-//     const imageData = ctx.getImageData(0, 0, width, height);
-//     const data = imageData.data;
+//         async function detectFace() {
+//             const img = imgRef.current;
+//             if (!img.complete) {
+//                 img.onload = detectFace;
+//                 return;
+//             }
 
-//     for (let i = 0; i < data.length; i += 4) {
-//       const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-//       const contrastFactor = 2;
-//       const contrast = Math.max(0, Math.min(255, (avg - 128) * contrastFactor + 128));
-//       const edge = contrast > 128 ? 255 : 0;
-//       data[i] = edge;
-//       data[i + 1] = edge;
-//       data[i + 2] = edge;
+//             const canvas = canvasRef.current;
+//             const ctx = canvas.getContext("2d");
+//             canvas.width = img.width;
+//             canvas.height = img.height;
+//             ctx.drawImage(img, 0, 0, img.width, img.height);
+
+//             applyGrayscale(ctx, canvas.width, canvas.height);
+
+//             if (typeof window !== "undefined") {
+//                 const faceMesh = new FaceMesh({
+//                     locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+//                 });
+
+//                 faceMesh.setOptions({
+//                     maxNumFaces: 1,
+//                     refineLandmarks: true,
+//                     minDetectionConfidence: 0.7,
+//                     minTrackingConfidence: 0.7,
+//                 });
+
+//                 faceMesh.onResults((results) => {
+//                     if (!results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
+//                         console.warn("Tidak ada wajah yang terdeteksi!");
+//                         return;
+//                     }
+
+//                     const keypoints = results.multiFaceLandmarks[0];
+//                     const leftEye = keypoints[33];
+//                     const rightEye = keypoints[263];
+
+//                     console.log("Left Eye:", leftEye, "Right Eye:", rightEye);
+
+//                     const leftEyeImg = new Image();
+//                     leftEyeImg.src = leftEyeImgSrc;
+//                     const rightEyeImg = new Image();
+//                     rightEyeImg.src = rightEyeImgSrc;
+
+//                     leftEyeImg.onload = () => {
+//                         drawEyeOverlay(ctx, leftEyeImg, leftEye, rightEye, img.width, img.height, scale);
+//                     };
+
+//                     rightEyeImg.onload = () => {
+//                         drawEyeOverlay(ctx, rightEyeImg, rightEye, leftEye, img.width, img.height, scale);
+//                     };
+//                 });
+
+//                 await faceMesh.initialize();
+//                 await faceMesh.send({ image: img });
+//             }
+//         }
+
+//         detectFace();
+//     }, [isClient, scale, imageSrc]);
+
+//     function applyGrayscale(ctx, width, height) {
+//         const imageData = ctx.getImageData(0, 0, width, height);
+//         const data = imageData.data;
+//         for (let i = 0; i < data.length; i += 4) {
+//             const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+//             data[i] = avg;
+//             data[i + 1] = avg;
+//             data[i + 2] = avg;
+//         }
+//         ctx.putImageData(imageData, 0, 0);
 //     }
 
-//     ctx.putImageData(imageData, 0, 0);
-//   }
+//     function drawEyeOverlay(ctx, overlayImg, eye, oppositeEye, imgWidth, imgHeight, scale) {
+//         const eyeX = eye.x * imgWidth;
+//         const eyeY = eye.y * imgHeight;
+//         const oppositeX = oppositeEye.x * imgWidth;
+//         const oppositeY = oppositeEye.y * imgHeight;
 
-//   return (
-//     <div className="relative">
-//       {/* Kontrol Skala */}
-//       <div className="flex items-center gap-2 mb-4">
-//         <label>Scale:</label>
-//         <input
-//           type="range"
-//           min="0.5"
-//           max="2"
-//           step="0.1"
-//           value={scale}
-//           onChange={(e) => setScale(parseFloat(e.target.value))}
-//         />
-//         <span>{scale.toFixed(1)}</span>
-//       </div>
+//         const eyeDistance = Math.sqrt((eyeX - oppositeX) ** 2 + (eyeY - oppositeY) ** 2);
+//         const eyeWidth = eyeDistance * 0.8 * scale;
+//         const eyeHeight = eyeWidth * 1.8;
+//         const angle = Math.atan2(oppositeY - eyeY, oppositeX - eyeX);
 
-//       {/* Gambar yang langsung dimuat */}
-//       {isClient && <img ref={imgRef} src="/magnum-greenday/face.png" alt="Face" className="w-full border" />}
+//         ctx.save();
+//         ctx.translate(eyeX, eyeY);
+//         ctx.rotate(angle);
+//         ctx.drawImage(overlayImg, -eyeWidth / 4.6, -eyeHeight / 2, eyeWidth, eyeHeight);
+//         ctx.restore();
+//     }
 
-//       {/* Canvas untuk menggambar efek */}
-//       {isClient && <canvas ref={canvasRef} className="w-full border" />}
-//     </div>
-//   );
+//     return (
+//         <div className="relative">
+//             <video ref={videoRef} autoPlay playsInline className="w-full border" />
+//             <button onClick={captureImage} className="mt-2 p-2 bg-blue-500 text-white rounded">Capture</button>
+//             <canvas ref={captureCanvasRef} className="hidden" />
+//             <div className="flex items-center gap-2 mb-4">
+//                 <label>Scale:</label>
+//                 <input
+//                     type="range"
+//                     min="0.5"
+//                     max="2"
+//                     step="0.1"
+//                     value={scale}
+//                     onChange={(e) => setScale(parseFloat(e.target.value))}
+//                 />
+//                 <span>{scale.toFixed(1)}</span>
+//             </div>
+//             {isClient && imageSrc && <img ref={imgRef} src={imageSrc} alt="Face" className="hidden" />}
+//             {isClient && <canvas ref={canvasRef} className="w-full border" />}
+//         </div>
+//     );
 // }

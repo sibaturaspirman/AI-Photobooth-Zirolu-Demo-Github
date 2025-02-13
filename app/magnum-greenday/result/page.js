@@ -282,8 +282,8 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 border-2 text-center bg-[#571571] rounded-xl text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
-                        <p>Please wait, loading...</p>
+                    <div className='flex justify-center items-center text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white bg-white/30 p-7 rounded-full'>
+                        <p>Tunggu sebentar...</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>

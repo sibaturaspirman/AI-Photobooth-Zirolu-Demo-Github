@@ -1137,6 +1137,12 @@ body{
   background-position: top center;
 }
 
+/* GREENDAY */
+.bg-greenday-m1{
+  background-image: url(../public/greenday/m-bg.png);
+  background-size: cover;
+  background-position: top center;
+}
 
 /* DSS */
 .bg-dss-front{
@@ -1580,3 +1586,10 @@ body{
     bottom: 0;
     left: 0;
   }
+
+
+.videoRatio1{
+  max-width: 1000px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
