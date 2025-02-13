@@ -23,7 +23,7 @@ export default function Result() {
     let componentRef = useRef();
     const [payload, setPayload] = useState({
         name: 'PRIMARIA',
-        phone: '00010',
+        phone: 'MGNM PETIR',
       });
     const { Canvas } = useQRCode();
 
