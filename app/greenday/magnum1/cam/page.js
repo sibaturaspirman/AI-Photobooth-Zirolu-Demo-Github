@@ -118,7 +118,7 @@ export default function Cam() {
             const imageDataUrl = canvas.toDataURL("image/png");
             setImageSrc(imageDataUrl);
 
-            localStorage.setItem('formasiFix', getRandomInt(1,3))
+            // localStorage.setItem('formasiFix', getRandomInt(1,3))
 
         }, 3000);
     }

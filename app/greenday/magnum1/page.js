@@ -5,7 +5,7 @@ import BgWaveCustom from "../../components/BgWaveCustom";
 
 export default function GreendayMagnumHome() {
   return (
-    <Link href='/greenday/magnum1/cam' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+    <Link href='/greenday/magnum1/frame' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
       <BgWaveCustom bg={'/greenday/m-bg.jpg'}></BgWaveCustom>
       <div className="relative w-full flex justify-center items-center flex-col lg:top-[-6rem]">
         <div className='animate-upDown relative w-[35%] lg:w-[40%] mx-auto flex justify-center items-center pointer-events-none'>
