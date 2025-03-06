@@ -18,18 +18,13 @@ function getRandomInt(min, max) {
 
 export default function Register() {
     const router = useRouter();
-    const [character, setCharacter] = useState(null);
-    const [hijab, setHijab] = useState(false);
+    const [nameValid, setNameValid] = useState(false);
     const [payload, setPayload] = useState({
-      name: '',
-      ktp: '',
-      gender: '',
-      rokok: '',
-      jenisrokok: ''
+      name: ''
     });
 
     const isValid = () => {
-      if (payload.name && payload.ktp && payload.ktp.length == 6 && errorUmur && payload.gender && payload.rokok || payload.jenisrokok) return true
+      if (payload.name) return true
       else return false;
     };
 
@@ -42,20 +37,8 @@ export default function Register() {
           [name]: value,
         }));
 
-        // console.log(name)
-        if(name == 'ktp'){
-            // console.log(isAgeValid('99')); // Output: true (umur 25 tahun)
-            // console.log(isAgeValid('03'));
-            if(value.length == 6){
-                // if(value.slice(0,2) >= '99')
-                // console.log(value.slice(0,2))
-                // console.log(isAgeValid(value.slice(0,2)))
-                // if(isAgeValid(value.slice(0,2))) setErrorUmur(false); else setErrorUmur(true);
-
-                // setErrorUmur(isAgeValid(value.slice(0,2)))
-                // console.log(errorUmur)
-            }
-        }
+        if (payload.name) setNameValid(true) 
+            else setNameValid(false)
     };
 
     const generateAI = () => {
@@ -77,17 +60,17 @@ export default function Register() {
         // }
 
         if (typeof localStorage !== 'undefined') {
-            localStorage.setItem("personalityFix", character)
+            localStorage.setItem("nameFix", payload.name.toUpperCase())
         }
 
         setTimeout(() => {
-            router.push('/amildmusic/name');
+            router.push('/amildmusic/result');
         }, 100);
     }
 
     return (
         <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-             <BgWaveCustom bg={'/amild/am-bg.jpg'}></BgWaveCustom>
+            <BgWaveCustom bg={'/amild/am-bg.jpg'}></BgWaveCustom>
             <div className="relative w-[75%] mx-auto mt-0">
             <Image src='/amild/am-title3.png' width={471} height={216} alt='Zirolu' className='w-full' priority />
             </div>
@@ -98,9 +81,10 @@ export default function Register() {
                         <input
                             type='text'
                             value={payload.name}
+                            maxLength={10}
                             id='name'
                             name='name'
-                            className={`w-full text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-2 border-white text-white bg-transparent backdrop-blur ${kanit.className}`}
+                            className={`w-full bg-white text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-8 border-black text-black ${kanit.className}`}
                             placeholder='Isi nama lo'
                             onChange={handleChange}
                         />
@@ -110,7 +94,7 @@ export default function Register() {
                 </div>
             </div>
             {/* !PILIH STYLE */}
-            <div className={`relative w-full flex justify-center items-center mt-0 z-20 ${character ? `` : 'opacity-0 pointer-events-none'}`}>
+            <div className={`relative w-full flex justify-center items-center mt-0 z-20 ${nameValid ? `` : 'opacity-0 pointer-events-none'}`}>
                 <button className="relative mx-auto w-[92%] flex justify-center items-center" onClick={generateAI}>
                     <Image src='/amild/am-next.png' width={550} height={88} alt='Zirolu' className='w-full' priority />
                 </button>
