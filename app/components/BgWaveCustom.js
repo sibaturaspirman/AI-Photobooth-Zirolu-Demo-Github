@@ -18,7 +18,7 @@ export default function BgWaveCustom({ bg }) {
       const drawWave = () => {
         ctx.clearRect(0, 0, width, height);
         for (let y = 0; y < height; y++) {
-          const waveOffset = Math.sin((y + offset) * 2.9) * 12;
+          const waveOffset = Math.sin((y + offset) * .07) * 12;
           ctx.drawImage(image, 0, y, width, 1, waveOffset, y, width, 1);
         }
         offset += 1;
