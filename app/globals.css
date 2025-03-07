@@ -1604,3 +1604,11 @@ body{
   aspect-ratio: 9 / 16;
   object-fit: cover;
 }
+
+.font-outline {
+  text-shadow:
+  -2px -2px 0 #000,  
+   2px -2px 0 #000,
+   -2px 2px 0 #000,
+    2px 2px 0 #000;
+}

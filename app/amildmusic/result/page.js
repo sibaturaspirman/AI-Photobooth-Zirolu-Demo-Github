@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import Image from "next/image";
+import ImageNEXT from "next/image";
 // import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
 // import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 import BgWaveCustom from "../../components/BgWaveCustom";
+import html2canvas from "html2canvas";
 
 export default function Result() {
     const [videoSrc, setVideoSrc] = useState(null);
@@ -17,6 +18,12 @@ export default function Result() {
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [loadingDownload, setLoadingDownload] = useState(null);
     const { Canvas } = useQRCode();
+
+    const [base64Image, setBase64Image] = useState(null);
+    const textRef = useRef(null);
+    const [combinedImage, setCombinedImage] = useState(null);
+    const canvasRef = useRef(null);
+    const textCanvasRef = useRef(null);
 
     useEffect(() => {
         // Perform localStorage action
@@ -30,93 +37,233 @@ export default function Result() {
         }
     }, [musicalFix, personalityFix, nameFix])
 
-    const imageMap = {
-        A: "/amild/notes/equalizer/A.png",
-        B: "/amild/notes/equalizer/B.png",
-        C: "/amild/notes/equalizer/C.png",
-        D: "/amild/notes/equalizer/D.png",
-        E: "/amild/notes/equalizer/E.png",
-        F: "/amild/notes/equalizer/F.png",
-        G: "/amild/notes/equalizer/G.png",
-        H: "/amild/notes/equalizer/H.png",
-        I: "/amild/notes/equalizer/I.png",
-        J: "/amild/notes/equalizer/J.png",
-        K: "/amild/notes/equalizer/K.png",
-        L: "/amild/notes/equalizer/L.png",
-        M: "/amild/notes/equalizer/M.png",
-        N: "/amild/notes/equalizer/N.png",
-        O: "/amild/notes/equalizer/O.png",
-        P: "/amild/notes/equalizer/P.png",
-        Q: "/amild/notes/equalizer/Q.png",
-        R: "/amild/notes/equalizer/R.png",
-        S: "/amild/notes/equalizer/S.png",
-        T: "/amild/notes/equalizer/T.png",
-        U: "/amild/notes/equalizer/U.png",
-        V: "/amild/notes/equalizer/V.png",
-        W: "/amild/notes/equalizer/W.png",
-        X: "/amild/notes/equalizer/X.png",
-        Y: "/amild/notes/equalizer/Y.png",
-        Z: "/amild/notes/equalizer/Z.png",
+    const fontMap = {
+        soundwave: "/amild/notes/soundwave/",
+        notes: "/amild/notes/notes/",
+        equalizer: "/amild/notes/equalizer/",
     };
 
+    useEffect(() => {
+        if (!nameFix) return;
+    
+        const loadImages = async () => {
+          const images = await Promise.all(
+            nameFix.split("").map((char) => {
+              return new Promise((resolve) => {
+                const img = new Image();
+                img.src = `${fontMap[musicalFix]}${char}.png`;
+                img.onload = () => resolve(img);
+                img.onerror = () => resolve(null);
+              });
+            })
+          );
+    
+          // Buat canvas untuk menggabungkan gambar
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          let imgWidth, imgHeight;
+
+          if(musicalFix == 'soundwave'){
+           imgWidth = 27;
+           imgHeight = 75;
+          }else if(musicalFix == 'notes'){
+           imgWidth = 21;
+           imgHeight = 75;
+          }else if(musicalFix == 'equalizer'){
+            imgWidth = 24;
+            imgHeight = 65;
+           }
+
+
+          canvas.width = imgWidth * images.length;
+          canvas.height = imgHeight;
+    
+          images.forEach((img, index) => {
+            if (img) ctx.drawImage(img, index * imgWidth, 0, imgWidth, imgHeight);
+          });
+    
+          // Konversi canvas ke Base64
+          setCombinedImage(canvas.toDataURL("image/png"));
+        };
+    
+        loadImages();
+      }, [nameFix, musicalFix]);
+
+    // Convert text element to base64 image
+    // const convertTextToBase64 = async () => {
+    //     if (textRef.current) {
+    //         const canvas = await html2canvas(textRef.current, {
+    //           backgroundColor: null, // Set transparent background
+    //           useCORS: true,
+    //           scale: 2, // Improve quality
+    //         });
+    //         const ctx = canvas.getContext("2d");
+    //         ctx.globalCompositeOperation = "destination-over";
+    //         ctx.fillStyle = "rgba(255, 255, 255, 0)";
+    //         ctx.fillRect(0, 0, canvas.width, canvas.height);
+    //         setBase64Image(canvas.toDataURL("image/png"));
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     convertTextToBase64();
+    // }, [nameFix]);
+
+    // useEffect(() => {
+    //     if (!nameFix) return;
+    //     const canvas = canvasRef.current;
+    //     const ctx = canvas.getContext("2d");
+    
+    //     // Set canvas size
+    //     canvas.width = 500;
+    //     canvas.height = 200;
+    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    //     // Set transparent background
+    //     ctx.fillStyle = "rgba(255, 255, 255, 0)";
+    //     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    //     // Text styles
+    //     ctx.font = "bold 48px Arial";
+    //     ctx.fillStyle = "#ffffff";
+    //     ctx.textAlign = "center";
+    //     ctx.textBaseline = "middle";
+    //     ctx.fillText(nameFix, canvas.width / 2, canvas.height / 2);
+    
+    //     setBase64Image(canvas.toDataURL("image/png"));
+    //   }, [nameFix]);
+    useEffect(() => {
+        if (!nameFix) return;
+        const canvas = canvasRef.current;
+        const textCanvas = textCanvasRef.current;
+        const ctx = canvas.getContext("2d");
+        const textCtx = textCanvas.getContext("2d");
+        
+        canvas.width = 200;
+        canvas.height = 40;
+        textCanvas.width = 200;
+        textCanvas.height = 40;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        textCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+        
+        textCtx.font = "bold 28px Arial";
+        textCtx.textAlign = "center";
+        textCtx.textBaseline = "middle";
+        textCtx.lineWidth = 6; // Lebar border font
+        textCtx.strokeStyle = "black"; // Warna border font
+        textCtx.fillStyle = "white";
+        textCtx.strokeText(nameFix, textCanvas.width / 2, textCanvas.height / 2);
+        textCtx.fillText(nameFix, textCanvas.width / 2, textCanvas.height / 2);
+        
+        setBase64Image(textCanvas.toDataURL());
+      }, [nameFix]);
+
     const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
+        uploadImage()
     }
     
-    const uploadImage = async (canvas) => {
+    const uploadImage = async () => {
         setLoadingDownload('≈')
 
-        canvas.toBlob(async function(blob) {
-            const options = {
-                method: 'POST',
-                headers: {
-                    'x-app-id':'42b7bfed-5704-4b72-afb0-e006200da02f',
-                    'x-app-key':'3d807490f754f7bce5bed329824914473fa41c3772e0212a1b6d1c0b8b6046ce60f3702e24d5eeacfe011bc6344bf40788230ff849b1d2fd91cfd349759565e2',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "templateId": "d3ffffdc-b6fe-429a-98e1-44fe7aed14b2",
-                    "videoSlug": "the_happy_go_lucky",
-                    "params": [
-                        {
-                            "slug": "soundwave",
-                            "value": "https://antigrvty.s3.ap-southeast-1.amazonaws.com/ffmpeg-assets/1741066947815.png"
-                        },
-                        {
-                            "slug": "name",
-                            "value": "https://antigrvty.s3.ap-southeast-1.amazonaws.com/ffmpeg-assets/1741066972081.png"
-                        }
-                    ]
-                }),
-            };
+        const options = {
+            method: 'POST',
+            headers: {
+                'x-app-id':'42b7bfed-5704-4b72-afb0-e006200da02f',
+                'x-app-key':'3d807490f754f7bce5bed329824914473fa41c3772e0212a1b6d1c0b8b6046ce60f3702e24d5eeacfe011bc6344bf40788230ff849b1d2fd91cfd349759565e2',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "templateId": "d3ffffdc-b6fe-429a-98e1-44fe7aed14b2",
+                "videoSlug": "the_happy_go_lucky",
+                "params": [
+                    {
+                        "slug": "soundwave",
+                        "value": combinedImage
+                    },
+                    {
+                        "slug": "name",
+                        "value": base64Image
+                    }
+                ]
+            }),
+        };
+        
+        await fetch('https://cms-ffmpeg.antigravity.dev/v1/game/submit', options)
+            .then(response => response.blob())
+            .then(response => {
+                const url = URL.createObjectURL(response);
+                setVideoSrc(url);
+                // console.log(response)
+                // setLinkQR(response.file)
+                // setIdFormEmail(response.id)
+                // setGenerateQR('true')
+                setLoadingDownload(null)
+            })
+            .catch(err => {
+                // if (typeof localStorage !== 'undefined') {
+                //     const item = localStorage.getItem('faceURLResult')
+                //     setShowEmail('true')
+                //     setLinkQR(item)
+                //     setGenerateQR('true')
+                //     setLoadingDownload(null)
+                // }
+                console.log(err)
+            });
+
+        // canvas.toBlob(async function(blob) {
+        //     const options = {
+        //         method: 'POST',
+        //         headers: {
+        //             'x-app-id':'42b7bfed-5704-4b72-afb0-e006200da02f',
+        //             'x-app-key':'3d807490f754f7bce5bed329824914473fa41c3772e0212a1b6d1c0b8b6046ce60f3702e24d5eeacfe011bc6344bf40788230ff849b1d2fd91cfd349759565e2',
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "templateId": "d3ffffdc-b6fe-429a-98e1-44fe7aed14b2",
+        //             "videoSlug": "the_happy_go_lucky",
+        //             "params": [
+        //                 {
+        //                     "slug": "soundwave",
+        //                     "value": combinedImage
+        //                 },
+        //                 {
+        //                     "slug": "name",
+        //                     "value": base64Image
+        //                 }
+        //             ]
+        //         }),
+        //     };
             
-            await fetch('https://cms-ffmpeg.antigravity.dev/v1/game/submit', options)
-                .then(response => response.blob())
-                .then(response => {
-                    const url = URL.createObjectURL(response);
-                    setVideoSrc(url);
-                    // console.log(response)
-                    // setLinkQR(response.file)
-                    // setIdFormEmail(response.id)
-                    // setGenerateQR('true')
-                    setLoadingDownload(null)
-                })
-                .catch(err => {
-                    // if (typeof localStorage !== 'undefined') {
-                    //     const item = localStorage.getItem('faceURLResult')
-                    //     setShowEmail('true')
-                    //     setLinkQR(item)
-                    //     setGenerateQR('true')
-                    //     setLoadingDownload(null)
-                    // }
-                    console.log(err)
-                });
-        });
+        //     await fetch('https://cms-ffmpeg.antigravity.dev/v1/game/submit', options)
+        //         .then(response => response.blob())
+        //         .then(response => {
+        //             const url = URL.createObjectURL(response);
+        //             setVideoSrc(url);
+        //             // console.log(response)
+        //             // setLinkQR(response.file)
+        //             // setIdFormEmail(response.id)
+        //             // setGenerateQR('true')
+        //             setLoadingDownload(null)
+        //         })
+        //         .catch(err => {
+        //             // if (typeof localStorage !== 'undefined') {
+        //             //     const item = localStorage.getItem('faceURLResult')
+        //             //     setShowEmail('true')
+        //             //     setLinkQR(item)
+        //             //     setGenerateQR('true')
+        //             //     setLoadingDownload(null)
+        //             // }
+        //             console.log(err)
+        //         });
+        // });
     }
 
     return (
@@ -127,7 +274,7 @@ export default function Result() {
             {generateQR && 
                 <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[80%] mx-auto flex items-center justify-center`}>
-                        <Image src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority />
+                        <ImageNEXT src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority />
                         <div className='absolute w-[90%]'>
                             <div className='relative w-[80%] mt-[9rem] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                                 <Canvas
@@ -146,12 +293,12 @@ export default function Result() {
                             </div>
                             <p className='block text-center text-4xl mt-1 mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p> 
                             <Link href='/primaria' className="relative w-[90%] mx-auto flex justify-center items-center">
-                                <Image src='/primaria/btn-tutup.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
+                                <ImageNEXT src='/primaria/btn-tutup.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
                     {/* <div className={`relative w-[60%] mx-auto mb-3`}>
-                        <Image src='/comcon/zyn/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
+                        <ImageNEXT src='/comcon/zyn/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -170,7 +317,7 @@ export default function Result() {
                     </div>
                     <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-2">
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
-                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            <ImageNEXT src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
                         </a>
                     </div> */}
                     {/* <div className={`w-full mt-10`}>
@@ -179,7 +326,7 @@ export default function Result() {
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/comcon/veev/btn-print.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
+                                    <ImageNEXT src='/comcon/veev/btn-print.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
@@ -188,7 +335,7 @@ export default function Result() {
                     />
                     </div> */}
                     {/* <Link href='/aura' className="relative w-[60%] mx-auto flex justify-center items-center">
-                    <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    <ImageNEXT src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </Link> */}
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
                 </div>
@@ -201,12 +348,12 @@ export default function Result() {
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
                 <div className='absolute z-10 w-[10%]' id='capture'>
                     <div className={`relative w-[full] flex`}>
-                        <Image src={imageResultAI}  width={896} height={1584} alt='Zirolu' className='relative block w-full'></Image>
+                        <ImageNEXT src={imageResultAI}  width={896} height={1584} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
                     <div className={`relative w-[99.2%] flex`}>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                        <ImageNEXT src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
             </div>
@@ -215,38 +362,51 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 
                 <div className="relative w-[60%] mx-auto mt-0">
-                <Image src='/amild/am-ready.png' width={471} height={216} alt='Zirolu' className='w-full' priority />
+                <ImageNEXT src='/amild/am-ready.png' width={471} height={216} alt='Zirolu' className='w-full' priority />
                 </div>
                 
                 <div className='relative w-full mt-10 mb-2 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-[60%]'>
                         <div className="relative w-full mx-auto mt-0 shadow-2xl flex justify-center items-center">
-                            <Image src='/amild/am-polaroid.png' width={442} height={609} alt='Zirolu' className='w-full' priority />
+                            <ImageNEXT src='/amild/am-polaroid.png' width={442} height={609} alt='Zirolu' className='w-full' priority />
 
                             <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center flex-col'>
-                                <div className='relative w-full flex justify-center items-center mb-7'>
+                                <div className='relative w-full flex justify-center items-center mb-7' id='capture'>
                                     {nameFix.split("").map((char, index) => (
                                     <img
                                         key={index}
-                                        src={imageMap[char]}
+                                        src={`${fontMap[musicalFix]}${char}.png`}
                                         alt={char}
-                                        className="w-auto h-[110px]"
+                                        className={`w-auto ${musicalFix == 'soundwave' ? 'h-[115px]' : ''}  ${musicalFix == 'notes' ? 'h-[145px]' : ''} ${musicalFix == 'equalizer' ? 'h-[115px]' : ''}`}
                                     />
                                     ))}
                                 </div>
 
-                                <div className="relative text-4xl text-center text-[#000] font-bold mb-2">
-                                    <p>{nameFix}</p>
+                                {/* Tampilkan Gambar Gabungan */}
+                                {/* {combinedImage && (
+                                    <div className='relative w-full flex justify-center items-center mb-7' id='capture'>
+                                    <img src={combinedImage} alt="Combined Name" className="" />
+                                    </div>
+                                )} */}
+
+                                <div ref={textRef}  className="relative text-4xl text-center text-[#fff] font-bold font-outline tracking-wider">
+                                {nameFix}
                                 </div>
 
+                                {/* {base64Image && (
+                                    <img src={base64Image} alt="Generated Name" className=" mb-5" />
+                                )} */}
+                                 <canvas ref={textCanvasRef} className="hidden" />
+                                <canvas ref={canvasRef} style={{ display: "none" }} />
+
                                 <div className={`${personalityFix == 'the_hopeless_romantic' ? '' : 'hidden'} relative w-[80%] mx-auto mt-0`}>
-                                <Image src='/amild/am-t1.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
+                                <ImageNEXT src='/amild/am-t1.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
                                 </div>
                                 <div className={`${personalityFix == 'the_anti_mainstream' ? '' : 'hidden'} relative w-[80%] mx-auto mt-0`}>
-                                <Image src='/amild/am-t2.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
+                                <ImageNEXT src='/amild/am-t2.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
                                 </div>
                                 <div className={`${personalityFix == 'the_happy_go_lucky' ? '' : 'hidden'} relative w-[80%] mx-auto mt-0`}>
-                                <Image src='/amild/am-t3.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
+                                <ImageNEXT src='/amild/am-t3.png' width={867} height={222} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
 
@@ -275,7 +435,7 @@ export default function Result() {
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                <ImageNEXT src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
@@ -283,13 +443,13 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div>  */}
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/amild/am-audio.png' width={288} height={88} alt='Zirolu' className='w-full' priority />
+                                 <ImageNEXT src='/amild/am-audio.png' width={288} height={88} alt='Zirolu' className='w-full' priority />
                                 </div>
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/amild/am-video.png' width={288} height={88} alt='Zirolu' className='w-full' priority />
+                                <div className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
+                                 <ImageNEXT src='/amild/am-video.png' width={288} height={88} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                     </div>
@@ -297,7 +457,7 @@ export default function Result() {
                     <div className='w-full'>
                         <div className="relative w-[35%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/amildmusic' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/amild/am-back.png' width={307} height={27} alt='Zirolu' className='w-full' priority />
+                            <ImageNEXT src='/amild/am-back.png' width={307} height={27} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
