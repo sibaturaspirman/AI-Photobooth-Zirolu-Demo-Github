@@ -89,49 +89,6 @@ export default function Result() {
         loadImages();
       }, [nameFix, musicalFix]);
 
-    // Convert text element to base64 image
-    // const convertTextToBase64 = async () => {
-    //     if (textRef.current) {
-    //         const canvas = await html2canvas(textRef.current, {
-    //           backgroundColor: null, // Set transparent background
-    //           useCORS: true,
-    //           scale: 2, // Improve quality
-    //         });
-    //         const ctx = canvas.getContext("2d");
-    //         ctx.globalCompositeOperation = "destination-over";
-    //         ctx.fillStyle = "rgba(255, 255, 255, 0)";
-    //         ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //         setBase64Image(canvas.toDataURL("image/png"));
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     convertTextToBase64();
-    // }, [nameFix]);
-
-    // useEffect(() => {
-    //     if (!nameFix) return;
-    //     const canvas = canvasRef.current;
-    //     const ctx = canvas.getContext("2d");
-    
-    //     // Set canvas size
-    //     canvas.width = 500;
-    //     canvas.height = 200;
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    //     // Set transparent background
-    //     ctx.fillStyle = "rgba(255, 255, 255, 0)";
-    //     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    //     // Text styles
-    //     ctx.font = "bold 48px Arial";
-    //     ctx.fillStyle = "#ffffff";
-    //     ctx.textAlign = "center";
-    //     ctx.textBaseline = "middle";
-    //     ctx.fillText(nameFix, canvas.width / 2, canvas.height / 2);
-    
-    //     setBase64Image(canvas.toDataURL("image/png"));
-    //   }, [nameFix]);
     useEffect(() => {
         if (!nameFix) return;
         const canvas = canvasRef.current;
@@ -361,11 +318,11 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 
-                <div className="relative w-[60%] mx-auto mt-0">
+                <div className={`relative w-[60%] mx-auto mt-0 ${loadingDownload ? 'hidden' : ''} `}>
                 <ImageNEXT src='/amild/am-ready.png' width={471} height={216} alt='Zirolu' className='w-full' priority />
                 </div>
                 
-                <div className='relative w-full mt-10 mb-2 mx-auto flex justify-center items-center'>
+                <div className={`relative w-full mt-10 mb-2 mx-auto flex justify-center items-center ${loadingDownload ? 'hidden' : ''} `}>
                     <div className='relative z-10 w-[60%]'>
                         <div className="relative w-full mx-auto mt-0 shadow-2xl flex justify-center items-center">
                             <ImageNEXT src='/amild/am-polaroid.png' width={442} height={609} alt='Zirolu' className='w-full' priority />
@@ -389,7 +346,7 @@ export default function Result() {
                                     </div>
                                 )} */}
 
-                                <div ref={textRef}  className="relative text-4xl text-center text-[#fff] font-bold font-outline tracking-wider">
+                                <div ref={textRef}  className="relative text-4xl text-center text-[#fff] font-bold font-outline tracking-wider mb-5">
                                 {nameFix}
                                 </div>
 
@@ -423,26 +380,17 @@ export default function Result() {
                 </div>
                 
                 {loadingDownload && 
-                    <div className='animate-upDownCepet relative py-6 px-8 mt-5 text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
-                        <p>Please wait, loading...</p>
+                    // <div className='animate-upDownCepet relative py-6 px-8 mt-5 text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
+                    //     <p>Loading, please wait..</p>
+                    // </div>
+
+                    <div className={`relative w-[70%] mx-auto`}>
+                        <ImageNEXT src='/amild/am-loading.png' width={568} height={369} alt='Zirolu' className='animate-upDownCepet w-full' priority />
+                        <p className='text-3xl text-center mt-10 text-[#ccc]'>PLEASE WAIT WHILE WE GENERATE YOUR CUSTOMIZED MUSIC BEAT.</p>
+                        <p className='text-3xl text-center mt-4 text-[#ccc]'>ESTIMATED GENERATE 10-60 SECONDS.</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
-
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
-                    <ReactToPrint
-                    trigger={() => 
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                <ImageNEXT src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    content={() => componentRef}
-                    />
-                    </div>  */}
                     <div className={`w-full`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
