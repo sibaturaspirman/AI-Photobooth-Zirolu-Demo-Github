@@ -25,6 +25,7 @@ module.exports = {
       bgScale3: "bgscale2 200ms ease infinite alternate",
       kiriKanan: "kiriKanan 8500ms linear infinite alternate",
       rotateKiriKanan: "rotateKiriKanan 800ms linear infinite alternate",
+      rotateKiriKanan2: "rotateKiriKanan2 200ms ease infinite alternate",
       loading1: "loading1 9000ms ease infinite",
       loading2: "loading2 5000ms ease infinite",
       countdown: "countdown 3500ms ease 1 alternate",
@@ -85,6 +86,10 @@ module.exports = {
       rotateKiriKanan: {
         "0%": { transform: "rotate(30deg)"},
         "100%": { transform: "rotate(-30deg)"},
+      },
+      rotateKiriKanan2: {
+        "0%": { transform: "rotate(1.2deg)"},
+        "100%": { transform: "rotate(-1.2deg)"},
       },
       loading1: {
         "0%": { transform: "translateY(0%)"},

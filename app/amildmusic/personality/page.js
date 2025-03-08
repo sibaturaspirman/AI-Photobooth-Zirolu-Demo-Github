@@ -28,7 +28,7 @@ export default function Register() {
     const [hijab, setHijab] = useState(false);
 
     const generateAI = () => {
-        // let randomGambar = getRandomInt(1,3)
+        let randomGambar = getRandomInt(1,6)
         // if(character == 'cowok'){
         //     if (typeof localStorage !== 'undefined') {
         //         localStorage.setItem("formasiFix", 'MALE')
@@ -47,6 +47,8 @@ export default function Register() {
 
         if (typeof localStorage !== 'undefined') {
             localStorage.setItem("personalityFix", character)
+            localStorage.setItem("musicFix", randomGambar)
+            localStorage.setItem("personalityMusicFix", character+'_'+randomGambar)
         }
 
         setTimeout(() => {

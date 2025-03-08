@@ -84,10 +84,11 @@ export default function Register() {
                             maxLength={10}
                             id='name'
                             name='name'
-                            className={`w-full bg-white text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-8 border-black text-black ${kanit.className}`}
+                            className={`w-full bg-white text-base lg:text-5xl outline-none py-3 lg:py-8 px-3 lg:px-8 border-4 lg:border-8 border-black text-black ${kanit.className}`}
                             placeholder='Isi nama lo'
                             onChange={handleChange}
                         />
+                        <p className="mt-2 lg:mt-5 text-base lg:text-3xl">Max. 10 characters</p>
                     </div>
                     {/* {payload.name} */}
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
