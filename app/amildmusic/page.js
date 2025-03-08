@@ -7,7 +7,7 @@ export default function AmildMusicHome() {
   return (
     <Link href='/amildmusic/musical' className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-0 lg:pt-0 lg:px-0 mt-0">
       <BgWaveCustom bg={'/amild/am-bg.jpg'}></BgWaveCustom>
-      <div className="relative w-full flex justify-center items-center flex-col top-[-6rem]">
+      <div className="relative w-full flex justify-center items-center flex-col top-[-2rem] lg:top-[-6rem]">
         <div className='animate-upDown relative w-[35%] mx-auto flex justify-center items-center pointer-events-none'>
           <Image src='/amild/am-logo.png' width={304} height={254} alt='Zirolu' className='w-full' priority />
         </div>
