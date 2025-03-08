@@ -328,7 +328,7 @@ export default function Result() {
                             <ImageNEXT src='/amild/am-polaroid.png' width={442} height={609} alt='Zirolu' className='w-full' priority />
 
                             <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center flex-col'>
-                                <div className='relative w-full flex justify-center items-center mb-7' id='capture'>
+                                {/* <div className='relative w-full flex justify-center items-center mb-7' id='capture'>
                                     {nameFix.split("").map((char, index) => (
                                     <img
                                         key={index}
@@ -337,22 +337,22 @@ export default function Result() {
                                         className={`w-auto ${musicalFix == 'soundwave' ? 'h-[115px]' : ''}  ${musicalFix == 'notes' ? 'h-[145px]' : ''} ${musicalFix == 'equalizer' ? 'h-[115px]' : ''}`}
                                     />
                                     ))}
-                                </div>
+                                </div> */}
 
                                 {/* Tampilkan Gambar Gabungan */}
-                                {/* {combinedImage && (
-                                    <div className='relative w-full flex justify-center items-center mb-7' id='capture'>
-                                    <img src={combinedImage} alt="Combined Name" className="" />
+                                {combinedImage && (
+                                    <div className='relative w-full flex justify-center items-center mb-3 lg:mb-7' id='capture'>
+                                    <img src={combinedImage} alt="Combined Name" className="w-[80%]" />
                                     </div>
-                                )} */}
+                                )}
 
-                                <div ref={textRef}  className="relative text-4xl text-center text-[#fff] font-bold font-outline tracking-wider mb-5">
+                                {/* <div ref={textRef}  className="relative text-4xl text-center text-[#fff] font-bold font-outline tracking-wider mb-5">
                                 {nameFix}
-                                </div>
+                                </div> */}
 
-                                {/* {base64Image && (
-                                    <img src={base64Image} alt="Generated Name" className=" mb-5" />
-                                )} */}
+                                {base64Image && (
+                                    <img src={base64Image} alt="Generated Name" className="w-[60%] mb-2 lg:mb-5" />
+                                )}
                                  <canvas ref={textCanvasRef} className="hidden" />
                                 <canvas ref={canvasRef} style={{ display: "none" }} />
 
