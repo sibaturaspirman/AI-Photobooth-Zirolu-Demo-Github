@@ -22,7 +22,7 @@ export default function Apakah() {
     const [Name, setName] = useState(null);
     const [slideIndex, setSlideIndex] = useState(0);
     const [slideIndex2, setSlideIndex2] = useState(0);
-    const [moodType, setMoodType] = useState('emotional');
+    const [moodType, setMoodType] = useState('gakbutuhrehat');
     const [swipeTrigger, setSwipeTrigger] = useState(false);
     const [sliderProgress, setSliderProgress] = useState(0);
     const [sliderProgress2, setSliderProgress2] = useState(0);
@@ -42,6 +42,10 @@ export default function Apakah() {
     }, [swipeTrigger, countdownStart, maxDuration])
 
     const generateAura = async () => {
+        // console.log(moodType)
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("moodFix", moodType)
+        }
         setTimeout(() => {
             router.push('/dss-rehat/genre');
         }, 100);
@@ -52,13 +56,16 @@ export default function Apakah() {
         const tempSliderValue = e.target.value; 
         setSliderProgress(e.target.value)
         const progress = (tempSliderValue / 100) * 100;
-        console.log(progress)
+        // console.log(progress)
 
         let progressBagi = progress / 33;
         setSlideIndex(progressBagi)
-        if(progressBagi == 0) setMoodType('emotional')
-        else if(progressBagi == 1) setMoodType('energetic')
-        else if(progressBagi == 2) setMoodType('loveanthem')
+        if(progressBagi == 0) setMoodType('gakbutuhrehat')
+        else if(progressBagi == 1) setMoodType('belumtahu')
+        else if(progressBagi == 2) setMoodType('mulaibutuh')
+        else if(progressBagi == 3) setMoodType('banget')
+
+        // console.log(moodType)
     }
 
     // COUNTDOWN

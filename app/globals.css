@@ -556,7 +556,8 @@ body{
 
 .choose.mod11 [type="radio"]:checked + label{
   /* transform: scale(1.1) !important; */
-  border-color: #fff;
+  border-color: #DFBE4E;
+  border-radius: 15px;
 }
 .choose.mod11 li{
   padding: 5px;

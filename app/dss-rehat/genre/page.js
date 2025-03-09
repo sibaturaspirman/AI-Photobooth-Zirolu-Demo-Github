@@ -22,8 +22,8 @@ export default function Frame() {
     };
 
     const handleSubmit = () => {
-        localStorage.setItem('PMR_frame', payload.frame)
-        setCookie('PMR_frame', payload.frame);
+        localStorage.setItem('genreFIX', payload.frame)
+        setCookie('genreFIX', payload.frame);
         setTimeout(() => {
             router.push('/dss-rehat/cam');
         }, 250);
@@ -43,7 +43,7 @@ export default function Frame() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value='CAFE'
+                                value='jazz'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -67,7 +67,7 @@ export default function Frame() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="BEACH"
+                                value="pop"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -91,7 +91,7 @@ export default function Frame() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value='FOREST'
+                                value='rb'
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
@@ -115,7 +115,7 @@ export default function Frame() {
                                 id='choose_style4'
                                 type="radio"
                                 name='choose_style'
-                                value="KARAOKE"
+                                value="rock"
                                 onChange={(e) => 
                                     setPayload((prev) => ({
                                         ...prev,
