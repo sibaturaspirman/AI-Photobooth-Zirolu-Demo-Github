@@ -1,16 +1,26 @@
 'use client';
 
-// import * as fal from '@fal-ai/serverless-client';
+import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { getCookie } from 'cookies-next';
 import Image from "next/image";
 // import Link from 'next/link';
 // import TopLogoPrimaria from "../../components/TopLogoPrimaria";
 import { useRouter } from 'next/navigation';
-import PadmaAIClient from "padmaai-client";
+// import PadmaAIClient from "padmaai-client";
 
-import { Kanit} from "next/font/google";
-const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
+// import { Kanit} from "next/font/google";
+// const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
+
+
+// @snippet:start(client.config)
+fal.config({
+    // credentials: 'FAL_KEY_ID:FAL_KEY_SECRET',
+    requestMiddleware: fal.withProxy({
+      targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
+      // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
+    }),
+});
 
 
 let streamCam = null;
@@ -31,7 +41,7 @@ const useWebcam = ({
     }, [videoRef]);
 };
 
-let FACE_URL_RESULT = '', genderOpsi = '', framePrompt = ''
+let FACE_URL_RESULT = '', genderOpsi = '', framePrompt = '', imageURL = ''
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
@@ -129,8 +139,8 @@ export default function Cam() {
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
-    const [masalah, setMasalah] = useState(null);
-    const [frame, setFrame] = useState(null);
+    const [moodFix, setMoodFix] = useState(null);
+    const [genreFix, setGenreFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -146,20 +156,49 @@ export default function Cam() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item2 = localStorage.getItem('formasiFix')
-            const item3 = localStorage.getItem('PMR_masalah')
-            const item4 = localStorage.getItem('PMR_frame')
+            const item3 = localStorage.getItem('moodFix')
+            const item4 = localStorage.getItem('genreFix')
             setFormasiFix(item2)
-            setMasalah(item3)
-            setFrame(item4)
+            setMoodFix(item3)
+            setGenreFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "ea0781fc-2be0-4fb3-9c33-e6a05b176caf");
-        setPadmaAI(aiInstance);
         
-    }, [styleFix, formasiFix, masalah, frame])
+    }, [formasiFix, moodFix, genreFix])
 
     const generateAI = async () => {
+        console.log(moodFix)
+        console.log(genreFix)
+
+        if((moodFix == 'gakbutuhrehat' && genreFix == 'jazz') || (moodFix == 'gakbutuhrehat' && genreFix == 'rb')){
+            imageURL = 'https://ai.zirolu.id/dss/face/cafeday-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo ambil secangkir kopi untuk sekedar menarik nafas.')
+        }else if((moodFix == 'gakbutuhrehat' && genreFix == 'pop') || (moodFix == 'gakbutuhrehat' && genreFix == 'rock')){
+            imageURL = 'https://ai.zirolu.id/dss/face/cafenight-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo catch up sama temen lo di penghujung hari untuk mencari inspirasi.')
+        }else if((moodFix == 'belumtahu' && genreFix == 'jazz') || (moodFix == 'belumtahu' && genreFix == 'rb')){
+            imageURL = 'https://ai.zirolu.id/dss/face/beachday-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba berjalan di pantai dan biarkan suara ombak menenangkan dirimu.')
+        }else if((moodFix == 'belumtahu' && genreFix == 'pop') || (moodFix == 'belumtahu' && genreFix == 'rock')){
+            imageURL = 'https://ai.zirolu.id/dss/face/beachnight-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Matahari aja perlu rehat, masa kamu engga? coba istirahat sejenak sambil nikmati Sunset.')
+        }else if((moodFix == 'mulaibutuh' && genreFix == 'jazz') || (moodFix == 'mulaibutuh' && genreFix == 'rb')){
+            imageURL = 'https://ai.zirolu.id/dss/face/karaokeday-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Ga ada salahnya lo memulai gebrakan baru dengan karaoke bersama team di kubikel!')
+        }else if((moodFix == 'mulaibutuh' && genreFix == 'pop') || (moodFix == 'mulaibutuh' && genreFix == 'rock')){
+            imageURL = 'https://ai.zirolu.id/dss/face/karaokenight-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Agendakan karaoke night seru bersama teman kantor hari Rabu ini!')
+        }else if((moodFix == 'banget' && genreFix == 'jazz') || (moodFix == 'banget' && genreFix == 'rb')){
+            imageURL = 'https://ai.zirolu.id/dss/face/campingday-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Nikmati rehat di antara rimbunnya pepohonan.')
+        }else if((moodFix == 'banget' && genreFix == 'pop') || (moodFix == 'banget' && genreFix == 'rock')){
+            imageURL = 'https://ai.zirolu.id/dss/face/campingnight-'+formasiFix+'.jpg'
+            localStorage.setItem('quoteFix', 'Mari nikmati waktu rehat di bawah langit penuh bintang.')
+        }
+
+        console.log(imageURL)
+
         setNumProses1(true)
-        generateImageSwapBaru()
+        generateImageSwap()
     }
 
     const reset2 = () => {
@@ -178,91 +217,60 @@ export default function Cam() {
 
     // MALE_KAMAR, MALE_OFFICE, FEMALE_KAMAR, FEMALE_OFFICE
 
-    const generateImageSwapBaru = async () => {
-        // console.log(formasiFix)
-        // console.log(masalah)
-        // framePrompt = masalah+frame
+    const generateImageSwap = async () => {
 
-        // if(masalah == 'DEADLINE' || masalah == 'DIMARAHIN' || masalah == 'LEMBUR'){
-        //     genderOpsi = formasiFix+'_'+frame
-        // }else if(masalah == 'BOKEK' || masalah == 'DITIKUNG' || masalah == 'PUTUS'){
-        //     genderOpsi = formasiFix+'_HANGOUT'
-        // }else{
-        //     genderOpsi = formasiFix+'_KAMAR'
-        // }
+        // STOP CAM
+        // streamCam.getTracks().forEach(function(track) {
+        //     track.stop();
+        // });
 
-        genderOpsi = formasiFix+'_'+frame
-
-        // console.log(genderOpsi)
-        // console.log(framePrompt)
-
-        padmaAI.onProgress((progress) => {
-            // setProgress(progress.type); // Update the progress state
-            // console.log("Progress:", progress); // Optional: log progress for debugging
-            if(progress.type == 'executing'){
-                setProgressText("Executing")
-            }else if(progress.type == 'progress'){
-                setProgressText("Progress : ")
-                setProgressPersen(progress.progress+'%')
-            }else if(progress.type == 'executed'){
-                setProgressText("Done!")
-                // setProgressPersen('Direct...')
-            }
-
-          });
-          
-          try {
-            // Generate the image
-            const result = await padmaAI.generateImages(imageFile, genderOpsi, 'DEFAULT');
-            // setImageUrl(result.imgUrl); // Assuming the image URL is returned
-
-            FACE_URL_RESULT= result.imgUrl;
-
-            toDataURL(FACE_URL_RESULT)
-            .then(async dataUrl => {
-                if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("resulAIBase64", dataUrl)
-                    localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+        setNumProses(2)
+        reset2();
+        // @snippet:start("client.queue.subscribe")
+        setLoading(true);
+        const start = Date.now();
+        try {
+        const result = await fal.subscribe(
+            'fal-ai/face-swap',
+            {
+            input: {
+                base_image_url: imageURL,
+                swap_image_url: imageFile
+            },
+            pollInterval: 5000, // Default is 1000 (every 1s)
+            logs: true,
+            onQueueUpdate(update) {
+                setElapsedTime(Date.now() - start);
+                if (
+                update.status === 'IN_PROGRESS' ||
+                update.status === 'COMPLETED'
+                ) {
+                setLogs((update.logs || []).map((log) => log.message));
                 }
-                setTimeout(() => {
-                    router.push('/dss-rehat/result2');
-                }, 200);
-                // const options = {
-                //     method: 'POST',
-                //     body: JSON.stringify({
-                //         "name":getCookie('PMR_name'),
-                //         "ktp6":getCookie('PMR_ktp'),
-                //         "gender":getCookie('PMR_gender'),
-                //         "isSmoker":true,
-                //         "problem":masalah,
-                //         "cigaretteBrand":getCookie('PMR_jenisrokok'),
-                //         "totemLocation":"Jakarta",
-                //         "imageURL":FACE_URL_RESULT
-                //     }),
-                //     headers: {
-                //         'x-api-key': process.env.API_KEY_PRIMARIA,
-                //         'Accept': 'application/json',
-                //         'Content-Type': 'application/json'
-                //     }
-                // };
-                
-                // await fetch(process.env.API_URL_PRIMARIA, options)
-                //     .then(response => response.json())
-                //     .then(response => {
-                //         console.log(response)
-                //         // router.push('/primaria/result2');
-                //         location.href = '/primaria/result2'
-                //     })
-                //     .catch(err => {
-                //         console.log(err)
-                //     });
-            })
-            // console.log(FACE_URL_RESULT)
+            },
+            }
+        );
+        setResultFaceSwap(result);
+        FACE_URL_RESULT= result.image.url;
 
-          } catch (error) {
-            console.error("Error generating image:", error);
-          }
-    }
+        toDataURL(FACE_URL_RESULT)
+        .then(dataUrl => {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("resulAIBase64", dataUrl)
+                localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+            }
+            setTimeout(() => {
+                router.push('/dss-rehat/result2');
+            }, 200);
+        })
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+        // @snippet:end
+    };
 
     return (
         <main className="flex fixed h-full w-full bg-dss overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -330,12 +338,15 @@ export default function Cam() {
 
             {numProses1 && 
             <div className={`relative w-[90%]`}>
-                <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
-                    <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
-                    <p>{`Sedang meng-capture moment lo!`}</p>
-                    <p>&nbsp; {progressPersen}</p>
+                <div className='animate-upDownCepet relative flex justify-center items-center flex-col py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
+                    <div className='flex justify-center items-center w-full'>
+                        <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
+                        <p>{`Photo sedang di proses...`}</p>
+                    </div>
+                    
+                    {/* <p>&nbsp; {progressPersen}</p> */}
                     {/* <p>{progressText} {progressPersen}</p> */}
-                        {/* <p>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik (${numProses}/2)`}</p> */}
+                        <p className='mt-2'>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik`}</p>
                     {error}
                 </div>
             </div>

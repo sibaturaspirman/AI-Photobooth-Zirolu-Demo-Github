@@ -52,7 +52,7 @@ export default function Result() {
             // const item3 = localStorage.getItem('formasiFix')
             // const item4 = localStorage.getItem('auraFix')
             // const item5 = localStorage.getItem('PMR_masalah')
-            const item6 = localStorage.getItem('PMR_frame')
+            const item6 = localStorage.getItem('quoteFix')
             setImageResultAI(item2)
             // setImageResultAI2(item2)
             // setAuraFix(item4)
@@ -91,9 +91,10 @@ export default function Result() {
             {generateQR && 
                 <div className='absolute top-0 lg:top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[80%] mx-auto flex items-center justify-center`}>
-                        <Image src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority />
-                        <div className='absolute w-[90%]'>
-                            <div className='relative w-[80%] mt-16 lg:mt-[9rem] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
+                        {/* <Image src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority /> */}
+                        <div className='relative w-[90%]'>
+                            <Image src='/dss/scan.png' width={744} height={224} alt='Zirolu' className='w-full mb-10' priority /> 
+                            <div className='relative w-[80%] mt-0 lg:mt-[0] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                                 <Canvas
                                 text={linkQR}
                                 options={{
@@ -108,8 +109,8 @@ export default function Result() {
                                 }}
                                 />
                             </div>
-                            <p className='block text-center text-base lg:text-4xl mt-2 lg:mt-1 lg:mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p> 
-                            <Link href='/dss-rehat' className="relative w-[90%] mx-auto flex justify-center items-center">
+                            {/* <p className='block text-center text-base lg:text-4xl mt-2 lg:mt-1 lg:mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p>  */}
+                            <Link href='/dss-rehat' className="relative w-[80%] mx-auto flex justify-center items-center pt-[8rem]">
                                 <Image src='/dss/btn-selesai.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
@@ -179,30 +180,13 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full lg:mt-10 mb-2 mx-auto flex justify-center items-center flex-col'>
-                    {frame == 'CAFE' &&
-                    <div className='relative w-full mb-8'>
-                        <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>CAFE DAY</h1>
-                        <p className={`text-center w-[80%] mx-auto text-3xl ${kanit.className}`}>Gak ada salahnya lo ambil secangkir kopi untuk sekadar menarik napas.</p>
+                    <div className="relative w-[70%] mx-auto mt-[-2rem]">
+                    <Image src='/dss/inihasilnya.png' width={690} height={112} alt='Zirolu' className='w-full' priority />
                     </div>
-                    }
-                    {frame == 'BEACH' &&
-                    <div className='relative w-full mb-8'>
-                        <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>BEACH DAY</h1>
-                        <p className={`text-center w-[80%] mx-auto text-3xl ${kanit.className}`}>Gak ada salahnya lo ambil secangkir kopi untuk sekadar menarik napas.</p>
+                    <div className='relative w-full mb-8 mt-[-1.4rem]'>
+                        {/* <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>KARAOKE DAY</h1> */}
+                        <p className={`text-center w-[90%] mx-auto text-3xl ${kanit.className}`}>{frame}</p>
                     </div>
-                    }
-                    {frame == 'FOREST' &&
-                    <div className='relative w-full mb-8'>
-                        <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>FOREST DAY</h1>
-                        <p className={`text-center w-[80%] mx-auto text-3xl ${kanit.className}`}>Gak ada salahnya lo ambil secangkir kopi untuk sekadar menarik napas.</p>
-                    </div>
-                    }
-                    {frame == 'KARAOKE' &&
-                    <div className='relative w-full mb-8'>
-                        <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>KARAOKE DAY</h1>
-                        <p className={`text-center w-[80%] mx-auto text-3xl ${kanit.className}`}>Gak ada salahnya lo ambil secangkir kopi untuk sekadar menarik napas.</p>
-                    </div>
-                    }
                     <div className='relative z-10 w-[60%] lg:w-[80%]'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={824} height={1064} alt='Zirolu' className='relative top-0 mx-auto w-full block'></Image>
@@ -218,9 +202,12 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='animate-upDownCepet relative py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold'>
-                        <p>Tunggu sebentar...</p>
+                <div className='animate-upDownCepet relative flex justify-center items-center flex-col py-2 lg:py-6 px-2 lg:px-8 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
+                    <div className='flex justify-center items-center w-full'>
+                        <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
+                        <p>{`Tunggu sebentar...`}</p>
                     </div>
+                </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
@@ -239,8 +226,8 @@ export default function Result() {
                     />
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
-                        <div className={`w-full mt-2`}>
-                            <div className="relative w-[70%] lg:w-[70%] mx-auto flex justify-center items-center flex-col">
+                        <div className={`w-full mt-6`}>
+                            <div className="relative w-[70%] lg:w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                  <Image src='/dss/btn-collect.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                                 </div>
