@@ -1156,6 +1156,11 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-dss-front2{
+  background-image: url(../public/dss/bgpattern.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 .bg-dss{
   background-image: url(../public/dss/bg.jpg);
   background-size: cover;
