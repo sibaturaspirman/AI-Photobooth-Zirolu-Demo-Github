@@ -110,7 +110,7 @@ export default function Result() {
                                 />
                             </div>
                             {/* <p className='block text-center text-base lg:text-4xl mt-2 lg:mt-1 lg:mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p>  */}
-                            <Link href='/dss-rehat' className="relative w-[80%] mx-auto flex justify-center items-center pt-[8rem]">
+                            <Link href='/dss-rehat/home2' className="relative w-[80%] mx-auto flex justify-center items-center pt-[8rem]">
                                 <Image src='/dss/btn-selesai.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
@@ -237,7 +237,7 @@ export default function Result() {
 
                     <div className='w-full'>
                         <div className="relative w-[65%] lg:w-[50%] pt-10 mx-auto flex justify-center items-center flex-col">
-                            <Link href='/dss-rehat' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/dss-rehat/home2' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/dss/btn-selesai.png' width={819} height={126} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

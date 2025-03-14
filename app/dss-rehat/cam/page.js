@@ -278,7 +278,7 @@ export default function Cam() {
            {/* <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 px-10 lg:px-0 ${kanit.className}`}>Tunjukin ekspresi ketawa lo yang paling lepas bebas</h1> */}
 
            
-           <div className="relative w-[70%] mx-auto mt-[-24rem]">
+           <div className="relative w-[70%] mx-auto mt-[-15rem]">
             <Image src='/dss/ambilfoto2.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
 
@@ -308,7 +308,7 @@ export default function Cam() {
                         <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
                     </div>
 
-                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <video ref={videoRef} className={`w-[90%] videoRatio1 mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>

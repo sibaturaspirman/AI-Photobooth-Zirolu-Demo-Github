@@ -17,7 +17,7 @@ export default function PrimariaHome() {
         
         const message = JSON.parse(decodedMessage);
         if (message.action === 'back' && message.value === '*') {
-          router.push('/dss-rehat'); // Ganti dengan halaman tujuan
+          router.push('/dss-rehat/home'); // Ganti dengan halaman tujuan
         }
       } catch (error) {
         console.error('Gagal mendekode atau mengurai pesan:', error);
