@@ -41,7 +41,7 @@ export default function Age() {
         </div>
         <div className='relative w-full mx-auto flex justify-center items-center mt-5'>
           <select 
-            className="border-[#ECC953] border-4 p-4 w-[80%] text-white text-3xl bg-transparent" 
+            className="border-[#ECC953] border-4 p-4 w-[80%] bg-white text-black text-3xl bg-transparent" 
             value={month} 
             onChange={(e) => setMonth(Number(e.target.value))}
           >
@@ -51,7 +51,7 @@ export default function Age() {
             ))}
           </select>
           <select 
-            className="border-[#ECC953] border-4 p-4 w-[80%] text-white ml-4 text-3xl bg-transparent" 
+            className="border-[#ECC953] border-4 p-4 w-[80%] bg-white text-black ml-4 text-3xl bg-transparent" 
             value={year} 
             onChange={(e) => setYear(Number(e.target.value))}
           >
