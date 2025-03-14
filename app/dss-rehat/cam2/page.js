@@ -270,8 +270,8 @@ export default function Cam() {
            {/* <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 px-10 lg:px-0 ${kanit.className}`}>Tunjukin ekspresi ketawa lo yang paling lepas bebas</h1> */}
 
            
-           <div className="relative w-[70%] mx-auto mt-[-17rem]">
-            <Image src='/dss/ambilfoto.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
+           <div className="relative w-[70%] mx-auto mt-[-24rem]">
+            <Image src='/dss/ambilfoto2.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
 
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
