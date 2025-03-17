@@ -13,7 +13,7 @@ import { Kanit} from "next/font/google";
 const kanit = Kanit({ subsets: ["latin"], weight: ['400','700'] });
 
 
-let streamCam = null;
+let streamCam = null, formasiBetulan = '';
 const useWebcam = ({
     videoRef
   }) => {
@@ -129,8 +129,8 @@ export default function Cam() {
     const [styleFix2, setStyleFix2] = useState(null);
     const [styleFix3, setStyleFix3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
-    const [masalah, setMasalah] = useState(null);
-    const [frame, setFrame] = useState(null);
+    const [moodFix, setMoodFix] = useState(null);
+    const [genreFix, setGenreFix] = useState(null);
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -146,19 +146,49 @@ export default function Cam() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item2 = localStorage.getItem('formasiFix')
-            const item3 = localStorage.getItem('PMR_masalah')
-            const item4 = localStorage.getItem('PMR_frame')
+            const item3 = localStorage.getItem('moodFix')
+            const item4 = localStorage.getItem('genreFix')
             setFormasiFix(item2)
-            setMasalah(item3)
-            setFrame(item4)
+            setMoodFix(item3)
+            setGenreFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "ea0781fc-2be0-4fb3-9c33-e6a05b176caf");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "46f68aff-edef-4185-b1cb-5050e2c3f890");
         setPadmaAI(aiInstance);
         
-    }, [styleFix, formasiFix, masalah, frame])
+    }, [styleFix, formasiFix, moodFix, genreFix])
 
     const generateAI = async () => {
         setNumProses1(true)
+
+        // MALE_BEACHDAY, FEMALE_BEACHDAY, HIJAB_BEACHDAY,
+        // MALE_BEACHNIGHT, FEMALE_BEACHNIGHT, HIJAB_BEACHNIGHT,
+        // MALE_CAFEDAY, FEMALE_CAFEDAY, HIJAB_CAFEDAY,
+        // MALE_CAFENIGHT, FEMALE_CAFENIGHT, HIJAB_CAFENIGHT,
+        // MALE_CAMPINGDAY, FEMALE_CAMPINGDAY, HIJAB_CAMPINGDAY,
+        // MALE_CAMPINGNIGHT, FEMALE_CAMPINGNIGHT, HIJAB_CAMPINGNIGHT,
+        // MALE_KAROKEDAY, FEMALE_KAROKEDAY, HIJAB_KAROKEDAY,
+        // MALE_KAROKENIGHT, FEMALE_KAROKENIGHT, HIJAB_KAROKENIGHT,
+
+        if((moodFix == 'gakbutuhrehat' && genreFix == 'jazz') || (moodFix == 'gakbutuhrehat' && genreFix == 'rb')){
+            formasiBetulan = formasiFix+'_CAFEDAY'
+        }else if((moodFix == 'gakbutuhrehat' && genreFix == 'pop') || (moodFix == 'gakbutuhrehat' && genreFix == 'rock')){
+            formasiBetulan = formasiFix+'_CAFENIGHT'
+        }else if((moodFix == 'belumtahu' && genreFix == 'jazz') || (moodFix == 'belumtahu' && genreFix == 'rb')){
+            formasiBetulan = formasiFix+'_BEACHDAY'
+        }else if((moodFix == 'belumtahu' && genreFix == 'pop') || (moodFix == 'belumtahu' && genreFix == 'rock')){
+            formasiBetulan = formasiFix+'_BEACHNIGHT'
+        }else if((moodFix == 'mulaibutuh' && genreFix == 'jazz') || (moodFix == 'mulaibutuh' && genreFix == 'rb')){
+            formasiBetulan = formasiFix+'_KAROKEDAY'
+        }else if((moodFix == 'mulaibutuh' && genreFix == 'pop') || (moodFix == 'mulaibutuh' && genreFix == 'rock')){
+            formasiBetulan = formasiFix+'_KAROKENIGHT'
+        }else if((moodFix == 'banget' && genreFix == 'jazz') || (moodFix == 'banget' && genreFix == 'rb')){
+            formasiBetulan = formasiFix+'_CAMPINGDAY'
+        }else if((moodFix == 'banget' && genreFix == 'pop') || (moodFix == 'banget' && genreFix == 'rock')){
+            formasiBetulan = formasiFix+'_CAMPINGNIGHT'
+        }
+
+        console.log(formasiBetulan)
+
         generateImageSwapBaru()
     }
 
@@ -191,14 +221,15 @@ export default function Cam() {
         //     genderOpsi = formasiFix+'_KAMAR'
         // }
 
-        genderOpsi = formasiFix+'_'+frame
+        // genderOpsi = formasiFix+'_'+frame
 
         // console.log(genderOpsi)
         // console.log(framePrompt)
 
         padmaAI.onProgress((progress) => {
             // setProgress(progress.type); // Update the progress state
-            // console.log("Progress:", progress); // Optional: log progress for debugging
+            console.log("Progress:", progress); // Optional: log progress for debugging
+            console.log("Progress:", progress.progress); // Optional: log progress for debugging
             if(progress.type == 'executing'){
                 setProgressText("Executing")
             }else if(progress.type == 'progress'){
@@ -213,7 +244,7 @@ export default function Cam() {
           
           try {
             // Generate the image
-            const result = await padmaAI.generateImages(imageFile, genderOpsi, 'DEFAULT');
+            const result = await padmaAI.swapImages(imageFile, formasiBetulan);
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
 
             FACE_URL_RESULT= result.imgUrl;
@@ -270,7 +301,7 @@ export default function Cam() {
            {/* <h1 className={`text-center text-xl lg:text-6xl font-medium mt-1 lg:mt-10 px-10 lg:px-0 ${kanit.className}`}>Tunjukin ekspresi ketawa lo yang paling lepas bebas</h1> */}
 
            
-           <div className="relative w-[70%] mx-auto mt-[-24rem]">
+           <div className="relative w-[70%] mx-auto mt-[-15rem]">
             <Image src='/dss/ambilfoto2.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
 
@@ -300,7 +331,7 @@ export default function Cam() {
                         <Image src='/scan-line2.png' width={656} height={240} alt='Zirolu' className='w-full' priority />
                     </div>
 
-                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <video ref={videoRef} className={`w-[90%] videoRatio1 mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
@@ -332,8 +363,8 @@ export default function Cam() {
             <div className={`relative w-[90%]`}>
                 <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
                     <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
-                    <p>{`Sedang meng-capture moment lo!`}</p>
-                    <p>&nbsp; {progressPersen}</p>
+                    <p>{`Photo sedang di proses...`}</p>
+                    {/* <p>&nbsp; {progressPersen}</p> */}
                     {/* <p>{progressText} {progressPersen}</p> */}
                         {/* <p>{`AI Proses : ${(elapsedTime / 1000).toFixed(2)} detik (${numProses}/2)`}</p> */}
                     {error}

@@ -25,7 +25,7 @@ export default function Frame() {
         localStorage.setItem('genreFix', payload.frame)
         setCookie('genreFix', payload.frame);
         setTimeout(() => {
-            router.push('/dss-rehat/cam');
+            router.push('/dss-rehat/cam2');
         }, 250);
     }
     return (
