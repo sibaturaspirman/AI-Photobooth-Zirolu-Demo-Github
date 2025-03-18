@@ -171,20 +171,28 @@ export default function Cam() {
 
         if((moodFix == 'gakbutuhrehat' && genreFix == 'jazz') || (moodFix == 'gakbutuhrehat' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_CAFEDAY'
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo ambil secangkir kopi untuk sekedar menarik nafas.')
         }else if((moodFix == 'gakbutuhrehat' && genreFix == 'pop') || (moodFix == 'gakbutuhrehat' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_CAFENIGHT'
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo catch up sama temen lo di penghujung h
         }else if((moodFix == 'belumtahu' && genreFix == 'jazz') || (moodFix == 'belumtahu' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_BEACHDAY'
+            localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba berjalan di pantai dan biarkan suara ombak menenangkan dirimu.')
         }else if((moodFix == 'belumtahu' && genreFix == 'pop') || (moodFix == 'belumtahu' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_BEACHNIGHT'
+            localStorage.setItem('quoteFix', 'Matahari aja perlu rehat, masa kamu engga? coba istirahat sejenak sambil nikmati Sunset.')
         }else if((moodFix == 'mulaibutuh' && genreFix == 'jazz') || (moodFix == 'mulaibutuh' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_KAROKEDAY'
+            localStorage.setItem('quoteFix', 'Ga ada salahnya lo memulai gebrakan baru dengan karaoke bersama team di kubikel!')
         }else if((moodFix == 'mulaibutuh' && genreFix == 'pop') || (moodFix == 'mulaibutuh' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_KAROKENIGHT'
+            localStorage.setItem('quoteFix', 'Agendakan karaoke night seru bersama teman kantor hari Rabu ini!')
         }else if((moodFix == 'banget' && genreFix == 'jazz') || (moodFix == 'banget' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_CAMPINGDAY'
+            localStorage.setItem('quoteFix', 'Nikmati rehat di antara rimbunnya pepohonan.')
         }else if((moodFix == 'banget' && genreFix == 'pop') || (moodFix == 'banget' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_CAMPINGNIGHT'
+            localStorage.setItem('quoteFix', 'Mari nikmati waktu rehat di bawah langit penuh bintang.')
         }
 
         console.log(formasiBetulan)
