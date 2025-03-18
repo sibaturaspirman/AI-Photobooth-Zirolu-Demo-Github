@@ -174,7 +174,7 @@ export default function Cam() {
             localStorage.setItem('quoteFix', 'Gak ada salahnya lo ambil secangkir kopi untuk sekedar menarik nafas.')
         }else if((moodFix == 'gakbutuhrehat' && genreFix == 'pop') || (moodFix == 'gakbutuhrehat' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_CAFENIGHT'
-            localStorage.setItem('quoteFix', 'Gak ada salahnya lo catch up sama temen lo di penghujung h
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo catch up sama temen lo di penghujung hari untuk mencari inspirasi.')
         }else if((moodFix == 'belumtahu' && genreFix == 'jazz') || (moodFix == 'belumtahu' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_BEACHDAY'
             localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba berjalan di pantai dan biarkan suara ombak menenangkan dirimu.')
