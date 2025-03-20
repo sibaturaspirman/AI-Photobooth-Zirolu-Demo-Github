@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={outfit.className}><audio ref={audioRef} src="/dss/BGM.webm" loop autoPlay></audio>{children}</body>
+      <body className={outfit.className}>
+        {/* <audio ref={audioRef} src="/dss/BGM.webm" loop autoPlay></audio> */}
+        {children}</body>
       {/* <GoogleTagManager gtmId="G-3YWLPQZ3JQ" /> */}
       <GoogleAnalytics gaId="G-3YWLPQZ3JQ" />
     </html>
