@@ -16,17 +16,17 @@ const outfit = Outfit({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   const audioRef = useRef(null);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      const playAudio = () => {
-        audioRef.current.play().catch((error) => {
-          console.error('Autoplay gagal:', error);
-        });
-      };
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     const playAudio = () => {
+  //       audioRef.current.play().catch((error) => {
+  //         console.error('Autoplay gagal:', error);
+  //       });
+  //     };
       
-      document.addEventListener('click', playAudio, { once: true });
-    }
-  }, []);
+  //     document.addEventListener('click', playAudio, { once: true });
+  //   }
+  // }, []);
 
   return (
     <html lang="en">
