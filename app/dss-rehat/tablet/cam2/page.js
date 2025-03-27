@@ -314,7 +314,7 @@ export default function Cam() {
             </div>
 
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-2 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
-                <div className='relative lg:w-[70%]'>
+                <div className='relative w-[60%] lg:w-[70%]'>
                     {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
                         <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
@@ -347,13 +347,13 @@ export default function Cam() {
 
             {!enabled && 
                 // <p className='block text-center text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
-                <p className='flex justify-center items-center text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white bg-white/30 p-7 rounded-full'>
+                <p className='flex justify-center items-center text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white bg-white/30 p-3 px-6 lg:p-7 rounded-full'>
                     <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
                     *Foto hanya sendiri
                 </p> 
             }
             {!enabled && 
-                <div className={`relative w-[70%] flex justify-center items-center mt-2 lg:mt-10 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className={`relative w-[60%] flex justify-center items-center mt-2 lg:mt-10 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[90%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/dss/btn-capture.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                     </button>
@@ -368,7 +368,7 @@ export default function Cam() {
             </div> */}
 
             {numProses1 && 
-            <div className={`relative w-[70%]`}>
+            <div className={`relative w-[40%]`}>
                 <div className='animate-upDownCepet relative flex justify-center items-center py-2 lg:py-6 px-2 mt-2 lg:mt-5 text-base lg:text-4xl border-2 text-center bg-[#EF000F] rounded-xl text-[#fff] font-bold bg-white/30 p-7 rounded-full'>
                     <Image src='/primaria/icon-info.png' width={40} height={40} alt='Zirolu' className='w-[40px] mr-5' priority />
                     <p>{`Photo sedang di proses...`}</p>
@@ -382,11 +382,11 @@ export default function Cam() {
 
             <div className={`relative w-full ${numProses1 ? 'hidden opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col mt-0">
+                <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-3">
                     <button className="w-[90%] relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/dss/btn-surprise.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                     </button>
-                    <button className="relative w-[90%] mx-auto flex justify-center items-center mt-10" onClick={retake}>
+                    <button className="relative w-[90%] mx-auto flex justify-center items-center mt-6" onClick={retake}>
                         <Image src='/primaria/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>

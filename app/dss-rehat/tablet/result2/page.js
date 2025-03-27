@@ -93,7 +93,7 @@ export default function Result() {
                     <div className={`relative w-[80%] mx-auto flex items-center justify-center`}>
                         {/* <Image src='/primaria/popup-scan.png' width={966} height={1198} alt='Zirolu' className='w-full' priority /> */}
                         <div className='relative w-[90%]'>
-                            <Image src='/dss/scan.png' width={744} height={224} alt='Zirolu' className='w-full mb-10' priority /> 
+                            <Image src='/dss/scan.png' width={744} height={224} alt='Zirolu' className='w-[40%] mx-auto mb-5' priority /> 
                             <div className='relative w-[80%] mt-0 lg:mt-[0] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                                 <Canvas
                                 text={linkQR}
@@ -110,7 +110,7 @@ export default function Result() {
                                 />
                             </div>
                             {/* <p className='block text-center text-base lg:text-4xl mt-2 lg:mt-1 lg:mb-3 lg:mt-8 text-white'>*Scan  QR Code  untuk Download hasilnya</p>  */}
-                            <Link href='/dss-rehat/tablet' className="relative w-[80%] mx-auto flex justify-center items-center pt-[8rem]">
+                            <Link href='/dss-rehat/tablet' className="relative w-[60%] mx-auto flex justify-center items-center pt-[2rem]">
                                 <Image src='/dss/btn-selesai.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
@@ -179,15 +179,15 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
-                <div className='relative w-full lg:mt-10 mb-2 mx-auto flex justify-center items-center flex-col'>
-                    <div className="relative w-[40%] mx-auto mt-0">
+                <div className='relative w-full mt-8 lg:mt-10 mb-2 mx-auto flex justify-center items-center flex-col'>
+                    <div className="relative w-[30%] mx-auto mt-0">
                     <Image src='/dss/inihasilnya.png' width={690} height={112} alt='Zirolu' className='w-full' priority />
                     </div>
-                    <div className='relative w-full mb-8 mt-[-1.4rem]'>
+                    <div className='relative w-full mb-8 mt-1'>
                         {/* <h1 className={`text-center text-xl lg:text-8xl text-[#DFBE4E] font-medium mb-2 ${kanit.className}`}>KARAOKE DAY</h1> */}
-                        <p className={`text-center w-[90%] mx-auto text-3xl ${kanit.className}`}>{frame}</p>
+                        <p className={`text-center w-[90%] mx-auto text-2xl ${kanit.className}`}>{frame}</p>
                     </div>
-                    <div className='relative z-10 w-[60%] lg:w-[50%]'>
+                    <div className='relative z-10 w-[45%] lg:w-[50%]'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={824} height={1064} alt='Zirolu' className='relative top-0 mx-auto w-full block'></Image>
 
@@ -227,7 +227,7 @@ export default function Result() {
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-6`}>
-                            <div className="relative w-[70%] lg:w-[50%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[40%] lg:w-[50%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
                                  <Image src='/dss/btn-collect.png' width={899} height={206} alt='Zirolu' className='w-full' priority />
                                 </div>
@@ -236,7 +236,7 @@ export default function Result() {
                     </div>
 
                     <div className='w-full'>
-                        <div className="relative w-[65%] lg:w-[50%] pt-10 mx-auto flex justify-center items-center flex-col">
+                        <div className="relative w-[30%] lg:w-[50%] pt-10 mx-auto flex justify-center items-center flex-col">
                             <Link href='/dss-rehat/tablet' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/dss/btn-selesai.png' width={819} height={126} alt='Zirolu' className='w-full' priority />
                             </Link>

@@ -30,11 +30,11 @@ export default function Frame() {
     }
     return (
         <main className="flex fixed h-full w-full bg-dss overflow-auto flex-col items-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            <div className="relative w-[70%] mx-auto mt-[10rem]">
+            <div className="relative w-[40%] mx-auto mt-[10rem]">
             <Image src='/dss/genre.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-0 lg:mt-8 mb-0 lg:mb-14">
-                <div className='relative w-[80%]'>
+                <div className='relative w-[60%]'>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>
                             <ul className='choose mod11 !mt-0'>
@@ -150,8 +150,8 @@ export default function Frame() {
                 />
             </div> */}
 
-            <div className={`relative w-full flex justify-center items-center mt-0 z-20 ${payload.frame != '' ? `` : 'opacity-0 pointer-events-none'}`}>
-                <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={handleSubmit}>
+            <div className={`relative w-full flex justify-center items-center mt-5 z-20 ${payload.frame != '' ? `` : 'opacity-0 pointer-events-none'}`}>
+                <button className="relative mx-auto w-[60%] flex justify-center items-center" onClick={handleSubmit}>
                     <Image src='/dss/btn-continue.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                 </button>
             </div>

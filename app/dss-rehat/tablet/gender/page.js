@@ -66,11 +66,11 @@ export default function Register() {
 
     return (
         <main className="flex fixed h-full w-full bg-dss overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className="relative w-[90%] mx-auto mt-[10rem]">
+            <div className="relative w-[60%] mx-auto mt-[3rem]">
             <Image src='/dss/identifikasi.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
-            <div className={`relative w-[90%] mx-auto mt-10`}>
+            <div className={`relative w-[60%] mx-auto mt-10`}>
                 <div className='relative mt-0 w-full'>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>

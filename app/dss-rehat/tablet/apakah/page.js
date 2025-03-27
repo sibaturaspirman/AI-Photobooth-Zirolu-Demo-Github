@@ -86,12 +86,12 @@ export default function Apakah() {
 
     return (
         <main className="flex fixed h-full w-full bg-dss overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className="relative w-[70%] mx-auto mt-0">
+            <div className="relative w-[40%] mx-auto mt-0">
             <Image src='/dss/apakah.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
-            <div className={`relative w-[95%] mx-auto mt-10 z-20`}>
-                <div className="relative w-[800px] mx-auto z-20">
+            <div className={`relative w-[90%] mx-auto mt-10 z-20`}>
+                <div className="relative w-[600px] mx-auto z-20">
                     <input type="range" 
                     name="setupslider1"
                     step="33"
@@ -102,7 +102,7 @@ export default function Apakah() {
                     className="sliderProgressDss"/>
                     <Image src='/dss/slider-progress.png' width={824} height={37} alt='Zirolu' className='w-full pointer-events-none' priority />
                 </div>
-                <div className='relative mt-0 w-[780px] mx-auto z-10'>
+                <div className='relative mt-0 w-[540px] mx-auto z-10'>
                     <div className={`relative top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}>
                         <Image src='/dss/slider-1.png' width={800} height={130} alt='Zirolu' className='w-full' priority />
                     </div>
@@ -118,8 +118,8 @@ export default function Apakah() {
                 </div>
 
                 {/* {character && */}
-                    <div className={`relative w-full flex justify-center items-center mt-[9rem] z-20`}>
-                        <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAura}>
+                    <div className={`relative w-full flex justify-center items-center mt-[7rem] z-20`}>
+                        <button className="relative mx-auto w-[60%] flex justify-center items-center" onClick={generateAura}>
                             <Image src='/dss/btn-continue.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
