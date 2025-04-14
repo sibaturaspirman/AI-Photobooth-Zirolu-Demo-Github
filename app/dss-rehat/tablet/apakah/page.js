@@ -102,7 +102,7 @@ export default function Apakah() {
                     className="sliderProgressDss"/>
                     <Image src='/dss/slider-progress.png' width={824} height={37} alt='Zirolu' className='w-full pointer-events-none' priority />
                 </div>
-                <div className='relative mt-0 w-[540px] mx-auto z-10'>
+                <div className='relative mt-0 w-[605px] mx-auto z-10'>
                     <div className={`relative top-0 left-0 w-full pointer-events-none z-10 transition-all ${slideIndex == 0 ? `` : 'opacity-0'}`}>
                         <Image src='/dss/slider-1.png' width={800} height={130} alt='Zirolu' className='w-full' priority />
                     </div>

@@ -1489,10 +1489,10 @@ body{
 .sliderProgressDss::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none; 
-  /* width: 116px;
-  height: 58px; */
-  width: 190px;
-  height: 96px;
+  width: 130px;
+  height: 68px;
+  /* width: 190px;
+  height: 96px; */
   background-image: url(../public/dss/slider.png);
   background-size: cover;
   /* border-radius: 50%; */
@@ -1500,7 +1500,7 @@ body{
   transition: .2s ease-in-out;
   transform: rotateZ(var(--thumb-rotate, 0deg));
   position: relative;
-  top: -40px;
+  top: -30px;
 }
 .sliderProgressDss::-webkit-slider-runnable-track {
   height: 50px;

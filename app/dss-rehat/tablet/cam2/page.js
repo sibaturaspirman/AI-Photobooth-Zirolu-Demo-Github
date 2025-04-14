@@ -171,16 +171,16 @@ export default function Cam() {
 
         if((moodFix == 'gakbutuhrehat' && genreFix == 'jazz') || (moodFix == 'gakbutuhrehat' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_CAFEDAY'
-            localStorage.setItem('quoteFix', 'Gak ada salahnya lo ambil secangkir kopi untuk sekedar menarik nafas.')
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo ambil secangkir kopi untuk mencari inspirasi.')
         }else if((moodFix == 'gakbutuhrehat' && genreFix == 'pop') || (moodFix == 'gakbutuhrehat' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_CAFENIGHT'
-            localStorage.setItem('quoteFix', 'Gak ada salahnya lo catch up sama temen lo di penghujung hari untuk mencari inspirasi.')
+            localStorage.setItem('quoteFix', 'Gak ada salahnya lo karaoke di penghujung hari untuk sekedar melepas penat.')
         }else if((moodFix == 'belumtahu' && genreFix == 'jazz') || (moodFix == 'belumtahu' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_BEACHDAY'
-            localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba berjalan di pantai dan biarkan suara ombak menenangkan dirimu.')
+            localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba duduk dan bersenandung sambil ditemani suara ombak.')
         }else if((moodFix == 'belumtahu' && genreFix == 'pop') || (moodFix == 'belumtahu' && genreFix == 'rock')){
             formasiBetulan = formasiFix+'_BEACHNIGHT'
-            localStorage.setItem('quoteFix', 'Matahari aja perlu rehat, masa kamu engga? coba istirahat sejenak sambil nikmati Sunset.')
+            localStorage.setItem('quoteFix', 'Belum butuh bukan berarti tidak perlu, coba istirahat sejenak sambil nikmati Sunset.')
         }else if((moodFix == 'mulaibutuh' && genreFix == 'jazz') || (moodFix == 'mulaibutuh' && genreFix == 'rb')){
             formasiBetulan = formasiFix+'_KAROKEDAY'
             localStorage.setItem('quoteFix', 'Ga ada salahnya lo memulai gebrakan baru dengan karaoke bersama team di kubikel!')
