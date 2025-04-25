@@ -11,8 +11,11 @@ export default function PrimariaHome() {
         <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
           <Image src='/dss/mahakaraoke.png' width={709} height={137} alt='Zirolu' className='w-full' priority />
         </div>
-        <Link href='/dss-rehat/game' className='relative w-[95%] mx-auto flex justify-center items-center mt-10'>
+        {/* <Link href='/dss-rehat/game' className='relative w-[95%] mx-auto flex justify-center items-center mt-10'>
           <Image src='/dss/op1.png' width={942} height={720} alt='Zirolu' className='w-full' priority />
+        </Link> */}
+        <Link href='http://localhost:8082' className='relative w-[95%] mx-auto flex justify-center items-center mt-10'>
+          <Image src='/dss/op1-r.png' width={942} height={720} alt='Zirolu' className='w-full' priority />
         </Link>
         <Link href='/dss-rehat/ai' className='relative w-[95%] mx-auto flex justify-center items-center mt-8'>
           <Image src='/dss/op2.png' width={942} height={720} alt='Zirolu' className='w-full' priority />
