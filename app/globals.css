@@ -1095,6 +1095,11 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-veev-lenti{
+  background-image: url(../public/veev/lenti/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 
 /* MAGNUMOTION */
 .bg-magnumotion{
