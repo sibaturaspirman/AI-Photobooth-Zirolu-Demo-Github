@@ -1101,6 +1101,19 @@ body{
   background-position: top center;
 }
 
+
+/* CPL */
+.bg-cpl-home{
+  background-image: url(../public/cpl/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-cpl{
+  background-image: url(../public/cpl/bg-page.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* MAGNUMOTION */
 .bg-magnumotion{
   background-image: url(../public/magnumotion/bg.jpeg);
