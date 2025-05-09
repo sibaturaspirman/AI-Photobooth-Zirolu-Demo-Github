@@ -328,7 +328,7 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/cpl/btn-surprise.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/cpl/btn-continue.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
                         <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
