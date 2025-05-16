@@ -155,7 +155,9 @@ export default function Cam() {
             setMasalah(item3)
             setFrame(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "f705afd1-32ce-4663-ad5a-9464e6e831f4");
+        // const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "f705afd1-32ce-4663-ad5a-9464e6e831f4");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "e4f91f7d-eeb6-40b7-8a23-b2ecce6c4072");
+
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix, masalah, frame])
@@ -196,7 +198,7 @@ export default function Cam() {
 
         genderOpsi = formasiFix+'_'+masalah;
 
-        // console.log(genderOpsi)
+        console.log(genderOpsi)
         // console.log(framePrompt)
 
         padmaAI.onProgress((progress) => {
@@ -219,7 +221,10 @@ export default function Cam() {
           
           try {
             // Generate the image
-            const result = await padmaAI.generateImages(imageFile, genderOpsi, framePrompt);
+            // const result = await padmaAI.generateImages(imageFile, genderOpsi, framePrompt);
+            // console.log(genderOpsi)
+            const result = await padmaAI.swapImages(imageFile, genderOpsi);
+            // const result = await padmaAI.swapImages(imageFile, {filter: formasiFix+"_"+auraFix, frame: auraFix});
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
 
             FACE_URL_RESULT= result.imgUrl;
