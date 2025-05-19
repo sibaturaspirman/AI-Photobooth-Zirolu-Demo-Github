@@ -33,6 +33,11 @@ const useWebcam = ({
     }, [videoRef]);
 };
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 let FACE_URL_RESULT = '', genderOpsi = '', framePrompt = ''
 export default function Cam() {
     const router = useRouter();
@@ -197,6 +202,7 @@ export default function Cam() {
         // }
 
         genderOpsi = formasiFix+'_'+masalah;
+        let masasalahFrame = masalah+frame
 
         console.log(genderOpsi)
         // console.log(framePrompt)
@@ -223,7 +229,11 @@ export default function Cam() {
             // Generate the image
             // const result = await padmaAI.generateImages(imageFile, genderOpsi, framePrompt);
             // console.log(genderOpsi)
-            const result = await padmaAI.swapImages(imageFile, genderOpsi);
+            // const result = await padmaAI.swapImages(imageFile, genderOpsi);
+
+            console.log(masasalahFrame)
+
+            const result = await padmaAI.swapImages(imageFile, {filter: genderOpsi, frame: masasalahFrame});
             // const result = await padmaAI.swapImages(imageFile, {filter: formasiFix+"_"+auraFix, frame: auraFix});
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
 
