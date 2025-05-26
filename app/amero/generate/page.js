@@ -96,11 +96,11 @@ export default function GenerateAmero() {
             }, 500);
         }else if(character == 'amero' && styleGender =='woman'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(0, 19))
+                generateImageSwap(character, styleGender, getRandomInt(0, 3))
             }, 500);
         }else if(character == 'amero' && styleGender =='hijab'){
             setTimeout(() => {
-                generateImageSwap(character, styleGender, getRandomInt(0, 4))
+                generateImageSwap(character, styleGender, getRandomInt(0, 3))
             }, 500);
         }else if(character == 'hut' && styleGender =='woman'){
             setTimeout(() => {
@@ -210,8 +210,8 @@ export default function GenerateAmero() {
         // console.log(gender)
         // console.log(number)
         let urlGambar = ''
-        if(brand == 'hut'){
-            urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpg'
+        if(brand == 'amero'){
+            urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/new-'+gender+'-'+number+'.jpg'
         }else{
             urlGambar = 'https://ai.zirolu.id/amero/style/'+brand+'/v2/'+gender+'-'+number+'.jpeg'
         }
@@ -367,13 +367,13 @@ export default function GenerateAmero() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="hut"
+                                value="amero"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/amero/style4.png"
+                                    src="/amero/style5.png"
                                     alt="icon"
                                     width={98}
                                     height={98}
