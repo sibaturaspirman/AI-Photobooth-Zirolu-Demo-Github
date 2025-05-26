@@ -17,7 +17,7 @@ export default function AmeroHome() {
           <Image src='/amero/preview-2.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
         </div>
         <div className='animate-upDown3 relative w-1/3 mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/amero/preview-4.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
+          <Image src='/amero/preview-5.png' width={268} height={646} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
       <div className="relative w-full flex justify-center items-center lg:mt-20">
