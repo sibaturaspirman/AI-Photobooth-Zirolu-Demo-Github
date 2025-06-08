@@ -1101,6 +1101,18 @@ body{
   background-position: top center;
 }
 
+/* HODNA */
+.bg-honda-home{
+  background-image: url(../public/honda/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-honda{
+  background-image: url(../public/honda/bg-page.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 
 /* CPL */
 .bg-cpl-home{
