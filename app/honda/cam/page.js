@@ -158,7 +158,7 @@ export default function Cam() {
             setFormasiFix(item2)
             setAuraFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "86884328-d00c-4470-babf-3b43266ce3e5");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "9f4a2c9c-01c6-473c-9c58-54aceca746bd");
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix, auraFix])
@@ -215,7 +215,7 @@ export default function Cam() {
           
           try {
             // Generate the image
-            const result = await padmaAI.swapImages(imageFile, {filter: formasiFix+"_HAPPY", frame: 'HAPPY'});
+            const result = await padmaAI.swapImages(imageFile, formasiFix);
             // this.padmaAI.swapImages("BASE64IMAGE", "FILTER");
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
 

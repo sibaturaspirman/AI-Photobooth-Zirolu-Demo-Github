@@ -206,7 +206,7 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div> */}
-                    <Link href='/honda' className="relative w-[60%] mx-auto flex justify-center items-center mt-10">
+                    <Link href='/honda' className="relative w-[60%] mx-auto flex justify-center items-center pt-[6rem]">
                         <Image src='/honda/back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
