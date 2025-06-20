@@ -3,7 +3,7 @@ export default function manifest() {
       name: 'AI PHOTOBOOTH',
       short_name: 'AI PHOTOBOOTH',
       description: 'AI PHOTOBOOTH',
-      start_url: '/zymuno',
+      start_url: '/iqos-prj',
       display: 'standalone',
       background_color: '#fff',
       theme_color: '#fff',
