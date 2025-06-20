@@ -31,28 +31,26 @@ export default function Register() {
 
     const generateAI = () => {
         let urutanFIX = getRandomInt(1,3)
-        // if(character == 'cowok'){
-        //     if (typeof localStorage !== 'undefined') {
-        //         localStorage.setItem("formasiFix", 'MALE')
-        //         localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/MALE-"+urutanFIX+".jpg")
-        //     }
-        // }else{
-        //     if(!hijab){
-        //         if (typeof localStorage !== 'undefined') {
-        //             localStorage.setItem("formasiFix", 'FEMALE')
-        //             localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/FEMALE-"+urutanFIX+".jpg")
-        //         }
-        //     }else{
-        //         if (typeof localStorage !== 'undefined') {
-        //             localStorage.setItem("formasiFix", 'HIJAB')
-        //             localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/HIJAB-"+urutanFIX+".jpg")
-        //         }
-        //     }
-        // }
+        if(character == 'cowok'){
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem("formasiFix", 'MALE')
+                localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/MALE-"+urutanFIX+"-MOD.jpg")
+            }
+        }else{
+            if(!hijab){
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("formasiFix", 'FEMALE')
+                    localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/FEMALE-"+urutanFIX+"-MOD.jpg")
+                }
+            }else{
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("formasiFix", 'HIJAB')
+                    localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/HIJAB-"+urutanFIX+"-MOD.jpg")
+                }
+            }
+        }
 
-        localStorage.setItem("formasiFix", 'MALE')
-        localStorage.setItem("urlFix", "https://ai.zirolu.id/iqos/prj/MALE-1-MOD.jpg")
-        localStorage.setItem("urutanFix", 1)
+        localStorage.setItem("urutanFix", urutanFIX)
 
         setTimeout(() => {
             router.push('/iqos-prj/cam2');
