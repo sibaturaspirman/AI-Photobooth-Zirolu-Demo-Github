@@ -235,10 +235,10 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
-            // setTimeout(() => {
-            //     router.push('/iqos-prj/result');
-            // }, 200);
-            generateImageSwap2()
+            setTimeout(() => {
+                router.push('/iqos-prj/result');
+            }, 200);
+            // generateImageSwap2()
         })
 
         } catch (error) {

@@ -1,5 +1,6 @@
 'use client';
 
+import * as fal from '@fal-ai/serverless-client';
 import Link from 'next/link';
 import Image from "next/image";
 // import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
@@ -11,6 +12,15 @@ import { useQRCode } from 'next-qrcode';
 // const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 // import BtnHexagon2 from "../../components/BtnHexagon2";
 import ReactToPrint from "react-to-print";
+
+// @snippet:start(client.config)
+fal.config({
+    // credentials: 'FAL_KEY_ID:FAL_KEY_SECRET',
+    requestMiddleware: fal.withProxy({
+      targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
+      // targetUrl: 'http://localhost:3333/api/fal/proxy', // or your own external proxy
+    }),
+});
 
 
 // function downloadImage(data, filename = 'untitled.jpeg') {
@@ -63,7 +73,7 @@ import ReactToPrint from "react-to-print";
 
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
-    const [imageResultAI2, setImageResultAI2] = useState(null);
+    const [imageResultAI2, setImageResultAI2] = useState('/');
     const [imageResultAI3, setImageResultAI3] = useState(null);
     const [formasiFix, setFormasiFix] = useState(null);
     const [auraFix, setAuraFix] = useState(null);
@@ -120,6 +130,15 @@ export default function Result() {
             )
         }).catch(e => {console("load failed")})
     }
+
+    const toDataURL = url => fetch(url)
+    .then(response => response.blob())
+    .then(blob => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(blob)
+    }))
     
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
@@ -141,12 +160,45 @@ export default function Result() {
             
             await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
                 .then(response => response.json())
-                .then(response => {
+                .then(async response => {
                     console.log(response)
-                    setLinkQR(response.file)
-                    setIdFormEmail(response.id)
+                    // setLinkQR(response.file)
+                    // setIdFormEmail(response.id)
+                    // setGenerateQR('true')
+                    // setLoadingDownload(null)
+
+                    const result = await fal.subscribe("fal-ai/esrgan", {
+                        input: {
+                          image_url: response.file
+                        },
+                        logs: true,
+                        onQueueUpdate: (update) => {
+                          if (update.status === "IN_PROGRESS") {
+                            // update.logs.map((log) => log.message).forEach(console.log);
+                          }
+                        },
+                    });
+
+                    // console.log(result)
+                    setLinkQR(result.image.url)
+                    setImageResultAI2(result.image.url)
                     setGenerateQR('true')
                     setLoadingDownload(null)
+
+                    // toDataURL(result.image.url)
+                    // .then(dataUrl => {
+                    //     if (typeof localStorage !== 'undefined') {
+                    //         localStorage.setItem("resulAIBase64", dataUrl)
+                    //         localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+                    //     }
+                    //     // setTimeout(() => {
+                    //     //     router.push('/iqos-prj/result');
+                    //     // }, 200);
+                    //     generateImageSwap2()
+                    // })
+
+
+                    // setLinkQR(result)
                 })
                 .catch(err => {
                     if (typeof localStorage !== 'undefined') {
@@ -187,20 +239,20 @@ export default function Result() {
                         }}
                         />
                     </div>
-                    {/* <div className={`w-full mt-10`}>
+                    <div className={`w-full mt-10`}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                    <Image src='/comcon/veev/btn-print.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/iqos/prj-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
-                    </div> */}
+                    </div>
                     <Link href='/iqos-prj' className="relative w-[60%] mx-auto flex justify-center items-center pt-[6rem]">
                         <Image src='/honda/back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
@@ -211,26 +263,21 @@ export default function Result() {
 
 
             {/* DOWNLOAD & PRINT */}
-            {/* {imageResultAI && 
+            {imageResultAI2 && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                <div className='absolute z-10 w-[10%]' id='capture'>
-                    <div className={`relative w-[full] flex`}>
-                        <Image src={imageResultAI}  width={896} height={1584} alt='Zirolu' className='relative block w-full'></Image>
-                    </div>
-                </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
-                    <div className={`relative w-[99.2%] flex`}>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                    <div className={`relative w-full flex`}>
+                        <Image src={imageResultAI2}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
             </div>
-            } */}
+            }
 
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full mt-[10rem] mb-2 mx-auto flex justify-center items-center'>
                     <div className='relative z-10 w-[80%] border-4 border-[#FE5A01]'>
-                        <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
+                        <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture'>
                             <Image src={imageResultAI}  width={683} height={1006} alt='Zirolu' className='absolute top-0 mx-auto w-auto h-full mx-i block'></Image>
 
                             {formasiFix == 'MALE' && auraFix == '1' &&
@@ -274,25 +321,25 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 border-2 text-center bg-[#571571] rounded-xl text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 border-2 text-center bg-[#F43500] rounded-xl text-[#fff] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
                     <div className={`w-full`} onClick={downloadImageAI}>
-                    <ReactToPrint
-                    trigger={() => 
+                    {/* <ReactToPrint
+                    trigger={() =>  */}
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/prj-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                <Image src='/iqos/prj-collect2.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
-                    }
+                    {/* }
                     content={() => componentRef}
-                    />
+                    /> */}
                     </div> 
                     {/* <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
                         <div className={`w-full lg:mt-10`}>
