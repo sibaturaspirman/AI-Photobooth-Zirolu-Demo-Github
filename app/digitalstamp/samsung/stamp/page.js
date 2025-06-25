@@ -241,9 +241,9 @@ export default function Register() {
             // console.log(points)
     
             // Check if edges form a square
-            const thresholdXDistMin = 140;
+            const thresholdXDistMin = 130;
             const thresholdXDistMax = 150;
-            const thresholdYDistMin = 90;
+            const thresholdYDistMin = 82;
             const thresholdYDistMax = 105;
 
             setTopLeftX(Math.abs(topLeft.x))
@@ -376,7 +376,7 @@ export default function Register() {
 
             <div className='w-full min-h-[90px] block'>-</div>
 
-            <div className="fixed bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-100">
+            <div className="fixed bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-0">
                 Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
                 Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
                 X Dist : {xPos} | Y Dist : {yPos} <br></br>
