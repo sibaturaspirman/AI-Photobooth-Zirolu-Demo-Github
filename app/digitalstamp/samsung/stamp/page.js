@@ -145,7 +145,7 @@ export default function Register() {
             sentuhan = newTouches
             setTouches(newTouches);
             setStartStamp(true)
-            drawTouches(ctx, newTouches);
+            // drawTouches(ctx, newTouches);
 
             // console.log(touches.length)
             // alert(sentuhan.length)
@@ -183,7 +183,7 @@ export default function Register() {
                 y: t.pageY,
             }));
             setTouches(updatedTouches);
-            drawTouches(ctx, updatedTouches);
+            // drawTouches(ctx, updatedTouches);
         };
 
         const handleTouchEnd = (e) => {
@@ -301,7 +301,7 @@ export default function Register() {
      //STAMP
 
     return (
-        <main className="flex fixed h-full w-full  bg-[#F4F4F4] overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full  bg-[#F4F4F4] overflow-y-auto overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
             <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-nonex' : 'z-50 pointer-events-none'}`}>
                 <canvas ref={canvasRef} style={{ touchAction: "none" }} className={`relative'`}/>
             </div>
@@ -312,12 +312,12 @@ export default function Register() {
             </div>
 
             {/* PILIH STYLE */}
-            <div className={`relative w-[95%] mx-auto mt-1 z-20`}>
+            <div className={`relative w-[96%] mx-auto mt-1 z-20`}>
                 <div className='w-[50%] mx-auto'>
                     <Image src='/digitalstamp/samsung-logo2.png' width={175} height={41} alt='Zirolu' className='w-full' priority />
                 </div>
                 <p className={`text-sm font-medium mt-1 text-center text-[#000000] uppercase ${OpenSans.className}`}>Hi, {Name}!</p>
-                <div className='relative w-full mt-0 p-5 pt-2'>
+                <div className='relative w-full mt-0 p-1 px-0 pt-2'>
                     <Swiper
                         modules={[Pagination]}
                         pagination={{
@@ -339,18 +339,18 @@ export default function Register() {
                             <div className="relative mx-auto w-full flex justify-center items-center">
                                 <Image src={`/digitalstamp/samsung-box-${index+1}.png`} width={317} height={422}  alt='Zirolu' className='w-full' priority />
 
-                                <div className={`absolute right-5 bottom-10 w-[80px] z-50 shadow-xl ${capturedAwal ? '' : 'hidden'} ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl ${capturedAwal ? '' : 'hidden'} ${lokasi[index].stamp ? 'hidden' : ''}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-here.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
 
-                                <div className={`absolute right-5 bottom-10 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? '' : 'hidden'}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-check.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
 
                             {!lokasi[index].stamp &&
-                            <div className={`absolute bottom-0 left-0 right-0 pb-[4rem]  ${capturedAwal ? 'hidden' : ''}`} onClick={mulaiStamp}>
-                                <button className={`relative mx-auto w-[50%] mt-2 flex justify-center items-center `}>
+                            <div className={`absolute bottom-0 left-0 right-0 pt-[5rem] pb-[4.5rem]  ${capturedAwal ? 'hidden' : ''}`} onClick={mulaiStamp}>
+                                <button className={`relative mx-auto w-[50%] mt-2 flex justify-center items-center animate-bgScale2`}>
                                     <Image src='/digitalstamp/samsung-tap.png' width={295} height={56} alt='Zirolu' className='w-full' priority />
                                 </button>
                             </div>
@@ -361,18 +361,22 @@ export default function Register() {
 
                     {/* <p>{touches.length}</p> */}
                     {/* <p className={`text-center text-base font-medium text-[#2B3B4F] mt-2 ${OpenSans.className}`}>{slideIndex + 1} / 5</p> */}
-
-                    {/* {statusStamp && startStamp &&
-                        <p className={`text-center text-base text-[#2B3B4F] mt-0 ${OpenSans.className}`}>Stamp Done!</p>
+                    
+                    <div className='text-center'>
+                    {statusStamp && startStamp &&
+                        <p className={`inline-block mx-auto text-center px-6 py-2 text-xs bg-[#2A2A5C] rounded-full mt-2 text-[#fff] ${OpenSans.className}`}>Stamp done!</p>
                     }
                     {!statusStamp && startStamp &&
                         <p className={`text-center text-base text-[#2B3B4F] mt-0 ${OpenSans.className}`}></p>
-                    } */}
+                    }
+                    </div>
                 </div>
 
             </div>
 
-            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-90">
+            <div className='w-full min-h-[90px] block'>-</div>
+
+            <div className="fixed bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-0">
                 Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
                 Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
                 X Dist : {xPos} | Y Dist : {yPos} <br></br>

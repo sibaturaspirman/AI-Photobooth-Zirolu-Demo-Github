@@ -24,7 +24,7 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-[#F4F4F4] overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-[#F4F4F4] overflow-hidden flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
 
             {/* PILIH STYLE */}
             <div className={`relative w-[95%] mx-auto mt-2 z-20`}>
@@ -34,7 +34,7 @@ export default function Register() {
                     </div>
                 </div>
                 {/* <p className={`text-5xl uppercase text-center ${OpenSans.className}`}>Let&apos;s Explore <br></br> Singapore Together!</p> */}
-                <div className='w-[29px] mx-auto mt-3 mr-0'>
+                <div className='w-[29px] mx-auto mt-1 mr-0'>
                     <Image src='/digitalstamp/samsung-star.png' width={29} height={30} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className='w-full p-6 mt-2 digstamp-smsg-bg rounded-xl'>
