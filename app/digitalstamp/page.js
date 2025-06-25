@@ -9,6 +9,8 @@ export default function Home() {
   const [topLeftY, setTopLeftY] = useState(0);
   const [topRightX, setTopRightX] = useState(0);
   const [topRightY, setTopRightY] = useState(0);
+  const [xPos, setXPos] = useState(0);
+  const [yPos, setYPos] = useState(0);
   
   const canvasRef = useRef(null);
 
@@ -94,6 +96,9 @@ export default function Home() {
       if(topRight != undefined){
         setTopRightX(Math.abs(topRight.x))
         setTopRightY(Math.abs(topRight.y))
+
+        setXPos(Math.abs(topRight.x - topLeft.x))
+        setYPos(Math.abs(topLeft.y - topRight.y))
       }
 
       // const isBottomAligned = Math.abs(bottomLeft.y - bottomRight.y) < threshold;
@@ -146,7 +151,8 @@ export default function Home() {
       <canvas ref={canvasRef} style={{ touchAction: "none" }} />
       <div className="absolute bottom-0 left-0 right- p-5 text-[#000]">
         Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
-        Top Right X : {topRightX} | Top Right Y : {topRightY}
+        Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
+        X Dist : {xPos} | Y Dist : {yPos} <br></br>
       </div>
     </div>
   );
