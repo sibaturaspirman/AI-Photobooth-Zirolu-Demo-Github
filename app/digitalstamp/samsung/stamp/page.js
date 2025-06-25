@@ -193,7 +193,7 @@ export default function Register() {
             }
 
             // console.log(sentuhan)
-            if (Object.keys(sentuhan).length === 1) {
+            if (Object.keys(sentuhan).length === 2) {
                 const points = Object.values(sentuhan);
                 // console.log(points)
                 // console.log(checkSquarePattern(points))
@@ -231,7 +231,7 @@ export default function Register() {
         };
 
         const checkSquarePattern = (points) => {
-            if (points.length !== 1) return false;
+            if (points.length !== 2) return false;
             // console.log(points)
     
             // Sort points by x and y positions
