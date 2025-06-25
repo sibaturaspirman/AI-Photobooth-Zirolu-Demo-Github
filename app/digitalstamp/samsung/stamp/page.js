@@ -312,7 +312,7 @@ export default function Register() {
             </div>
 
             {/* PILIH STYLE */}
-            <div className={`relative w-[96%] mx-auto mt-2 z-20`}>
+            <div className={`relative w-[94%] mx-auto mt-2 z-20`}>
                 <div className='w-[50%] mx-auto'>
                     <Image src='/digitalstamp/samsung-logo2.png' width={175} height={41} alt='Zirolu' className='w-full' priority />
                 </div>
