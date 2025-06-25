@@ -221,6 +221,10 @@ export default function Register() {
                         sentuhan = {}
                         setTouches([]);
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                        if(lokasi[0].stamp && lokasi[1].stamp && lokasi[2].stamp && lokasi[3].stamp && lokasi[4].stamp){
+                            router.push('/digitalstamp/samsung/spin');
+                        }
                     }, 1500);
                 }
             }
@@ -307,9 +311,9 @@ export default function Register() {
             </div>
 
 
-            <div className={`fixed bottom-0 left-0 w-full z-50 border-[1px] border-[#C1C1C1]`}>
+            <Link href='/digitalstamp/samsung' className={`fixed bottom-0 left-0 w-full z-50 border-[1px] border-[#C1C1C1]`}>
                 <Image src='/digitalstamp/samsung-menu.png' width={375} height={63} alt='Zirolu' className='w-full' priority />
-            </div>
+            </Link>
 
             {/* PILIH STYLE */}
             <div className={`relative w-[94%] mx-auto mt-2 z-20`}>
