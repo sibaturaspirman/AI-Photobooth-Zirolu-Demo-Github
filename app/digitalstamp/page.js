@@ -36,17 +36,19 @@ export default function Home() {
 
     const handleTouchEnd = (e) => {
       e.preventDefault();
-      setTouches([]);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // setTouches([]);
+      // ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     const drawTouches = (ctx, touchPoints) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "blue";
       touchPoints.forEach((t) => {
-        ctx.beginPath();
-        ctx.arc(t.x, t.y, 20, 0, Math.PI * 2);
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(t.x, t.y, 20, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.font = "10px Arial";
+          ctx.fillText("X : "+t.x+' | Y : '+t.y,t.x -30,t.y+30);
       });
     };
 
@@ -62,7 +64,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className=" bg-[#F4F4F4]">
       <canvas ref={canvasRef} style={{ touchAction: "none" }} />
     </div>
   );

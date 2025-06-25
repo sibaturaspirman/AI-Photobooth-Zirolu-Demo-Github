@@ -49,7 +49,7 @@ export default function Register() {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
-                    <div className='w-full mt-3'>
+                    <div className='w-full mt-5'>
                         <input
                             className={`${OpenSans.className} font-medium w-full p-4 text-base outline-none text-[#404F6A] bg-white rounded-lg border-2 border-[#2A2A5C]`}
                             id="email"
@@ -60,7 +60,7 @@ export default function Register() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className='w-full mt-3'>
+                    <div className='w-full mt-5'>
                         <input
                             className={`${OpenSans.className} font-medium w-full p-4 text-base outline-none text-[#404F6A] bg-white rounded-lg border-2 border-[#2A2A5C]`}
                             id="phone"
@@ -73,7 +73,7 @@ export default function Register() {
                         />
                     </div>
 
-                    <div className={`relative w-full flex justify-center items-center mt-3 z-20 ${Name == null || Name == '' || Phone == null || Phone == '' || Email == null || Email == '' ? `opacity-50 pointer-events-none` : ''}`} onClick={generateAura}>
+                    <div className={`relative w-full flex justify-center items-center mt-5 z-20 ${Name == null || Name == '' || Phone == null || Phone == '' || Email == null || Email == '' ? `opacity-50 pointer-events-none` : ''}`} onClick={generateAura}>
                         <button className="relative mx-auto w-[100%] flex justify-center items-center">
                             <Image src='/digitalstamp/samsung-btn-start.png' width={295} height={56} alt='Zirolu' className='w-full' priority />
                         </button>
