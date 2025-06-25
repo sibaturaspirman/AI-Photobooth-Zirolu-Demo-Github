@@ -343,7 +343,7 @@ export default function Register() {
                                     <Image src={'/digitalstamp/samsung-stamp-here.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
 
-                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl  animate-bgScale2 ${lokasi[index].stamp ? '' : 'hidden'}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-check.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
