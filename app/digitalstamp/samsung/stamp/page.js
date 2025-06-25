@@ -372,7 +372,7 @@ export default function Register() {
 
             </div>
 
-            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-0">
+            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-90">
                 Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
                 Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
                 X Dist : {xPos} | Y Dist : {yPos} <br></br>
