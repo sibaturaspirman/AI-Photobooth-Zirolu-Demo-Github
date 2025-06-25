@@ -112,107 +112,7 @@ export default function Register() {
         }
     }, [Name, hasilFoto0, hasilFoto1, hasilFoto2, hasilFoto3, hasilFoto0Stamp, hasilFoto1Stamp, hasilFoto2Stamp, hasilFoto3Stamp])
 
-    // 1 Kamera 4 Video
-    const startCamera = async () => {
-        try {
-          const mediaStream = await navigator.mediaDevices.getUserMedia({
-            video: {facingMode: facingMode},
-            audio: false,
-          });
-          setStream(mediaStream);
-          setIsCameraOn(true);
-
-          setTimeout(() => {
-            setEnabled(false)
-          }, 1500);
-
-          videoRefs[activeVideoIndex].current.srcObject = mediaStream;
-          videoRefs[activeVideoIndex].current.play();
-        } catch (error) {
-          console.error("Gagal membuka kamera:", error);
-          alert("Tidak dapat membuka kamera. Pastikan izin telah diberikan.");
-        }
-    };
-
-    const captureImage = (index) => {
-        setCaptured(true)
-        setCapturedAwal(true)
-        setTimeout(() => {
-            setEnabled(true)
-            setCaptured(null)
-
-            const videoElement = videoRefs[index].current;
-            const canvasElement = canvasRefs[index].current;
-        
-            if (videoElement && canvasElement) {
-                const ctx = canvasElement.getContext("2d");
-                canvasElement.width = videoElement.videoWidth;
-                canvasElement.height = videoElement.videoHeight;
-                ctx.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-
-                let faceImage = canvasElement.toDataURL();
-                lokasi[activeStampIndex].foto = faceImage
-                if(activeStampIndex == 0) setHasilFoto0(faceImage)
-                else if(activeStampIndex == 1) setHasilFoto1(faceImage)
-                else if(activeStampIndex == 2) setHasilFoto2(faceImage)
-                else if(activeStampIndex == 3) setHasilFoto3(faceImage)
-                // setImageFile(faceImage)
-                if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("faceImage"+activeStampIndex, faceImage)
-                }
-            }
-
-            stopCamera()
-
-        }, 3000);
-    };
-    
-      // Menghentikan kamera
-      const stopCamera = () => {
-        if (stream) {
-          const tracks = stream.getTracks();
-          tracks.forEach((track) => track.stop());
-        }
-        videoRefs.forEach((videoRef) => {
-          if (videoRef.current) {
-            videoRef.current.srcObject = null;
-          }
-        });
-        setIsCameraOn(false);
-        setStream(null);
-        // setEnabled(false)
-        // setCaptured(false)
-        // setCapturedAwal(false)
-      };
-    
-      // Beralih ke video berikutnya
-      const switchVideo = () => {
-        if (!isCameraOn || !stream) return;
-    
-        // Hentikan video saat ini
-        videoRefs[activeVideoIndex].current.pause();
-        videoRefs[activeVideoIndex].current.srcObject = null;
-    
-        // Perbarui indeks video aktif
-        const nextIndex = (activeVideoIndex + 1) % videoRefs.length;
-        setActiveVideoIndex(nextIndex);
-        activeStampIndex = nextIndex
-    
-        // Tampilkan stream di video berikutnya
-        videoRefs[nextIndex].current.srcObject = stream;
-        videoRefs[nextIndex].current.play();
-    };
-
-
-    const toggleCamera = () => {
-        setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
-        if (isCameraOn) {
-          stopCamera();
-          setTimeout(() => startCamera(), 500); // Restart kamera dengan facingMode baru
-        }
-    };
-    //==================
-
+    //STAMP
     let sentuhan = {};
     const [touches, setTouches] = useState([]);
     const canvasRef = useRef(null);
@@ -381,6 +281,7 @@ export default function Register() {
         canvas.removeEventListener("touchend", handleTouchEnd);
         };
     }, []);
+     //STAMP
 
     return (
         <main className="flex fixed h-full w-full  bg-[#F4F4F4] overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
