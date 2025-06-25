@@ -115,6 +115,13 @@ export default function Register() {
     //STAMP
     let sentuhan = {};
     const [touches, setTouches] = useState([]);
+    const [topLeftX, setTopLeftX] = useState(0);
+    const [topLeftY, setTopLeftY] = useState(0);
+    const [topRightX, setTopRightX] = useState(0);
+    const [topRightY, setTopRightY] = useState(0);
+    const [xPos, setXPos] = useState(0);
+    const [yPos, setYPos] = useState(0);
+
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -191,6 +198,7 @@ export default function Register() {
                     else if(activeStampIndex == 1) setHasilFoto1Stamp('true')
                     else if(activeStampIndex == 2) setHasilFoto2Stamp('true')
                     else if(activeStampIndex == 3) setHasilFoto3Stamp('true')
+                    else if(activeStampIndex == 4) setHasilFoto4Stamp('true')
 
                     if (typeof localStorage !== 'undefined') {
                         localStorage.setItem("faceImageStamp"+activeStampIndex, true)
@@ -219,39 +227,33 @@ export default function Register() {
             // Sort points by x and y positions
             points.sort((a, b) => a.x - b.x || a.y - b.y);
             // const [topLeft, topRight, bottomLeft, bottomRight] = points;
-            const [topLeft, bottomLeft, topRight, bottomRight] = points;
+            const [topLeft, topRight] = points;
             // console.log(points)
     
-            // Calculate distances between adjacent points
-            // const topEdge = getDistance(topLeft, topRight);
-            // const bottomEdge = getDistance(bottomLeft, bottomRight);
-            // const leftEdge = getDistance(topLeft, bottomLeft);
-            // const rightEdge = getDistance(topRight, bottomRight);
-    
             // Check if edges form a square
-            const threshold = 20;
-            const thresholdRightXMax = 45;
-            const thresholdRightXMin = 25;
-            const isBottomAligned = Math.abs(bottomLeft.y - bottomRight.y) < threshold;
-            const isLeftAligned = Math.abs(bottomLeft.x - topLeft.x) < threshold;
-            const isRightAligned = Math.abs(bottomRight.x - topRight.x) < thresholdRightXMax && Math.abs(bottomRight.x - topRight.x) >= thresholdRightXMin;
-            const isTopXAligned = Math.abs(topLeft.x - topRight.x) >= 85 && Math.abs(topLeft.x - topRight.x) <= 95;
-            const isTopYAligned = Math.abs(topLeft.y - topRight.y) >= 40 && Math.abs(topLeft.y - topRight.y) <= 50;
+            const thresholdXDistMin = 140;
+            const thresholdXDistMax = 150;
+            const thresholdYDistMin = 90;
+            const thresholdYDistMax = 105;
 
-            // console.log("TL X : "+topLeft.x)
-            // console.log("TR X : "+topRight.x)
-            // console.log("BL X : "+bottomLeft.x)
-            // console.log("BR X : "+bottomRight.x)
-            // console.log(Math.abs(bottomLeft.x - topLeft.x))
-            // console.log(Math.abs(bottomRight.x - topRight.x))
-            // console.log(Math.abs(topLeft.y - topRight.y))
-            // console.log(isBottomAligned)
-            // console.log(isLeftAligned)
-            // console.log(isRightAligned)
-            // console.log(isTopXAligned)
-            // console.log(isTopYAligned)
+            setTopLeftX(Math.abs(topLeft.x))
+            setTopLeftY(Math.abs(topLeft.y))
+            if(topRight != undefined){
+                setTopRightX(Math.abs(topRight.x))
+                setTopRightY(Math.abs(topRight.y))
 
-            return isBottomAligned && isLeftAligned && isRightAligned && isTopXAligned && isTopYAligned;
+                setXPos(Math.abs(topRight.x - topLeft.x))
+                setYPos(Math.abs(topLeft.y - topRight.y))
+            }
+
+            const isXPosMin = Math.abs(topRight.x - topLeft.x) >= thresholdXDistMin;
+            const isXPosMax = Math.abs(topRight.x - topLeft.x) <= thresholdXDistMax;
+            const isYPosMin = Math.abs(topLeft.y - topRight.y) >= thresholdYDistMin;
+            const isYPosMax = Math.abs(topLeft.y - topRight.y) <= thresholdYDistMax;
+            const isXRightMoreLeft = topRight.x > topLeft.x;
+            const isYLeftMoreRight = topLeft.y > topRight.y;
+
+            return isXPosMin && isXPosMax && isYPosMin && isYPosMax && isXRightMoreLeft && isYLeftMoreRight;
         };
         const getDistance = (p1, p2) => {
             return Math.sqrt(
@@ -345,6 +347,12 @@ export default function Register() {
                     }
                 </div>
 
+            </div>
+
+            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50">
+                Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
+                Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
+                X Dist : {xPos} | Y Dist : {yPos} <br></br>
             </div>
         </main>
     );
