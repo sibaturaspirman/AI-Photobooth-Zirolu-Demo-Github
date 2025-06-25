@@ -1568,6 +1568,24 @@ body{
 
 
 /* DIGITAL STAMP */
+.digstamp-smsg-bg{
+  background-image: url(../public/digitalstamp/samsung-bg.png);
+  background-size: cover;
+}
+.mySwiper .swiper-pagination{
+  position: relative;
+  top: 0 !important;
+  margin-top: 7px !important;
+}
+.mySwiper .swiper-pagination-bullet{
+  transition: all ease 300ms;
+}
+.mySwiper .swiper-pagination-bullet-active{
+  background-color: #2A2A5C;
+  width: 26px;
+  border-radius: 8px;
+}
+
 .bg-digstamp-blue{
   background-image: url(../public/digitalstamp/bg-blue.jpg);
   background-size: cover;
