@@ -243,7 +243,7 @@ export default function Register() {
             // Check if edges form a square
             const thresholdXDistMin = 130;
             const thresholdXDistMax = 150;
-            const thresholdYDistMin = 82;
+            const thresholdYDistMin = 80;
             const thresholdYDistMax = 105;
 
             setTopLeftX(Math.abs(topLeft.x))
