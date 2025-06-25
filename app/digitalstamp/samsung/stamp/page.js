@@ -339,11 +339,11 @@ export default function Register() {
                             <div className="relative mx-auto w-full flex justify-center items-center">
                                 <Image src={`/digitalstamp/samsung-box-${index+1}.png`} width={317} height={422}  alt='Zirolu' className='w-full' priority />
 
-                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl ${capturedAwal ? '' : 'hidden'} ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                <div className={`absolute right-[1.6rem] bottom-[3rem] w-[80px] z-50 shadow-xl ${capturedAwal ? '' : 'hidden'} ${lokasi[index].stamp ? 'hidden' : ''}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-here.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
 
-                                <div className={`absolute right-5 bottom-[3rem] w-[80px] z-50 shadow-xl  animate-bgScale2 ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                <div className={`absolute right-[1.6rem] bottom-[3rem] w-[80px] z-50 shadow-xl  animate-bgScale2 ${lokasi[index].stamp ? '' : 'hidden'}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-check.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
@@ -362,10 +362,11 @@ export default function Register() {
                     {/* <p>{touches.length}</p> */}
                     {/* <p className={`text-center text-base font-medium text-[#2B3B4F] mt-2 ${OpenSans.className}`}>{slideIndex + 1} / 5</p> */}
                     
-                    <div className='text-center'>
                     {statusStamp && startStamp &&
-                        <p className={`inline-block mx-auto text-center px-6 py-2 text-xs bg-[#2A2A5C] rounded-full mt-2 text-[#fff] ${OpenSans.className}`}>Stamp done!</p>
+                        <p className={`fixed bottom-[5rem] w-[max-content] pointer-events-none left-0 right-0 inline-block mx-auto text-center px-6 py-2 text-xs bg-[#2A2A5C] rounded-full mt-2 text-[#fff] ${OpenSans.className}`}>Stamp done!</p>
                     }
+
+                    <div className='text-center'>
                     {!statusStamp && startStamp &&
                         <p className={`text-center text-base text-[#2B3B4F] mt-0 ${OpenSans.className}`}></p>
                     }
