@@ -64,6 +64,7 @@ export default function Register() {
     const [hasilFoto1Stamp, setHasilFoto1Stamp] = useState();
     const [hasilFoto2Stamp, setHasilFoto2Stamp] = useState();
     const [hasilFoto3Stamp, setHasilFoto3Stamp] = useState();
+    const [hasilFoto4Stamp, setHasilFoto4Stamp] = useState();
 
 
     const videoRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]; // Referensi untuk 4 elemen video
@@ -83,6 +84,7 @@ export default function Register() {
             const itemFace1Stamp = localStorage.getItem('faceImageStamp1')
             const itemFace2Stamp = localStorage.getItem('faceImageStamp2')
             const itemFace3Stamp = localStorage.getItem('faceImageStamp3')
+            const itemFace4Stamp = localStorage.getItem('faceImageStamp4')
 
             // console.log(itemFace3)
 
@@ -90,6 +92,7 @@ export default function Register() {
             if(itemFace1Stamp != null) lokasi[1].stamp = true
             if(itemFace2Stamp != null) lokasi[2].stamp = true
             if(itemFace3Stamp != null) lokasi[3].stamp = true
+            if(itemFace4Stamp != null) lokasi[4].stamp = true
 
             lokasi[0].foto = itemFace0
             lokasi[1].foto = itemFace1
@@ -105,12 +108,13 @@ export default function Register() {
             setHasilFoto1Stamp(itemFace1Stamp)
             setHasilFoto2Stamp(itemFace2Stamp)
             setHasilFoto3Stamp(itemFace3Stamp)
+            setHasilFoto4Stamp(itemFace3Stamp)
 
             console.log(lokasi)
 
             setName(item)
         }
-    }, [Name, hasilFoto0, hasilFoto1, hasilFoto2, hasilFoto3, hasilFoto0Stamp, hasilFoto1Stamp, hasilFoto2Stamp, hasilFoto3Stamp])
+    }, [Name, hasilFoto0, hasilFoto1, hasilFoto2, hasilFoto3, hasilFoto0Stamp, hasilFoto1Stamp, hasilFoto2Stamp, hasilFoto3Stamp, hasilFoto4Stamp])
 
     //STAMP
     let sentuhan = {};
@@ -123,6 +127,7 @@ export default function Register() {
     const [yPos, setYPos] = useState(0);
 
     const canvasRef = useRef(null);
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -161,6 +166,10 @@ export default function Register() {
             // else if(activeStampIndex == 2) setHasilFoto2Stamp('true')
             // else if(activeStampIndex == 3) setHasilFoto3Stamp('true')
 
+            // setTimeout(() => {
+            //     setCapturedAwal(false)
+            // }, 500);
+
             // if (typeof localStorage !== 'undefined') {
             //     localStorage.setItem("faceImageStamp"+activeStampIndex, true)
             // }
@@ -184,7 +193,7 @@ export default function Register() {
             }
 
             // console.log(sentuhan)
-            if (Object.keys(sentuhan).length === 4) {
+            if (Object.keys(sentuhan).length === 1) {
                 const points = Object.values(sentuhan);
                 // console.log(points)
                 // console.log(checkSquarePattern(points))
@@ -207,6 +216,7 @@ export default function Register() {
                     setTimeout(() => {
                         setStatusStamp(false)
                         setStartStamp(false)
+                        setCapturedAwal(false)
 
                         sentuhan = {}
                         setTouches([]);
@@ -221,7 +231,7 @@ export default function Register() {
         };
 
         const checkSquarePattern = (points) => {
-            if (points.length !== 4) return false;
+            if (points.length !== 1) return false;
             // console.log(points)
     
             // Sort points by x and y positions
@@ -283,11 +293,16 @@ export default function Register() {
         canvas.removeEventListener("touchend", handleTouchEnd);
         };
     }, []);
+
+
+    const mulaiStamp = () => {
+        setCapturedAwal(true)
+    }
      //STAMP
 
     return (
         <main className="flex fixed h-full w-full  bg-[#F4F4F4] overflow-hidden flex-col items-center pt-2 pb-5 px-5 lg:pt-12" onContextMenu={(e)=> e.preventDefault()}>
-            <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-nonex' : 'z-50 pointer-events-nonex'}`}>
+            <div className={`fixed top-0 left-0 w-full h-full ${capturedAwal ? 'z-50 pointer-events-nonex' : 'z-50 pointer-events-none'}`}>
                 <canvas ref={canvasRef} style={{ touchAction: "none" }} className={`relative'`}/>
             </div>
 
@@ -324,14 +339,22 @@ export default function Register() {
                             <div className="relative mx-auto w-full flex justify-center items-center">
                                 <Image src={`/digitalstamp/samsung-box-${index+1}.png`} width={317} height={422}  alt='Zirolu' className='w-full' priority />
 
-                                <div className={`absolute right-4 bottom-10 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? 'hidden' : ''}`}>
+                                <div className={`absolute right-5 bottom-10 w-[80px] z-50 shadow-xl ${capturedAwal ? '' : 'hidden'} ${lokasi[index].stamp ? 'hidden' : ''}`}>
                                     <Image src={'/digitalstamp/samsung-stamp-here.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
 
-                                <div className={`absolute right-4 bottom-10 w-[140px] z-50 ${lokasi[index].stamp ? '' : 'hidden'}`}>
-                                    <Image src={'/digitalstamp//samsung-stamp-check.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
+                                <div className={`absolute right-5 bottom-10 w-[80px] z-50 shadow-xl ${lokasi[index].stamp ? '' : 'hidden'}`}>
+                                    <Image src={'/digitalstamp/samsung-stamp-check.png'} width={88} height={88}  alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
+
+                            {!lokasi[index].stamp &&
+                            <div className={`absolute bottom-0 left-0 right-0 pb-[4rem]  ${capturedAwal ? 'hidden' : ''}`} onClick={mulaiStamp}>
+                                <button className={`relative mx-auto w-[50%] mt-2 flex justify-center items-center `}>
+                                    <Image src='/digitalstamp/samsung-tap.png' width={295} height={56} alt='Zirolu' className='w-full' priority />
+                                </button>
+                            </div>
+                            }
                         </SwiperSlide>
                         ))}
                     </Swiper>
@@ -339,17 +362,17 @@ export default function Register() {
                     {/* <p>{touches.length}</p> */}
                     {/* <p className={`text-center text-base font-medium text-[#2B3B4F] mt-2 ${OpenSans.className}`}>{slideIndex + 1} / 5</p> */}
 
-                    {statusStamp && startStamp &&
+                    {/* {statusStamp && startStamp &&
                         <p className={`text-center text-base text-[#2B3B4F] mt-0 ${OpenSans.className}`}>Stamp Done!</p>
                     }
                     {!statusStamp && startStamp &&
                         <p className={`text-center text-base text-[#2B3B4F] mt-0 ${OpenSans.className}`}></p>
-                    }
+                    } */}
                 </div>
 
             </div>
 
-            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50">
+            <div className="absolute bottom-0 left-0 right- p-5 text-[#000] bg-red z-50 pointer-events-none opacity-0">
                 Top Left X : {topLeftX} | Top Left Y : {topLeftY}<br></br>
                 Top Right X : {topRightX} | Top Right Y : {topRightY}<br></br>
                 X Dist : {xPos} | Y Dist : {yPos} <br></br>
