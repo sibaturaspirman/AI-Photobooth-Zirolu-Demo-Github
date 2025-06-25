@@ -25,6 +25,7 @@ export default function Home() {
         x: t.pageX,
         y: t.pageY,
       }));
+      sentuhan = newTouches
       setTouches(newTouches);
       drawTouches(ctx, newTouches);
     };
@@ -42,31 +43,31 @@ export default function Home() {
 
     const handleTouchEnd = (e) => {
       e.preventDefault();
-      if (Object.keys(sentuhan).length === 2) {
+      // if (Object.keys(sentuhan).length === 2) {
         const points = Object.values(sentuhan);
-        console.log(points)
-        console.log(checkSquarePattern(points))
+        // console.log(points)
+        // console.log(checkSquarePattern(points))
         if (checkSquarePattern(points)) {
-            alert("2 Fingers detected: Square Pattern!");
+            // alert("2 Fingers detected: Square Pattern!");
             // console.log("4 fingers")
 
-            setTimeout(() => {
-                // setStatusStamp(false)
-                // setStartStamp(false)
+            // setTimeout(() => {
+            //     // setStatusStamp(false)
+            //     // setStartStamp(false)
 
                 sentuhan = {}
                 setTouches([]);
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }, 1500);
+            // }, 1500);
         }
-      }
+      // }
 
       // setTouches([]);
       // ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     const checkSquarePattern = (points) => {
-      if (points.length !== 2) return false;
+      // if (points.length !== 2) return false;
       // console.log(points)
 
       // Sort points by x and y positions
@@ -86,10 +87,14 @@ export default function Home() {
       const thresholdRightXMax = 45;
       const thresholdRightXMin = 25;
 
-      setTopLeftX(topLeft.x)
-      setTopLeftY(topLeft.y)
-      setTopRightX(topRight.x)
-      setTopRightY(topRight.y)
+      console.log(topRight)
+
+      setTopLeftX(Math.abs(topLeft.x))
+      setTopLeftY(Math.abs(topLeft.y))
+      if(topRight != undefined){
+        setTopRightX(Math.abs(topRight.x))
+        setTopRightY(Math.abs(topRight.y))
+      }
 
       // const isBottomAligned = Math.abs(bottomLeft.y - bottomRight.y) < threshold;
       // const isLeftAligned = Math.abs(bottomLeft.x - topLeft.x) < threshold;
