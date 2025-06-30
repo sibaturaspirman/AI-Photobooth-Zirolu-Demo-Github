@@ -75,13 +75,17 @@ export default function IQOSHome() {
     const sorted = [...selected].sort()
   
     if (sorted.includes('casual') && sorted.includes('bold')) {
-      localStorage.setItem('bondsProduct', 'iluma')
+      localStorage.setItem('bondsProduct', 'ILUMA')
     } else if (sorted.includes('minimalist') && sorted.includes('modern')) {
-      localStorage.setItem('bondsProduct', 'bonds')
+      localStorage.setItem('bondsProduct', 'BOND')
     } else {
-      const random = Math.random() < 0.5 ? 'iluma' : 'bonds'
+      const random = Math.random() < 0.5 ? 'ILUMA' : 'BOND'
       localStorage.setItem('bondsProduct', random)
     }
+
+    const interests = ['MUSIC', 'ART', 'AUTOMOTIVE']
+    const randomInterest = interests[Math.floor(Math.random() * interests.length)]
+    localStorage.setItem('bondsInterest', randomInterest)
   
     // alert(`Saved to localStorage! product = ${localStorage.getItem('bondsProduct')}`)
     setPage(3)

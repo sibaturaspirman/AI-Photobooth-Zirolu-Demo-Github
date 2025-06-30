@@ -3,9 +3,11 @@
 import * as fal from '@fal-ai/serverless-client';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from "next/image";
+import BgWaveCustom from "../../components/BgWaveCustom";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import PadmaAIClient from "padmaai-client";
+import ReactPlayer from 'react-player'
 
 // @snippet:start(client.config)
 fal.config({
@@ -46,6 +48,7 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const [playVideo, setPlayVideo] = useState(false);
 
     useWebcam({ videoRef,previewRef});
 
@@ -158,7 +161,7 @@ export default function Cam() {
             setFormasiFix(item2)
             setAuraFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "9f4a2c9c-01c6-473c-9c58-54aceca746bd");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6","b71f2d8c-92cc-438d-a5a5-6ed59e178870");
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix, auraFix])
@@ -198,6 +201,7 @@ export default function Cam() {
     }))
 
     const generateImageSwapBaru = async () => {
+        setPlayVideo(true)
         padmaAI.onProgress((progress) => {
             // setProgress(progress.type); // Update the progress state
             console.log("Progress:", progress); // Optional: log progress for debugging
@@ -215,7 +219,7 @@ export default function Cam() {
           
           try {
             // Generate the image
-            const result = await padmaAI.swapImages(imageFile, formasiFix);
+            const result = await padmaAI.swapImages(imageFile, styleFix);
             // this.padmaAI.swapImages("BASE64IMAGE", "FILTER");
             // setImageUrl(result.imgUrl); // Assuming the image URL is returned
 
@@ -228,8 +232,8 @@ export default function Cam() {
                     localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
                 setTimeout(() => {
-                    router.push('/iqos-prj/result');
-                }, 200);
+                    router.push('/iqos-bonds/result');
+                }, 7000);
             })
             console.log(FACE_URL_RESULT)
 
@@ -239,10 +243,11 @@ export default function Cam() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-iqos-prj overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10 hidden lg:block"></div> */}
-            <div  className={`relative w-[20%] lg:w-[70%] mx-auto mb-1 lg:mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/iqos/prj-take.png' width={660} height={104} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-30 hidden lg:block"></div>
+            <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom>
+            <div  className={`relative w-[20%] lg:w-[80%] mx-auto mb-1 lg:mb-0 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <Image src='/iqos/bonds-take.png' width={871} height={134} alt='Zirolu' className='w-full' priority />
             </div>
             
             {/* <div className={`fixed top-0 left-0 w-full h-full bg-veev flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
@@ -254,6 +259,7 @@ export default function Cam() {
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
+                    <ReactPlayer url={['/iqos/bonds-vid2.mp4']}  playing={playVideo} loop playsinline width="100%" height="100%"/>
                     {/* <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
                         <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
                             <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
@@ -269,12 +275,11 @@ export default function Cam() {
                     {/* <div className="absolute bottom-[10rem] mx-auto flex  w-[50%] justify-center items-center">
                         <Image src='/cpl/contemporary.png' width={357} height={201} alt='Zirolu' className='w-full' priority />
                     </div> */}
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#F43500] rounded-xl text-[#fff] lg:font-bold'>
+                    {/* <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#F43500] rounded-xl text-[#fff] lg:font-bold'>
                         <p>{`Please wait, loading...`}</p>
-                        {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
                         <p>{progressText} {progressPersen}</p>
                         {error}
-                    </div>
+                    </div> */}
 
                     {/* <pre className='relative py-2 px-4 mt-5 lg:mt-10 border-2 text-left bg-[#A91E58] rounded-xl text-[#fff] text-xs lg:text-sm overflow-auto no-scrollbar h-[100px] w-[60%] mx-auto'>
                         <code>
@@ -286,7 +291,7 @@ export default function Cam() {
                 </div>
             }
             {/* LOADING */}
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-0 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
@@ -314,21 +319,21 @@ export default function Cam() {
             </div>
 
 
-            {!enabled && 
+            {/* {!enabled && 
                 <p className='block text-center lg:text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Foto hanya sendiri <br></br> *Ikuti garis pose dan tidak terlalu zoom</p> 
-            }
+            } */}
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
-                    <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/prj-btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    <button className="relative mx-auto flex  w-[60%] justify-center items-center" onClick={captureVideo}>
+                        <Image src='/iqos/bonds-capture.png' width={407} height={160} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
-                    <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/iqos/prj-btn-surprise.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    <button className="w-[70%] relative mx-auto flex justify-center items-center" onClick={generateAI}>
+                        <Image src='/iqos/bonds-surprise.png' width={407} height={160} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
                         <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
