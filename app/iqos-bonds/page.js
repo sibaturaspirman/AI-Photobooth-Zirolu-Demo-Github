@@ -140,7 +140,7 @@ export default function IQOSHome() {
                   className={`cursor-pointer rounded-full overflow-hidden border-8 transition-all duration-300
                     ${selected.includes(option.value)
                       ? 'border-white'
-                      : 'border-transparent opacity-80 hover:opacity-100'}
+                      : 'border-transparent opacity-100 hover:opacity-100'}
                   `}
                 >
                   <img src={option.image} alt={option.label} className="w-full" />
@@ -182,7 +182,7 @@ export default function IQOSHome() {
                   className={`cursor-pointer rounded-full overflow-hidden border-8 transition-all duration-300
                     ${selected2.includes(option.value)
                       ? 'border-white'
-                      : 'border-transparent opacity-80 hover:opacity-100'}
+                      : 'border-transparent opacity-100 hover:opacity-100'}
                   `}
                 >
                   <img src={option.image} alt={option.label} className="w-full" />
@@ -232,7 +232,7 @@ export default function IQOSHome() {
       <div className={`fixed mx-auto top-0 left-0 w-full h-full flex flex-col items-center justify-center  ${page == 6 ? '' : 'opacity-0  pointer-events-none'}`}>
         <div className={`w-full flex items-center justify-center`}>
             {/* <video src={imageResultAI} playsInline loop className="mx-auto w-full border-4 shadow-xl border-white"></video> */}
-            <ReactPlayer url={['/iqos/bonds-vid1.mp4']} onEnded={handleMediaEnded}  playing={playVideo} playsinline width="100%" height="100%"/>
+            <ReactPlayer url={['/iqos/bonds-vid1-rev.mp4']} onEnded={handleMediaEnded}  playing={playVideo} playsinline width="100%" height="100%"/>
         </div>
       </div>
     </main>

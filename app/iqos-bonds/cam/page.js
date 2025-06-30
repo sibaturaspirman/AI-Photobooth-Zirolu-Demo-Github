@@ -259,7 +259,7 @@ export default function Cam() {
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
-                    <ReactPlayer url={['/iqos/bonds-vid2.mp4']}  playing={playVideo} loop playsinline width="100%" height="100%"/>
+                    <ReactPlayer url={['/iqos/bonds-vid2-rev.mp4']}  playing={playVideo} loop playsinline width="100%" height="100%"/>
                     {/* <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
                         <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
                             <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
