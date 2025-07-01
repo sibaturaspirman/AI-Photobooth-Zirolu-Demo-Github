@@ -48,6 +48,7 @@ export default function IQOSHome() {
   const [page, setPage] = useState(0);
   const [playVideo, setPlayVideo] = useState(false);
 
+  const [hasilProduct, setHasilProduct] = useState(null)
   const [selected, setSelected] = useState([])
   const [selected2, setSelected2] = useState([])
 
@@ -76,11 +77,14 @@ export default function IQOSHome() {
   
     if (sorted.includes('casual') && sorted.includes('bold')) {
       localStorage.setItem('bondsProduct', 'ILUMA')
+      setHasilProduct('ILUMA')
     } else if (sorted.includes('minimalist') && sorted.includes('modern')) {
       localStorage.setItem('bondsProduct', 'BOND')
+      setHasilProduct('BOND')
     } else {
       const random = Math.random() < 0.5 ? 'ILUMA' : 'BOND'
       localStorage.setItem('bondsProduct', random)
+      setHasilProduct(random)
     }
 
     const interests = ['MUSIC', 'ART', 'AUTOMOTIVE']
@@ -210,7 +214,7 @@ export default function IQOSHome() {
         </div>
       </div>
 
-      <div className={`fixed mx-auto top-0 left-0 w-full h-full flex flex-col items-center justify-center  ${page == 4 ? '' : 'opacity-0  pointer-events-none'}`} onClick={() => setPage(5)}>
+      <div className={`fixed mx-auto top-0 left-0 w-full h-full flex flex-col items-center justify-center  ${page == 4 && hasilProduct == 'ILUMA' ? '' : 'opacity-0  pointer-events-none'}`} onClick={handleNext3}>
         <div className='relative w-[95%] mx-auto flex justify-center items-center'>
           <Image src='/iqos/bonds-result1.png' width={871} height={358} alt='Zirolu' className='w-full' priority />
         </div>
@@ -219,7 +223,7 @@ export default function IQOSHome() {
         </div>
       </div>
 
-      <div className={`fixed mx-auto top-0 left-0 w-full h-full flex flex-col items-center justify-center  ${page == 5 ? '' : 'opacity-0  pointer-events-none'}`} onClick={handleNext3}>
+      <div className={`fixed mx-auto top-0 left-0 w-full h-full flex flex-col items-center justify-center  ${page == 4 && hasilProduct == 'BOND' ? '' : 'opacity-0  pointer-events-none'}`} onClick={handleNext3}>
         <div className='relative w-[95%] mx-auto flex justify-center items-center'>
           <Image src='/iqos/bonds-result2.png' width={871} height={358} alt='Zirolu' className='w-full' priority />
         </div>
