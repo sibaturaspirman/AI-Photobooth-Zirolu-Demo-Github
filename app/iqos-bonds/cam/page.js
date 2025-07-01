@@ -233,7 +233,7 @@ export default function Cam() {
                 }
                 setTimeout(() => {
                     router.push('/iqos-bonds/result');
-                }, 7000);
+                }, 1200);
             })
             console.log(FACE_URL_RESULT)
 
