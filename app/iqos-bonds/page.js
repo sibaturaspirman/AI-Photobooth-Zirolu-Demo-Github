@@ -87,7 +87,7 @@ export default function IQOSHome() {
       setHasilProduct(random)
     }
 
-    const interests = ['MUSIC', 'ART', 'AUTOMOTIVE']
+    const interests = ['MUSIC', 'ART']
     const randomInterest = interests[Math.floor(Math.random() * interests.length)]
     localStorage.setItem('bondsInterest', randomInterest)
   
