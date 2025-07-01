@@ -303,7 +303,7 @@ export default function Result() {
                     <div className='w-[40%] mx-auto lg:w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/iqos-bonds' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/comcon/zyn/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                            <Image src='/cpl/back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
