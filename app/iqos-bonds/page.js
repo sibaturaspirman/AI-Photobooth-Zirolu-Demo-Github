@@ -104,8 +104,8 @@ export default function IQOSHome() {
   }
 
   return (
-    <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center">
-      <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom>
+    <main className="flex fixed bg-iqos-bonds h-full w-full overflow-auto flex-col items-center justify-center">
+      {/* <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom> */}
       <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10 hidden lg:block"></div>
       <div className={`relative w-full ${page == 0 ? '' : 'opacity-0'}`} onClick={() => setPage(1)}>
         <div className='relative w-[75%] mx-auto flex justify-center items-center'>

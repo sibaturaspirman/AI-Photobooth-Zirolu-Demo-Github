@@ -1083,6 +1083,11 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-iqos-bonds{
+  background-image: url(../public/iqos/bonds-bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
 
 .bg-iqos{
   background-image: url(../public/iqos/bg.jpeg);

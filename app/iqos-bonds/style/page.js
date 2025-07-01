@@ -83,8 +83,8 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom>
+        <main className="flex fixed bg-iqos-bonds h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            {/* <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom> */}
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10 hidden lg:block"></div>
             <div className="relative w-[30%] lg:w-[90%] mx-auto mb-0">
             <Image src='/iqos/bonds-select.png' width={871} height={67} alt='Zirolu' className='w-full' priority />

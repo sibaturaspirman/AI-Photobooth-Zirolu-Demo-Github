@@ -243,9 +243,9 @@ export default function Cam() {
     }
 
     return (
-        <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed bg-iqos-bonds h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-30 hidden lg:block"></div>
-            <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom>
+            {/* <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom> */}
             <div  className={`relative w-[20%] lg:w-[80%] mx-auto mb-1 lg:mb-0 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/bonds-take.png' width={871} height={134} alt='Zirolu' className='w-full' priority />
             </div>

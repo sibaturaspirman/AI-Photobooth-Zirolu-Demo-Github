@@ -167,9 +167,9 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed bg-iqos-bonds h-full w-full overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             
-            <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom>
+            {/* <BgWaveCustom bg={'/iqos/bonds-bg.jpg'}></BgWaveCustom> */}
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50 hidden lg:block"></div>
             {/* <div className={`relative w-[10%] lg:w-[50%] mt-[10rem] mx-auto mt-0 mb-2 lg:mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 <Image src='/cpl/take.png' width={801} height={247} alt='Zirolu' className='w-full' priority />
