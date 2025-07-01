@@ -258,7 +258,7 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
-                    <div className='flex justify-center items-center mt-10'>
+                    {/* <div className='flex justify-center items-center mt-10'>
                         <div className={`w-full pr-5`}>
                         <ReactToPrint
                         trigger={() => 
@@ -274,22 +274,20 @@ export default function Result() {
                             <Image src='/iqos/bonds-qr.png' width={407} height={160} alt='Zirolu' className='w-full' priority />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                                <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/cpl/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
-                                </div>
+                        <div className={`w-full mt-10 mb-5`}>
+                            <div className="relative w-[50%] mx-auto flex justify-center items-center flex-col">
+                            <Image src='/iqos/bonds-print.png' width={407} height={160} alt='Zirolu' className='w-full' priority />
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
-                    </div>  */}
+                    </div> 
                     {/* <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
                         <div className={`w-full lg:mt-10`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
