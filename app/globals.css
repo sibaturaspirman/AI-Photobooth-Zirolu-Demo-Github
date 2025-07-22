@@ -1130,6 +1130,18 @@ body{
 }
 
 
+/* BAIC */
+.bg-baic-home{
+  background-image: url(../public/baic/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-baic{
+  background-image: url(../public/baic/bg-page.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
 /* CPL */
 .bg-cpl-home{
   background-image: url(../public/cpl/bg.jpg);
