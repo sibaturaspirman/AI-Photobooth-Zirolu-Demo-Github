@@ -327,29 +327,29 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
-                <div className={`w-full`} onClick={downloadImageAI}>
+                {/* <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/prj-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                <Image src='/iqos/prj-collect2.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
-                    </div> 
-                    {/* <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
+                    </div>  */}
+                    <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
                         <div className={`w-full lg:mt-10`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/cpl/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                 <Image src='/iqos/prj-collect2.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
 
                     <div className='w-[40%] mx-auto lg:w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
