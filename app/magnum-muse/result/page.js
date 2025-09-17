@@ -204,7 +204,7 @@ export default function Result() {
 
                     <div className='w-full mt-2 lg:mt-8'>
                         <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/greenday/magnum1' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/magnum-muse' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/greenday/m-btn-kembali.png' width={764} height={144} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

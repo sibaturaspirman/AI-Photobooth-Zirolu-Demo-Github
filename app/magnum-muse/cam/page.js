@@ -156,7 +156,7 @@ export default function Cam() {
             const item2 = localStorage.getItem('formasiFix')
             const item4 = localStorage.getItem('auraFix')
             setStyleFix(item1)
-            setFormasiFix('TOP_'+item2)
+            setFormasiFix('BOTTOM_'+item2)
             setAuraFix(item4)
         }
         const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "11b14154-f994-486f-a9ab-0d1c46911a40");
@@ -253,7 +253,7 @@ export default function Cam() {
             </a>
             </div> */}
 
-            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-100 pointer-events-none' : ''}`}>
                 <div className='relative lg:w-full'>
                     {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
