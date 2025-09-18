@@ -158,7 +158,7 @@ export default function Result() {
                             <Image src={imageResultAI}  width={720} height={1280} alt='Zirolu' className='relative top-0 mx-auto w-full block z-20'></Image>
                         </div>
                     </div> */}
-                    <div className='relative z-10 w-[90%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
+                    <div className='relative z-10 w-[65%] border-2 lg:border-8 border-[#ffffff] rounded-sm'>
                         <div className={`relative w-full overflow-hidden flex justify-center items-center`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={720} height={720} alt='Zirolu' className='relative top-0 mx-auto w-full block z-20'></Image>
                         </div>
