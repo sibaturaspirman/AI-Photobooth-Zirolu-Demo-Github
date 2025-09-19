@@ -327,7 +327,7 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
-                {/* <div className={`w-full`} onClick={downloadImageAI}>
+                <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
@@ -340,8 +340,8 @@ export default function Result() {
                     }
                     content={() => componentRef}
                     />
-                    </div>  */}
-                    <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
+                    </div> 
+                    {/* <div className={`w-[70%] mx-auto lg:w-full`} onClick={downloadImageAI}>
                         <div className={`w-full lg:mt-10`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
@@ -349,7 +349,7 @@ export default function Result() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='w-[40%] mx-auto lg:w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
