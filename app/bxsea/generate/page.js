@@ -186,9 +186,11 @@ export default function Register() {
     const generateImageSwap = async () => {
         let urlGambar = ''
         if(prompt1 == 'm'){
-            urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }else{
-            urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 4)+'.jpeg';
+            // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 4)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }
         console.log(urlGambar)
 
