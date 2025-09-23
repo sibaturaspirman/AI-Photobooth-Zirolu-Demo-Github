@@ -17,9 +17,9 @@ export default function BXSeaHome() {
         <div className='animate-upDown2 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
           <Image src='/bxsea/pinjem-m-2.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
         </div>
-        {/* <div className='animate-upDown3 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
-          <Image src='/bxsea/bxsea-w-4.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
-        </div> */}
+        <div className='animate-upDown3 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
+          <Image src='/bxsea/pinjem-w-3.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
+        </div>
       </div>
       <div className="relative w-full flex justify-center items-center mt-0 mb-6 lg:mt-12 lg:mb-14">
         <div className='animate-upDown relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
@@ -27,6 +27,9 @@ export default function BXSeaHome() {
         </div>
         <div className='animate-upDown2 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
           <Image src='/bxsea/pinjem-w-2.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
+        </div>
+        <div className='animate-upDown3 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
+          <Image src='/bxsea/pinjem-w-3.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
         </div>
         {/* <div className='animate-upDown3 relative w-1/3 mx-1 flex justify-center items-center pointer-events-none'>
           <Image src='/bxsea/bxsea-w-3.jpeg' width={365} height={640} alt='Zirolu' className='w-full' priority />
