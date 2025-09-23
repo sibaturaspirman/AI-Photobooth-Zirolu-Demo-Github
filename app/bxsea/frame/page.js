@@ -79,18 +79,21 @@ export default function Register() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('faceImage')
-            const item2 = localStorage.getItem('frame')
             setImageFile(item)
-            setStyleGender(item2)
         }
-    }, [imageFile, styleGender])
+    }, [imageFile])
 
     const generateAI = () => {
-        setNumProses1(true)
+
+        localStorage.setItem('frame', prompt1)
         setTimeout(() => {
-            // generateImage()
-            generateImageSwap()
-        }, 500);
+            router.push('/bxsea/generate');
+        }, 250);
+        // setNumProses1(true)
+        // setTimeout(() => {
+        //     // generateImage()
+        //     generateImageSwap()
+        // }, 500);
     }
 
     const image = useMemo(() => {
@@ -189,10 +192,10 @@ export default function Register() {
         let urlGambar = ''
         if(prompt1 == 'm'){
             // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
-            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+styleGender+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }else{
             // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 4)+'.jpeg';
-            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+styleGender+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }
         console.log(urlGambar)
 
@@ -257,7 +260,7 @@ export default function Register() {
     return (
         <main className="flex fixed h-full w-full bg overflow-auto flex-col items-center justify-top pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             <TopLogo></TopLogo>
-            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 text-white ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR GENDER</h1>
+            <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 text-white ${paytone_one.className}  ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>CHOOSE YOUR STYLE</h1>
             {/* LOADING */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -292,7 +295,7 @@ export default function Register() {
                 </div> */}
                 <div className='relative mt-2 lg:mt-10 w-full'>
                 <div className='relative w-full mb-5'>
-                        <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label>
+                        {/* <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label> */}
                         <div>
                             {/* GENDER SEMENTARA */}
                             <ul className='choose2'>
@@ -301,20 +304,30 @@ export default function Register() {
                                     id='choose_gender1'
                                     type="radio"
                                     name='choose_gender'
-                                    value="m"
+                                    value="1"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender1" className='lg:text-2xl'>Man</label>
+                                    <label htmlFor="choose_gender1" className='lg:text-2xl'>Motorcycle</label>
                                 </li>
                                 <li>
                                     <input
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="w"
+                                    value="2"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Woman</label>
+                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Mangrove</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_gender3'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="3"
+                                    onChange={(e) => setPrompt1(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender3" className='lg:text-2xl'>Hiking</label>
                                 </li>
                             </ul>
                         </div>
