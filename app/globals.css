@@ -1322,6 +1322,13 @@ body{
 }
 
 
+.bg-comcon-iqos2025{
+  background-image: url(../public/iqos/cmcn-bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
+
 .bg-mlb-front{
   background-image: url(../public/comcon/mlb/bg-front.jpg);
   background-size: cover;
