@@ -81,8 +81,8 @@ export default function Result() {
 
     let componentRef = useRef();
     const [payload, setPayload] = useState({
-        name: 'COMCON IQOS FAL',
-        phone: '00002',
+        name: 'COMCON IQOS 2025',
+        phone: '002025',
       });
     const { Canvas } = useQRCode();
 
@@ -178,16 +178,16 @@ export default function Result() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-comcon-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-comcon-iqos2025 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
         <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div>
-            {/* <div className={`relative w-[60%] mx-auto mt-[11rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-                <Image src='/comcon/visikom/title-photo.png' width={732} height={50} alt='Zirolu' className='w-full' priority />
-            </div> */}
+            <div className={`relative w-[60%] mx-auto mt-[4rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+                <Image src='/iqos/cmcn-result.png' width={732} height={50} alt='Zirolu' className='w-full' priority />
+            </div>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
                     <div className={`relative w-[60%] mx-auto mb-10`}>
-                        <Image src='/comcon/iqos/scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/cmcn-scan.png' width={580} height={213} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='relative mt-3 w-[60%] mx-auto flex items-center justify-center canvas-qr' onClick={()=>{setGenerateQR(null)}}>
                         <Canvas
@@ -241,7 +241,7 @@ export default function Result() {
                         <p className='text-8xl font-bold'>{maxDuration}s</p>
                         <p className='uppercase text-5xl mt-5'>scan before it ends</p>
                     </div> */}
-                    <div className={`w-full mt-10`}>
+                    {/* <div className={`w-full mt-10`}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
@@ -254,9 +254,9 @@ export default function Result() {
                     }
                     content={() => componentRef}
                     />
-                    </div>
-                    <Link href='/comcon' className="relative w-[60%] mx-auto flex justify-center items-center">
-                        <Image src='/comcon/zyn/try.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
+                    </div> */}
+                    <Link href='/comcon/iqos2025' className="relative w-[60%] mx-auto flex justify-center items-center pt-[6rem]">
+                        <Image src='/iqos/cmcn-back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
                 </div>
@@ -303,33 +303,33 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
                         <div className={`w-full mt-5`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/iqos/btn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
+                                <Image src='/iqos/cmcn-collect.png' width={640} height={88} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     }
                     content={() => componentRef}
                     />
-                    </div>  */}
-                    <div className={`w-full`} onClick={downloadImageAI}>
+                    </div> 
+                    {/* <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-10`}>
                             <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/comcon/iqos/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                 <Image src='/iqos/cmcn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/comcon/iqos2/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/comcon/iqos2025/style' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/comcon/iqos/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

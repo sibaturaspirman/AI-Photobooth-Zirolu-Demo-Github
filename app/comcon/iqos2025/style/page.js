@@ -33,23 +33,23 @@ export default function Register() {
 
     const generateAI = () => {
         let urlGambar = '';
-        let randomGambar = getRandomInt(1,8)
+        let randomGambar = getRandomInt(1,5)
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("formasiFix", character)
             }
-            urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'-'+randomGambar+'.jpg';
+            urlGambar = 'https://ai.zirolu.id/iqos/cmcn-male-'+randomGambar+'.png';
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("formasiFix", character)
                 }
-                urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'-'+randomGambar+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/cmcn-female-'+randomGambar+'.png';
             }else{
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("formasiFix", character+'hijab')
                 }
-                urlGambar = 'https://ai.zirolu.id/comcon/iqos/style/'+character+'hijab-'+randomGambar+'.jpg';
+                urlGambar = 'https://ai.zirolu.id/iqos/cmcn-hijab-'+randomGambar+'.png';
             }
         }
 
@@ -58,7 +58,7 @@ export default function Register() {
         }
 
         setTimeout(() => {
-            router.push('/comcon/iqos2/cam');
+            router.push('/comcon/iqos2025/cam');
         }, 100);
     }
 
@@ -71,10 +71,10 @@ export default function Register() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-comcon-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-comcon-iqos2025 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
             <div className="relative w-[90%] mx-auto mt-0">
-            <Image src='/comcon/iqos/identify.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
+            <Image src='/iqos/cmcn-select.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
             <div className={`relative w-[90%] mx-auto mt-10`}>
@@ -94,7 +94,7 @@ export default function Register() {
                                 <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/comcon/iqos/gender1.png"
+                                    src="/iqos/cmcn-gender1.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -102,7 +102,7 @@ export default function Register() {
                                 />
                                 <Image
                                     className="absolute top-0 left-0 h-auto w-full"
-                                    src="/comcon/iqos/gender1_c.png"
+                                    src="/iqos/cmcn-gender1_c.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -121,7 +121,7 @@ export default function Register() {
                                 <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/comcon/iqos/gender2.png"
+                                    src="/iqos/cmcn-gender2.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -129,7 +129,7 @@ export default function Register() {
                                 />
                                 <Image
                                     className="absolute top-0 left-0 h-auto w-full"
-                                    src="/comcon/iqos/gender2_c.png"
+                                    src="/iqos/cmcn-gender2_c.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -168,7 +168,7 @@ export default function Register() {
                 {/* {character && */}
                     <div className={`relative w-full flex justify-center items-center mt-[9rem] z-20 ${character ? `` : 'opacity-0 pointer-events-none'}`}>
                         <button className="relative mx-auto w-[100%] flex justify-center items-center" onClick={generateAI}>
-                            <Image src='/comcon/iqos/btn-continue2.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
+                            <Image src='/iqos/cmcn-continue.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </button>
                     </div>
                 {/* } */}

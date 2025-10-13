@@ -230,7 +230,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/comcon/iqos2/result');
+                router.push('/comcon/iqos2025/result');
             }, 200);
         })
         } catch (error) {
@@ -243,21 +243,21 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-comcon-iqos overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-comcon-iqos2025 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div>
             <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-            <Image src='/comcon/iqos/take.png' width={485} height={80} alt='Zirolu' className='w-full' priority />
+            <Image src='/iqos/cmcn-take.png' width={485} height={80} alt='Zirolu' className='w-full' priority />
             </div>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-comcon-iqos flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
-            <a href='/comcon/iqos/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <a href='/comcon/iqos2025' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
             </div>
 
             {/* LOADING */}
             {numProses1 && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20'>
+                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-20 w-[70%] mx-auto'>
                     {/* <div className='relative w-[250px] h-[78px] lg:w-[555px] lg:h-[180px] overflow-hidden'>
                         <div className='animate-loading1 absolute left-0 top-0 w-full mx-auto flex justify-center items-center pointer-events-none'>
                             <Image src='/loading.png' width={770} height={714} alt='Zirolu' className='w-full' priority />
@@ -267,9 +267,13 @@ export default function Cam() {
                     {/* <div className="relative w-[40%] mx-auto mt-[14rem] mb-5">
                         <Image src='/pln/pln.png' width={784} height={228} alt='Zirolu' className='w-full' priority />
                     </div> */}
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl border-2 text-center bg-[#33303D] rounded-xl text-[#fff] lg:font-bold'>
-                        <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl text-center rounded-xl text-[#fff] lg:font-bold w-full'>
+                        <div className='w-full mb-10'>
+                            <Image src='/iqos/cmcn-loading.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
+                        </div>
+                        {/* <p>{`Please wait, loading...`}</p> */}
+                        {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
+                        <p className='text-3xl'>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds`}</p>
                         {error}
                     </div>
 
@@ -317,7 +321,7 @@ export default function Cam() {
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/comcon/iqos/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/cmcn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -325,7 +329,7 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/comcon/iqos/btn-surprise.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/iqos/cmcn-continue.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
                         <Image src='/comcon/iqos/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
