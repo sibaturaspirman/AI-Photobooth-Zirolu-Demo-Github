@@ -269,12 +269,13 @@ export default function Cam() {
                     {/* <div className="absolute bottom-[10rem] mx-auto flex  w-[50%] justify-center items-center">
                         <Image src='/cpl/contemporary.png' width={357} height={201} alt='Zirolu' className='w-full' priority />
                     </div> */}
-                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl text-center rounded-xl text-[#fff] lg:font-bold w-full'>
+                    <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl text-center rounded-xl text-[#fff] lg:font-bold w-[70%] mx-auto'>
                         <div className='w-full mb-10'>
                             <Image src='/iqos/cmcn-loading.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
                         </div>
                         {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
-                        <p>{progressText} {progressPersen}</p>
+                        <p>Please wait, {progressPersen}</p>
+                        {/* <p>{progressText} {progressPersen}</p> */}
                         {error}
                     </div>
 
