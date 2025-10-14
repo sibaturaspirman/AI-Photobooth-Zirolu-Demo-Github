@@ -298,7 +298,7 @@ export default function Register() {
                         {/* <label htmlFor="choose_gender" className="block mb-2 lg:mb-4 lg:text-3xl text-center font-bold text-white">Your are</label> */}
                         <div>
                             {/* GENDER SEMENTARA */}
-                            <ul className='choose2'>
+                            <ul className='choose2 flex-wrap'>
                                 <li>
                                     <input
                                     id='choose_gender1'
@@ -319,7 +319,7 @@ export default function Register() {
                                     />
                                     <label htmlFor="choose_gender2" className='lg:text-2xl'>Hiking</label>
                                 </li>
-                                <li>
+                                <li className='mt-4'>
                                     <input
                                     id='choose_gender3'
                                     type="radio"
@@ -329,7 +329,7 @@ export default function Register() {
                                     />
                                     <label htmlFor="choose_gender3" className='lg:text-2xl'>Mountain</label>
                                 </li>
-                                <li>
+                                <li className='mt-4'>
                                     <input
                                     id='choose_gender4'
                                     type="radio"
