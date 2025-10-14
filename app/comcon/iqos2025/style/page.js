@@ -36,18 +36,21 @@ export default function Register() {
         let randomGambar = getRandomInt(1,5)
         if(character == 'cowok'){
             if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("formasiFix", character)
+                // localStorage.setItem("formasiFix", character)
+                localStorage.setItem("formasiFix", 'MALE')
             }
             urlGambar = 'https://ai.zirolu.id/iqos/cmcn-male-'+randomGambar+'.png';
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character)
+                    // localStorage.setItem("formasiFix", character)
+                    localStorage.setItem("formasiFix", 'FEMALE')
                 }
                 urlGambar = 'https://ai.zirolu.id/iqos/cmcn-female-'+randomGambar+'.png';
             }else{
                 if (typeof localStorage !== 'undefined') {
-                    localStorage.setItem("formasiFix", character+'hijab')
+                    // localStorage.setItem("formasiFix", character+'hijab')
+                    localStorage.setItem("formasiFix", 'HIJAB')
                 }
                 urlGambar = 'https://ai.zirolu.id/iqos/cmcn-hijab-'+randomGambar+'.png';
             }
