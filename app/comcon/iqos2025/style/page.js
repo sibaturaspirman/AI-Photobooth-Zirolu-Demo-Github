@@ -62,7 +62,7 @@ export default function Register() {
         }
 
         setTimeout(() => {
-            router.push('/comcon/iqos2025/cam');
+            router.push('/comcon/iqos2025/cam2');
         }, 100);
     }
 
