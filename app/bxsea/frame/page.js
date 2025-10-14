@@ -192,10 +192,10 @@ export default function Register() {
         let urlGambar = ''
         if(prompt1 == 'm'){
             // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
-            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/xpinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }else{
             // urlGambar = 'https://ai.zirolu.id/bxsea/bxsea-'+prompt1+'-'+getRandomInt(1, 4)+'.jpeg';
-            urlGambar = 'https://ai.zirolu.id/bxsea/pinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
+            urlGambar = 'https://ai.zirolu.id/bxsea/xpinjem-'+prompt1+'-'+getRandomInt(1, 2)+'.jpeg';
         }
         console.log(urlGambar)
 
@@ -317,7 +317,7 @@ export default function Register() {
                                     value="2"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Mangrove</label>
+                                    <label htmlFor="choose_gender2" className='lg:text-2xl'>Hiking</label>
                                 </li>
                                 <li>
                                     <input
@@ -327,7 +327,17 @@ export default function Register() {
                                     value="3"
                                     onChange={(e) => setPrompt1(e.target.value)}
                                     />
-                                    <label htmlFor="choose_gender3" className='lg:text-2xl'>Hiking</label>
+                                    <label htmlFor="choose_gender3" className='lg:text-2xl'>Mountain</label>
+                                </li>
+                                <li>
+                                    <input
+                                    id='choose_gender4'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="4"
+                                    onChange={(e) => setPrompt1(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender4" className='lg:text-2xl'>Mangrove</label>
                                 </li>
                             </ul>
                         </div>
