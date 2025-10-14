@@ -40,7 +40,7 @@ export default function Register() {
                 localStorage.setItem("formasiFix", 'MALE')
             }
             // urlGambar = 'https://ai.zirolu.id/iqos/cmcn-male-'+randomGambar+'.png';
-            urlGambar = 'https://ai.zirolu.id/iqos/cmcn-male-1.png';
+            urlGambar = 'https://ai.zirolu.id/iqos/cmcn-male-2.png';
         }else{
             if(!hijab){
                 if (typeof localStorage !== 'undefined') {
