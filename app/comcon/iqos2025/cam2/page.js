@@ -228,7 +228,7 @@ export default function Cam() {
                     localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
                 setTimeout(() => {
-                    router.push('/comcon/iqos-2025/result');
+                    router.push('/comcon/iqos2025/result');
                 }, 200);
             })
             console.log(FACE_URL_RESULT)
