@@ -230,7 +230,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/comcon/iqos2025/result');
+                router.push('/indika/result');
             }, 200);
         })
         } catch (error) {
