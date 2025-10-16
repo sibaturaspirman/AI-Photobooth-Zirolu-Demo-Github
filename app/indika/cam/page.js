@@ -321,7 +321,7 @@ export default function Cam() {
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/cmcn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/indika/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
