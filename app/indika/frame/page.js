@@ -34,35 +34,26 @@ export default function Register() {
     const generateAI = () => {
         let urlGambar = '';
         let randomGambar = getRandomInt(1,4)
-        if(character == 'cowok'){
-            if (typeof localStorage !== 'undefined') {
-                // localStorage.setItem("formasiFix", character)
-                localStorage.setItem("formasiFix", 'MALE')
-            }
-            urlGambar = 'https://ai.zirolu.id/indika/male-'+randomGambar+'.png';
+        const item = localStorage.getItem('formasiFix')
+        if(item == 'MALE'){
+            // if (typeof localStorage !== 'undefined') {
+            //     // localStorage.setItem("formasiFix", character)
+            //     localStorage.setItem("formasiFix", 'MALE')
+            // }
+            urlGambar = 'https://ai.zirolu.id/indika/male-'+character+'.png';
             // urlGambar = 'https://ai.zirolu.id/indika/male-2.png';
+        }else if(item == 'FEMALE'){
+            urlGambar = 'https://ai.zirolu.id/indika/female-'+character+'.png';
         }else{
-            if(!hijab){
-                if (typeof localStorage !== 'undefined') {
-                    // localStorage.setItem("formasiFix", character)
-                    localStorage.setItem("formasiFix", 'FEMALE')
-                }
-                urlGambar = 'https://ai.zirolu.id/indika/female-'+randomGambar+'.png';
-            }else{
-                if (typeof localStorage !== 'undefined') {
-                    // localStorage.setItem("formasiFix", character+'hijab')
-                    localStorage.setItem("formasiFix", 'HIJAB')
-                }
-                urlGambar = 'https://ai.zirolu.id/indika/hijab-'+randomGambar+'.png';
-            }
+            urlGambar = 'https://ai.zirolu.id/indika/hijab-'+character+'.png';
         }
 
-        // if (typeof localStorage !== 'undefined') {
-        //     localStorage.setItem("styleFix", urlGambar)
-        // }
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("styleFix", urlGambar)
+        }
 
         setTimeout(() => {
-            router.push('/indika/frame');
+            router.push('/indika/cam');
         }, 100);
     }
 
@@ -78,7 +69,7 @@ export default function Register() {
         <main className="flex fixed h-full w-full bg-indika overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             <div className="relative w-[90%] mx-auto mt-0">
-            <Image src='/indika/identify.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
+            <Image src='/indika/select.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div>
             {/* PILIH STYLE */}
             <div className={`relative w-[90%] mx-auto mt-10`}>
@@ -89,16 +80,16 @@ export default function Register() {
                             <ul className='choose mod10'>
                             <li className='mb-10'>
                                 <input
-                                id='choose_style1'
+                                id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="cowok"
+                                value="2"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
-                                <label htmlFor="choose_style1">
+                                <label htmlFor="choose_style2">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/indika/gender1.png"
+                                    src="/indika/t2.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -106,7 +97,61 @@ export default function Register() {
                                 />
                                 <Image
                                     className="absolute top-0 left-0 h-auto w-full"
-                                    src="/indika/gender1_c.png"
+                                    src="/indika/t2_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li className='mb-10'>
+                                <input
+                                id='choose_style3'
+                                type="radio"
+                                name='choose_style'
+                                value="3"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style3">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/indika/t3.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/indika/t3_c.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li className="mb-10">
+                                <input
+                                id='choose_style4'
+                                type="radio"
+                                name='choose_style'
+                                value="4"
+                                onChange={(e) => setCharacter(e.target.value)}
+                                />
+                                <label htmlFor="choose_style4">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/indika/t4.png"
+                                    alt="icon"
+                                    width={720}
+                                    height={176}
+                                    priority
+                                />
+                                <Image
+                                    className="absolute top-0 left-0 h-auto w-full"
+                                    src="/indika/t4_c.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -116,16 +161,16 @@ export default function Register() {
                             </li>
                             <li className="!mb-0">
                                 <input
-                                id='choose_style2'
+                                id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="cewek"
+                                value="1"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
-                                <label htmlFor="choose_style2">
+                                <label htmlFor="choose_style1">
                                 <Image
                                     className="relative h-auto w-full"
-                                    src="/indika/gender2.png"
+                                    src="/indika/t1.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
@@ -133,7 +178,7 @@ export default function Register() {
                                 />
                                 <Image
                                     className="absolute top-0 left-0 h-auto w-full"
-                                    src="/indika/gender2_c.png"
+                                    src="/indika/t1_c.png"
                                     alt="icon"
                                     width={720}
                                     height={176}
