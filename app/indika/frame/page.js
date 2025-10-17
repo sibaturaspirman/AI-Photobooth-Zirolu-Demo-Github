@@ -83,7 +83,7 @@ export default function Register() {
                                 id='choose_style2'
                                 type="radio"
                                 name='choose_style'
-                                value="2"
+                                value="1"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style2">
@@ -110,7 +110,7 @@ export default function Register() {
                                 id='choose_style3'
                                 type="radio"
                                 name='choose_style'
-                                value="3"
+                                value="2"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style3">
@@ -137,7 +137,7 @@ export default function Register() {
                                 id='choose_style4'
                                 type="radio"
                                 name='choose_style'
-                                value="4"
+                                value="3"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style4">
@@ -164,7 +164,7 @@ export default function Register() {
                                 id='choose_style1'
                                 type="radio"
                                 name='choose_style'
-                                value="1"
+                                value="4"
                                 onChange={(e) => setCharacter(e.target.value)}
                                 />
                                 <label htmlFor="choose_style1">
