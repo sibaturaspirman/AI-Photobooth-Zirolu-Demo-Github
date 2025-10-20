@@ -53,7 +53,7 @@ export default function Register() {
         }
 
         setTimeout(() => {
-            router.push('/indika/cam2');
+            router.push('/indika/cam');
         }, 100);
     }
 
