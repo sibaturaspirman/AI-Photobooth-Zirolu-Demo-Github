@@ -250,7 +250,7 @@ export default function Cam() {
             </div>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-comcon-iqos flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
-            <a href='/comcon/iqos2025' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <a href='/indika' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
             </div>

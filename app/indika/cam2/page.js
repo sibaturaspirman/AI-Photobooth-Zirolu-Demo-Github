@@ -158,7 +158,7 @@ export default function Cam() {
             setFormasiFix(item2)
             setAuraFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "51f54f78-3b75-48f4-b5de-a879362fb889");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "1c28834c-807e-4e1c-a2cc-59bf235109bd");
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix, auraFix])
@@ -228,7 +228,7 @@ export default function Cam() {
                     localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 }
                 setTimeout(() => {
-                    router.push('/comcon/iqos2025/result');
+                    router.push('/indika/result');
                 }, 200);
             })
             console.log(FACE_URL_RESULT)
@@ -239,7 +239,7 @@ export default function Cam() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-comcon-iqos2025 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-indika overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10 hidden lg:block"></div> */}
             <div  className={`relative w-[20%] lg:w-[70%] mx-auto mb-1 lg:mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/iqos/cmcn-take.png' width={660} height={104} alt='Zirolu' className='w-full' priority />
@@ -271,7 +271,7 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl text-center rounded-xl text-[#fff] lg:font-bold w-[70%] mx-auto'>
                         <div className='w-full mb-10'>
-                            <Image src='/iqos/cmcn-loading.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
+                            <Image src='/indika/indika.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
                         </div>
                         {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
                         <p>Please wait, {progressPersen}</p>
@@ -323,7 +323,7 @@ export default function Cam() {
             {!enabled && 
                 <div className={`relative w-full flex justify-center items-center mt-8 ${capturedAwal ? 'opacity-0 pointer-events-none' : ''}`}>
                     <button className="relative mx-auto flex  w-[80%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/iqos/cmcn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/indika/btn-capture.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             }
@@ -331,7 +331,7 @@ export default function Cam() {
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col mt-0">
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
-                        <Image src='/iqos/cmcn-continue.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                        <Image src='/indika/btn-continue.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                     <button className="relative w-full mx-auto flex justify-center items-center mt-0" onClick={retake}>
                         <Image src='/comcon/iqos/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
