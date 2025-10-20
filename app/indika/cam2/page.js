@@ -234,7 +234,7 @@ export default function Cam() {
             console.log(FACE_URL_RESULT)
 
           } catch (error) {
-            console.error("Error generating image:", error);
+            console.error("Error generating image error:", error);
           }
     }
 
