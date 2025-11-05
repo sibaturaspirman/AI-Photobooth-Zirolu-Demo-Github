@@ -283,7 +283,7 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[80%]  border-[20px]'>
+                    <div className='relative z-10 w-[80%] border-[6px] lg:border-[20px]'>
                         <div className={`relative w-full mx-auto flex`} id='capture' ref={(el) => (componentRef = el)}>
                             <Image src={imageResultAI}  width={1006} height={1006} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
