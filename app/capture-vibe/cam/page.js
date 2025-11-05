@@ -307,11 +307,11 @@ export default function Cam() {
                     </div>
                     }
 
-                    {!enabled && 
+                    {/* {!enabled && 
                     <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-[-6rem] z-10 scale-[1.5]'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
-                    }
+                    } */}
 
                     <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>

@@ -23,8 +23,8 @@ export default function Register() {
             <Image src='/indika/select.png' width={720} height={260} alt='Zirolu' className='w-full' priority />
             </div> */}
             {/* PILIH STYLE */}
-            <div className={`relative w-[70%] mx-auto mt-10`}>
-                <div className='relative mt-[-25rem] w-full'>
+            <div className={`relative w-[90%] lg:w-[70%] mx-auto mt-10`}>
+                <div className='relative mt-[-5rem] lg:mt-[-25rem] w-full'>
                     <div className='relative w-full'>
                         <div className='overflow-hiddenx w-full mx-auto'>
                             {/* STYLE SEMENTARA */}
@@ -65,7 +65,7 @@ export default function Register() {
                         <Link href='/capture-vibe/' className="relative mx-auto h-[10vw] flex justify-center items-center">
                             <Image src='/amild/cv/yah.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </Link>
-                        <Link href='/capture-vibe/cam' className="relative mx-auto h-[10vw] flex justify-center items-center">
+                        <Link href='/capture-vibe/cam' className="relative mx-auto h-[10vw] ml-4 lg:ml-0 flex justify-center items-center">
                             <Image src='/amild/cv/bener.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
