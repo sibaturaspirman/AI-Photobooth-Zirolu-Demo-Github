@@ -1717,3 +1717,15 @@ body{
    -2px 2px 0 #000,
     2px 2px 0 #000;
 }
+
+
+.bg-cv-front{
+  background-image: url(../public/amild/cv/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-cv-page{
+  background-image: url(../public/amild/cv/bg-page.jpg);
+  background-size: cover;
+  background-position: top center;
+}
