@@ -1,9 +1,9 @@
 export default function manifest() {
     return {
-      name: 'AI PHOTOBOOTH',
-      short_name: 'AI PHOTOBOOTH',
-      description: 'AI PHOTOBOOTH',
-      start_url: '/iqos-prj',
+      name: 'WPAP',
+      short_name: 'WPAP',
+      description: 'WPAP',
+      start_url: '/capture-vibe',
       display: 'standalone',
       background_color: '#fff',
       theme_color: '#fff',
