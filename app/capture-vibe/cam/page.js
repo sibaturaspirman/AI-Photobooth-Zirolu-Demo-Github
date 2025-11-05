@@ -292,7 +292,7 @@ export default function Cam() {
             }
             {/* LOADING */}
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative lg:w-full overflow-hidden'>
+                <div className='relative w-full overflow-hidden'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
                         <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
@@ -313,8 +313,8 @@ export default function Cam() {
                     </div>
                     } */}
 
-                    <video ref={videoRef} className={`w-[90%] mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    <video ref={videoRef} className={`w-[90%] videoRatio1 mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={1000}></video>
+                    <canvas ref={previewRef} width="1000" height="1000" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] videoRatio1 top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
 
