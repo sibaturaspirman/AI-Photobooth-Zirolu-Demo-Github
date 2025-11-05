@@ -204,8 +204,11 @@ export default function Cam() {
             'fal-ai/nano-banana/edit',
             {
             input: {
-                prompt: "turn the first image to Extreme WPAP Style like second image style and change the color to dark red like second image.",
-                image_urls: [imageFile, "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input-2.png"]
+                prompt: "turn the first image to Extreme WPAP Style like second image style and change the color to dark red like second image. Remove background and change to dark red clean.",
+                image_urls: [imageFile, "https://ai.zirolu.id/amild/cv/WPAP-BASED.png"],
+                "num_images": 1,
+                "output_format": "jpeg",
+                "aspect_ratio": "1:1"
             },
             pollInterval: 5000, // Default is 1000 (every 1s)
             logs: true,
@@ -221,7 +224,8 @@ export default function Cam() {
             }
         );
         setResultFaceSwap(result);
-        FACE_URL_RESULT= result.image.url;
+        console.log(result)
+        FACE_URL_RESULT= result.images[0].url;
 
         toDataURL(FACE_URL_RESULT)
         .then(dataUrl => {
@@ -230,7 +234,7 @@ export default function Cam() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
             setTimeout(() => {
-                router.push('/indika/result');
+                router.push('/capture-vibe/result');
             }, 200);
         })
         } catch (error) {
@@ -269,11 +273,11 @@ export default function Cam() {
                     </div> */}
                     <div className='animate-upDownCepet relative py-2 px-4 mt-5 lg:mt-10 lg:p-5 lg:text-6xl text-center rounded-xl text-[#fff] lg:font-bold w-full'>
                         <div className='w-full mb-10'>
-                            <Image src='/indika/indika.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
+                            <Image src='/amild/cv/logo.png' width={607} height={192} alt='Zirolu' className='w-full' priority />
                         </div>
                         {/* <p>{`Please wait, loading...`}</p> */}
                         {/* <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p> */}
-                        <p className='text-3xl'>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds`}</p>
+                        <p className='text-4xl'>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds`}</p>
                         {error}
                     </div>
 
@@ -288,7 +292,7 @@ export default function Cam() {
             }
             {/* LOADING */}
             <div className={`relative w-full flex flex-col justify-center items-center mt-2 mb-3 lg:mt-8 lg:mb-10 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative lg:w-full'>
+                <div className='relative lg:w-full overflow-hidden'>
                     {/* {!enabled && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[50%] mx-auto flex justify-center items-center pointer-events-none z-10'>
                         <Image src='/icon-capture.png' width={389} height={220} alt='Zirolu' className='w-full' priority />
@@ -304,7 +308,7 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[55%] mx-auto absolute left-0 right-0 bottom-[-6rem] z-10 scale-[1.5]'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
@@ -328,11 +332,11 @@ export default function Cam() {
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <div className={`relative w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[80%] mx-auto flex justify-center items-center mt-0">
+                    <button className="relative w-full mx-auto flex justify-center items-center mr-5" onClick={retake}>
+                        <Image src='/amild/cv/fotoulang.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                    </button>
                     <button className="w-full relative mx-auto flex justify-center items-center" onClick={generateAI}>
                         <Image src='/amild/cv/selanjutnya.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
-                    </button>
-                    <button className="relative w-full mx-auto flex justify-center items-center ml-5" onClick={retake}>
-                        <Image src='/amild/cv/fotoulang.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div></div>

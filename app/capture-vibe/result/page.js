@@ -178,11 +178,11 @@ export default function Result() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-indika overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-cv-page overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-50"></div> */}
-            <div className={`relative w-[40%] mx-auto mt-[4rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+            {/* <div className={`relative w-[40%] mx-auto mt-[4rem] mb-10 ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
                 <Image src='/indika/result.png' width={732} height={50} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-[2rem] left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
@@ -255,7 +255,7 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div> */}
-                    <Link href='/indika' className="relative w-[40%] mx-auto flex justify-center items-center pt-[6rem]">
+                    <Link href='/capture-vibe' className="relative w-[40%] mx-auto flex justify-center items-center pt-[6rem]">
                         <Image src='/iqos/cmcn-back.png' width={880} height={144} alt='Zirolu' className='w-full' priority />
                     </Link>
                     {/* <Link href='/comcon/visikom' className='text-center font-semibold text-base lg:text-7xl  pt-20 p-40 py-96 text-white w-full'>Tap here to close</Link> */}
@@ -283,9 +283,9 @@ export default function Result() {
             <div className={generateQR ? `opacity-0 pointer-events-none` : 'relative w-full flex justify-center items-center flex-col'}>
                 {imageResultAI && 
                 <div className='relative w-full mt-0 mb-2 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[80%]'>
+                    <div className='relative z-10 w-[80%]  border-[20px]'>
                         <div className={`relative w-full mx-auto flex`} id='capture' ref={(el) => (componentRef = el)}>
-                            <Image src={imageResultAI}  width={683} height={1006} alt='Zirolu' className='relative block w-full'></Image>
+                            <Image src={imageResultAI}  width={1006} height={1006} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
                     {/* <div className='absolute top-0 left-0' ref={(el) => (componentRef = el)}>
@@ -319,21 +319,21 @@ export default function Result() {
                     </div>  */}
                     <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-10`}>
-                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                 <Image src='/indika/btn-collect.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
+                                 <Image src='/amild/cv/download.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className='w-full'>
+                    {/* <div className='w-full'>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                             <Link href='/indika/style' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/comcon/iqos/btn-retake.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </main>
