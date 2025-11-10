@@ -36,13 +36,13 @@ const useWebcam = ({
 };
 
 let FACE_URL_RESULT = ''
+let counterKolaseData = 0
 export default function Cam() {
     const router = useRouter();
     const [enabled, setEnabled] = useState(false);
     const [captured, setCaptured] = useState(false);
     const [capturedAwal, setCapturedAwal] = useState(false);
     // const [countDown, setCoundown] = useState(5);
-    // const [counter, setCounter] = useState(60);
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
@@ -153,9 +153,41 @@ export default function Cam() {
         }
     }, [styleFix, formasiFix])
 
+    const counterKolase = () => {
+        if (typeof localStorage !== 'undefined') {
+            if(localStorage.getItem('counterKolase') == null){
+                localStorage.setItem('counterKolase', 1)
+                counterKolaseData = 1
+            }else{
+                let lastCounter = localStorage.getItem('counterKolase')
+                let convertCounter = Number(lastCounter)
+
+                if(convertCounter == 36){
+                    let plusCounter = 1
+                    localStorage.setItem('counterKolase', plusCounter)
+                    counterKolaseData = plusCounter
+                }else{
+                    let plusCounter = convertCounter + 1
+                    localStorage.setItem('counterKolase', plusCounter)
+                    counterKolaseData = plusCounter
+                }
+
+            }
+            // console.log(localStorage.getItem('counterKolase'))
+        }
+        // if(localStorage.getItem('counterKolase') ){
+        //     let lastCounter = localStorage.getItem('counterKolase')
+        //     let convertCounter = Number(lastCounter)
+        //     let plusCounter = convertCounter + 1
+        //     localStorage.setItem('counterKolase', plusCounter)
+        //     console.log(plusCounter)
+        // }
+    }
+
     const generateAI = () => {
         setNumProses1(true)
         generateImageSwap()
+        counterKolase()
 
         // videoRef.current.stop();
         // videoRef.current.srcObject = ''
@@ -233,9 +265,21 @@ export default function Cam() {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
             }
-            setTimeout(() => {
-                router.push('/capture-vibe/result');
-            }, 200);
+
+            let frameURL = 'https://ai.zirolu.id/amild/cv/frame/Frame-'+counterKolaseData+'.png'
+            // console.log(frameURL)
+            toDataURL(frameURL)
+            .then(dataUrl => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("frameBase64", dataUrl)
+                }
+                setTimeout(() => {
+                    router.push('/capture-vibe/result');
+                }, 200);
+            })
+            // setTimeout(() => {
+            //     router.push('/capture-vibe/result');
+            // }, 200);
         })
         } catch (error) {
             setError(false);
@@ -247,7 +291,7 @@ export default function Cam() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-cv-page overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-cv-page2 overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* <div className="fixed top-0 left-0 w-full h-full bg-iqos-border pointer-events-none z-10"></div> */}
             {/* <div  className={`relative w-[70%] mx-auto mb-[2rem] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
             <Image src='/indika/take.png' width={485} height={80} alt='Zirolu' className='w-full' priority />

@@ -1729,3 +1729,8 @@ body{
   background-size: cover;
   background-position: top center;
 }
+.bg-cv-page2{
+  background-image: url(../public/amild/cv/bg-page2.jpg);
+  background-size: cover;
+  background-position: top center;
+}

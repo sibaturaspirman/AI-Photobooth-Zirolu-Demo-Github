@@ -19,6 +19,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'v3.fal.media',
           },
+          {
+            protocol: 'https',
+            hostname: 'zirolu.s3.ap-southeast-1.amazonaws.com',
+          },
         ],
     }
 };
