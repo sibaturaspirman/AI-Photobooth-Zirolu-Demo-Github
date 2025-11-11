@@ -62,11 +62,11 @@ export default function Register() {
                 </div>
                 {/* {character && */}
                     <div className={`fixed left-0 right-0 bottom-[6rem] w-[80%] mx-auto flex justify-center items-center z-20 ${character ? `` : 'opacity-0 pointer-events-none'}`}>
-                        <Link href='/capture-vibe/' className="relative mx-auto h-[10vw] flex justify-center items-center">
+                        {/* <Link href='/capture-vibe/' className="relative mx-auto h-[10vw] flex justify-center items-center">
                             <Image src='/amild/cv/yah.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
-                        </Link>
-                        <Link href='/capture-vibe/cam' className="relative mx-auto h-[10vw] ml-4 lg:ml-0 flex justify-center items-center">
-                            <Image src='/amild/cv/bener.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
+                        </Link> */}
+                        <Link href='/capture-vibe/cam' className="relative mx-auto w-[60%] flex justify-center items-center">
+                            <Image src='/amild/cv/selanjutnya.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
                 {/* } */}
