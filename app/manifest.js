@@ -3,7 +3,7 @@ export default function manifest() {
       name: 'WPAP',
       short_name: 'WPAP',
       description: 'WPAP',
-      start_url: '/capture-vibe',
+      start_url: '/iqos-prj',
       display: 'standalone',
       background_color: '#fff',
       theme_color: '#fff',
