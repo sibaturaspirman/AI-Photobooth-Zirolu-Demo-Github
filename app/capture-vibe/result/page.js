@@ -5,7 +5,7 @@ import Image from "next/image";
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 import { useRouter } from 'next/navigation';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import { autoJoinAndSubmit } from "../../lib/socketSender";
 
 
