@@ -14,7 +14,7 @@ export default function Home() {
         <Link href='/iqos-prj' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
          IQOS
         </Link>
-        <Link href='/capture-vibe' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
+        <Link href='/capture-vibe/setup' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
          CAPTURE VIBE
         </Link>
         {/* <Link href='/dexa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">

@@ -2,25 +2,13 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-// import TopLogoAmeroSmall from "../../components/TopLogoAmeroSmall";
-// import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 import { useRouter } from 'next/navigation';
-// import io from 'socket.io-client';
-// import { Merriweather} from "next/font/google";
-// const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
-// import BtnHexagon2 from "../../components/BtnHexagon2";
-// import ReactToPrint from "react-to-print";
+import io from 'socket.io-client';
+import { autoJoinAndSubmit } from "../../lib/socketSender";
 
 
-// function downloadImage(data, filename = 'untitled.jpeg') {
-//     var a = document.createElement('a');
-//     a.href = data;
-//     a.download = filename;
-//     document.body.appendChild(a);
-//     a.click();
-// }
 
 // SETUP SOCKET
 // let SERVER_IP = "https://ag.socket.web.id:11100";
@@ -45,22 +33,6 @@ import { useRouter } from 'next/navigation';
 // !SETUP SOCKET
 
 
-
-// const useWebcam = ({
-//     videoRef
-//   }) => {
-//     useEffect(() => {
-//       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//         navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
-//           if (videoRef.current !== null) {
-//             stream.stop()
-//             // videoRef.current.srcObject = stream;
-//             // videoRef.current.play();
-//           }
-//         });
-//       }
-//     }, [videoRef]);
-//   };
 
 export default function Result() {
     const router = useRouter();
@@ -144,24 +116,28 @@ export default function Result() {
             await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
                 .then(response => response.json())
                 .then(response => {
-                    // console.log(response)
-                    // setLinkQR(response.file)
-                    // setGenerateQR('true')
-                    // setLoadingDownload(null)
 
                     localStorage.setItem('finalResultDownload', response.file)
                     localStorage.setItem("finalResult"+counterKolase, response.file)
 
-                    setTimeout(() => {
-                        router.push('/capture-vibe/kolase');
-                    }, 200);
+                    autoJoinAndSubmit({
+                        imageURL: response.file,
+                        position: counterKolase,
+                      })
+                        .then(({ roomId }) => {
+
+                            setTimeout(() => {
+                                router.push('/capture-vibe/kolase');
+                            }, 200);
+                          console.log(`✅ sukses kirim ke room ${roomId}`);
+                        })
+                        .catch((err) => {
+                          console.error("Gagal:", err);
+                        });
                 })
                 .catch(err => {
                     if (typeof localStorage !== 'undefined') {
                         const item = localStorage.getItem('faceURLResult')
-                        // setLinkQR(item)
-                        // setGenerateQR('true')
-                        // setLoadingDownload(null)
                     }
                 });
         });
