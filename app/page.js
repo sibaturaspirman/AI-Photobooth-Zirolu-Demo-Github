@@ -10,11 +10,17 @@ export default function Home() {
       <TopLogo></TopLogo>
       <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>The AI Photo Booth For Events  </h1>
       <div className="relative w-full mt-7">
-        <p className="text-center text-sm mb-3">Explore our AI DEMO from the options below</p>
+      <p className="text-center text-[3vw] mb-3">CHOOSE YOUR APP</p>
+        <Link href='/iqos-prj' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
+         IQOS
+        </Link>
+        <Link href='/capture-vibe' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
+         CAPTURE VIBE
+        </Link>
         {/* <Link href='/dexa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-dexa.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link> */}
-        <Link href='/music' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
+        {/* <Link href='/music' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-music.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link>
         <Link href='/aura' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
@@ -57,7 +63,7 @@ export default function Home() {
 
         <Link href='/others' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center mt-0">
           <Image src='/page-others.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
-        </Link>
+        </Link> */}
         <div className="">
         <a href='https://www.instagram.com/zirolu.id' target='_blank' className='p-5 py-8 block text-center text-sm lg:text-2xl text-white'>Have your own style in mind? contact us through instagram @zirolu.id</a>
         </div>

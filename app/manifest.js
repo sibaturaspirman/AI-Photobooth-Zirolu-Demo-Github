@@ -1,9 +1,9 @@
 export default function manifest() {
     return {
-      name: 'WPAP',
-      short_name: 'WPAP',
-      description: 'WPAP',
-      start_url: '/iqos-prj',
+      name: 'AI PHOTO',
+      short_name: 'AI PHOTO',
+      description: 'AI PHOTO',
+      start_url: '/',
       display: 'standalone',
       background_color: '#fff',
       theme_color: '#fff',
