@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import io from "socket.io-client";
 
 const ROOMS = ["jakarta1", "jakarta2", "bandung", "medan", "makassar", "palembang"];
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL ?? "https://minigim-socket.stg.antigravity.dev";
+const SOCKET_URL = "https://minigim-socket.stg.antigravity.dev";
 
 export default function SetupPage() {
   const router = useRouter();
@@ -156,7 +156,7 @@ export default function SetupPage() {
         </div>
 
         <p style={styles.hint}>
-          Disimpan ke <code>localStorage["roomId"]</code>.<br/>
+          Disimpan ke <code>localStorage[&quot;roomId&quot;]</code>.<br/>
           Socket: <code>{SOCKET_URL}</code>
         </p>
       </section>
