@@ -115,24 +115,48 @@ export default function Result() {
             
             await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
                 .then(response => response.json())
-                .then(response => {
+                .then(async response => {
 
                     localStorage.setItem('finalResultDownload', response.file)
                     localStorage.setItem("finalResult"+counterKolase, response.file)
 
-                    autoJoinAndSubmit({
-                        imageURL: response.file,
-                        position: counterKolase,
-                      })
-                        .then(({ roomId }) => {
+                    let urlImageSocket = response.file
 
-                            setTimeout(() => {
-                                router.push('/capture-vibe/kolase');
-                            }, 200);
-                          console.log(`✅ sukses kirim ke room ${roomId}`);
+                    const options2 = {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            name: 'AMILD WPAP',
+                            phone: '2025',
+                            image: response.file
+                        }),
+                        headers: {
+                            'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    };
+                    
+                    await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options2)
+                        .then(response => response.json())
+                        .then(response => {
+
+                            autoJoinAndSubmit({
+                                imageURL: urlImageSocket,
+                                position: counterKolase,
+                            })
+                                .then(({ roomId }) => {
+
+                                    setTimeout(() => {
+                                        router.push('/capture-vibe/kolase');
+                                    }, 200);
+                                console.log(`✅ sukses kirim ke room ${roomId}`);
+                                })
+                                .catch((err) => {
+                                console.error("Gagal:", err);
+                                });
                         })
-                        .catch((err) => {
-                          console.error("Gagal:", err);
+                        .catch(err => {
+                            console.log(err)
                         });
                 })
                 .catch(err => {
