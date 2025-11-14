@@ -66,14 +66,14 @@ export default function Register() {
            
             {/* PILIH STYLE */}
             <div className={`relative w-full mx-auto ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-                <div className='relative mt-0 border-[1.8rem] w-[max-content] mx-auto rounded-3xl'>
-                <div className="flex flex-wrap justify-center w-[780px]">
+                <div className='relative mt-0 border-[1.2rem] w-[max-content] mx-auto rounded-3xl'>
+                <div className="flex flex-wrap justify-center w-[720px]">
                     {frames.map((src, i) => (
                         <div key={i} className="relative"
                             style={{
-                                width: "130px",
-                                height: "130px",
-                                flex: "1 1 130px",
+                                width: "120px",
+                                height: "120px",
+                                flex: "1 1 120px",
                             }}
                         >
                         <Image
@@ -88,13 +88,13 @@ export default function Register() {
                 </div>
                 <div className={`w-full`}>
                     <div className={`w-full mt-10`} onClick={()=>{setGenerateQR('true')}}>
-                        <div className="relative w-[50%] mx-auto flex justify-center items-center flex-col">
+                        <div className="relative w-[40%] mx-auto flex justify-center items-center flex-col">
                             <div className="w-full relative mx-auto flex justify-center items-center">
                                 <Image src='/amild/cv/download.png' width={864} height={210} alt='Zirolu' className='w-full' priority />
                             </div>
                         </div>
                     </div>
-                    <Link href='/capture-vibe' className="relative mx-auto w-[50%] mt-6 flex justify-center items-center">
+                    <Link href='/capture-vibe' className="relative mx-auto w-[40%] mt-6 flex justify-center items-center">
                         <Image src='/amild/cv/mulailagi.png' width={850} height={258} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
