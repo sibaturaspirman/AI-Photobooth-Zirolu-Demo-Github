@@ -158,7 +158,7 @@ export default function Cam() {
             setFormasiFix(item2)
             setAuraFix(item4)
         }
-        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "9f4a2c9c-01c6-473c-9c58-54aceca746bd");
+        const aiInstance = new PadmaAIClient("https://padmaai.zirolu.id", "app_tXxTmRGXzUwliMw1sMgdFUlDFF2S2IO6", "29f47941-77df-44d6-9f49-52c13b999b73");
         setPadmaAI(aiInstance);
         
     }, [styleFix, formasiFix, auraFix])
