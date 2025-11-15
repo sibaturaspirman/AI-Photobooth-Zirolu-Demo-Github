@@ -14,11 +14,11 @@ export default function Home() {
         <Link href='/iqos-prj' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
          IQOS
         </Link>
-        <Link href='/iqos-prj2' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
+        <Link href='/iqos-prj2' className="relative mt-5 mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
          IQOS (server 2)
         </Link>
-        
-        <Link href='/iqos-prj' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
+
+        <Link href='/iqos-prj' className="relative mt-5 mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
          IQOS (server 3)
         </Link>
         <Link href='/capture-vibe/setup' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
