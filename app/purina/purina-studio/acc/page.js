@@ -243,10 +243,12 @@ export default function Register() {
           </div>
 
           {/* text loading (boleh diganti image kalau mau) */}
-          <p className="text-white text-lg font-semibold leading-[1.1] mb-2">
+          <p className="text-white text-lg font-semibold leading-[1.1] mb-4">
             {`${textProses}`}
           </p>
-          <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+
+          <p className="text-sm px-3 py-1 bg-yellow-200 text-yellow-800  rounded-full">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+          <p className="text-yellow-200 text-xs leading-[1.1] mt-2">This process is estimated to take 90-120 seconds. </p>
         </div>
       </main>
     );

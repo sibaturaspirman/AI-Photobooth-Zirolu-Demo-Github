@@ -188,7 +188,7 @@ export default function LoginWA() {
     };
 
     const generateAI2 = async () => {
-        setTextProses('Currently adding your pet to our packaging...')
+        setTextProses('Currently adding your pet to Purina packaging...')
         setNumProses(2)
         reset2();
         setLoading(true);
@@ -269,10 +269,14 @@ export default function LoginWA() {
           </div>
 
           {/* text loading (boleh diganti image kalau mau) */}
-          <p className="text-white text-lg font-semibold leading-[1.1] mb-2">
+
+          <p className="text-white text-xl font-semibold leading-[1.1] mb-4">
             {`${textProses}`}
           </p>
-          <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+
+          <p className="text-sm px-3 py-1 bg-yellow-200 text-yellow-800  rounded-full">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+          <p className="text-yellow-200 text-xs leading-[1.1] mt-2">This process is estimated to take 90-120 seconds. </p>
+
         </div>
       </main>
     );
