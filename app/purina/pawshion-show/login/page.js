@@ -250,7 +250,7 @@ export default function LoginWA() {
 
           {/* text loading (boleh diganti image kalau mau) */}
           <p className="text-white text-lg font-semibold leading-snug">
-            Generating Your Pet's <br /> Look...
+            Generating Your Pet <br /> Look...
           </p>
         </div>
       </main>
