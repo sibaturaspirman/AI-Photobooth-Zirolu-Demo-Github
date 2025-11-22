@@ -28,107 +28,209 @@ export default function LoginWA() {
     const [logs, setLogs] = useState([]);
     const [elapsedTime, setElapsedTime] = useState(0);
 
-  useEffect(() => {
-    try {
-      const accText = localStorage.getItem("selectedAccessoriesText") || "";
-      const faceImg = localStorage.getItem("faceImage") || "";
+    const [selectedAccessories, setSelectedAccessories] = useState({
+        ids: [],
+        labels: [],
+        images: [],
+        text: ""
+    });
 
-      setSelectedAccessoriesText(accText);
-      setFaceImage(faceImg);
+    useEffect(() => {
+        try {
+            const accText = localStorage.getItem("selectedAccessoriesText") || "";
+            const accObjRaw = localStorage.getItem("selectedAccessories");
+            const faceImg = localStorage.getItem("faceImage") || "";
 
-      // debug kalau mau cek
-    //   console.log("selectedAccessoriesText:", accText);
-    //   console.log("faceImage:", faceImg);
-    } catch (e) {
-      console.warn("localStorage not available:", e);
-    }
-  }, []);
+            const accObj = accObjRaw ? JSON.parse(accObjRaw) : null;
 
-  const canProceed = waNumber.trim().length > 0;
+            setSelectedAccessoriesText(accText);
+            if (accObj) setSelectedAccessories(accObj);
 
-  const onProceed = () => {
-    if (!canProceed) return;
+            setFaceImage(faceImg);
+        } catch (e) {
+            console.warn("localStorage not available:", e);
+        }
+    }, []);
 
-    // simpan nomer
-    const fullPhone = `+62${waNumber.replace(/^0+/, "")}`;
-    localStorage.setItem("waNumber", fullPhone);
 
-    // opsional: simpan payload gabungan untuk step berikutnya
-    localStorage.setItem(
-      "loginPayload",
-      JSON.stringify({
-        waNumber: fullPhone,
-        selectedAccessoriesText,
-        faceImage,
-      })
-    );
+    const canProceed = waNumber.trim().length > 0;
+    const onProceed = () => {
+        if (!canProceed) return;
 
-    generateAI()
-  };
+        // simpan nomer
+        const fullPhone = `+62${waNumber.replace(/^0+/, "")}`;
+        localStorage.setItem("waNumber", fullPhone);
 
-  const reset2 = () => {
-    setLoading(false);
-    setError(true);
-    setElapsedTime(0);
-  };
-  const toDataURL = url => fetch(url)
-  .then(response => response.blob())
-  .then(blob => new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onloadend = () => resolve(reader.result)
-      reader.onerror = reject
-      reader.readAsDataURL(blob)
-  }))
+        // opsional: simpan payload gabungan untuk step berikutnya
+        localStorage.setItem(
+        "loginPayload",
+        JSON.stringify({
+            waNumber: fullPhone,
+            selectedAccessoriesText,
+            faceImage,
+        })
+        );
+
+        generateAI()
+    };
+
+    const reset2 = () => {
+        setLoading(false);
+        setError(true);
+        setElapsedTime(0);
+    };
+    const toDataURL = url => fetch(url)
+        .then(response => response.blob())
+        .then(blob => new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            reader.onloadend = () => resolve(reader.result)
+            reader.onerror = reject
+            reader.readAsDataURL(blob)
+        }))
+    const normalizeUrl = (u) => {
+        if (!u) return "";
+        // sudah absolute / dataurl
+        if (u.startsWith("http") || u.startsWith("data:")) return u;
+        // jadiin absolute dari origin
+        return new URL(u, window.location.origin).toString();
+    };
 
     const generateAI = async () => {
         reset2();
-        // @snippet:start("client.queue.subscribe")
         setLoading(true);
         const start = Date.now();
+      
         try {
-        const result = await fal.subscribe(
-            'fal-ai/nano-banana-pro/edit', {
+            // ===== ambil dari localStorage =====
+            const picked = selectedAccessories?.ids?.length
+                ? selectedAccessories
+                : (() => {
+                    const raw = localStorage.getItem("selectedAccessories");
+                    return raw ? JSON.parse(raw) : { ids: [], labels: [], images: [], text: "" };
+                })();
+        
+            const pickedLabels = picked.labels?.length
+                ? picked.labels
+                : (picked.text || selectedAccessoriesText || "")
+                    .split(",")
+                    .map(s => s.trim())
+                    .filter(Boolean);
+        
+            // images aksesoris (kalau di storage sudah absolute dari picker, normalize akan aman)
+            const accessoryImages = (picked.images || []).map(normalizeUrl);
+        
+            // faceImage terakhir wajib masuk list
+            const faceImgUrl = normalizeUrl(
+                faceImage || localStorage.getItem("faceImage") || ""
+            );
+        
+            const image_urls = [
+                ...accessoryImages,
+                ...(faceImgUrl ? [faceImgUrl] : [])
+            ];
+        
+            // ===== prompt final dari pilihan =====
+            const prompt = `
+            Create a high-quality realistic pet portrait wearing these accessories: ${pickedLabels.join(", ")}.
+            Keep identity and face consistent with the last reference image.
+            Studio lighting, clean background, cute premium look.
+            `.trim();
+      
+            // ===== call fal =====
+            const result = await fal.subscribe('fal-ai/nano-banana-pro/edit', {
                 input: {
-                    prompt: "make a photo of the man driving the car down the california coastline",
-                    image_urls: [
-                        "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input.png", 
-                        "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input-2.png"]
+                    prompt,
+                    image_urls
                 },
-                pollInterval: 5000, // Default is 1000 (every 1s)
+                pollInterval: 5000,
                 logs: true,
                 onQueueUpdate(update) {
                     setElapsedTime(Date.now() - start);
-                    if (
-                        update.status === 'IN_PROGRESS' ||
-                        update.status === 'COMPLETED'
-                    ) {
+                    if (update.status === 'IN_PROGRESS' || update.status === 'COMPLETED') {
                         setLogs((update.logs || []).map((log) => log.message));
                     }
                 },
-            }
-        );
-        setResult(result);
-        URL_RESULT= result.images[0].url;
-
-        toDataURL(URL_RESULT)
-        .then(dataUrl => {
-            if (typeof localStorage !== 'undefined') {
-                localStorage.setItem("PurinaShowresultAIBase64", dataUrl)
-                localStorage.setItem("PurinaShowURLResult", URL_RESULT)
-            }
-            setTimeout(() => {
-                router.push('/purina/pawshion-show/result');
-            }, 200);
-        })
-
+            });
+      
+            setResult(result);
+      
+             // --- hasil dari fal (punyamu sudah works, aku bikin aman dikit) ---
+            const outUrl =
+                result?.images?.[0]?.url ||
+                result?.data?.images?.[0]?.url ||
+                "";
+      
+            URL_RESULT = outUrl;
+      
+            toDataURL(URL_RESULT).then(dataUrl => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem("PurinaShowresultAIBase64", dataUrl);
+                    localStorage.setItem("PurinaShowURLResult", URL_RESULT);
+                }
+                setTimeout(() => {
+                    router.push('/purina/pawshion-show/result');
+                }, 200);
+            });
+      
         } catch (error) {
+            console.error(error);
             setError(false);
         } finally {
             setLoading(false);
             setElapsedTime(Date.now() - start);
         }
-        //@snippet:end
     };
+      
+
+    // const generateAI = async () => {
+    //     reset2();
+    //     // @snippet:start("client.queue.subscribe")
+    //     setLoading(true);
+    //     const start = Date.now();
+    //     try {
+    //     const result = await fal.subscribe(
+    //         'fal-ai/nano-banana-pro/edit', {
+    //             input: {
+    //                 prompt: "make a photo of the man driving the car down the california coastline",
+    //                 image_urls: [
+    //                     "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input.png", 
+    //                     "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input-2.png"]
+    //             },
+    //             pollInterval: 5000, // Default is 1000 (every 1s)
+    //             logs: true,
+    //             onQueueUpdate(update) {
+    //                 setElapsedTime(Date.now() - start);
+    //                 if (
+    //                     update.status === 'IN_PROGRESS' ||
+    //                     update.status === 'COMPLETED'
+    //                 ) {
+    //                     setLogs((update.logs || []).map((log) => log.message));
+    //                 }
+    //             },
+    //         }
+    //     );
+    //     setResult(result);
+    //     URL_RESULT= result.images[0].url;
+
+    //     toDataURL(URL_RESULT)
+    //     .then(dataUrl => {
+    //         if (typeof localStorage !== 'undefined') {
+    //             localStorage.setItem("PurinaShowresultAIBase64", dataUrl)
+    //             localStorage.setItem("PurinaShowURLResult", URL_RESULT)
+    //         }
+    //         setTimeout(() => {
+    //             router.push('/purina/pawshion-show/result');
+    //         }, 200);
+    //     })
+
+    //     } catch (error) {
+    //         setError(false);
+    //     } finally {
+    //         setLoading(false);
+    //         setElapsedTime(Date.now() - start);
+    //     }
+    //     //@snippet:end
+    // };
 
   // ---------- LOADING SCREEN ----------
   if (loading) {
