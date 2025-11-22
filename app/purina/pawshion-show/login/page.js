@@ -131,9 +131,8 @@ export default function LoginWA() {
         
             // ===== prompt final dari pilihan =====
             const prompt = `
-            Create a high-quality realistic pet portrait wearing these accessories: ${pickedLabels.join(", ")}.
+            add realistic pet wearing these accessories : ${pickedLabels.join(", ")}.
             Keep identity and face consistent with the last reference image.
-            Studio lighting, clean background, cute premium look.
             `.trim();
       
             // ===== call fal =====
@@ -176,61 +175,10 @@ export default function LoginWA() {
             console.error(error);
             setError(false);
         } finally {
-            setLoading(false);
+            // setLoading(false);
             setElapsedTime(Date.now() - start);
         }
     };
-      
-
-    // const generateAI = async () => {
-    //     reset2();
-    //     // @snippet:start("client.queue.subscribe")
-    //     setLoading(true);
-    //     const start = Date.now();
-    //     try {
-    //     const result = await fal.subscribe(
-    //         'fal-ai/nano-banana-pro/edit', {
-    //             input: {
-    //                 prompt: "make a photo of the man driving the car down the california coastline",
-    //                 image_urls: [
-    //                     "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input.png", 
-    //                     "https://storage.googleapis.com/falserverless/example_inputs/nano-banana-edit-input-2.png"]
-    //             },
-    //             pollInterval: 5000, // Default is 1000 (every 1s)
-    //             logs: true,
-    //             onQueueUpdate(update) {
-    //                 setElapsedTime(Date.now() - start);
-    //                 if (
-    //                     update.status === 'IN_PROGRESS' ||
-    //                     update.status === 'COMPLETED'
-    //                 ) {
-    //                     setLogs((update.logs || []).map((log) => log.message));
-    //                 }
-    //             },
-    //         }
-    //     );
-    //     setResult(result);
-    //     URL_RESULT= result.images[0].url;
-
-    //     toDataURL(URL_RESULT)
-    //     .then(dataUrl => {
-    //         if (typeof localStorage !== 'undefined') {
-    //             localStorage.setItem("PurinaShowresultAIBase64", dataUrl)
-    //             localStorage.setItem("PurinaShowURLResult", URL_RESULT)
-    //         }
-    //         setTimeout(() => {
-    //             router.push('/purina/pawshion-show/result');
-    //         }, 200);
-    //     })
-
-    //     } catch (error) {
-    //         setError(false);
-    //     } finally {
-    //         setLoading(false);
-    //         setElapsedTime(Date.now() - start);
-    //     }
-    //     //@snippet:end
-    // };
 
   // ---------- LOADING SCREEN ----------
   if (loading) {
@@ -250,8 +198,9 @@ export default function LoginWA() {
 
           {/* text loading (boleh diganti image kalau mau) */}
           <p className="text-white text-lg font-semibold leading-snug">
-            Generating Your Pet <br /> Look...
+            Generating Your Pet Look...
           </p>
+          <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds`}</p>
         </div>
       </main>
     );
@@ -311,10 +260,10 @@ export default function LoginWA() {
           </button>
 
           {/* optional debug kecil */}
-          <div className="text-white/70 text-xs mt-3">
+          {/* <div className="text-white/70 text-xs mt-3">
             Accessories: {selectedAccessoriesText || "-"} <br />
             FaceImage: {faceImage ? "loaded" : "-"}
-          </div>
+          </div> */}
         </div>
       </div>
     </main>

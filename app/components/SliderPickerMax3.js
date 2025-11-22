@@ -75,7 +75,7 @@ export default function SliderPickerMax3({ items, onChange }) {
                 w-[140px] sm:w-[260px] md:w-[300px]
                 rounded-2xl border-2 transition bg-white
                 ${active ? "border-red-500" : "border-transparent"}
-                ${item.locked ? "opacity-60 grayscale" : ""}
+                
               `}
             >
               <button
@@ -89,13 +89,13 @@ export default function SliderPickerMax3({ items, onChange }) {
                   alt={item.label}
                   width={720}
                   height={176}
-                  className="w-full h-auto rounded-2xl"
+                  className={`w-full h-auto rounded-2xl ${item.locked ? "opacity-40 grayscale" : ""}`}
                   priority
                 />
 
                 {/* checklist */}
                 {active && !item.locked && (
-                  <div className="absolute top-2 right-2">
+                  <div className="absolute top-1 right-1">
                     <div className="w-7 h-7 rounded-md bg-red-500 grid place-items-center shadow">
                       <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white">
                         <path d="M9.2 16.2 4.9 11.9l1.4-1.4 2.9 2.9 8.5-8.5 1.4 1.4z" />
@@ -114,7 +114,7 @@ export default function SliderPickerMax3({ items, onChange }) {
                 )}
               </button>
 
-              <p className="mt-2 text-center text-black text-xs">
+              <p className={`mt-2 text-center text-black text-xs ${item.locked ? "opacity-40 grayscale" : ""}`}>
                 {item.label}
               </p>
             </div>

@@ -9,56 +9,7 @@ import { useQRCode } from 'next-qrcode';
 // import { Merriweather} from "next/font/google";
 // const merriweather = Merriweather({ subsets: ["latin"], weight: ['400','700'] });
 // import BtnHexagon2 from "../../components/BtnHexagon2";
-import ReactToPrint from "react-to-print";
-
-
-// function downloadImage(data, filename = 'untitled.jpeg') {
-//     var a = document.createElement('a');
-//     a.href = data;
-//     a.download = filename;
-//     document.body.appendChild(a);
-//     a.click();
-// }
-
-// SETUP SOCKET
-// let SERVER_IP = "https://ag.socket.web.id:11100";
-// let NETWORK = null;
-
-// function emitNetworkConnection() {
-//    NETWORK = io(SERVER_IP, {
-//       withCredentials: false,
-//       transoirtOptions: {
-//          pooling: {
-//             extraHeaders: {
-//                "my-custom-header": "ag-socket",
-//             },
-//          },
-//       },
-//    });
-// }
-
-// function emitString(key, payload) {
-//    NETWORK.emit(key, payload);
-// }
-// !SETUP SOCKET
-
-
-
-// const useWebcam = ({
-//     videoRef
-//   }) => {
-//     useEffect(() => {
-//       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//         navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
-//           if (videoRef.current !== null) {
-//             stream.stop()
-//             // videoRef.current.srcObject = stream;
-//             // videoRef.current.play();
-//           }
-//         });
-//       }
-//     }, [videoRef]);
-//   };
+// import ReactToPrint from "react-to-print";
 
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
@@ -95,66 +46,55 @@ export default function Result() {
     useEffect(() => {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
-            const item = localStorage.getItem('PurinaShowresulAIBase64')
-            const item2 = localStorage.getItem('resulAIBase642')
-            const item3 = localStorage.getItem('resulAIBase643')
-            const item4 = localStorage.getItem('styleGenderFix')
-            const item5 = localStorage.getItem('styleGeneral')
+            const item = localStorage.getItem('PurinaShowresultAIBase64')
+            const item2 = localStorage.getItem('PurinaShowURLResult')
             setImageResultAI(item)
-            setImageResultAI2(item2)
-            setImageResultAI3(item3)
-            setFormasiFix(item4)
-            setStyleGeneral(item5)
+            setImageFinalAI(item2)
+            setLinkQR(item2)
         }
-    }, [imageResultAI, imageResultAI2, imageResultAI3, formasiFix, styleGeneral])
+    }, [imageResultAI, imageFinalAI, linkQR])
 
-    const setHasil = (e) => {
-        console.log(e)
-        if(e == 'result1'){
-            setImageFinalAI(imageResultAI)
-        }else if(e == 'result2'){
-            setImageFinalAI(imageResultAI2)
-        }else if(e == 'result3'){
-            setImageFinalAI(imageResultAI3)
-        }
-    }
     const downloadImageAI = () => {
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
+        window.open(
+            linkQR,
+            '_blank' // <- This is what makes it open in a new window.
+          );
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
 
         canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' '+formasiFix+' '+styleGeneral);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
-          
             const options = {
                 method: 'POST',
-                body: bodyFormData,
+                body: JSON.stringify({
+                    name: 'PAWSHION SHOW',
+                    phone: '2025',
+                    image: linkQR
+                }),
                 headers: {
                     'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/taufest', options)
+            await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options)
                 .then(response => response.json())
                 .then(response => {
                     console.log(response)
-                    setLinkQR(response.file)
-                    setIdFormEmail(response.id)
+                    // setLinkQR(response.file)
+                    // setIdFormEmail(response.id)
                     setGenerateQR('true')
                     setLoadingDownload(null)
                 })
                 .catch(err => {
                     if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
+                        // const item = localStorage.getItem('faceURLResult')
                         setShowEmail('true')
                         setLinkQR(item)
                         setGenerateQR('true')
@@ -165,8 +105,7 @@ export default function Result() {
     }
 
     return (
-        <main className="flex fixed h-full w-full bg-tautaufest overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
-            {/* <TopLogoMagnumFixed></TopLogoMagnumFixed> */}
+        <main className="flex fixed h-full w-full bg-purina-ps overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-12 lg:px-20">
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-black bg-opacity-0'>
@@ -187,47 +126,33 @@ export default function Result() {
                         }}
                         />
                     </div>
-
-                    {/* <div className={`relative w-full  ${showEmail ? 'hiddenx' : ''}`}>
-                    <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
-                            <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
-                        <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
-                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </a>
-                    </div>
-                    </div> */}
-                    {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
-                    <Link href='/tautaufest' className='text-center font-semibold text-2xl lg:text-7xl py-56 p-10 lg:p-40 lg:pt-56 lg:py-96 text-white w-full'>Tap here to close</Link>
+                    <Link href='/tautaufest' className='text-center font-semibold text-2xl py-4 p-10 text-white w-full'>Tap here to close</Link>
                 </div>
             }
             {/* QR */}
 
 
             {/* DOWNLOAD & PRINT */}
-            {imageResultAI && 
-            <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                <div className='absolute z-10 w-[40%] bg-[#000]' id='capture'>
-                    <div className={`relative w-[full] flex`}>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+            <div className={`relative w-full ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
+                <div className="flex items-start justify-between">
+                    <div className="relative w-[35%] mx-auto mb-2">
+                        <Image
+                        src="/purina/ps-purina.png"
+                        width={150} height={56} alt='Zirolu' className='w-full' priority
+                        />
                     </div>
                 </div>
-                <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
-                    <div className={`relative w-[99.2%] flex`}>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
-                    </div>
-                </div>
+                <p className="text-white text-xl font-semibold leading-snug mb-2 text-center">
+                This is your AI result
+                </p>
             </div>
-            }
 
             <div className={`relative w-full ${generateQR ? `opacity-0 pointer-events-none` : ''}`}>
-
                 {imageResultAI && 
-                <div className='relative w-full mt-0 mb-10 mx-auto flex justify-center items-center'>
-                    <div className='relative z-10 w-[80%]' id='capturex'>
+                <div className='relative w-full mt-0 mb-5 mx-auto flex justify-center items-center'>
+                    <div className='relative z-10 w-[80%]' id='capture'>
                         <div className={`relative w-[full] flex`}>
-                            <Image src={imageResultAI}  width={683} height={1638} alt='Zirolu' className='relative block w-full'></Image>
+                            <Image src={imageResultAI}  width={1008} height={1056} alt='Zirolu' className='relative block w-full'></Image>
                         </div>
                     </div>
                 </div>
@@ -239,23 +164,23 @@ export default function Result() {
                 }
                 <div className={`relative w-full z-40 ${loadingDownload ? 'hidden' : ''}`}>
 
-                    {/* <div className={`w-full`} onClick={downloadImageAI}>
+                    <div className={`w-full`} onClick={downloadImageAI}>
                         <div className={`w-full mt-5`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/tautaufest/btn-download.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
+                                <Image src='/purina/ps-download.png' width={319} height={67} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
-                    </div>  */}
-                    {imageResultAI && 
+                    </div> 
+                    {/* {imageResultAI && 
                     <div className={`w-full`} onClick={downloadImageAI}>
                     <ReactToPrint
                     trigger={() => 
-                        <div className={`w-full mt-5`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                        <div className={`w-full mt-0`}>
+                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                                 <div className="w-full relative mx-auto flex justify-center items-center">
-                                <Image src='/tautaufest/btn-download.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
+                                <Image src='/purina/ps-download.png' width={319} height={67} alt='Zirolu' className='w-full' priority />
                                 </div>
                             </div>
                         </div>
@@ -263,11 +188,11 @@ export default function Result() {
                     content={() => componentRef}
                     />
                     </div> 
-                    }
+                    } */}
 
                     <div className='w-full mt-3'>
                         <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                            <Link href='/tautaufest/style' className="relative w-full mx-auto flex justify-center items-center">
+                            <Link href='/purina/pawshion-show' className="relative w-full mx-auto flex justify-center items-center">
                                 <Image src='/tautaufest/btn-retake.png' width={505} height={136} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>

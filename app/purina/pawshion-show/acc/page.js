@@ -10,7 +10,7 @@ export default function Register() {
 
   const ITEMS = [
     // HEAD
-    { id: "BUNNY_EAR_HOOD", label: "Bunny Ear Hood", img: "/purina/ps-a-1.png", locked: false,  type: "HEAD" },
+    { id: "BUNNY_EAR_HOOD", label: "Bunny Ear Hood", img: "/purina/ps-a-1.png", locked: true,  type: "HEAD" },
     { id: "FLUFFY_BUNNY_HAT", label: "Fluffy Bunny Hat", img: "/purina/ps-a-5.png", locked: false, type: "HEAD" },
     { id: "CUTE_KNOTTED_HEADBAND", label: "Cute Knotted Headband", img: "/purina/ps-a-8.png", locked: false, type: "HEAD" },
   

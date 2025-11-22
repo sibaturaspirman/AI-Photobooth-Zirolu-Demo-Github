@@ -158,8 +158,12 @@ export default function Cam() {
     }, [styleFix, formasiFix])
 
     const generateAI = () => {
-        setNumProses1(true)
-        generateImageSwap()
+
+        setTimeout(() => {
+            router.push('/purina/pawshion-show/acc');
+        }, 200);
+        // setNumProses1(true)
+        // generateImageSwap()
 
         // videoRef.current.stop();
         // videoRef.current.srcObject = ''
@@ -367,7 +371,7 @@ export default function Cam() {
                     </div>
                     } */}
 
-                    <video ref={videoRef} className={`w-[90%] videoRatio1 mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <video ref={videoRef} className={`w-[80%] videoRatio1 mx-auto border-2 border-[#ffffff] scale-x-[-1] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[90%] top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
             </div>
