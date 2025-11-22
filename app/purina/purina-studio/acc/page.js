@@ -35,19 +35,19 @@ export default function Register() {
       id: "AURA_FARMING",
       title: "Aura Farming Meme",
       img: "/purina/pstd-m-3.jpg",
-      label: "Aura farming meme cinematic walk, dramatic zoom, cool glow aura, funny swagger."
+      label: "A cute small cat standing on two legs performing the viral 'aura farming / Danach boat dance' style. The cat copies the signature moves: relaxed upper body swaying, one hand pointing forward while the other makes loose rhythmic swings, slight leaning back with confident boyish attitude, and smooth side-to-side hip movement. The dance has the same chill, stylish, and effortless vibe as the trending boy-on-boat dance, with expressive eyes and playful energy. Feet stay in place but the upper body moves with charisma. Smooth motion, meme-style, high-quality animation."
     },
     {
       id: "SURPRISE_ME",
       title: "Surprise me!",
       img: "/purina/pstd-m-4.jpg",
-      label: "Surprise me with a random viral meme animation style, fun and unexpected."
+      label: "A cute small cat standing on two legs performing a stylish Michael-Jackson-inspired dance routine. The cat moves smoothly with rhythmic foot taps, quick shoulder pops, and expressive arm swings. It does iconic MJ-style moves such as a sharp toe-tap, a quick lean, a playful body wave, and hand gestures pointing upward. The cat keeps a confident, cool expression while staying adorable. The animation is smooth, energetic, and meme-style."
     },
     {
       id: "CAT_EATING",
       title: "Cat Eating",
       img: "/purina/pstd-m-5.jpg",
-      label: "Funny cat eating close-up meme, satisfying munch loop, playful tone."
+      label: "A cute chubby cat standing on two legs performing an extremely exaggerated Flibbo-style meme dance. The cat shakes its hips wildly left and right, then spins its hips in a full 360-degree rotation with elastic cartoon physics. The movement is over-the-top, bouncy, chaotic, and very funny. The cat leans its upper body forward slightly, paws raised for balance, while the hips rotate dramatically as if on a swivel. Expression is adorable and unhinged, with high-energy viral meme vibes."
     }
   ];
   
