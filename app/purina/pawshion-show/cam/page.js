@@ -98,7 +98,7 @@ export default function Cam() {
         
             // Draw the image on the canvas (cropped and resized)
             context.translate(canvas.width, 0);
-            context.scale(-1,1);
+            // context.scale(-1,1);
             context.drawImage(
                 video,
                 sourceX,
