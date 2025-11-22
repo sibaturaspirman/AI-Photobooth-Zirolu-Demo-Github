@@ -26,6 +26,7 @@ module.exports = {
       kiriKanan: "kiriKanan 8500ms linear infinite alternate",
       rotateKiriKanan: "rotateKiriKanan 800ms linear infinite alternate",
       rotateKiriKanan2: "rotateKiriKanan2 200ms ease infinite alternate",
+      rotateMuter: "rotateMuter 900ms linear infinite",
       loading1: "loading1 9000ms ease infinite",
       loading2: "loading2 5000ms ease infinite",
       countdown: "countdown 3500ms ease 1 alternate",
@@ -90,6 +91,10 @@ module.exports = {
       rotateKiriKanan2: {
         "0%": { transform: "rotate(1.2deg)"},
         "100%": { transform: "rotate(-1.2deg)"},
+      },
+      rotateMuter: {
+        "0%": { transform: "rotate(0deg)"},
+        "100%": { transform: "rotate(360deg)"},
       },
       loading1: {
         "0%": { transform: "translateY(0%)"},

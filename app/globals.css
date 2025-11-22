@@ -1734,3 +1734,16 @@ body{
   background-size: cover;
   background-position: top center;
 }
+
+/* =========== */
+
+.bg-purina-ps{
+  background-image: url(../public/purina/ps-bg.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+.bg-purina-ps2{
+  background-image: url(../public/purina/ps-bg2.jpg);
+  background-size: cover;
+  background-position: top center;
+}
