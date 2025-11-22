@@ -248,7 +248,7 @@ export default function Register() {
           </p>
 
           <p className="text-sm px-3 py-1 bg-yellow-200 text-yellow-800  rounded-full">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
-          <p className="text-yellow-200 text-xs leading-[1.1] mt-2">This process is estimated to take 90-120 seconds. </p>
+          <p className="text-yellow-200 text-xs leading-[1.1] mt-2">This process is estimated to take 90-150 seconds. </p>
         </div>
       </main>
     );
