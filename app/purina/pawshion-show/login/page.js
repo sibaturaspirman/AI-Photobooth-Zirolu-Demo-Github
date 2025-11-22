@@ -11,7 +11,7 @@ fal.config({
       targetUrl: '/api/fal/proxy', // the built-int nextjs proxy
     }),
 });
-let URL_RESULT = ''
+let URL_RESULT = '',  URL_RESULT2 = ''
 export default function LoginWA() {
   const router = useRouter();
 
@@ -23,7 +23,9 @@ export default function LoginWA() {
   const [faceImage, setFaceImage] = useState(""); // base64 / url
 
     // AI
+    const [numProses, setNumProses] = useState(0);
     const [result, setResult] = useState(null);
+    const [result2, setResult2] = useState(null);
     const [error, setError] = useState(true);
     const [logs, setLogs] = useState([]);
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -96,6 +98,7 @@ export default function LoginWA() {
     };
 
     const generateAI = async () => {
+        setNumProses(1)
         reset2();
         setLoading(true);
         const start = Date.now();
@@ -160,11 +163,78 @@ export default function LoginWA() {
                 "";
       
             URL_RESULT = outUrl;
+            console.log(URL_RESULT)
+
+            generateAI2()
       
-            toDataURL(URL_RESULT).then(dataUrl => {
+            // toDataURL(URL_RESULT).then(dataUrl => {
+            //     if (typeof localStorage !== 'undefined') {
+            //         localStorage.setItem("PurinaShowresultAIBase64", dataUrl);
+            //         localStorage.setItem("PurinaShowURLResult", URL_RESULT);
+            //     }
+            //     setTimeout(() => {
+            //         router.push('/purina/pawshion-show/result');
+            //     }, 200);
+            // });
+      
+        } catch (error) {
+            console.error(error);
+            setError(false);
+        } finally {
+            // setLoading(false);
+            setElapsedTime(Date.now() - start);
+        }
+    };
+
+    const generateAI2 = async () => {
+        setNumProses(2)
+        reset2();
+        setLoading(true);
+        const start = Date.now();
+      
+        try {
+            // ===== prompt final dari pilihan =====
+            const prompt = `
+            add my pet to this packaging, and remove existing pet
+            `.trim();
+
+            const image_urls = [
+                URL_RESULT,
+                'https://ai.zirolu.id/purina/ps-packaging.png'
+            ];
+
+            console.log(image_urls)
+      
+            // ===== call fal =====
+            const result = await fal.subscribe('fal-ai/nano-banana-pro/edit', {
+                input: {
+                    prompt,
+                    image_urls
+                },
+                pollInterval: 5000,
+                logs: true,
+                onQueueUpdate(update) {
+                    setElapsedTime(Date.now() - start);
+                    if (update.status === 'IN_PROGRESS' || update.status === 'COMPLETED') {
+                        setLogs((update.logs || []).map((log) => log.message));
+                    }
+                },
+            });
+      
+            setResult2(result);
+      
+             // --- hasil dari fal (punyamu sudah works, aku bikin aman dikit) ---
+            const outUrl =
+                result?.images?.[0]?.url ||
+                result?.data?.images?.[0]?.url ||
+                "";
+      
+            URL_RESULT2 = outUrl;
+      
+            toDataURL(URL_RESULT2).then(dataUrl => {
                 if (typeof localStorage !== 'undefined') {
                     localStorage.setItem("PurinaShowresultAIBase64", dataUrl);
-                    localStorage.setItem("PurinaShowURLResult", URL_RESULT);
+                    localStorage.setItem("PurinaShowURLResult", URL_RESULT2);
                 }
                 setTimeout(() => {
                     router.push('/purina/pawshion-show/result');
@@ -200,7 +270,7 @@ export default function LoginWA() {
           <p className="text-white text-lg font-semibold leading-snug">
             Generating Your Pet Look...
           </p>
-          <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds`}</p>
+          <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
         </div>
       </main>
     );
