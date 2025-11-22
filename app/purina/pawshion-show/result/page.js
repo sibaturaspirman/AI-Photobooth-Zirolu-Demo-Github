@@ -143,7 +143,7 @@ export default function Result() {
                     </div>
                 </div>
                 <p className="text-white text-xl font-semibold leading-snug mb-2 text-center">
-                This is your AI result
+                Your Pet Has Become a Purina Star
                 </p>
             </div>
 

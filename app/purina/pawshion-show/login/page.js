@@ -24,6 +24,7 @@ export default function LoginWA() {
 
     // AI
     const [numProses, setNumProses] = useState(0);
+    const [textProses, setTextProses] = useState('Generating Your Pet Look...');
     const [result, setResult] = useState(null);
     const [result2, setResult2] = useState(null);
     const [error, setError] = useState(true);
@@ -187,6 +188,7 @@ export default function LoginWA() {
     };
 
     const generateAI2 = async () => {
+        setTextProses('Currently adding your pet to our packaging...')
         setNumProses(2)
         reset2();
         setLoading(true);
@@ -268,7 +270,7 @@ export default function LoginWA() {
 
           {/* text loading (boleh diganti image kalau mau) */}
           <p className="text-white text-lg font-semibold leading-snug">
-            Generating Your Pet Look...
+            {`${textProses}`}
           </p>
           <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
         </div>
