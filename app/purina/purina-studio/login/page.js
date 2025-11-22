@@ -269,7 +269,7 @@ export default function LoginWA() {
           </div>
 
           {/* text loading (boleh diganti image kalau mau) */}
-          <p className="text-white text-lg font-semibold leading-[1.1] mb-2">
+          <p className="text-white text-lg font-semibold leading-snug">
             {`${textProses}`}
           </p>
           <p className="text-xs">{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
