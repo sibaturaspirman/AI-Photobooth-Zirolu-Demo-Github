@@ -71,7 +71,7 @@ export default function Page() {
   }, []);
 
   return (
-    <main style={{ width: '100vw', height: '100vh', margin: 0 }}>
+    <main className="fixed inset-0 w-full h-full bg-purina-ps">
       <iframe
         ref={iframeRef}
         src={IFRAME_SRC}
