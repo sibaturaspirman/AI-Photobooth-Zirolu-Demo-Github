@@ -22,7 +22,7 @@ const useWebcam = ({
   }) => {
     useEffect(() => {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true}).then((stream) => {
+        navigator.mediaDevices.getUserMedia({ video: {facingMode: { ideal: "environment" }}}).then((stream) => {
             streamCam = stream
             window.localStream = stream
           if (videoRef.current !== null) {
@@ -316,7 +316,7 @@ export default function Cam() {
             </div>
             
             <div className={`fixed top-0 left-0 w-full h-full bg-visikom flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
-            <a href='/comcon/visikom/cam' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <a href='/purina/pawshion-show' className='relative w-[80%] mx-auto flex justify-center items-center'>
                 <Image src='/permata/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
             </a>
             </div>
