@@ -56,6 +56,7 @@ export default function Result() {
 
     const downloadImageAI = async () => {
         try {
+            setLoadingDownload('true')
           const title = "Purina Star";
           const text = "Download foto Purina Star kamu di sini!";
           const url = linkQR;
@@ -188,7 +189,7 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#E5E40A] text-center bg-[#811A53] text-[#E5E40A] lg:font-bold p-5 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
+                    <div className='relative mt-5 lg:mt-2 rounded-lg border-2 border-[#fff] text-center bg-[#8f020b] text-[#fff] lg:font-bold p-5 py-3 lg:text-5xl w-[80%] lg:w-[80%] mx-auto'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
