@@ -109,6 +109,12 @@ export default function Register() {
         }else if(stylePrompt == 'style7'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-7.jpeg'
             garmentDesc = 'Short Sleeve Round Neck T-shirts'
+        }else if(stylePrompt == 'style8'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-8.jpeg'
+            garmentDesc = 'Miu Miu Denim Jacket'
+        }else if(stylePrompt == 'style8'){
+            garmentURL = 'https://ai.zirolu.id/tryon/style-9.jpeg'
+            garmentDesc = 'Miu Miu Oversized Denim Trucker Jacket'
         }
 
         import('html2canvas').then(html2canvas => {
@@ -225,6 +231,44 @@ export default function Register() {
                         <div className='overflow-auto'>
                             {/* STYLE SEMENTARA */}
                             <ul className='choose'>
+                            <li>
+                                <input
+                                id='choose_style8'
+                                type="radio"
+                                name='choose_style'
+                                value="style8"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style8">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-8.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
+                            <li>
+                                <input
+                                id='choose_style9'
+                                type="radio"
+                                name='choose_style'
+                                value="style9"
+                                onChange={(e) => setStylePrompt(e.target.value)}
+                                />
+                                <label htmlFor="choose_style9">
+                                <Image
+                                    className="relative h-auto w-full"
+                                    src="/tryon/style-9.jpeg"
+                                    alt="icon"
+                                    width={120}
+                                    height={120}
+                                    priority
+                                />
+                                </label>
+                            </li>
                             <li>
                                 <input
                                 id='choose_style1'
