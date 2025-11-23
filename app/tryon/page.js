@@ -112,7 +112,7 @@ export default function Register() {
         }else if(stylePrompt == 'style8'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-8.jpeg'
             garmentDesc = 'Miu Miu Denim Jacket'
-        }else if(stylePrompt == 'style8'){
+        }else if(stylePrompt == 'style9'){
             garmentURL = 'https://ai.zirolu.id/tryon/style-9.jpeg'
             garmentDesc = 'Miu Miu Oversized Denim Trucker Jacket'
         }
