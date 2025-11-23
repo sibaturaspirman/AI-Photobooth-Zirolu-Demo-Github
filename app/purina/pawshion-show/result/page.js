@@ -54,17 +54,47 @@ export default function Result() {
         }
     }, [imageResultAI, imageFinalAI, linkQR])
 
-    const downloadImageAI = () => {
-        window.open(
-            linkQR,
-            '_blank' // <- This is what makes it open in a new window.
-          );
-        // import('html2canvas').then(html2canvas => {
-        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-        //         uploadImage(canvas)
-        //     )
-        // }).catch(e => {console("load failed")})
-    }
+    const downloadImageAI = async () => {
+        try {
+          const title = "Purina Star";
+          const text = "Download foto Purina Star kamu di sini!";
+          const url = linkQR;
+      
+          // Kalau browser support Web Share API
+          if (navigator.share) {
+            // Coba share sebagai FILE biar muncul opsi "Save image" / "Save to Files"
+            try {
+              const res = await fetch(url, { mode: "cors" });
+              const blob = await res.blob();
+              const file = new File([blob], "purina-star.png", { type: blob.type || "image/png" });
+      
+              if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                  title,
+                  text,
+                  files: [file],
+                });
+                return; // selesai
+              }
+            } catch (errFile) {
+              // Kalau gagal fetch/blob atau canShare file gak support,
+              // lanjut ke share link aja
+              console.log("Share file not available, fallback to link", errFile);
+            }
+      
+            // Share as link
+            await navigator.share({ title, text, url });
+            return;
+          }
+      
+          // Fallback desktop / browser lama
+          window.open(url, "_blank");
+        } catch (err) {
+          console.error("Share/download error:", err);
+          window.open(linkQR, "_blank");
+        }
+      };
+      
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
 
