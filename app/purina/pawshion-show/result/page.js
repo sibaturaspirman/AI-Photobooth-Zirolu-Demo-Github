@@ -76,6 +76,8 @@ export default function Result() {
               text: "Your pet has become a Purina Star!",
               files: [file],
             });
+
+            setLoadingDownload(null)
             return;
           }
       
