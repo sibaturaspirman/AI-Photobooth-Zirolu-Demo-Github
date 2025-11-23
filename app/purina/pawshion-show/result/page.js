@@ -56,45 +56,59 @@ export default function Result() {
 
     const downloadImageAI = async () => {
         try {
-            setLoadingDownload('true')
-          const title = "Purina Star";
-          const text = "Download foto Purina Star kamu di sini!";
-          const url = linkQR;
+          if (!imageResultAI) {
+            console.log("No image in localStorage");
+            return;
+          }
+          
+          setLoadingDownload('true')
+          // imageResultAI = base64 dataURL (ex: "data:image/png;base64,xxx")
+          const dataURL = imageResultAI;
       
-          // Kalau browser support Web Share API
-          if (navigator.share) {
-            // Coba share sebagai FILE biar muncul opsi "Save image" / "Save to Files"
-            try {
-              const res = await fetch(url, { mode: "cors" });
-              const blob = await res.blob();
-              const file = new File([blob], "purina-star.png", { type: blob.type || "image/png" });
+          // Convert base64 → blob
+          const blob = await (await fetch(dataURL)).blob();
+          const file = new File([blob], "purina-star.png", { type: blob.type });
       
-              if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                await navigator.share({
-                  title,
-                  text,
-                  files: [file],
-                });
-                return; // selesai
-              }
-            } catch (errFile) {
-              // Kalau gagal fetch/blob atau canShare file gak support,
-              // lanjut ke share link aja
-              console.log("Share file not available, fallback to link", errFile);
-            }
-      
-            // Share as link
-            await navigator.share({ title, text, url });
+          // Cek apakah support share file
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: "Purina Star",
+              text: "Your pet has become a Purina Star!",
+              files: [file],
+            });
             return;
           }
       
-          // Fallback desktop / browser lama
-          window.open(url, "_blank");
+          // Kalau support share tapi ga bisa share file → share text saja
+          if (navigator.share) {
+            await navigator.share({
+              title: "Purina Star",
+              text: "Your pet has become a Purina Star!",
+            });
+
+            setLoadingDownload(null)
+            return;
+          }
+      
+          // Fallback terakhir — buka image secara direct
+          const a = document.createElement("a");
+          a.href = dataURL;
+          a.download = "purina-star.png";
+          a.click();
+      
         } catch (err) {
-          console.error("Share/download error:", err);
-          window.open(linkQR, "_blank");
+          console.error("Share failed:", err);
+      
+          // Fallback jika error
+          const a = document.createElement("a");
+          a.href = imageResultAI;
+          a.download = "purina-star.png";
+          a.click();
+          
+          setLoadingDownload(null)
         }
       };
+      
       
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
