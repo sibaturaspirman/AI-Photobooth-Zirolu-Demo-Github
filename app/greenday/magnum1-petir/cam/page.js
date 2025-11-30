@@ -170,18 +170,15 @@ export default function Cam() {
                     const rightEyeImg = new window.Image();
                     rightEyeImg.src = rightEyeImgSrc;
 
-                    // leftEyeImg.onload = () => {
-                    //     drawEyeOverlay(ctx, leftEyeImg, leftEye, rightEye, img.width, img.height, scale);
-                    //     setLeftEyeStatus(true)
-                    // };
+                    leftEyeImg.onload = () => {
+                        drawEyeOverlay(ctx, leftEyeImg, leftEye, rightEye, img.width, img.height, scale);
+                        setLeftEyeStatus(true)
+                    };
 
-                    // rightEyeImg.onload = () => {
-                    //     drawEyeOverlay(ctx, rightEyeImg, rightEye, leftEye, img.width, img.height, scale);
-                    //     setRightEyeStatus(true)
-                    // };
-
-                    setLeftEyeStatus(true)
-                    setRightEyeStatus(true)
+                    rightEyeImg.onload = () => {
+                        drawEyeOverlay(ctx, rightEyeImg, rightEye, leftEye, img.width, img.height, scale);
+                        setRightEyeStatus(true)
+                    };
                 });
 
                 await faceMesh.initialize();

@@ -9,7 +9,7 @@ export default function GreendayMagnumHome() {
       <BgWaveCustom bg={'/greenday/m-bg.jpg'}></BgWaveCustom>
       <div className="relative w-full flex justify-center items-center flex-col lg:top-[-6rem]">
         <div className='animate-upDown relative w-[35%] lg:w-[40%] mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/greenday/m-front-new.png' width={442} height={1405} alt='Zirolu' className='w-full' priority />
+          <Image src='/greenday/m-front.png' width={442} height={1405} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
       <div className="absolute left-0 right-0 bottom-3 lg:bottom-[8rem] w-full flex justify-center items-center">
