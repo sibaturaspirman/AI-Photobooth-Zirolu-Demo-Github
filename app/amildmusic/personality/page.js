@@ -16,6 +16,12 @@ import { useRouter } from 'next/navigation';
 //     }),
 // });
 
+let dataMusical = [
+    {'data' : 'soundwave'},
+    {'data' : 'notes'},
+    {'data' : 'equalizer'}
+]
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -29,6 +35,7 @@ export default function Register() {
 
     const generateAI = () => {
         let randomGambar = getRandomInt(1,6)
+        let randomGambar2 = getRandomInt(0,2)
         // if(character == 'cowok'){
         //     if (typeof localStorage !== 'undefined') {
         //         localStorage.setItem("formasiFix", 'MALE')
@@ -48,6 +55,7 @@ export default function Register() {
         if (typeof localStorage !== 'undefined') {
             localStorage.setItem("personalityFix", character)
             localStorage.setItem("musicFix", randomGambar)
+            localStorage.setItem("musicalFix", dataMusical[randomGambar2].data)
             localStorage.setItem("personalityMusicFix", character+'_'+randomGambar)
         }
 
