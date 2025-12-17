@@ -24,6 +24,10 @@ export default function Home() {
         <Link href='/capture-vibe/setup' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
          CAPTURE VIBE
         </Link>
+
+        <Link href='/iqos-bonds' className="relative mx-auto flex w-full justify-center items-center bg-red-500 text-[6vw] p-7 mt-5">
+         BONDS
+        </Link>
         {/* <Link href='/dexa' rel="noopener noreferrer" target="_blank" className="relative mx-auto flex w-full justify-center items-center">
           <Image src='/page-dexa.jpeg' width={780} height={186} alt='Zirolu' className='w-full' priority />
         </Link> */}
