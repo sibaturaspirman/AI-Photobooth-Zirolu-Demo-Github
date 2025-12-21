@@ -106,7 +106,7 @@ export default function Result() {
                 method: 'POST',
                 body: bodyFormData,
                 headers: {
-                    'x-api-key': 'R2VuZXJhbFVwbG9hZEZJbGU='
+                    'x-api-key': process.env.NEXT_PUBLIC_XAPI
                 }
             };
             
