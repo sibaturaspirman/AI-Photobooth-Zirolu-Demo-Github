@@ -6,7 +6,7 @@ export async function autoJoinAndSubmit({
   defaultRoom = "jakarta1",
 }) {
   return new Promise((resolve, reject) => {
-    const SOCKET_URL = "https://minigim-socket.stg.antigravity.dev";
+    const SOCKET_URL = "https://sockets2.minigim.fun";
     const roomId = localStorage.getItem("roomId") || defaultRoom;
 
     if (!imageURL) return reject("imageURL wajib diisi");

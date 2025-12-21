@@ -100,34 +100,33 @@ export default function Result() {
         canvas.toBlob(async function(blob) {
 
             let bodyFormData = new FormData();
-            bodyFormData.append("name", 'AMILD WPAP');
-            bodyFormData.append("phone", '2025');
             bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
           
             const options = {
                 method: 'POST',
                 body: bodyFormData,
                 headers: {
-                    'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
-                    'Accept': 'application/json',
+                    'x-api-key': 'R2VuZXJhbFVwbG9hZEZJbGU='
                 }
             };
             
-            await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
+            await fetch('https://api2.minigim.fun/v1/file-submit/wpap', options)
                 .then(response => response.json())
                 .then(async response => {
 
-                    localStorage.setItem('finalResultDownload', response.file)
-                    localStorage.setItem("finalResult"+counterKolase, response.file)
+                    console.log(response)
 
-                    let urlImageSocket = response.file
+                    localStorage.setItem('finalResultDownload', response.data.url)
+                    localStorage.setItem("finalResult"+counterKolase, response.data.url)
+
+                    let urlImageSocket = response.data.url
 
                     const options2 = {
                         method: 'POST',
                         body: JSON.stringify({
                             name: 'AMILD WPAP',
                             phone: '2025',
-                            image: response.file
+                            image: response.data.url
                         }),
                         headers: {
                             'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
@@ -164,6 +163,72 @@ export default function Result() {
                         const item = localStorage.getItem('faceURLResult')
                     }
                 });
+
+            // let bodyFormData = new FormData();
+            // bodyFormData.append("name", 'AMILD WPAP');
+            // bodyFormData.append("phone", '2025');
+            // bodyFormData.append("file", blob, payload.name+'-photo-ai-zirolu.png');
+          
+            // const options = {
+            //     method: 'POST',
+            //     body: bodyFormData,
+            //     headers: {
+            //         'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+            //         'Accept': 'application/json',
+            //     }
+            // };
+            
+            // await fetch('https://photo-ai-iims.zirolu.id/v1/magnumhammersonic', options)
+            //     .then(response => response.json())
+            //     .then(async response => {
+
+            //         localStorage.setItem('finalResultDownload', response.file)
+            //         localStorage.setItem("finalResult"+counterKolase, response.file)
+
+            //         let urlImageSocket = response.file
+
+            //         const options2 = {
+            //             method: 'POST',
+            //             body: JSON.stringify({
+            //                 name: 'AMILD WPAP',
+            //                 phone: '2025',
+            //                 image: response.file
+            //             }),
+            //             headers: {
+            //                 'Authorization': 'de2e0cc3-65da-48a4-8473-484f29386d61:xZC8Zo4DAWR5Yh6Lrq4QE3aaRYJl9lss',
+            //                 'Accept': 'application/json',
+            //                 'Content-Type': 'application/json'
+            //             }
+            //         };
+                    
+            //         await fetch('https://photo-ai-iims.zirolu.id/v1/pln', options2)
+            //             .then(response => response.json())
+            //             .then(response => {
+
+            //                 autoJoinAndSubmit({
+            //                     imageURL: urlImageSocket,
+            //                     position: counterKolase,
+            //                 })
+            //                     .then(({ roomId }) => {
+
+            //                         setTimeout(() => {
+            //                             router.push('/capture-vibe/kolase');
+            //                         }, 200);
+            //                     console.log(`✅ sukses kirim ke room ${roomId}`);
+            //                     })
+            //                     .catch((err) => {
+            //                     console.error("Gagal:", err);
+            //                     });
+            //             })
+            //             .catch(err => {
+            //                 console.log(err)
+            //             });
+            //     })
+            //     .catch(err => {
+            //         if (typeof localStorage !== 'undefined') {
+            //             const item = localStorage.getItem('faceURLResult')
+            //         }
+            //     });
         });
     }
 

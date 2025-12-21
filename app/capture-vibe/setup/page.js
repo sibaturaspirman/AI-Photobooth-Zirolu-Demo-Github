@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import io from "socket.io-client";
 
 const ROOMS = ["jakarta1", "jakarta2", "bandung", "medan", "makassar", "palembang"];
-const SOCKET_URL = "https://minigim-socket.stg.antigravity.dev";
+const SOCKET_URL = "https://sockets2.minigim.fun";
 
 export default function SetupPage() {
   const router = useRouter();

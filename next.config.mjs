@@ -27,6 +27,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'zirolu.s3.ap-southeast-1.amazonaws.com',
           },
+          {
+            protocol: 'https',
+            hostname: 'api2.minigim.fun',
+          },
         ],
     }
 };
