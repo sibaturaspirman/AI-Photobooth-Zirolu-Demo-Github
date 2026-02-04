@@ -11,7 +11,10 @@ export default function Home() {
       <h1 className={`text-center text-xl mt-[-.7rem] lg:mt-0 lg:text-7xl lg:mb-5 ${paytone_one.className}`}>The AI Photo Booth For Events  </h1>
       <div className="relative w-full mt-7">
       <p className="text-center text-[3vw] mb-3">CHOOSE YOUR APP</p>
-        <Link href='/iqos-prj' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
+        <Link href='/baic' className="relative mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
+         BAIC
+        </Link>
+        <Link href='/iqos-prj' className="relative mt-5 mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
          IQOS
         </Link>
         <Link href='/iqos-prj2' className="relative mt-5 mx-auto flex w-full justify-center items-center bg-indigo-500 text-[6vw] p-7">
